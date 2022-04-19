@@ -13,7 +13,7 @@ class CreateJustificacionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('justificacions', function (Blueprint $table) {
+        Schema::create('JUSTIFICACION', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });

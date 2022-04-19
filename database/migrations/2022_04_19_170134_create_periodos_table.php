@@ -13,7 +13,7 @@ class CreatePeriodosTable extends Migration
      */
     public function up()
     {
-        Schema::create('periodos', function (Blueprint $table) {
+        Schema::create('PERIODO', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });

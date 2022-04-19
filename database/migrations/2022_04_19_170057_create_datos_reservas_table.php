@@ -13,7 +13,7 @@ class CreateDatosReservasTable extends Migration
      */
     public function up()
     {
-        Schema::create('datos_reservas', function (Blueprint $table) {
+        Schema::create('DATOS_RESERVA', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });

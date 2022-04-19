@@ -13,7 +13,7 @@ class CreateMateriasTable extends Migration
      */
     public function up()
     {
-        Schema::create('materias', function (Blueprint $table) {
+        Schema::create('MATERIA', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });

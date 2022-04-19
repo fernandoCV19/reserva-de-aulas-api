@@ -13,7 +13,7 @@ class CreateSolicitudReservasTable extends Migration
      */
     public function up()
     {
-        Schema::create('solicitud_reservas', function (Blueprint $table) {
+        Schema::create('SOLICITUD_RESERVA', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });
