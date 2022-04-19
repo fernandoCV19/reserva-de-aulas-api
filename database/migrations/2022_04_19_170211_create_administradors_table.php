@@ -14,8 +14,13 @@ class CreateAdministradorsTable extends Migration
     public function up()
     {
         Schema::create('ADMINISTRADOR', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->uuid('id');
+            $table->string('nombre', 40);
+            $table->string('contrasenia', 40);
+
+
+            $table->primary('id');
+            $table->unique('id');
         });
     }
 
@@ -26,6 +31,6 @@ class CreateAdministradorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('administradors');
+        Schema::dropIfExists('ADMINSTRADOR');
     }
 }

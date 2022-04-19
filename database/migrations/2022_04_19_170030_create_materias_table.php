@@ -14,8 +14,12 @@ class CreateMateriasTable extends Migration
     public function up()
     {
         Schema::create('MATERIA', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->uuid('id');
+            $table->string('nombre', 40);
+            $table->integer('codigo');
+        
+            $table->primary('id');
+            $table->unique('id');
         });
     }
 
@@ -26,6 +30,6 @@ class CreateMateriasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('materias');
+        Schema::dropIfExists('MATERIA');
     }
 }

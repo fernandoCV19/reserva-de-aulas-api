@@ -14,8 +14,15 @@ class CreateDocentesTable extends Migration
     public function up()
     {
         Schema::create('DOCENTE', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->uuid('id');
+            $table->integer('cod_SIS');
+            $table->string('nombres', 30);
+            $table->string('apellidos', 30);
+            $table->string('celular', 30);
+            $table->string('contrasenia', 30);
+        
+            $table->primary('id');
+            $table->unique('id');
         });
     }
 
@@ -26,6 +33,6 @@ class CreateDocentesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('docentes');
+        Schema::dropIfExists('DOCENTE');
     }
 }
