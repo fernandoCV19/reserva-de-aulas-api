@@ -34,7 +34,8 @@ class SolicitudReservaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $solicitud_reserva = SolicitudReserva::create($request->all());
+        return $estudiante;
     }
 
     /**
