@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class MateriaSeeder extends Seeder
 {
@@ -13,6 +15,10 @@ class MateriaSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('materias')->insert([
+            'id' => 1,
+            'nombre' => 'Introduccion a la programacion',
+            'codigo' => '20001234'
+        ]);
     }
 }
