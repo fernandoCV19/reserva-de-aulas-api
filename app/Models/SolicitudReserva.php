@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class SolicitudReserva extends Model
 {
     use HasFactory;
+
+    public function datos_reserva(){
+        return $this->hasOne(DatosReserva::class);
+    }
 }

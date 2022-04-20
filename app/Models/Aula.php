@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Aula extends Model
 {
     use HasFactory;
+
+    public function datos_reservas(){
+        return $this->belongsTo(DatosReserva::class);
+    }
 }
