@@ -9,7 +9,7 @@ class Reserva extends Model
 {
     use HasFactory;
 
-    public function datos(){
+    public function datos_reserva(){
         return $this->hasOne(DatosReserva::class);
     }
 }

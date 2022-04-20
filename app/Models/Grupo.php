@@ -17,7 +17,7 @@ class Grupo extends Model
         return $this->belongsTo(Materia::class);
     }
 
-    public function datos_reserva(){
+    public function datos_reservas(){
         return $this->belongsTo(DatosReserva::class);
     }
 }
