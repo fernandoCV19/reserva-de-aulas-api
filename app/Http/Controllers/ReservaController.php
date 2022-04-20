@@ -3,9 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Reserva;
+use App\Models\DatosReserva;
 
 class ReservaController extends Controller
 {
+    public function crearReserva(Request $request)
+    {
+        $idDatos = $request->id_datos_reserva;
+        $datosReserva -> DatosReserva::find($idDatos);
+        $reserva = new Reserva();
+        
+    }
+    
+    
+    
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +25,7 @@ class ReservaController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -23,7 +35,7 @@ class ReservaController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
