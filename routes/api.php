@@ -18,4 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource("solicitudReserva","SolicitudReservaController");
+Route::post("/solicitudReserva","App\Http\Controllers\SolicitudReservaController@store");
