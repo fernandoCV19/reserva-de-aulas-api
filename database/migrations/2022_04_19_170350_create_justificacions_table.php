@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMateriasTable extends Migration
+class CreateJustificacionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateMateriasTable extends Migration
      */
     public function up()
     {
-        Schema::create('materias', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::create('justificacions', function (Blueprint $table) {
+            $table->string('datos_reserva_id', 36);
+            $table->string('justificacion', 124);
+
+            $table->foreign('datos_reserva_id')->references('id')->on('datos_reservas');
         });
     }
 
@@ -26,6 +28,6 @@ class CreateMateriasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('materias');
+        Schema::dropIfExists('justificacions');
     }
 }

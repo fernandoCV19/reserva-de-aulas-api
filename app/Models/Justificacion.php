@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Justificacion extends Model
 {
     use HasFactory;
+
+    public function datos_reserva(){
+        return $this->belongsTo(DatosReserva::class);
+    }
 }

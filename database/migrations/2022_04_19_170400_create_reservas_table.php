@@ -14,8 +14,14 @@ class CreateReservasTable extends Migration
     public function up()
     {
         Schema::create('reservas', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->uuid('id');
+            $table->timestamp('fecha_creacion');
+            $table->string('datos_reserva_id');
+            
+            $table->primary('id');
+            $table->unique('id');
+        
+            $table->foreign('datos_reserva_id')->references('id')->on('datos_reservas');
         });
     }
 
