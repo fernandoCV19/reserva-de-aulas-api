@@ -16,7 +16,7 @@ class AulaSeeder extends Seeder
     public function run()
     {
         DB::table('aulas')->insert([
-            'id' => Str::random(36),
+            'id' => 1,
             'nombre' => '691F',
             'ubicacion' => 'Edificio nuevo',
             'capacidad' => 100,
@@ -24,10 +24,18 @@ class AulaSeeder extends Seeder
         ]);
 
         DB::table('aulas')->insert([
-            'id' => Str::random(36),
+            'id' => 2,
             'nombre' => '692F',
             'ubicacion' => 'Edificio nuevo',
-            'capacidad' => 100,
+            'capacidad' => 50,
+            'descripcion' => 'Aula comun'
+        ]);
+
+        DB::table('aulas')->insert([
+            'id' => 3,
+            'nombre' => '693F',
+            'ubicacion' => 'Edificio nuevo',
+            'capacidad' => 150,
             'descripcion' => 'Aula comun'
         ]);
     }
