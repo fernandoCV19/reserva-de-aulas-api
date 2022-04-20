@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class DatosReserva extends Model
 {
     use HasFactory;
+    protected $table = 'datos_reserva';
+    protected $fillable = ['id, fecha, numero_estimado'];
 }
