@@ -34,8 +34,13 @@ class SolicitudReservaController extends Controller
      */
     public function store(Request $request)
     {
-        $solicitud_reserva = SolicitudReserva::create($request->all());
-        return $estudiante;
+        $solicitud_reserva  = new SolicitudReserva();
+        $solicitud_reserva ->id = $request->id;
+        $solicitud_reserva ->estado = $request->estado;
+        $solicitud_reserva ->fecha_creacion = $request->fecha_creacion;
+        $solicitud_reserva ->datos_reserva_id = $request->datos_reserva_id;
+
+        $solicitud_reserva->save();
     }
 
     /**
