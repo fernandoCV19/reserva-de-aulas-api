@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDatosReservasTable extends Migration
+class CreateGruposTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,18 @@ class CreateDatosReservasTable extends Migration
      */
     public function up()
     {
-        Schema::create('DATOS_RESERVA', function (Blueprint $table) {
+        Schema::create('GRUPO', function (Blueprint $table) {
             $table->uuid('id');
-            $table->date('fecha');
-            $table->integer('numero_estimado');
+            $table->string('nombre',10);
+            $table->string('id_docente',36);
+            $table->string('id_materia',36);
+
+            $table->foreign('id_docente')->references('id')->on('DOCENTE');
+            $table->foreign('id_materia')->references('id')->on('MATERIA');
 
             $table->primary('id');
             $table->unique('id');
+
         });
     }
 
@@ -30,6 +35,6 @@ class CreateDatosReservasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('DATOS_RESERVA');
+        Schema::dropIfExists('GRUPO');
     }
 }

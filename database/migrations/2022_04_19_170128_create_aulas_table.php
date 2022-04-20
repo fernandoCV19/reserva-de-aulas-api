@@ -13,9 +13,15 @@ class CreateAulasTable extends Migration
      */
     public function up()
     {
-        Schema::create('aulas', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::create('AULA', function (Blueprint $table) {
+            $table->uuid('id');
+            $table->string('nombre', 15);
+            $table->string('ubicacion', 30);
+            $table->integer('capacidad');
+            $table->string('descripcion', 30);
+
+            $table->primary('id');
+            $table->unique('id');
         });
     }
 
@@ -26,6 +32,6 @@ class CreateAulasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('aulas');
+        Schema::dropIfExists('AULA');
     }
 }

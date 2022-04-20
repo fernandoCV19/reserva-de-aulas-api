@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSolicitudReservasTable extends Migration
+class CreateMateriasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class CreateSolicitudReservasTable extends Migration
      */
     public function up()
     {
-        Schema::create('solicitud_reservas', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::create('MATERIA', function (Blueprint $table) {
+            $table->uuid('id');
+            $table->string('nombre', 40);
+            $table->integer('codigo');
+        
+            $table->primary('id');
+            $table->unique('id');
         });
     }
 
@@ -26,6 +30,6 @@ class CreateSolicitudReservasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('solicitud_reservas');
+        Schema::dropIfExists('MATERIA');
     }
 }
