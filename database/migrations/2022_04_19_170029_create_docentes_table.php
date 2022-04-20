@@ -13,7 +13,7 @@ class CreateDocentesTable extends Migration
      */
     public function up()
     {
-        Schema::create('DOCENTE', function (Blueprint $table) {
+        Schema::create('docentes', function (Blueprint $table) {
             $table->uuid('id');
             $table->integer('cod_SIS');
             $table->string('nombres', 30);
@@ -33,6 +33,6 @@ class CreateDocentesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('DOCENTE');
+        Schema::dropIfExists('docentes');
     }
 }

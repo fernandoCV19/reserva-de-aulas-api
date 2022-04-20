@@ -10,6 +10,6 @@ class Docente extends Model
     use HasFactory;
 
     public function grupos(){
-        return $this->hasMany(Grupo::class, 'id_docente');
+        return $this->hasMany(Grupo::class);
     }
 }

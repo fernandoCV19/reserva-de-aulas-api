@@ -10,10 +10,14 @@ class Grupo extends Model
     use HasFactory;
 
     public function docente(){
-        return $this->belongsTo(Docente::class, 'id_docente');
+        return $this->belongsTo(Docente::class);
     }
 
     public function materia(){
-        return $this->belongsTo(Materia::class, 'id_materia');
+        return $this->belongsTo(Materia::class);
+    }
+
+    public function datos_reserva(){
+        return $this->belongsTo(DatosReserva::class);
     }
 }

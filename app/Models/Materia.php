@@ -10,6 +10,6 @@ class Materia extends Model
     use HasFactory;
 
     public function grupos(){
-        return $this->hasMany(Grupo::class, 'id_materia');
+        return $this->hasMany(Grupo::class);
     }
 }

@@ -15,14 +15,14 @@ class CreateDatosReservaGrupoTable extends Migration
     {
         Schema::create('datos_reserva_grupo', function (Blueprint $table) {
             $table->uuid('id');
-            $table->string('id_datos_reserva', 36);
-            $table->string('id_grupo', 36);
+            $table->string('datos_reserva_id', 36);
+            $table->string('grupo_id', 36);
 
             $table->primary('id');
             $table->unique('id');
             
-            $table->foreign('id_datos_reserva')->references('id')->on('DATOS_RESERVA');
-            $table->foreign('id_grupo')->references('id')->on('GRUPO');
+            $table->foreign('datos_reserva_id')->references('id')->on('datos_reservas');
+            $table->foreign('grupo_id')->references('id')->on('grupos');
         });
     }
 

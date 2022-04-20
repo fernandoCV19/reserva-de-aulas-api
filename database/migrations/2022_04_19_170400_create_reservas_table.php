@@ -13,15 +13,15 @@ class CreateReservasTable extends Migration
      */
     public function up()
     {
-        Schema::create('RESERVA', function (Blueprint $table) {
+        Schema::create('reservas', function (Blueprint $table) {
             $table->uuid('id');
-            $table->dateTime('fecha_creacion');
-            $table->string('id_datos_reserva');
+            $table->timestamp('fecha_creacion');
+            $table->string('datos_reserva_id');
             
             $table->primary('id');
             $table->unique('id');
         
-            $table->foreign('id_datos_reserva')->references('id')->on('DATOS_RESERVA');
+            $table->foreign('datos_reserva_id')->references('id')->on('datos_reservas');
         });
     }
 
@@ -32,6 +32,6 @@ class CreateReservasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('RESERVA');
+        Schema::dropIfExists('reservas');
     }
 }

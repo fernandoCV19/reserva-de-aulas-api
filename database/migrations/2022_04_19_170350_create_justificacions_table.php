@@ -13,11 +13,11 @@ class CreateJustificacionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('JUSTIFICACION', function (Blueprint $table) {
-            $table->string('id_datos_reserva', 36);
+        Schema::create('justificacions', function (Blueprint $table) {
+            $table->string('datos_reserva_id', 36);
             $table->string('justificacion', 124);
 
-            $table->foreign('id_datos_reserva')->references('id')->on('DATOS_RESERVA');
+            $table->foreign('datos_reserva_id')->references('id')->on('datos_reservas');
         });
     }
 
@@ -28,6 +28,6 @@ class CreateJustificacionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('JUSTIFICACION');
+        Schema::dropIfExists('justificacions');
     }
 }

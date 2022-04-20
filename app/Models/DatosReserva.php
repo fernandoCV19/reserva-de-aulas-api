@@ -18,6 +18,18 @@ class DatosReserva extends Model
     }
 
     public function justifcaciones(){
-        return $this->hasMany(Justicacion::class, 'id_datos_reserva');
+        return $this->hasMany(Justicacion::class);
+    }
+
+    public function grupos(){
+        return $this->belongsTo(Grupo::class);
+    }
+
+    public function periodos(){
+        return $this->belongsTo(Periodo::class);
+    }
+
+    public function aulas(){
+        return $this->belongsTo(Aula::class);
     }
 }

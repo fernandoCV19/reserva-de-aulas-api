@@ -15,14 +15,14 @@ class CreateDatosReservaPeriodoTable extends Migration
     {
         Schema::create('datos_reserva_periodo', function (Blueprint $table) {
             $table->uuid('id');
-            $table->string('id_datos_reserva', 36);
-            $table->string('id_periodo', 36);
+            $table->string('datos_reserva_id', 36);
+            $table->string('periodo_id', 36);
 
             $table->primary('id');
             $table->unique('id');
             
-            $table->foreign('id_datos_reserva')->references('id')->on('DATOS_RESERVA');
-            $table->foreign('id_periodo')->references('id')->on('PERIODO');
+            $table->foreign('datos_reserva_id')->references('id')->on('datos_reservas');
+            $table->foreign('periodo_id')->references('id')->on('periodos');
         });
     }
 

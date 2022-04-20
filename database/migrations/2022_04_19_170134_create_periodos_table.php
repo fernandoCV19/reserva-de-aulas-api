@@ -13,7 +13,7 @@ class CreatePeriodosTable extends Migration
      */
     public function up()
     {
-        Schema::create('PERIODO', function (Blueprint $table) {
+        Schema::create('periodos', function (Blueprint $table) {
             $table->uuid('id');
             $table->time('hora_inicio');
             $table->time('hora_fin');
@@ -31,6 +31,6 @@ class CreatePeriodosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('PERIODO');
+        Schema::dropIfExists('periodos');
     }
 }

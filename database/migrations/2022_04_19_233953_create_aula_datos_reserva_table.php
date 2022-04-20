@@ -15,14 +15,14 @@ class CreateAulaDatosReservaTable extends Migration
     {
         Schema::create('aula_datos_reserva', function (Blueprint $table) {
             $table->uuid('id');
-            $table->string('id_datos_reserva', 36);
-            $table->string('id_aula', 36);
+            $table->string('datos_reserva_id', 36);
+            $table->string('aula_id', 36);
 
             $table->primary('id');
             $table->unique('id');
             
-            $table->foreign('id_datos_reserva')->references('id')->on('DATOS_RESERVA');
-            $table->foreign('id_aula')->references('id')->on('AULA');
+            $table->foreign('datos_reserva_id')->references('id')->on('datos_reservas');
+            $table->foreign('aula_id')->references('id')->on('aulas');
         });
     }
 
