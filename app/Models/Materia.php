@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Materia extends Model
 {
     use HasFactory;
+
+    public function grupos(){
+        return $this->hasMany(Grupo::class, 'id_materia');
+    }
 }

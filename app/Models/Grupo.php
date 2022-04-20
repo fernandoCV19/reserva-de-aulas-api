@@ -12,4 +12,8 @@ class Grupo extends Model
     public function docente(){
         return $this->belongsTo(Docente::class, 'id_docente');
     }
+
+    public function docente(){
+        return $this->belongsTo(Materia::class, 'id_materia');
+    }
 }
