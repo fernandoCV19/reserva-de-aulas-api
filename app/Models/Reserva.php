@@ -16,6 +16,7 @@ class Reserva extends Model
 
     public function datos(){
         return $this->hasOne(DatosReserva::class, 'id_datos_reserva');
+    }
     public function datos_reserva(){
         return $this->hasOne(DatosReserva::class);
     }
