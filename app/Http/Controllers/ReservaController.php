@@ -10,12 +10,18 @@ class ReservaController extends Controller
 {
     public function crearReserva(Request $request)
     {
-        $idDatos = $request->id_datos_reserva;
-        $datosReserva -> DatosReserva::find($idDatos);
+        $idDatos = $request->idDatos;
         $reserva = new Reserva();
-        
+        $reserva -> id_datos_reserva = $idDatos;
+        $reserva -> fecha_creacion = now();
+        $reserva->save();
+        return $reserva;
     }
-    
+    public function obtenerReservas()
+    {
+        $reserva = Reserva::all();
+        return $reserva;
+    }
     
     
     /**
