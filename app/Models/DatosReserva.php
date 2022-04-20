@@ -14,7 +14,7 @@ class DatosReserva extends Model
     }
 
     public function solicitu_reserva(){
-        return $this->belongsTo(SolicitudReserva::class)
+        return $this->belongsTo(SolicitudReserva::class);
     }
 
     public function justifcaciones(){
