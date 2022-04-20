@@ -13,7 +13,7 @@ class CreateDatosReservasTable extends Migration
      */
     public function up()
     {
-        Schema::create('DATOS_RESERVA', function (Blueprint $table) {
+        Schema::create('datos_reservas', function (Blueprint $table) {
             $table->uuid('id');
             $table->date('fecha');
             $table->integer('numero_estimado');
@@ -30,6 +30,6 @@ class CreateDatosReservasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('DATOS_RESERVA');
+        Schema::dropIfExists('datos_reservas');
     }
 }

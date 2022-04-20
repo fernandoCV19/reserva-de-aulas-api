@@ -13,7 +13,7 @@ class CreateAulasTable extends Migration
      */
     public function up()
     {
-        Schema::create('AULA', function (Blueprint $table) {
+        Schema::create('aulas', function (Blueprint $table) {
             $table->uuid('id');
             $table->string('nombre', 15);
             $table->string('ubicacion', 30);
@@ -32,6 +32,6 @@ class CreateAulasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('AULA');
+        Schema::dropIfExists('aulas');
     }
 }

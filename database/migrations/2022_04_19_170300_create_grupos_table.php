@@ -13,14 +13,14 @@ class CreateGruposTable extends Migration
      */
     public function up()
     {
-        Schema::create('GRUPO', function (Blueprint $table) {
+        Schema::create('grupos', function (Blueprint $table) {
             $table->uuid('id');
             $table->string('nombre',10);
-            $table->string('id_docente',36);
-            $table->string('id_materia',36);
+            $table->string('docente_id',36);
+            $table->string('materia_id',36);
 
-            $table->foreign('id_docente')->references('id')->on('DOCENTE');
-            $table->foreign('id_materia')->references('id')->on('MATERIA');
+            $table->foreign('docente_id')->references('id')->on('docentes');
+            $table->foreign('materia_id')->references('id')->on('materias');
 
             $table->primary('id');
             $table->unique('id');
@@ -35,6 +35,6 @@ class CreateGruposTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('GRUPO');
+        Schema::dropIfExists('grupos');
     }
 }
