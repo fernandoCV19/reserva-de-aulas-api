@@ -8,19 +8,36 @@ use App\Mail\SolicitudNotificacionMail;
 
 class MailController extends Controller
 {
-    public function sendEmail()
+    public function sendEmailNotificacionRechazo()
     {
-        $detail=[
-            'title' => "Esta es una prueba de un envio de correo",
-            'body' => "Si lees esto es una prueba exitosa"
-        ];
-        //Mail::to("dilanantezana@gmail.com")->send(new SolicitudNotificacionMail($detail));
-        Mail::raw("Nuevo correo", function ($detail) {
-            $detail->to("dilanantezana@gmail.com")
-            ->subject("Esta es una prueba de un envio de correo")
-            ->setBody('Si lees esto es una prueba exitosa');
+        Mail::raw("El siguiente email es para notificarle que la solicitud de reserva ha sido rechazada", function ($message) {
+            $message->to(request('email'))
+                    ->subject("Solicitud de reserva de aulas");
         });
+        if (Mail::failures()) {
+            $mensaje =['mensaje'=>"Erro en el envio"];
+            return response()->json($mensaje, 500,[]);     
+        }
+        else{ 
+            $mensaje =['mensaje'=>"Envio con exito"];
+            return response()->json($mensaje, 200,[]);
+        }
         
-        return "enviado con exito";
+    }
+    public function sendEmailNotificacionAceptado()
+    {
+        Mail::raw("El siguiente email es para notificarle que la solicitud de reserva ha sido aceptada por tanto la reserva fue efectuada", function ($message) {
+            $message->to(request('email'))
+                    ->subject("Solicitud de reserva de aulas");
+        });
+        if (Mail::failures()) {
+            $mensaje =['mensaje'=>"Erro en el envio"];
+            return response()->json($mensaje, 500,[]);     
+        }
+        else{ 
+            $mensaje =['mensaje'=>"Envio con exito"];
+            return response()->json($mensaje, 200,[]);
+        }
+        
     }
 }
