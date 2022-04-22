@@ -13,6 +13,11 @@ class SolicitudReservaSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('solicitud_reservas')->insert([
+            'id' => 1,
+            'estado' => 'pendiente',
+            'fecha_creacion' => now(),
+            'datos_reserva_id' => 1
+        ]);
     }
 }

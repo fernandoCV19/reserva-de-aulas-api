@@ -13,6 +13,10 @@ class PeriodoSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('periodos')->insert([
+            'id' => 1,
+            'hora_inicio' => now(),
+            'hora_fin' => now()
+        ]);
     }
 }

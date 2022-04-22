@@ -13,6 +13,10 @@ class ReservaSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('reservas')->insert([
+            'id' => 1,
+            'fecha_creacion' => now(),
+            'datos_reserva_id' => 1
+        ]);
     }
 }

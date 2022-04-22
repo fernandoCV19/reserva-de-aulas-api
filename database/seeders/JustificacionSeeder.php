@@ -13,6 +13,14 @@ class JustificacionSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('justificacions')->insert([
+            'justificacion' => 'Examen',
+            'datos_reserva_id' => '1',
+        ]);
+
+        DB::table('justificacions')->insert([
+            'justificacion' => 'Trabajo grupal',
+            'datos_reserva_id' => '1',
+        ]);
     }
 }

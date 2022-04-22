@@ -13,6 +13,10 @@ class AdministradorSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('administradors')->insert([
+            'id' => 1,
+            'nombre' => 'Pedro Juan',
+            'contrasenia' => 'Adm'
+        ]);
     }
 }

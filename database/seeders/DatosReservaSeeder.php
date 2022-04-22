@@ -13,6 +13,9 @@ class DatosReservaSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('datos_reservas')->insert([
+            'id' => 1,
+            'numero_estimado_estudiantes' => 100,
+        ]);
     }
 }
