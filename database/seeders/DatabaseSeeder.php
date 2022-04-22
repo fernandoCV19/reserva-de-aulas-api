@@ -15,6 +15,9 @@ use Database\Seeders\JustificacionSeeder;
 use Database\Seeders\ReservaSeeder;
 use Database\Seeders\PeriodoSeeder;
 use Database\Seeders\AdministradorSeeder;
+use Database\Seeders\AulaDatosReservaSeeder;
+use Database\Seeders\DatosReservaGrupoSeeder;
+use Database\Seeders\DatosReservaPeriodoSeeder;
 
 
 class DatabaseSeeder extends Seeder
@@ -35,7 +38,10 @@ class DatabaseSeeder extends Seeder
             JustificacionSeeder::class,
             ReservaSeeder::class,
             PeriodoSeeder::class,
-            AdministradorSeeder::class
+            AdministradorSeeder::class,
+            AulaDatosReservaSeeder::class,
+            DatosReservaGrupoSeeder::class,
+            DatosReservaPeriodoSeeder::class
         ]);
     }
 }
