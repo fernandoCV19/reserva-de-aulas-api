@@ -13,7 +13,7 @@ class CreateAdministradorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('adminstradors', function (Blueprint $table) {
+        Schema::create('administradors', function (Blueprint $table) {
             $table->uuid('id');
             $table->string('nombre', 40);
             $table->string('contrasenia', 40);

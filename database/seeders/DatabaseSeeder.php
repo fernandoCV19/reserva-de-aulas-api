@@ -9,6 +9,13 @@ use Database\Seeders\AulaSeeder;
 use Database\Seeders\DocenteSeeder;
 use Database\Seeders\GrupoSeeder;
 use Database\Seeders\MateriaSeeder;
+use Database\Seeders\DatosReservaSeeder;
+use Database\Seeders\SolicitudReservaSeeder;
+use Database\Seeders\JustificacionSeeder;
+use Database\Seeders\ReservaSeeder;
+use Database\Seeders\PeriodoSeeder;
+use Database\Seeders\AdministradorSeeder;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,12 +30,12 @@ class DatabaseSeeder extends Seeder
             DocenteSeeder::class,
             MateriaSeeder::class,
             GrupoSeeder::class,
-            DatosReserva::class,
-            SolicitudReserva::class,
-            Justificacion::class,
-            Reserva::class,
-            Periodo::class,
-            Administrador::class
+            DatosReservaSeeder::class,
+            SolicitudReservaSeeder::class,
+            JustificacionSeeder::class,
+            ReservaSeeder::class,
+            PeriodoSeeder::class,
+            AdministradorSeeder::class
         ]);
     }
 }

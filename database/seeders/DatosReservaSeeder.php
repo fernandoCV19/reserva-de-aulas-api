@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class DatosReservaSeeder extends Seeder
 {
@@ -15,7 +17,8 @@ class DatosReservaSeeder extends Seeder
     {
         DB::table('datos_reservas')->insert([
             'id' => 1,
-            'numero_estimado_estudiantes' => 100,
+            'fecha' => now(),
+            'numero_estimado' => 100,
         ]);
     }
 }
