@@ -22,7 +22,13 @@ class DatabaseSeeder extends Seeder
             AulaSeeder::class,
             DocenteSeeder::class,
             MateriaSeeder::class,
-            GrupoSeeder::class
+            GrupoSeeder::class,
+            DatosReserva::class,
+            SolicitudReserva::class,
+            Justificacion::class,
+            Reserva::class,
+            Periodo::class,
+            Administrador::class
         ]);
     }
 }
