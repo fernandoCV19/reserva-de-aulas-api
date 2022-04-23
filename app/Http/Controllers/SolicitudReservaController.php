@@ -23,7 +23,7 @@ class SolicitudReservaController extends Controller
      */
     public function __construct(SolicitudReserva $solicitud)
     {
-        $this->model = $soplicitud;
+        $this->model = $solicitud;
     }
 
 
