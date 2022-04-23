@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Controller\SolicitudReservaController;
+use App\Http\Controllers\SolicitudReservaController;
 
 /*
 |--------------------------------------------------------------------------
