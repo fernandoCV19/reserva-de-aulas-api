@@ -20,6 +20,7 @@ class CreateDocentesTable extends Migration
             $table->string('apellidos', 30);
             $table->string('celular', 30);
             $table->string('contrasenia', 30);
+            $table->string('email', 30);
         
             $table->primary('id');
             $table->unique('id');
