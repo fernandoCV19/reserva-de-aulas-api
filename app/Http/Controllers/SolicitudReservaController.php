@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use App\Models\SolicitudReserva;
+use Exception;
 
 class SolicitudReservaController extends Controller
 {
