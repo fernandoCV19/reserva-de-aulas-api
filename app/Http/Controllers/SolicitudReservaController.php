@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use App\Models\SolicitudReserva;
+use Exception;
+
 
 class SolicitudReservaController extends Controller
 {
@@ -45,7 +49,8 @@ class SolicitudReservaController extends Controller
      */
     public function show($id)
     {
-        //
+        $solicitud = Solicitud::find($id);
+        return $solicitud;
     }
 
     /**
@@ -56,7 +61,8 @@ class SolicitudReservaController extends Controller
      */
     public function edit($id)
     {
-        //
+    
+
     }
 
     /**
