@@ -2,10 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use App\Models\SolicitudReserva;
+use Exception;
 
 class SolicitudReservaController extends Controller
 {
+    /**
+     * @var Model
+     */
+    protected $model;
+
+    /**
+     * __construct
+     *
+     * @param  SolicitudReserva $solicitud
+     * @return void
+     */
+    public function __construct(SolicitudReserva $solicitud)
+    {
+        $this->model = $solicitud;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +33,21 @@ class SolicitudReservaController extends Controller
     public function index()
     {
         //
+    }
+
+    /**
+     * Display a listing of PENDING requests.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexPendingRequests()
+    {
+        try {
+            $solicitudesPendientes = $this->model->where('estado', 'PENDIENTE')->get();
+            return response(['data' => $solicitudesPendientes, 'status' => 200]);
+        } catch (ModelNotFoundException $e) {
+            return response(['message' => 'Solicitud no encontrada!', 'status' => 404]);
+        }
     }
 
     /**
