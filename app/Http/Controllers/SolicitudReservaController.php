@@ -11,6 +11,25 @@ use Exception;
 class SolicitudReservaController extends Controller
 {
     /**
+     * @var Model
+     */
+    protected $model;
+
+    /**
+     * __construct
+     *
+     * @param  SolicitudReserva $solicitud
+     * @return void
+     */
+    public function __construct(SolicitudReserva $solicitud)
+    {
+        $this->model = $soplicitud;
+    }
+
+
+
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -49,8 +68,12 @@ class SolicitudReservaController extends Controller
      */
     public function show($id)
     {
-        $solicitud = Solicitud::find($id);
-        return $solicitud;
+        try {
+            $solicitudBuscada = $this->model->findOrFail($id);
+            return response(['data' => $solicitudBuscada, 'status' => 200]);
+        } catch (ModelNotFoundException $e) {
+            return response(['message' => 'Solicitud no encontrada!', 'status' => 404]);
+        }
     }
 
     /**
