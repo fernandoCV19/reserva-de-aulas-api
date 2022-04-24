@@ -3,82 +3,38 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\DatosReserva;
+use Illuminate\Support\Facades\DB;
 
 class DatosReservaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function getDatosReservaById(){
+        $id = request("idDatosReserva");
+        return DatosReserva::findOrFail($id);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function obtenerDatosReservas()
     {
-        //
+        $reserva = DatosReserva::all();
+        return $reserva;
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function getAulasDatosReserva(Request $request, $idDatosReserva){
+        $aulas=DB::table('aulas')
+            ->join('aula_datos_reserva', function ($join) {
+                $join->on('aula_datos_reserva.datos_reserva_id',"=","aulas.id")
+                ->where('aula_datos_reserva.datos_reserva_id', '=', request("idDatosReserva"));
+                
+            })
+            ->get();
+        $datosReserva = DatosReserva::find($idDatosReserva);
+        $aulas_datos_reserva = ["datos_reserva"=>$datosReserva, "aulas"=>$aulas];        
+        return  response()->json($aulas_datos_reserva, 200,[]);
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function deleteAulas(Request $request, $idDatosReserva){
+        $aulas = $request->aulasId;
+    
+        foreach($aulas as $aulaId){
+           DB::table('aula_datos_reserva')
+            ->where([['aula_id', "=",$aulaId],["datos_reserva_id", "=", $idDatosReserva]])->delete();
+        }
     }
 }
