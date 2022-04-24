@@ -38,8 +38,18 @@ class RouteServiceProvider extends ServiceProvider
             
             Route::prefix('administrador')
                 -> group (base_path('routes/administrador.routes.php'));
+                
             Route::prefix('reserva')
                 -> group (base_path('routes/reserva.routes.php'));
+
+            Route::prefix('solicitud-reserva')
+                -> group (base_path('routes/solicitud-reserva.routes.php'));
+
+            Route::prefix('mail')
+                -> group (base_path('routes/mail.php'));
+
+            Route::prefix('datos-reserva')
+                -> group (base_path('routes/datos-reserva.routes.php'));
         });
     }
 
