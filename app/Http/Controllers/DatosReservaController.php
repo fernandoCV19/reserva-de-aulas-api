@@ -17,12 +17,11 @@ class DatosReservaController extends Controller
         $reserva = DatosReserva::all();
         return $reserva;
     }
-    public function getAulasDatosReserva(Request $request, $idDatosReserva){
+    public function getAulasDatosReserva($idDatosReserva){        
         $aulas=DB::table('aulas')
-            ->join('aula_datos_reserva', function ($join) {
+            ->join('aula_datos_reserva', function ($join) use($idDatosReserva) {
                 $join->on('aula_datos_reserva.datos_reserva_id',"=","aulas.id")
-                ->where('aula_datos_reserva.datos_reserva_id', '=', request("idDatosReserva"));
-                
+                ->where('aula_datos_reserva.datos_reserva_id', '=', $idDatosReserva);
             })
             ->get();
         $datosReserva = DatosReserva::find($idDatosReserva);
@@ -30,8 +29,7 @@ class DatosReservaController extends Controller
         return  response()->json($aulas_datos_reserva, 200,[]);
     }
     public function deleteAulas(Request $request, $idDatosReserva){
-        $aulas = $request->aulasId;
-    
+        $aulas = $request->aulasId;    
         foreach($aulas as $aulaId){
            DB::table('aula_datos_reserva')
             ->where([['aula_id', "=",$aulaId],["datos_reserva_id", "=", $idDatosReserva]])->delete();
