@@ -10,7 +10,7 @@ class SolicitudReserva extends Model
 {
     use HasFactory;
     
-    protected $table = 'solicitud_reserva';
+    protected $table = 'solicitud_reservas';
     public $timestamps = false;
     protected $fillable = ['id, estado, fecha_creacion, id_datos_reserva'];
     
