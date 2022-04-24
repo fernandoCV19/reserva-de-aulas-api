@@ -69,7 +69,7 @@ class SolicitudReservaController extends Controller
     public function show($id)
     {
         try {
-            $solicitudBuscada = $this->model->where('id', $id);
+            $solicitudBuscada = $this->model->find($id);
             return response(['data' => $solicitudBuscada, 'status' => 200]);
         } catch (ModelNotFoundException $e) {
             return response(['message' => 'Solicitud no encontrada!', 'status' => 404]);
