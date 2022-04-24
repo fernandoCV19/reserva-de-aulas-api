@@ -5,23 +5,28 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Reserva;
 use App\Models\DatosReserva;
+use App\Models\SolicitudReserva;
 
 class ReservaController extends Controller
 {
-    public function crearReserva(Request $request)
-    {
-        $idDatos = $request->idDatos;
+    public function crearReserva(Request $request, $idSolicitud)
+    {    
+        $idDatos = SolicitudReserva::find($idSolicitud)->datos_reserva_id;
+        
         $reserva = new Reserva();
-        $reserva -> id_datos_reserva = $idDatos;
+        $reserva -> datos_reserva_id = $idDatos;
         $reserva -> fecha_creacion = now();
         $reserva -> save();
 
-        return $reserva;
-        
+        return $reserva;   
     }
-    public function getAulas(Request $request){
-        $user = DatosReserva::findOrFail($request->id);
-        return $user;
+    public function getReservaById($idReserva) {
+        return Reserva::find($idReserva);
+    }
+    public function getAulas($idReserva){
+        $idDatos = Reserva::find($idReserva)->datos_reserva_id;
+        $aulas = DatosReservaController::getAulasDatosReserva($idDatos);
+        return $aulas;
     }
     public function obtenerReservas()
     {
