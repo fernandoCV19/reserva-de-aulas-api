@@ -4,11 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class DatosReserva extends Model
 {
     use HasFactory;
     protected $table = 'datos_reservas';
+    public $timestamps = false;
+    public $incrementing = false;
     protected $fillable = ['id, fecha, numero_estimado'];
 
     public function reserva(){
@@ -33,5 +36,12 @@ class DatosReserva extends Model
 
     public function aulas(){
         return $this->belongsTo(Aula::class);
+    }
+    public static function boot()
+    {
+        parent::boot();
+        self::creating(function ($model) {
+            $model->id = Str::uuid()->toString();
+        });
     }
 }
