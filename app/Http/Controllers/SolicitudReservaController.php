@@ -27,7 +27,7 @@ class SolicitudReservaController extends Controller
 
     public function getSolicitudPorId(Request $request){
         $solicitud =  SolicitudReserva::findOrFail($request->idSolicitud);
-        return response()->json($solicitud);
+        return response()->json($solicitud, 200,[]);
     }
 
 
