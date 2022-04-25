@@ -12,6 +12,7 @@ class Reserva extends Model
 
     protected $table = 'reservas';
     public $timestamps = false;
+    public $incrementing = false;
     protected $fillable = ['id, fecha_creacion, id_datos_reserva'];
 
     public function datos(){
