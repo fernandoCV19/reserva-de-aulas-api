@@ -3,17 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-/**
- * @OA\Post(
- *      path= "administrador/respuesta-solicitud",
- *      summary =  "prueba",
- *      tags = {"Administrador"},
- *      @OA\Response(
- *          response=200,
- *          description = "OK"))
- * 
- */
-class AdministradorController extends Controller
+
+class DocenteController extends Controller
 {
     /**
      * Display a listing of the resource.
