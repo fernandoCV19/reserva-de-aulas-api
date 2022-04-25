@@ -10,7 +10,9 @@ use App\Http\Controllers\SolicitudReservaController;
 Route::post('/', [SolicitudReservaController::class, "crearSolitud"]);
 Route::get('/antiguedad', [SolicitudReservaController::class, "getPendientesPorAntiguedad"]);
 Route::get('/proximos', [SolicitudReservaController::class, "getPendientesPorProximidad"]);
+Route::get('/pendientes', [SolicitudReservaController::class, "getPendientes"]);
 Route::put('/cambio-estado/{idSolicitud}', [SolicitudReservaController::class, "actualizarEstado"]);
+
 
 Route::get("/user", function () {
     $mensaje =['mensaje'=>"Hola mundo"];
