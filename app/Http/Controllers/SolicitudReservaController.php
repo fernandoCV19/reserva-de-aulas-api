@@ -33,4 +33,15 @@ class SolicitudReservaController extends Controller
                                ->orderBy('fecha_creacion','ASC')
                                ->get();
     }
+    public function getPendientesPorProximidad(){
+        $solicitud=DB::table('datos_reservas')
+        ->join('solicitud_reservas', function ($join) {
+            $join->on('solicitud_reservas.datos_reserva_id',"=","datos_reservas.id")
+            -> where([["datos_reservas.fecha",">=", now()],["estado", "=", "PENDIENTE"]]);  
+        })
+        -> orderBy("fecha", "ASC")
+        -> get();
+        
+        return $solicitud;
+    }
 }
