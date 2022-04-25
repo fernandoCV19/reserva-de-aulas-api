@@ -30,12 +30,22 @@ class SolicitudReservaController extends Controller
         return response()->json($solicitud, 200,[]);
     }
 
+    public function getEstado(Request $request){
+        $solicitud = SolicitudReserva::findOrFail($request-> idSolicitud);
+        $estadoSolicitud = ["estado"=>$solicitud->estado]; ;
+        return response()->json($estadoSolicitud,200,[]);
+    }
 
     public function actualizarEstado(Request $request){
         $solicitud = SolicitudReserva::findOrFail($request-> idSolicitud);
         $solicitud->estado = 'rechazado';
         $solicitud -> save();
         return $solicitud;
+    }
+
+    public function getPendientes(){
+        return SolicitudReserva::where("estado", "PENDIENTE")
+                               ->get();
     }
 
     public function getPendientesPorAntiguedad(){
