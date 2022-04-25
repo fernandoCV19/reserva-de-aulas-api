@@ -27,6 +27,8 @@ class DatosReservaController extends Controller
         $datosReserva = DatosReserva::find($idDatosReserva);
         $aulas_datos_reserva = ["datos_reserva"=>$datosReserva, "aulas"=>$aulas];        
         return  response()->json($aulas_datos_reserva, 200,[]);
+        //return DatosReserva::find($idDatosReserva)->aulas()->get();
+
     }
     public function deleteAulas(Request $request, $idDatosReserva){
         $aulas = $request->aulasId;    
