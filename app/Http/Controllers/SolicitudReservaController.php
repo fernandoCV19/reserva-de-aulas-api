@@ -38,6 +38,11 @@ class SolicitudReservaController extends Controller
         return $solicitud;
     }
 
+    public function getPendientes(){
+        return SolicitudReserva::where("estado", "PENDIENTE")
+                               ->get();
+    }
+
     public function getPendientesPorAntiguedad(){
         return SolicitudReserva::where("estado", "PENDIENTE")
                                ->orderBy('fecha_creacion','ASC')
