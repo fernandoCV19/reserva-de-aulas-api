@@ -25,6 +25,12 @@ class SolicitudReservaController extends Controller
         return $solicitud_reserva;
     }
 
+    public function getSolicitudPorId(Request $request){
+        $solicitud =  SolicitudReserva::findOrFail($request->idSolicitud);
+        return response()->json($solicitud);
+    }
+
+
     public function actualizarEstado(Request $request){
         $solicitud = SolicitudReserva::findOrFail($request-> idSolicitud);
         $solicitud->estado = 'rechazado';
