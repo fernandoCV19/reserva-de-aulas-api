@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class DatosReserva extends Model
 {
     use HasFactory;
-    protected $table = 'datos_reserva';
+    protected $table = 'datos_reservas';
     protected $fillable = ['id, fecha, numero_estimado'];
 
     public function reserva(){
