@@ -40,4 +40,20 @@ class MailController extends Controller
         }
         
     }
+    public function sendEmailPersonalizado(Request $request)
+    {
+        Mail::raw($request->mensaje, function ($message) {
+            $message->to(request('email'))
+                    ->subject("Solicitud de reserva de aulas");
+        });
+        if (Mail::failures()) {
+            $mensaje =['mensaje'=>"Erro en el envio"];
+            return response()->json($mensaje, 500,[]);
+        }
+        else{ 
+            $mensaje =['mensaje'=>"Envio con exito"];
+            return response()->json($mensaje, 200,[]);
+        }
+
+    }
 }
