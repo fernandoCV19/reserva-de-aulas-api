@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Models\SolicitudReserva;
+use Illuminate\Support\Facades\DB;
 
 use Exception;
 
@@ -26,5 +27,10 @@ class SolicitudReservaController extends Controller
         $solicitud->estado = 'rechazado';
         $solicitud -> save();
         return $solicitud;
+    }
+    public function getPendientesPorAntiguedad(){
+        return SolicitudReserva::where("estado", "PENDIENTE")
+                               ->orderBy('fecha_creacion','ASC')
+                               ->get();
     }
 }

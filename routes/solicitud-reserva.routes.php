@@ -7,6 +7,7 @@ use App\Models\SolicitudReserva;
 use App\Http\Controllers\SolicitudReservaController;
 
 
+Route::get('/proximos', [SolicitudReservaController::class, "getPendientesPorAntiguedad"]);
 Route::put('/cambio-estado/{idSolicitud}', [SolicitudReservaController::class, "actualizarEstado"]);
 
 Route::get("/user", function () {
