@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-class DocenteGrupoMateriaRealesSeeder extends Seeder
+class MateriasRealesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
