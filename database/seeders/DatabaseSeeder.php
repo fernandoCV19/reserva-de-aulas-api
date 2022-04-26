@@ -3,6 +3,22 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Database\Seeders\AulaSeeder;
+use Database\Seeders\DocenteSeeder;
+use Database\Seeders\GrupoSeeder;
+use Database\Seeders\MateriaSeeder;
+use Database\Seeders\DatosReservaSeeder;
+use Database\Seeders\SolicitudReservaSeeder;
+use Database\Seeders\JustificacionSeeder;
+use Database\Seeders\ReservaSeeder;
+use Database\Seeders\PeriodoSeeder;
+use Database\Seeders\AdministradorSeeder;
+use Database\Seeders\AulaDatosReservaSeeder;
+use Database\Seeders\DatosReservaGrupoSeeder;
+use Database\Seeders\DatosReservaPeriodoSeeder;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,8 +27,21 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
-        // User::factory(10)->create();
+    public function run(){
+        $this->call([
+            AulaSeeder::class,
+            DocenteSeeder::class,
+            MateriaSeeder::class,
+            GrupoSeeder::class,
+            DatosReservaSeeder::class,
+            SolicitudReservaSeeder::class,
+            JustificacionSeeder::class,
+            ReservaSeeder::class,
+            PeriodoSeeder::class,
+            AdministradorSeeder::class,
+            AulaDatosReservaSeeder::class,
+            DatosReservaGrupoSeeder::class,
+            DatosReservaPeriodoSeeder::class
+        ]);
     }
 }
