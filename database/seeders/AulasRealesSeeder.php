@@ -16,7 +16,7 @@ class AulasRealesSeeder extends Seeder
     public function run()
     {
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'AUDIT',
             'ubicacion' => 'NUEVO EDIF. ACADEMICO 2 (FCYT)',
             'capacidad' => 270,
@@ -24,7 +24,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '612',
             'ubicacion' => 'SECTOR "QUIMICA"',
             'capacidad' => 210,
@@ -32,7 +32,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '607',
             'ubicacion' => 'SECTOR "BIOLOGIA"',
             'capacidad' => 190,
@@ -40,7 +40,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'MAGCIV',
             'ubicacion' => 'EDIF. "ADMINISTRACION CENTRAL"',
             'capacidad' => 185,
@@ -48,7 +48,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '622',
             'ubicacion' => 'CAMPUS FCYT',
             'capacidad' => 185,
@@ -56,7 +56,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '624',
             'ubicacion' => 'CAMPUS FCYT',
             'capacidad' => 185,
@@ -64,7 +64,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '617',
             'ubicacion' => 'SECTOR "FISICA"',
             'capacidad' => 185,
@@ -72,7 +72,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '623',
             'ubicacion' => 'CAMPUS FCYT',
             'capacidad' => 185,
@@ -80,7 +80,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '691A',
             'ubicacion' => 'NUEVO EDIF. ACADEMICO 2 (FCYT)',
             'capacidad' => 180,
@@ -88,7 +88,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '692F',
             'ubicacion' => 'NUEVO EDIF. ACADEMICO 2 (FCYT)',
             'capacidad' => 180,
@@ -96,7 +96,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '692E',
             'ubicacion' => 'NUEVO EDIF. ACADEMICO 2 (FCYT)',
             'capacidad' => 180,
@@ -104,7 +104,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '691B',
             'ubicacion' => 'NUEVO EDIF. ACADEMICO 2 (FCYT)',
             'capacidad' => 180,
@@ -112,7 +112,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '691F',
             'ubicacion' => 'NUEVO EDIF. ACADEMICO 2 (FCYT)',
             'capacidad' => 180,
@@ -120,7 +120,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '692A',
             'ubicacion' => 'NUEVO EDIF. ACADEMICO 2 (FCYT)',
             'capacidad' => 180,
@@ -128,7 +128,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '692B',
             'ubicacion' => 'NUEVO EDIF. ACADEMICO 2 (FCYT)',
             'capacidad' => 180,
@@ -136,7 +136,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '691E',
             'ubicacion' => 'NUEVO EDIF. ACADEMICO 2 (FCYT)',
             'capacidad' => 180,
@@ -144,7 +144,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '693A',
             'ubicacion' => 'NUEVO EDIF. ACADEMICO 2 (FCYT)',
             'capacidad' => 160,
@@ -152,7 +152,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '693B',
             'ubicacion' => 'NUEVO EDIF. ACADEMICO 2 (FCYT)',
             'capacidad' => 160,
@@ -160,7 +160,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '667A',
             'ubicacion' => 'EDIFICIO "ELEKTRO"',
             'capacidad' => 155,
@@ -168,7 +168,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'AUDCIV',
             'ubicacion' => 'NUEVO PDTF',
             'capacidad' => 150,
@@ -176,7 +176,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '672',
             'ubicacion' => 'EDIFICIO "ELEKTRO"',
             'capacidad' => 130,
@@ -184,7 +184,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '691D',
             'ubicacion' => 'NUEVO EDIF. ACADEMICO 2 (FCYT)',
             'capacidad' => 125,
@@ -192,7 +192,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '692D',
             'ubicacion' => 'NUEVO EDIF. ACADEMICO 2 (FCYT)',
             'capacidad' => 125,
@@ -200,7 +200,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '693D',
             'ubicacion' => 'NUEVO EDIF. ACADEMICO 2 (FCYT)',
             'capacidad' => 125,
@@ -208,7 +208,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '693C',
             'ubicacion' => 'NUEVO EDIF. ACADEMICO 2 (FCYT)',
             'capacidad' => 125,
@@ -216,7 +216,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '692C',
             'ubicacion' => 'NUEVO EDIF. ACADEMICO 2 (FCYT)',
             'capacidad' => 125,
@@ -224,7 +224,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '651',
             'ubicacion' => 'EDIF. "ADMINISTRACION CENTRAL"',
             'capacidad' => 120,
@@ -232,7 +232,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '691C',
             'ubicacion' => 'NUEVO EDIF. ACADEMICO 2 (FCYT)',
             'capacidad' => 120,
@@ -240,7 +240,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '642',
             'ubicacion' => 'BLOQUE "TINGLADOS"',
             'capacidad' => 120,
@@ -248,7 +248,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '669A',
             'ubicacion' => 'EDIFICIO "ELEKTRO"',
             'capacidad' => 110,
@@ -256,7 +256,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '635',
             'ubicacion' => 'BLOQUE TALLERES CARPINT. PDTF',
             'capacidad' => 100,
@@ -264,7 +264,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '671A',
             'ubicacion' => 'EDIFICIO "ELEKTRO"',
             'capacidad' => 95,
@@ -272,7 +272,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '660',
             'ubicacion' => 'BLOQUE "TRENCITO"',
             'capacidad' => 90,
@@ -280,7 +280,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '661',
             'ubicacion' => 'BLOQUE "TRENCITO"',
             'capacidad' => 90,
@@ -288,7 +288,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '625C',
             'ubicacion' => 'EDIF. NUEVO FCYT',
             'capacidad' => 90,
@@ -296,7 +296,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '618',
             'ubicacion' => 'SECTOR "FISICA"',
             'capacidad' => 90,
@@ -304,7 +304,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '617B',
             'ubicacion' => 'SECTOR "FISICA"',
             'capacidad' => 90,
@@ -312,7 +312,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'INFLAB',
             'ubicacion' => 'SECTOR "INFORMATICA"',
             'capacidad' => 80,
@@ -320,7 +320,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '692H',
             'ubicacion' => 'NUEVO EDIF. ACADEMICO 2 (FCYT)',
             'capacidad' => 80,
@@ -328,7 +328,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '692G',
             'ubicacion' => 'NUEVO EDIF. ACADEMICO 2 (FCYT)',
             'capacidad' => 80,
@@ -336,7 +336,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '617C',
             'ubicacion' => 'SECTOR "FISICA"',
             'capacidad' => 80,
@@ -344,7 +344,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '625D',
             'ubicacion' => 'EDIF. NUEVO FCYT',
             'capacidad' => 80,
@@ -352,7 +352,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '669B',
             'ubicacion' => 'EDIFICIO "ELEKTRO"',
             'capacidad' => 80,
@@ -360,7 +360,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '613',
             'ubicacion' => 'SECTOR "QUIMICA"',
             'capacidad' => 75,
@@ -368,7 +368,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '690MAT',
             'ubicacion' => 'NUEVO EDIF. ACADEMICO 2 (FCYT)',
             'capacidad' => 75,
@@ -376,7 +376,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '690E',
             'ubicacion' => 'NUEVO EDIF. ACADEMICO 2 (FCYT)',
             'capacidad' => 75,
@@ -384,7 +384,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '690D',
             'ubicacion' => 'NUEVO EDIF. ACADEMICO 2 (FCYT)',
             'capacidad' => 75,
@@ -392,7 +392,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '690B',
             'ubicacion' => 'NUEVO EDIF. ACADEMICO 2 (FCYT)',
             'capacidad' => 75,
@@ -400,7 +400,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '616',
             'ubicacion' => 'SECTOR "QUIMICA"',
             'capacidad' => 75,
@@ -408,7 +408,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '690A',
             'ubicacion' => 'NUEVO EDIF. ACADEMICO 2 (FCYT)',
             'capacidad' => 75,
@@ -416,7 +416,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '614',
             'ubicacion' => 'SECTOR "QUIMICA"',
             'capacidad' => 75,
@@ -424,7 +424,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '615',
             'ubicacion' => 'SECTOR "QUIMICA"',
             'capacidad' => 65,
@@ -432,7 +432,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '690C',
             'ubicacion' => 'NUEVO EDIF. ACADEMICO 2 (FCYT)',
             'capacidad' => 65,
@@ -440,7 +440,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '668',
             'ubicacion' => 'EDIFICIO "ELEKTRO"',
             'capacidad' => 60,
@@ -448,7 +448,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '620',
             'ubicacion' => 'SECTOR "FISICA"',
             'capacidad' => 60,
@@ -456,7 +456,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'LABREF',
             'ubicacion' => 'NUEVO PDTF',
             'capacidad' => 60,
@@ -464,7 +464,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'CADCAM',
             'ubicacion' => 'NUEVO PDTF',
             'capacidad' => 60,
@@ -472,7 +472,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '606',
             'ubicacion' => 'SECTOR "BIOLOGIA"',
             'capacidad' => 55,
@@ -480,7 +480,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '631',
             'ubicacion' => 'BLOQUE "INGENIERIA INDUSTRIAL"',
             'capacidad' => 55,
@@ -488,7 +488,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'AUDIND',
             'ubicacion' => 'BLOQUE "INGENIERIA INDUSTRIAL"',
             'capacidad' => 55,
@@ -496,7 +496,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '632',
             'ubicacion' => 'BLOQUE "INGENIERIA INDUSTRIAL"',
             'capacidad' => 55,
@@ -504,7 +504,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '652',
             'ubicacion' => 'EDIF. "ADMINISTRACION CENTRAL"',
             'capacidad' => 50,
@@ -512,7 +512,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '640',
             'ubicacion' => 'BLOQUE "TINGLADOS"',
             'capacidad' => 50,
@@ -520,7 +520,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '644',
             'ubicacion' => 'NUEVO PDTF',
             'capacidad' => 50,
@@ -528,7 +528,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '644A',
             'ubicacion' => 'NUEVO PDTF',
             'capacidad' => 50,
@@ -536,7 +536,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '637A',
             'ubicacion' => 'EDIF. "ADMINISTRACION CENTRAL"',
             'capacidad' => 50,
@@ -544,7 +544,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '670',
             'ubicacion' => 'EDIFICIO "ELEKTRO"',
             'capacidad' => 50,
@@ -552,7 +552,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '667B',
             'ubicacion' => 'EDIFICIO "ELEKTRO"',
             'capacidad' => 50,
@@ -560,7 +560,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'CEMAR',
             'ubicacion' => 'EDIF. "ADMINISTRACION CENTRAL"',
             'capacidad' => 45,
@@ -568,7 +568,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '684B',
             'ubicacion' => 'EDIF. FACULTATIVO LAB. BASICOS',
             'capacidad' => 45,
@@ -576,7 +576,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '684A',
             'ubicacion' => 'EDIF. FACULTATIVO LAB. BASICOS',
             'capacidad' => 45,
@@ -584,7 +584,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '683B',
             'ubicacion' => 'EDIF. FACULTATIVO LAB. BASICOS',
             'capacidad' => 45,
@@ -592,7 +592,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '683A',
             'ubicacion' => 'EDIF. FACULTATIVO LAB. BASICOS',
             'capacidad' => 45,
@@ -600,7 +600,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '682B',
             'ubicacion' => 'EDIF. FACULTATIVO LAB. BASICOS',
             'capacidad' => 45,
@@ -608,7 +608,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '682A',
             'ubicacion' => 'EDIF. FACULTATIVO LAB. BASICOS',
             'capacidad' => 45,
@@ -616,7 +616,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '681B',
             'ubicacion' => 'EDIF. FACULTATIVO LAB. BASICOS',
             'capacidad' => 45,
@@ -624,7 +624,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '681A',
             'ubicacion' => 'EDIF. FACULTATIVO LAB. BASICOS',
             'capacidad' => 45,
@@ -632,7 +632,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '680B',
             'ubicacion' => 'EDIF. FACULTATIVO LAB. BASICOS',
             'capacidad' => 45,
@@ -640,7 +640,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '680A',
             'ubicacion' => 'EDIF. FACULTATIVO LAB. BASICOS',
             'capacidad' => 45,
@@ -648,7 +648,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '655',
             'ubicacion' => 'EDIF. "ADMINISTRACION CENTRAL"',
             'capacidad' => 40,
@@ -656,7 +656,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '671C',
             'ubicacion' => 'EDIFICIO "ELEKTRO"',
             'capacidad' => 40,
@@ -664,7 +664,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '608A',
             'ubicacion' => 'SECTOR "BIOLOGIA"',
             'capacidad' => 40,
@@ -672,7 +672,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'AuPosEl',
             'ubicacion' => 'EDIFICIO "ELEKTRO"',
             'capacidad' => 40,
@@ -680,7 +680,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '608',
             'ubicacion' => 'SECTOR "BIOLOGIA"',
             'capacidad' => 35,
@@ -688,7 +688,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'MECGAB',
             'ubicacion' => 'EDIF. "ADMINISTRACION CENTRAL"',
             'capacidad' => 30,
@@ -696,7 +696,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'LABMAT',
             'ubicacion' => 'EDIFICIO "MEMI"',
             'capacidad' => 30,
@@ -704,7 +704,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'AUDMEMI',
             'ubicacion' => 'EDIFICIO "MEMI"',
             'capacidad' => 30,
@@ -712,7 +712,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'AUDIT',
             'ubicacion' => 'EDIFICIO "MEMI"',
             'capacidad' => 30,
@@ -720,7 +720,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '682L8IN',
             'ubicacion' => 'EDIF. FACULTATIVO LAB. BASICOS',
             'capacidad' => 30,
@@ -728,7 +728,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '682L7IN',
             'ubicacion' => 'EDIF. FACULTATIVO LAB. BASICOS',
             'capacidad' => 30,
@@ -736,7 +736,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '682L6IN',
             'ubicacion' => 'EDIF. FACULTATIVO LAB. BASICOS',
             'capacidad' => 30,
@@ -744,7 +744,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '682L4',
             'ubicacion' => 'EDIF. FACULTATIVO LAB. BASICOS',
             'capacidad' => 30,
@@ -752,7 +752,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '682L3',
             'ubicacion' => 'EDIF. FACULTATIVO LAB. BASICOS',
             'capacidad' => 30,
@@ -760,7 +760,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '682L2',
             'ubicacion' => 'EDIF. FACULTATIVO LAB. BASICOS',
             'capacidad' => 30,
@@ -768,7 +768,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '682L1',
             'ubicacion' => 'EDIF. FACULTATIVO LAB. BASICOS',
             'capacidad' => 30,
@@ -776,7 +776,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '682L0IN',
             'ubicacion' => 'EDIF. FACULTATIVO LAB. BASICOS',
             'capacidad' => 30,
@@ -784,7 +784,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '681L9ME',
             'ubicacion' => 'EDIF. FACULTATIVO LAB. BASICOS',
             'capacidad' => 30,
@@ -792,7 +792,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '681L7',
             'ubicacion' => 'EDIF. FACULTATIVO LAB. BASICOS',
             'capacidad' => 30,
@@ -800,7 +800,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '684L8',
             'ubicacion' => 'EDIF. FACULTATIVO LAB. BASICOS',
             'capacidad' => 30,
@@ -808,7 +808,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '684L7',
             'ubicacion' => 'EDIF. FACULTATIVO LAB. BASICOS',
             'capacidad' => 30,
@@ -816,7 +816,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '684L1FI',
             'ubicacion' => 'EDIF. FACULTATIVO LAB. BASICOS',
             'capacidad' => 30,
@@ -824,7 +824,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '684L0',
             'ubicacion' => 'EDIF. FACULTATIVO LAB. BASICOS',
             'capacidad' => 30,
@@ -832,7 +832,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '680L1CI',
             'ubicacion' => 'EDIF. FACULTATIVO LAB. BASICOS',
             'capacidad' => 30,
@@ -840,7 +840,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '616A',
             'ubicacion' => 'SECTOR "QUIMICA"',
             'capacidad' => 30,
@@ -848,7 +848,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '675',
             'ubicacion' => 'EDIFICIO "ELEKTRO"',
             'capacidad' => 30,
@@ -856,7 +856,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '674B',
             'ubicacion' => 'EDIFICIO "ELEKTRO"',
             'capacidad' => 30,
@@ -864,7 +864,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '647',
             'ubicacion' => 'NUEVO PDTF',
             'capacidad' => 30,
@@ -872,7 +872,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '671B',
             'ubicacion' => 'EDIFICIO "ELEKTRO"',
             'capacidad' => 30,
@@ -880,7 +880,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '674A',
             'ubicacion' => 'EDIFICIO "ELEKTRO"',
             'capacidad' => 30,
@@ -888,7 +888,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'PDTFDEP',
             'ubicacion' => 'BLOQUE TALLERES CARPINT. PDTF',
             'capacidad' => 25,
@@ -896,7 +896,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '621A',
             'ubicacion' => 'SECTOR "FISICA"',
             'capacidad' => 25,
@@ -904,7 +904,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '619A',
             'ubicacion' => 'SECTOR "FISICA"',
             'capacidad' => 25,
@@ -912,7 +912,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '619',
             'ubicacion' => 'SECTOR "FISICA"',
             'capacidad' => 25,
@@ -920,7 +920,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '671',
             'ubicacion' => 'EDIFICIO "ELEKTRO"',
             'capacidad' => 25,
@@ -928,7 +928,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '608B',
             'ubicacion' => 'SECTOR "BIOLOGIA"',
             'capacidad' => 20,
@@ -936,7 +936,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '609A',
             'ubicacion' => 'SECTOR "BIOLOGIA"',
             'capacidad' => 20,
@@ -944,7 +944,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'FISCOM',
             'ubicacion' => 'SECTOR "FISICA"',
             'capacidad' => 20,
@@ -952,7 +952,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'AGROQUI',
             'ubicacion' => 'BLOQUE ANTIGUO PROG. AGROQUIM.',
             'capacidad' => 20,
@@ -960,7 +960,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'BIOTEC',
             'ubicacion' => 'BLOQUE ANTIGUO PROG. AGROQUIM.',
             'capacidad' => 20,
@@ -968,7 +968,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'BIODIV',
             'ubicacion' => 'BLOQUE ANTIGUO PROG. AGROQUIM.',
             'capacidad' => 20,
@@ -976,7 +976,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '621',
             'ubicacion' => 'SECTOR "FISICA"',
             'capacidad' => 20,
@@ -984,7 +984,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'BIBLIO',
             'ubicacion' => 'SECTOR "BIOLOGIA"',
             'capacidad' => 20,
@@ -992,7 +992,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'PDTF',
             'ubicacion' => 'BLOQUE TALLERES CARPINT. PDTF',
             'capacidad' => 15,
@@ -1000,7 +1000,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'TAMEC',
             'ubicacion' => 'BLOQUE TALLERES CARPINT. PDTF',
             'capacidad' => 15,
@@ -1008,7 +1008,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '620B',
             'ubicacion' => 'SECTOR "FISICA"',
             'capacidad' => 15,
@@ -1016,7 +1016,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'TAMEC 2',
             'ubicacion' => 'BLOQUE TALLERES CARPINT. PDTF',
             'capacidad' => 15,
@@ -1024,7 +1024,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => '609',
             'ubicacion' => 'SECTOR "BIOLOGIA"',
             'capacidad' => 12,
@@ -1032,7 +1032,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'LIMNOL',
             'ubicacion' => 'SECTOR "BIOLOGIA"',
             'capacidad' => 10,
@@ -1040,7 +1040,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'DECDEP',
             'ubicacion' => 'EDIF. "ADMINISTRACION CENTRAL"',
             'capacidad' => 7,
@@ -1048,7 +1048,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'MECDEP',
             'ubicacion' => 'EDIF. "ADMINISTRACION CENTRAL"',
             'capacidad' => 7,
@@ -1056,7 +1056,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'CIVDEP',
             'ubicacion' => 'EDIF. "ADMINISTRACION CENTRAL"',
             'capacidad' => 7,
@@ -1064,7 +1064,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'MATDEP',
             'ubicacion' => 'EDIF. "ADMINISTRACION CENTRAL"',
             'capacidad' => 7,
@@ -1072,7 +1072,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'FISDEP',
             'ubicacion' => 'SECTOR "FISICA"',
             'capacidad' => 7,
@@ -1080,7 +1080,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'QMCDEP',
             'ubicacion' => 'SECTOR "QUIMICA"',
             'capacidad' => 7,
@@ -1088,7 +1088,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'MATDIR',
             'ubicacion' => 'EDIFICIO "MEMI"',
             'capacidad' => 7,
@@ -1096,7 +1096,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'INDDEP',
             'ubicacion' => 'BLOQUE "INGENIERIA INDUSTRIAL"',
             'capacidad' => 7,
@@ -1104,7 +1104,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'POSDEP',
             'ubicacion' => 'EDIFICIO "MEMI"',
             'capacidad' => 7,
@@ -1112,7 +1112,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'OFMEMI',
             'ubicacion' => 'EDIFICIO "MEMI"',
             'capacidad' => 7,
@@ -1120,7 +1120,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'LABSER',
             'ubicacion' => 'SECTOR "QUIMICA"',
             'capacidad' => 7,
@@ -1128,7 +1128,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'MEMIDIR',
             'ubicacion' => 'EDIFICIO "MEMI"',
             'capacidad' => 5,
@@ -1136,7 +1136,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'CPD',
             'ubicacion' => 'EDIF. "ADMINISTRACION CENTRAL"',
             'capacidad' => 4,
@@ -1144,7 +1144,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'INFDEP',
             'ubicacion' => 'SECTOR "INFORMATICA"',
             'capacidad' => 1,
@@ -1152,7 +1152,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'BIODEP',
             'ubicacion' => 'SECTOR "BIOLOGIA"',
             'capacidad' => 1,
@@ -1160,7 +1160,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'GABI',
             'ubicacion' => 'SECTOR "BIOLOGIA"',
             'capacidad' => 1,
@@ -1168,7 +1168,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'CAE',
             'ubicacion' => 'BLOQUE "INGENIERIA INDUSTRIAL"',
             'capacidad' => 1,
@@ -1176,7 +1176,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'ELCDEP',
             'ubicacion' => 'EDIFICIO "ELEKTRO"',
             'capacidad' => 1,
@@ -1184,7 +1184,7 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'AULVIR',
             'ubicacion' => 'AREA VIRTUAL CERCADO',
             'capacidad' => 0,
@@ -1192,11 +1192,13 @@ class AulasRealesSeeder extends Seeder
         ]);
         
         DB::table('aulas')->insert([
-            'id' => uuid() -> toString(),
+            'id' => Str::uuid() -> toString(),
             'nombre' => 'CAMPO',
             'ubicacion' => 'AREA VIRTUAL CERCADO',
             'capacidad' => 0,
             'descripcion' => 'AREA DE TRABAJO DE CAMPO'
         ]);
+        
+        
     }
 }
