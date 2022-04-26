@@ -17,7 +17,7 @@ class CreateSolicitudReservasTable extends Migration
             $table->uuid('id');
             $table->string('estado', 10)->default('pendiente');
             $table->timestamp('fecha_creacion');
-            $table->string('datos_reserva_id');
+            $table->string('datos_reserva_id', 100);
             
             $table->primary('id');
             $table->unique('id');
