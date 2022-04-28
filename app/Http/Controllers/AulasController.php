@@ -3,82 +3,56 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Aula;
+use Illuminate\Support\Facades\DB;
 
 class AulasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function getTodasAulas(){
+        return Aulas::all();
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function getPendientes(){
+        $aulasOcupadas=DB::table('solicitud_reservas')
+        ->join("datos_reservas", "datos_reservas.id","=", "solicitud_reservas.datos_reserva_id")
+        ->join("aula_datos_reserva","aula_datos_reserva.datos_reserva_id", "=", "solicitud_reservas.datos_reserva_id")
+        ->join("aulas", "aulas.id","=", "aula_datos_reserva.aula_id")
+        ->join("datos_reserva_periodo","datos_reserva_periodo.datos_reserva_id", "=", "solicitud_reservas.datos_reserva_id")
+        ->join("periodos", "periodos.id", "=", "datos_reserva_periodo.periodo_id")
+        ->where([["estado", "PENDIENTE"], ["fecha", request("fecha")]])
+        ->get();
+        return $aulasOcupadas;
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function getDisponibles(){        
+        $aulasOcupadas=DB::table('aula_datos_reserva')
+        ->join('aulas','aula_datos_reserva.aula_id',"=","aulas.id")
+        ->join('datos_reserva_periodo',
+                'datos_reserva_periodo.datos_reserva_id',"=","aula_datos_reserva.datos_reserva_id")
+        ->join('datos_reservas','datos_reservas.id',"=","aula_datos_reserva.datos_reserva_id")
+        ->join("periodos", "periodos.id", "=", "datos_reserva_periodo.periodo_id")
+        ->where("fecha", request("fecha"))
+        ->get();
+        $aulas=DB::table(DB::raw('aulas, periodos'))
+            -> select(["nombre", "hora_inicio", "hora_fin"])
+            -> orderBy('nombre',"ASC")
+            -> orderBy('hora_inicio')
+            -> get();
+        $aulasDisponibles = array();
+        $bandera =false;
+        for ($j=0; $j < sizeof($aulas); $j++) { 
+            for ($i=0; $i < sizeof($aulasOcupadas); $i++) { 
+                          
+               if($aulasOcupadas[$i]->nombre == $aulas[$j]->nombre && 
+               $aulasOcupadas[$i]->hora_inicio == $aulas[$j]->hora_inicio){
+                   $bandera = true;
+               }
+           }
+           if($bandera == false){
+                array_push($aulasDisponibles, $aulas[$j]);
+           }
+           else {
+               $bandera = false;
+           }
+        }
+        return  $aulasDisponibles;
     }
 }
