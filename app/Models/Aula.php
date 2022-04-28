@@ -15,4 +15,12 @@ class Aula extends Model
     public function datos_reservas(){
         return $this->belongsTo(DatosReserva::class, "aula_datos_reserva", "aula_id", "datos_reserva_id");
     }
+
+    public static function boot()
+    {
+        parent::boot();
+        self::creating(function ($model) {
+            $model->id = Str::uuid()->toString();
+        });
+    }
 }
