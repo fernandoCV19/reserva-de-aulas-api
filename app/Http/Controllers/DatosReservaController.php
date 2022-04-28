@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\DatosReserva;
-use Illuminate\Support\Facades\DB;
+    use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 class DatosReservaController extends Controller
 {
@@ -62,14 +62,14 @@ class DatosReservaController extends Controller
     public function getAulasDatosReserva($idDatosReserva){        
         $aulas=DB::table('aulas')
             ->join('aula_datos_reserva', function ($join) use($idDatosReserva) {
-                $join->on('aula_datos_reserva.datos_reserva_id',"=","aulas.id")
+                $join->on('aula_datos_reserva.aula_id',"=","aulas.id")
                 ->where('aula_datos_reserva.datos_reserva_id', '=', $idDatosReserva);
             })
             ->get();
         $datosReserva = DatosReserva::find($idDatosReserva);
         $aulas_datos_reserva = ["datos_reserva"=>$datosReserva, "aulas"=>$aulas];        
         return  response()->json($aulas_datos_reserva, 200,[]);
-        //return DatosReserva::find($idDatosReserva)->aulas()->get();
+        //return DatosReserva::find($idDatosReserva)->aulas;
 
     }
     public function deleteAulas(Request $request, $idDatosReserva){
