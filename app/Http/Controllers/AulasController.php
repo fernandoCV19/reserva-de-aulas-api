@@ -55,4 +55,15 @@ class AulasController extends Controller
         }
         return  $aulasDisponibles;
     }
+
+    public function crearAula(Request $request){
+        $aula = new Aula();
+        $aula -> capacidad = $request -> capacidad;
+        $aula -> nombre = $request -> nombre;
+        $aula -> ubicacion = $request -> ubicacion;
+        $aula -> descripcion = $request -> descripcion;
+
+        $aula -> save();
+        return $aula;
+    }
 }
