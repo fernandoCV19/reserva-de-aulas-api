@@ -52,7 +52,10 @@ class RouteServiceProvider extends ServiceProvider
                 -> group (base_path('routes/datos-reserva.routes.php'));
 
             Route::prefix('aula')
-                -> group (base_path('routes/aulas.routes.php'));     
+                -> group (base_path('routes/aulas.routes.php'));   
+                
+            Route::prefix('materia')
+                -> group (base_path('routes/materia.routes.php'));      
         });
     }
 
