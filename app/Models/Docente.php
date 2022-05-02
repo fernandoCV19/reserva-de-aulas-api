@@ -12,4 +12,8 @@ class Docente extends Model
     public function grupos(){
         return $this->hasMany(Grupo::class);
     }
+
+    public function notificaciones(){
+        return $this->hasMany(Notificacion::class);
+    }
 }
