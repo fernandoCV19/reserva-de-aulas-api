@@ -12,7 +12,7 @@ class DocenteController extends Controller
         //
     }
 
-    public function validarCuenta(){
+    public function validarCuenta($request){
         
     }
 }
