@@ -13,7 +13,7 @@ class Notificacion extends Model
     protected $table = 'notificaciones';
     public $timestamps = false;
     public $incrementing = false;
-    protected $fillable = ['id, mensaje, fecha, id_docente'];
+    protected $fillable = ['id, mensaje, fecha, docente_id'];
 
     public static function boot()
     {

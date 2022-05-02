@@ -13,7 +13,7 @@ class NotificacionController extends Controller
         $notificacion  = new Notificacion();
         $notificacion  -> mensaje = $request -> mensajeNotificacion;
         $notificacion  ->fecha = now();
-        $notificacion  -> id_docente = $request->docente_id ;
+        $notificacion  -> docente_id = $request->id_docente ;
 
         $notificacion ->save();
 
