@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Docente;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
