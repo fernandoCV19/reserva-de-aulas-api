@@ -21,6 +21,7 @@ class Docente extends Model implements JWTSubeject
     }
 
 
+
     public function getJWTIdentifier()
     {
         return $this->getKey();
@@ -37,6 +38,7 @@ class Docente extends Model implements JWTSubeject
         self::creating(function ($model) {
             $model->id = Str::uuid()->toString();
         });
+
 
     public function notificaciones(){
         return $this->hasMany(Notificacion::class);
