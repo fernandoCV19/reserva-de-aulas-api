@@ -14,12 +14,12 @@ class DocenteController extends Controller
     }
 
     public function validarCuenta($request){
-        $usuario = $request->usuario;
-        $password = $request->password;
+        $usuario = $request->codSIS;
+        $password = $request->contrasenia;
 
         $cuenta = Docente::where('usuario',$usuario)->first();
         
-        return Hash::check($password, $cuenta->password);
+        return Hash::check($password, $cuenta->contrasenia);
         
     }
 }
