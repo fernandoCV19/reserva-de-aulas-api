@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Models\Docente;
+use App\Models\Docente;
 use Illuminate\Support\Facades\Hash;
 
 class DocenteController extends Controller
@@ -21,5 +21,9 @@ class DocenteController extends Controller
         
         return Hash::check($password, $cuenta->contrasenia);
         
+    }
+
+    public function getNotificacionesByDocente($idDocente){
+        return Docente::find($idDocente)->notificaciones;
     }
 }
