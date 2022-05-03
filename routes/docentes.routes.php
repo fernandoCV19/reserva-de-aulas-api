@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DocenteController;
 
 Route::group([
 
@@ -15,3 +16,4 @@ Route::post('refresh', [AuthController::class, 'refresh']);
 Route::post('me', [AuthController::class, 'me']);
 
 });
+Route::get('/notificaciones/{idDocente}', [DocenteController::class, 'getNotificacionesByDocente']);
