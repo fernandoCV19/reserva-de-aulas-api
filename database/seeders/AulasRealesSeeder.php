@@ -20,7 +20,8 @@ class AulasRealesSeeder extends Seeder
             'nombre' => 'AUDIT',
             'ubicacion' => 'NUEVO EDIF. ACADEMICO 2 (FCYT)',
             'capacidad' => 270,
-            'descripcion' => 'AUDITORIO NUEVO EDIF (NO USAR)'
+            'descripcion' => 'AUDITORIO NUEVO EDIF',
+            'disponible_para_uso' => FALSE
         ]);
         
         DB::table('aulas')->insert([
@@ -44,7 +45,8 @@ class AulasRealesSeeder extends Seeder
             'nombre' => 'MAGCIV',
             'ubicacion' => 'EDIF. "ADMINISTRACION CENTRAL"',
             'capacidad' => 185,
-            'descripcion' => 'AULA MAGNA CIVIL (NO USAR)'
+            'descripcion' => 'AULA MAGNA CIVIL',
+            'disponible_para_uso' => FALSE
         ]);
         
         DB::table('aulas')->insert([
@@ -172,7 +174,8 @@ class AulasRealesSeeder extends Seeder
             'nombre' => 'AUDCIV',
             'ubicacion' => 'NUEVO PDTF',
             'capacidad' => 150,
-            'descripcion' => 'AUDITORIO CIVIL (NO USAR)'
+            'descripcion' => 'AUDITORIO CIVIL',
+            'disponible_para_uso' => FALSE
         ]);
         
         DB::table('aulas')->insert([
@@ -260,7 +263,8 @@ class AulasRealesSeeder extends Seeder
             'nombre' => '635',
             'ubicacion' => 'BLOQUE TALLERES CARPINT. PDTF',
             'capacidad' => 100,
-            'descripcion' => 'AULA 635 (NO USAR)'
+            'descripcion' => 'AULA 635',
+            'disponible_para_uso' => FALSE
         ]);
         
         DB::table('aulas')->insert([
@@ -372,7 +376,8 @@ class AulasRealesSeeder extends Seeder
             'nombre' => '690MAT',
             'ubicacion' => 'NUEVO EDIF. ACADEMICO 2 (FCYT)',
             'capacidad' => 75,
-            'descripcion' => 'AUDITORIO MATEMATICAS(NO USAR)'
+            'descripcion' => 'AUDITORIO MATEMATICAS',
+            'disponible_para_uso' => FALSE
         ]);
         
         DB::table('aulas')->insert([
@@ -380,7 +385,8 @@ class AulasRealesSeeder extends Seeder
             'nombre' => '690E',
             'ubicacion' => 'NUEVO EDIF. ACADEMICO 2 (FCYT)',
             'capacidad' => 75,
-            'descripcion' => 'AULA NO USAR'
+            'descripcion' => 'AULA',
+            'disponible_para_uso' => FALSE
         ]);
         
         DB::table('aulas')->insert([
@@ -412,7 +418,8 @@ class AulasRealesSeeder extends Seeder
             'nombre' => '690A',
             'ubicacion' => 'NUEVO EDIF. ACADEMICO 2 (FCYT)',
             'capacidad' => 75,
-            'descripcion' => 'AULA RESERVADO NO USAR'
+            'descripcion' => 'AULA RESERVADO',
+            'disponible_para_uso' => FALSE
         ]);
         
         DB::table('aulas')->insert([
@@ -484,7 +491,8 @@ class AulasRealesSeeder extends Seeder
             'nombre' => '631',
             'ubicacion' => 'BLOQUE "INGENIERIA INDUSTRIAL"',
             'capacidad' => 55,
-            'descripcion' => 'AULA 631 (NO USAR)'
+            'descripcion' => 'AULA 631',
+            'disponible_para_uso' => FALSE
         ]);
         
         DB::table('aulas')->insert([
@@ -500,7 +508,8 @@ class AulasRealesSeeder extends Seeder
             'nombre' => '632',
             'ubicacion' => 'BLOQUE "INGENIERIA INDUSTRIAL"',
             'capacidad' => 55,
-            'descripcion' => 'AULA 632 (NO USAR)'
+            'descripcion' => 'AULA 632',
+            'disponible_para_uso' => FALSE
         ]);
         
         DB::table('aulas')->insert([
@@ -524,7 +533,8 @@ class AulasRealesSeeder extends Seeder
             'nombre' => '644',
             'ubicacion' => 'NUEVO PDTF',
             'capacidad' => 50,
-            'descripcion' => 'AULA CADCAM(NO USAR)'
+            'descripcion' => 'AULA CADCAM',
+            'disponible_para_uso' => FALSE
         ]);
         
         DB::table('aulas')->insert([
@@ -532,7 +542,8 @@ class AulasRealesSeeder extends Seeder
             'nombre' => '644A',
             'ubicacion' => 'NUEVO PDTF',
             'capacidad' => 50,
-            'descripcion' => 'AULA 644-A (NO USAR)'
+            'descripcion' => 'AULA 644-A',
+            'disponible_para_uso' => FALSE
         ]);
         
         DB::table('aulas')->insert([
@@ -540,7 +551,8 @@ class AulasRealesSeeder extends Seeder
             'nombre' => '637A',
             'ubicacion' => 'EDIF. "ADMINISTRACION CENTRAL"',
             'capacidad' => 50,
-            'descripcion' => 'AULA DE ING.MECANICA (NO USAR)'
+            'descripcion' => 'AULA DE ING.MECANICA',
+            'disponible_para_uso' => FALSE
         ]);
         
         DB::table('aulas')->insert([
@@ -588,7 +600,8 @@ class AulasRealesSeeder extends Seeder
             'nombre' => '683B',
             'ubicacion' => 'EDIF. FACULTATIVO LAB. BASICOS',
             'capacidad' => 45,
-            'descripcion' => 'AULA 3ER PISO(ALIMENTOS)NO USA'
+            'descripcion' => 'AULA 3ER PISO(ALIMENTOS)',
+            'disponible_para_uso' => FALSE
         ]);
         
         DB::table('aulas')->insert([
@@ -636,7 +649,8 @@ class AulasRealesSeeder extends Seeder
             'nombre' => '680B',
             'ubicacion' => 'EDIF. FACULTATIVO LAB. BASICOS',
             'capacidad' => 45,
-            'descripcion' => 'AULA PLAN.BAJA(QUIMICA)NO USAR'
+            'descripcion' => 'AULA PLAN.BAJA(QUIMICA)',
+            'disponible_para_uso' => FALSE
         ]);
         
         DB::table('aulas')->insert([
@@ -652,7 +666,8 @@ class AulasRealesSeeder extends Seeder
             'nombre' => '655',
             'ubicacion' => 'EDIF. "ADMINISTRACION CENTRAL"',
             'capacidad' => 40,
-            'descripcion' => 'AULA 655 (NO USAR)'
+            'descripcion' => 'AULA 655',
+            'disponible_para_uso' => FALSE
         ]);
         
         DB::table('aulas')->insert([
@@ -724,7 +739,7 @@ class AulasRealesSeeder extends Seeder
             'nombre' => '682L8IN',
             'ubicacion' => 'EDIF. FACULTATIVO LAB. BASICOS',
             'capacidad' => 30,
-            'descripcion' => 'LABORATORIO2DO PISO(INDUSTRIAL'
+            'descripcion' => 'LABORATORIO2DO PISO(INDUSTRIAL)'
         ]);
         
         DB::table('aulas')->insert([
@@ -732,7 +747,7 @@ class AulasRealesSeeder extends Seeder
             'nombre' => '682L7IN',
             'ubicacion' => 'EDIF. FACULTATIVO LAB. BASICOS',
             'capacidad' => 30,
-            'descripcion' => 'LABORATORIO2DO PISO(INDUSTRIAL'
+            'descripcion' => 'LABORATORIO2DO PISO(INDUSTRIAL)'
         ]);
         
         DB::table('aulas')->insert([
@@ -740,7 +755,7 @@ class AulasRealesSeeder extends Seeder
             'nombre' => '682L6IN',
             'ubicacion' => 'EDIF. FACULTATIVO LAB. BASICOS',
             'capacidad' => 30,
-            'descripcion' => 'LABORATORIO2DO PISO(INDUSTRIAL'
+            'descripcion' => 'LABORATORIO2DO PISO(INDUSTRIAL)'
         ]);
         
         DB::table('aulas')->insert([
@@ -780,7 +795,7 @@ class AulasRealesSeeder extends Seeder
             'nombre' => '682L0IN',
             'ubicacion' => 'EDIF. FACULTATIVO LAB. BASICOS',
             'capacidad' => 30,
-            'descripcion' => 'LABORATORIO2DO PISO(INDUSTRIAL'
+            'descripcion' => 'LABORATORIO2DO PISO(INDUSTRIAL)'
         ]);
         
         DB::table('aulas')->insert([
@@ -852,7 +867,8 @@ class AulasRealesSeeder extends Seeder
             'nombre' => '675',
             'ubicacion' => 'EDIFICIO "ELEKTRO"',
             'capacidad' => 30,
-            'descripcion' => 'AULA 675 (NO USAR)'
+            'descripcion' => 'AULA 675',
+            'disponible_para_uso' => FALSE
         ]);
         
         DB::table('aulas')->insert([
@@ -868,7 +884,8 @@ class AulasRealesSeeder extends Seeder
             'nombre' => '647',
             'ubicacion' => 'NUEVO PDTF',
             'capacidad' => 30,
-            'descripcion' => 'LABORAT.COMP. CIVIL: NO USAR'
+            'descripcion' => 'LABORAT.COMP. CIVIL',
+            'disponible_para_uso' => FALSE
         ]);
         
         DB::table('aulas')->insert([
@@ -908,7 +925,8 @@ class AulasRealesSeeder extends Seeder
             'nombre' => '619A',
             'ubicacion' => 'SECTOR "FISICA"',
             'capacidad' => 25,
-            'descripcion' => 'MUSEO DE FISICA (NO USAR)'
+            'descripcion' => 'MUSEO DE FISICA',
+            'disponible_para_uso' => FALSE
         ]);
         
         DB::table('aulas')->insert([
@@ -1188,7 +1206,8 @@ class AulasRealesSeeder extends Seeder
             'nombre' => 'AULVIR',
             'ubicacion' => 'AREA VIRTUAL CERCADO',
             'capacidad' => 0,
-            'descripcion' => 'AULA VIRTUAL FCYT'
+            'descripcion' => 'AULA VIRTUAL FCYT',
+            'disponible_para_uso' => FALSE
         ]);
         
         DB::table('aulas')->insert([
@@ -1196,7 +1215,8 @@ class AulasRealesSeeder extends Seeder
             'nombre' => 'CAMPO',
             'ubicacion' => 'AREA VIRTUAL CERCADO',
             'capacidad' => 0,
-            'descripcion' => 'AREA DE TRABAJO DE CAMPO'
+            'descripcion' => 'AREA DE TRABAJO DE CAMPO',
+            'disponible_para_uso' => FALSE
         ]);
         
         
