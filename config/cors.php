@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['GET', 'POST','DELETE','PUT'],
 
-    'allowed_origins' => ['https://jade-griffin-e2968c.netlify.app/', 'http://localhost:3000/'],
+    'allowed_origins' => ['https://jade-griffin-e2968c.netlify.app/', 'http://localhost:3000/', 'https://reserva-aulas-stage.netlify.app/'],
 
     'allowed_origins_patterns' => [],
 
