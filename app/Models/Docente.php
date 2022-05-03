@@ -3,10 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Tymon\JWTAuth\Contracts\JWTSubeject;
+use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Docente extends Model implements JWTSubeject
+class Docente extends Authenticatable implements JWTSubject
 {
     use HasFactory;
 
@@ -38,7 +39,7 @@ class Docente extends Model implements JWTSubeject
         self::creating(function ($model) {
             $model->id = Str::uuid()->toString();
         });
-
+    }
 
     public function notificaciones(){
         return $this->hasMany(Notificacion::class);
