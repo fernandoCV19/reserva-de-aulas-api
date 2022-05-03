@@ -19,6 +19,7 @@ class CreateAulasTable extends Migration
             $table->string('ubicacion', 30);
             $table->integer('capacidad');
             $table->string('descripcion', 30);
+            $table->boolean('disponible_para_uso')->default(FALSE);
 
             $table->primary('id');
             $table->unique('id');
