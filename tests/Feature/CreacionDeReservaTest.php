@@ -9,20 +9,11 @@ use Tests\TestCase;
 class CreacionDeReservaTest extends TestCase
 {
 
-    public function anadirUnaNuevaSolicitudValida(){
-        $response = $this->post('ruta', [
+    public function test_example()
+    {
+        $response = $this->get('/');
 
-        ]);
-
-        $response -> assertStatus(200);
-    }
-
-    public function intentarAnadirUnaNuevaSolicitudInvalida(){
-        $response = $this->post('ruta', [
-
-        ]);
-
-        $response -> assertStatus(200);
+        $response->assertStatus(200);
     }
 
 }
