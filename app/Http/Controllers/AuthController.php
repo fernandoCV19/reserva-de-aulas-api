@@ -7,13 +7,17 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Docente;
+use App\Models\Administrador;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use JWTAuth;
+use Tymon\JWTAuth\Exceptions\JWTException;
 
 class AuthController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+        $this->middleware('auth:api', ['except' => ['login', 'activar']]);
     }
 
     /**
@@ -21,15 +25,23 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function login()
+    public function login(Request $request)
     {
-        $credentials = request(['email', 'password']);
+        $admin = false;
+        $user = Docente::where("cod_SIS", "=", $request->cod_SIS)->first();
+        
+        if(!$user){
+            $user = Administrador::where("nombre", "=", $request->cod_SIS)->first();
 
-        if (! $token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            if (!$user){
+                return response()->json(['message' => 'Codigo SIS o contraseña erroneos'], 401);
+            }else{
+                $admin = true;
+            }
         }
 
-        return $this->respondWithToken($token);
+        $token = JWTAuth::fromUser($user);
+        return $this->respondWithToken($token, $admin);
     }
 
     /**
@@ -71,13 +83,46 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function respondWithToken($token)
+    protected function respondWithToken($token, $admin)
     {
+        if($admin){
+            $rol = 'administrador';
+        }else{
+            $rol = 'docente';
+        }
+
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
+            'expires_in' => auth()->factory()->getTTL() * 60,
+            'rol' => $rol
         ]);
+    }
+
+    public function activar(Request $request){
+        $validator = Validator::make($request->all(),[
+            'cod_SIS'=>'required',
+            'email' => 'required|string|email|max:100|unique:docentes',
+            'contrasenia' => 'required|string|min:6',
+        ]);
+        if($validator->fails()){
+            return response()->json($validator -> errors()-> toJson(),400);
+        }
+        
+        $docenteID = DB::table('docentes')
+        -> where("nombre", "=", $request->nombre)->get(); 
+        
+        $docente = Docente::findOrFail($docenteID[0]->id);
+        $docente -> activado = 1;
+        $docente -> email = $request->email;
+        $docente -> cod_SIS = $request->cod_SIS;
+        $docente -> contrasenia =bcrypt($request->contrasenia);
+        $docente -> save();
+
+        return response()->json([
+            'message' =>'activado',
+            'docente' => $docente
+        ], 201);
     }
 
 }
