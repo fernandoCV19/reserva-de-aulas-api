@@ -113,6 +113,7 @@ class AuthController extends Controller
         -> where("nombre", "=", $request->nombre)->get(); 
         
         $docente = Docente::findOrFail($docenteID[0]->id);
+        $docente -> celular = $request -> celular;
         $docente -> activado = 1;
         $docente -> email = $request->email;
         $docente -> cod_SIS = $request->cod_SIS;
