@@ -53,17 +53,19 @@ class DatosReservaTest extends TestCase
 
 
     public function test_solicitar_eliminacion_aulas_de_datos_reserva(){
-        $response = $this->delete('datos-reserva/aulas/1');
+        $response = $this->delete('datos-reserva/aulas/1',['aulasId' => [1]]);
+
+        print_r($response);
 
         $response->assertStatus(200);
     }
 
     public function test_verificar_cantidad_aulas_despues_de_eliminacion_de_datos_reserva(){
-        $response = $this->delete('datos-reserva/aulas/1');
+        $response = $this->delete('datos-reserva/aulas/1', ['aulasId' => [1]]);
 
         $response = json_decode($this->get('datos-reserva/aulas/1')->getContent(),true);
 
-        $this->assertTrue(sizeof($response['aulas']) == 0);
+        $this->assertTrue(sizeof($response['aulas']) == 2);
     }
 
 
@@ -85,16 +87,17 @@ class DatosReservaTest extends TestCase
     
 
     public function test_solicitar_creacion_datos_reserva(){
-        $response = $this->post('datos-reserva/',[]);
+        $response = $this->post('datos-reserva/',['fecha' => now(), 'numero_estimado' => 100]);
 
         $response->assertStatus(200);
     }
 
     public function test_verificar_creacion_datos_reserva(){
-        $response = $this->post('datos-reserva/',[]);
+        $response = $this->post('datos-reserva/',['fecha' => '2022-08-27', 'numero_estimado' => 119]);
 
         $this->assertDatabaseHas('datos_reservas',[
-            'id' => '2'
+            'fecha' => '2022-08-27',
+            'numero_estimado' => 119
         ]);
     }
 }
