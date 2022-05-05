@@ -82,6 +82,8 @@ class DatosReservaTest extends TestCase
         $this->assertTrue($res);
     }
 
+    
+
     public function test_solicitar_creacion_datos_reserva(){
         $response = $this->post('datos-reserva/',[]);
 
