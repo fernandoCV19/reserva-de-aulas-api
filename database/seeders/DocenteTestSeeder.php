@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Http;
 
 class DocenteTestSeeder extends Seeder
 {
@@ -15,14 +16,14 @@ class DocenteTestSeeder extends Seeder
      */
     public function run()
     {
+
         DB::table('docentes')->insert([
             'id' => 1,
-            'cod_SIS' => '20001234',
+            'cod_SIS' => '',
             'nombre' => 'Fernando Cuenca Vargas',
-            'celular' => '7777777',
-            'contrasenia' => 'prueba123',
-            'email' => 'email@gmail.com',
-            'activado' => TRUE
+            'celular' => '',
+            'contrasenia' => '',
+            'email' => ''
         ]);
     }
 }
