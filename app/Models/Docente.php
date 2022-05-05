@@ -7,14 +7,17 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use Illuminate\Database\Eloquent\Model;
+
 class Docente extends Authenticatable implements JWTSubject
 {
-    use HasFactory;
-
+    
     protected $table = 'docentes';
     public $timestamps = false;
     public $incrementing = false;
-    protected $fillable = ['id, codSIS, nombre, celular, contrasenia, email, activado'];
+    use HasFactory;
+    use Notifiable;
+    protected $fillable = ['id, cod_SIS, nombre, celular, contrasenia, email, activado'];
 
 
     public function grupos(){

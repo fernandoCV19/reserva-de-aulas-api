@@ -18,7 +18,7 @@ class CreateDocentesTable extends Migration
             $table->string('cod_SIS', 20);
             $table->string('nombre', 200);
             $table->string('celular', 30);
-            $table->string('contrasenia', 30);
+            $table->string('contrasenia', 200);
             $table->string('email', 30);
             $table->boolean('activado')->default(FALSE);
         

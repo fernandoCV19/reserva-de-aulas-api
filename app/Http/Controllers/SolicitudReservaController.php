@@ -38,7 +38,7 @@ class SolicitudReservaController extends Controller
 
     public function actualizarEstado(Request $request){
         $solicitud = SolicitudReserva::findOrFail($request-> idSolicitud);
-        $solicitud->estado = 'rechazado';
+        $solicitud->estado = 'RECHAZADO';
         $solicitud -> save();
         return $solicitud;
     }

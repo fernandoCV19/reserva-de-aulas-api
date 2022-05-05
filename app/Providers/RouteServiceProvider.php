@@ -59,6 +59,9 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::prefix('docente')
                 -> group (base_path('routes/docentes.routes.php'));      
+
+            Route::prefix('auth')
+                -> group (base_path('routes/auth.routes.php'));      
         });
     }
 
