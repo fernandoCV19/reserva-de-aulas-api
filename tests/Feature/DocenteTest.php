@@ -90,7 +90,7 @@ class DocenteTest extends TestCase
 
         $response = json_decode($this->withHeaders([
             'Authorization' => 'Bearer' . $token
-        ]) -> post('auth/refresh'), true);
+        ]) -> post('auth/refresh')->getContent(), true);
 
         $tiempo = $response['expires_in'];
 
