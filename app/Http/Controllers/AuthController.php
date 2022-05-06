@@ -20,6 +20,32 @@ class AuthController extends Controller
     }
 
     /**
+     * @OA\Post(
+     *      path= "/auth/login",
+     *      summary =  "Inicio de sesion",
+     *      tags = {"Auth"},
+     * 
+     *       @OA\RequestBody(
+     *         @OA\JsonContent(
+     *              @OA\Property(
+     *                  property="cod_SIS", 
+     *                  type="int"
+     *               ),
+     *               @OA\Property(
+     *                  property="contrasenia", 
+     *                  type="string"
+     *               ),
+     *         ),
+     *        
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      ) 
+     * )
      * Get a JWT via given credentials.
      *
      * @return \Illuminate\Http\JsonResponse
@@ -35,13 +61,32 @@ class AuthController extends Controller
     }
 
     /**
+     * @OA\Get(
+     *      path= "/auth/me",
+     *      summary =  "Obtencion de la informacion de un usuario",
+     *      tags = {"Auth"},
+     * 
+     *      security={{"bearerAuth":{}}} ,
+    
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      ) 
+     * )
      * Get the authenticated User.
      *
      * @return \Illuminate\Http\JsonResponse
      */
     public function me()
-    {
-        return response()->json(auth()->user());
+    {        
+        if(auth()->user() == null){
+            echo("llega");
+            return response()->json(['message' => 'No autorizado'], 401);}
+        else 
+            return response()->json(auth()->user());
     }
 
     /**
