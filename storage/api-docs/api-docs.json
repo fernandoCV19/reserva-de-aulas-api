@@ -18,6 +18,125 @@
                 }
             }
         },
+        "/aula": {
+            "get": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Obtencion de todas las aulas",
+                "operationId": "d3d78b0b1ceff6936dafc680c6a5948d",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Creacion de una nueva aula",
+                "operationId": "24247e6854f96ea3099ed4beb77c5f8f",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "capacidad": {
+                                        "type": "integer"
+                                    },
+                                    "nombre": {
+                                        "type": "string"
+                                    },
+                                    "ubicacion": {
+                                        "type": "string"
+                                    },
+                                    "descripcion": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/aula/pendientes": {
+            "post": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Obtencion de las aulas que son parte de una solicitud de reserva pendiente en una fecha",
+                "operationId": "0efc1c32240aa2e78c506b0750f2d63b",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "fecha": {
+                                        "type": "string",
+                                        "format": "date"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/aula/disponibles": {
+            "post": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Obtencion de las aulas disponibles en una fecha",
+                "operationId": "050524b0efb1956f6c8fed773578b437",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "fecha": {
+                                        "type": "string",
+                                        "format": "date"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
         "/datos-reserva": {
             "get": {
                 "tags": [
@@ -339,13 +458,13 @@
                 }
             }
         },
-        "/reserva/{idSolicitud}": {
+        "/reserva/crearReserva/{idSolicitud}": {
             "post": {
                 "tags": [
                     "Reservas"
                 ],
                 "summary": "Creacion de una reserva apartir de una solicitud de reserva",
-                "operationId": "8114be96a2cb74800e2420de7a24d4fe",
+                "operationId": "1142f7cb27e19654d479198d8eeb0118",
                 "parameters": [
                     {
                         "name": "idSolicitud",
