@@ -17,7 +17,7 @@ class AuthController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'activar']]);
+        $this->middleware('auth:api', ['except' => ['login', 'activar','crearAdministrador']]);
     }
 
     /**
@@ -53,7 +53,7 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-        $admin = false;
+        $admin = "docente";
         $user = Docente::where("cod_SIS", "=", $request->cod_SIS)->first();
         
         if(!$user){
@@ -62,7 +62,7 @@ class AuthController extends Controller
             if (!$user){
                 return response()->json(['message' => 'Codigo SIS o contraseña erroneos'], 401);
             }else{
-                $admin = true;
+                $admin = "administrador";
             }
         }
 
@@ -146,7 +146,8 @@ class AuthController extends Controller
      */
     public function refresh()
     {
-        return $this->respondWithToken(auth()->refresh(), true);
+        $algo = "-";
+        return $this->respondWithToken(auth()->refresh(), $algo);
     }
 
     /**
@@ -156,14 +157,8 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function respondWithToken($token, $admin)
+    protected function respondWithToken($token, $rol)
     {
-        if($admin){
-            $rol = 'administrador';
-        }else{
-            $rol = 'docente';
-        }
-
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
@@ -235,7 +230,7 @@ class AuthController extends Controller
     }
 
     
-    public function crearAdministrador($request){
+    public function crearAdministrador(Request $request){
         $administrador = new Administrador();
         $administrador -> nombre = $request->nombre;
         $administrador -> contrasenia =bcrypt($request->contrasenia);
