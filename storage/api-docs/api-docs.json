@@ -18,6 +18,62 @@
                 }
             }
         },
+        "/materia/docentes/{idMateria}": {
+            "get": {
+                "tags": [
+                    "Materia"
+                ],
+                "summary": "Obtencion de una todos los docentes de una materia",
+                "operationId": "6a852c0c6a9fcf25bc0bc62987b91852",
+                "parameters": [
+                    {
+                        "name": "idMateria",
+                        "in": "path",
+                        "description": "Id de la Materia",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/materia/grupos/{idMateria}": {
+            "get": {
+                "tags": [
+                    "Materia"
+                ],
+                "summary": "Obtencion de una todos los grupos apartir de un id de materia",
+                "operationId": "89733dd7699472256a4a0fa8b7ff3677",
+                "parameters": [
+                    {
+                        "name": "idMateria",
+                        "in": "path",
+                        "description": "Id de la Materia",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
         "/notificacion": {
             "post": {
                 "tags": [
