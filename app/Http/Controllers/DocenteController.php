@@ -22,7 +22,31 @@ class DocenteController extends Controller
         return Hash::check($password, $cuenta->contrasenia);
         
     }
-
+    /**
+     * @OA\Get(
+     *      path= "/docente/notificaciones/{idSolicitud}",
+     *      summary =  "Obtencion de las notificaciones de un docente apartir de un id",
+     *      tags = {"Docentes"},
+     * 
+     *      @OA\Parameter(
+     *          name="idDocente",
+     *          description="Id de Docente",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),     
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      ) 
+     * )
+     * 
+     */
     public function getNotificacionesByDocente($idDocente){
         return Docente::find($idDocente)->notificaciones;
     }

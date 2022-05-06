@@ -18,6 +18,327 @@
                 }
             }
         },
+        "/datos-reserva": {
+            "get": {
+                "tags": [
+                    "Datos Reserva"
+                ],
+                "summary": "Obtencion de todos los datos reserva",
+                "operationId": "5829ca0977634573cc4e9423b383f1e4",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Datos Reserva"
+                ],
+                "summary": "Creacion de los datos de una reserva",
+                "operationId": "d704d77a316b15c61eecb59def954429",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "numero_estimado": {
+                                        "type": "integer"
+                                    },
+                                    "fecha": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "aulasId": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "gruposId": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "justificacionesLista": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "periodosId": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/datos-reserva/{idDatosReserva}": {
+            "get": {
+                "tags": [
+                    "Datos Reserva"
+                ],
+                "summary": "Obtencion de los datos de una reserva por id",
+                "operationId": "bbc16c3861d41755a8b2b6b29ce7ebbd",
+                "parameters": [
+                    {
+                        "name": "idDatosReserva",
+                        "in": "path",
+                        "description": "Id de un Dato Reserva",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/aulas/datos-reserva/{idDatosReserva}": {
+            "get": {
+                "tags": [
+                    "Datos Reserva"
+                ],
+                "summary": "Obtencion de las aulas de un datos reserva",
+                "operationId": "f8574cd24824a54fe90c2c9d9a1dc1a2",
+                "parameters": [
+                    {
+                        "name": "idDatosReserva",
+                        "in": "path",
+                        "description": "Id de un Dato Reserva",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/datos-reserva/aulas/{idDatosReserva}": {
+            "delete": {
+                "tags": [
+                    "Datos Reserva"
+                ],
+                "summary": "Obtencion de los datos de una reserva por id",
+                "operationId": "c3bd4a6a0d46a1bb2731c5cf3002e95f",
+                "parameters": [
+                    {
+                        "name": "idDatosReserva",
+                        "in": "path",
+                        "description": "Id de un Dato Reserva",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "aulasId": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/docente/notificaciones/{idSolicitud}": {
+            "get": {
+                "tags": [
+                    "Docentes"
+                ],
+                "summary": "Obtencion de las notificaciones de un docente apartir de un id",
+                "operationId": "12f7fc84a9ad11a1a32c14d3a7d174c6",
+                "parameters": [
+                    {
+                        "name": "idDocente",
+                        "in": "path",
+                        "description": "Id de Docente",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/materia/docentes/{idMateria}": {
+            "get": {
+                "tags": [
+                    "Materia"
+                ],
+                "summary": "Obtencion de una todos los docentes de una materia",
+                "operationId": "6a852c0c6a9fcf25bc0bc62987b91852",
+                "parameters": [
+                    {
+                        "name": "idMateria",
+                        "in": "path",
+                        "description": "Id de la Materia",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/materia/grupos/{idMateria}": {
+            "get": {
+                "tags": [
+                    "Materia"
+                ],
+                "summary": "Obtencion de una todos los grupos apartir de un id de materia",
+                "operationId": "89733dd7699472256a4a0fa8b7ff3677",
+                "parameters": [
+                    {
+                        "name": "idMateria",
+                        "in": "path",
+                        "description": "Id de la Materia",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/notificacion": {
+            "post": {
+                "tags": [
+                    "Notificaciones"
+                ],
+                "summary": "Creacion de una nueva notificacion de un docente",
+                "operationId": "64ad5b0c357db5a04ed2c4aa596c3141",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "mensajeNotificacion": {
+                                        "type": "string"
+                                    },
+                                    "id_docente": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/notificacion/{idNotificacion}": {
+            "get": {
+                "tags": [
+                    "Notificaciones"
+                ],
+                "summary": "Obtencion de una notificacion apartir de un id",
+                "operationId": "939c6d636a0c4757f7c10efec66e4ab6",
+                "parameters": [
+                    {
+                        "name": "idSolicitud",
+                        "in": "path",
+                        "description": "Id de la Notificacion",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
         "/reserva/{idSolicitud}": {
             "post": {
                 "tags": [
