@@ -13,8 +13,8 @@ class SolicitudReservaController extends Controller
 {
     /**
      * @OA\Post(
-     *      path= "/solicitud-reserva/",
-     *      summary =  "Obtencion de todas las solicitudes pendientes",
+     *      path= "/solicitud-reserva",
+     *      summary =  "Creacion de una solicitud de reserva",
      *      tags = {"Solicitud de reservas"},
      * 
      *       @OA\RequestBody(
@@ -85,7 +85,7 @@ class SolicitudReservaController extends Controller
     /**
      * @OA\Get(
      *      path= "/solicitud-reserva/{idSolicitud}",
-     *      summary =  "Obtencion de todas las solicitudes pendientes",
+     *      summary =  "Obtencion de una solicitud de reserva apartir de un id",
      *      tags = {"Solicitud de reservas"},
      * 
      *      @OA\Parameter(
@@ -120,7 +120,7 @@ class SolicitudReservaController extends Controller
     /**
      * @OA\Put(
      *      path= "/solicitud-reserva/cambio-estado/{idSolicitud}",
-     *      summary =  "Obtencion de todas las solicitudes pendientes filtradas por antiguedad",
+     *      summary =  "Actualizacion del estado de una solicitud de reserva a rechazado",
      *      tags = {"Solicitud de reservas"},
      *      @OA\Parameter(
      *          name="idSolicitud",
