@@ -17,9 +17,293 @@
                     }
                 }
             }
+        },
+        "/reserva/{idSolicitud}": {
+            "post": {
+                "tags": [
+                    "Reservas"
+                ],
+                "summary": "Creacion de una reserva apartir de una solicitud de reserva",
+                "operationId": "8114be96a2cb74800e2420de7a24d4fe",
+                "parameters": [
+                    {
+                        "name": "idSolicitud",
+                        "in": "path",
+                        "description": "Id de la Solicitud de Reserva",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/reserva/{idReserva}": {
+            "get": {
+                "tags": [
+                    "Reservas"
+                ],
+                "summary": "Obtencion de una reserva por id",
+                "operationId": "92ecf7bd4d8aaeaf35fb46c989a71de9",
+                "parameters": [
+                    {
+                        "name": "idReserva",
+                        "in": "path",
+                        "description": "Id de la Reserva",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/reserva/aulas/{idReserva}": {
+            "get": {
+                "tags": [
+                    "Reservas"
+                ],
+                "summary": "Obtencion de aulas apartir de un id de reserva",
+                "operationId": "a555424526214d0517183db6049183dd",
+                "parameters": [
+                    {
+                        "name": "idReserva",
+                        "in": "path",
+                        "description": "Id de la Reserva",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/reserva": {
+            "get": {
+                "tags": [
+                    "Reservas"
+                ],
+                "summary": "Obtencion de todas las reservas actuales",
+                "operationId": "a2bfc31f4f4f9e478e93a485bd7d0c97",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/solicitud-reserva": {
+            "post": {
+                "tags": [
+                    "Solicitud de reservas"
+                ],
+                "summary": "Creacion de una solicitud de reserva",
+                "operationId": "eeda1790de7563e57949f51e3beed663",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "numero_estimado": {
+                                        "type": "integer"
+                                    },
+                                    "fecha": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "aulasId": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "gruposId": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "justificacionesLista": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "periodosId": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/solicitud-reserva/{idSolicitud}": {
+            "get": {
+                "tags": [
+                    "Solicitud de reservas"
+                ],
+                "summary": "Obtencion de una solicitud de reserva apartir de un id",
+                "operationId": "7c63946719cff66e4807e8e4de738aa7",
+                "parameters": [
+                    {
+                        "name": "idSolicitud",
+                        "in": "path",
+                        "description": "Id de la Solicitud de Reserva",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/solicitud-reserva/cambio-estado/{idSolicitud}": {
+            "put": {
+                "tags": [
+                    "Solicitud de reservas"
+                ],
+                "summary": "Actualizacion del estado de una solicitud de reserva a rechazado",
+                "operationId": "7e31a5a4085aeb5431630648d76cb40d",
+                "parameters": [
+                    {
+                        "name": "idSolicitud",
+                        "in": "path",
+                        "description": "Id de la Solicitud de Reserva",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/solicitud-reserva/pendientes": {
+            "get": {
+                "tags": [
+                    "Solicitud de reservas"
+                ],
+                "summary": "Obtencion de todas las solicitudes pendientes",
+                "operationId": "c9440c4712685fbc6e07b6dcbedbdb67",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/solicitud-reserva/antiguedad": {
+            "get": {
+                "tags": [
+                    "Solicitud de reservas"
+                ],
+                "summary": "Obtencion de todas las solicitudes pendientes filtradas por antiguedad",
+                "operationId": "6a12d1f86241e7d60fec8336f4c4e01a",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/solicitud-reserva/proximos": {
+            "get": {
+                "tags": [
+                    "Solicitud de reservas"
+                ],
+                "summary": "Obtencion de todas las solicitudes pendientes filtradas por fecha mas proxima",
+                "operationId": "e8a493b895bc5c9e28988f4960afbe72",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
         }
     },
     "components": {
+        "schemas": {
+            "SolicitudReserva": {
+                "title": "SolicitudReserva",
+                "description": "Soliticitud de Reserva model",
+                "properties": {
+                    "table": {
+                        "title": "id",
+                        "description": "id",
+                        "format": "uuid"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "SolicitudReserva"
+                }
+            }
+        },
         "securitySchemes": {
             "bearerAuth": {
                 "type": "http",
