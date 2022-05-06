@@ -31,7 +31,7 @@ class SolicitudReserva extends Model
     protected $table = 'solicitud_reservas';
     public $timestamps = false;
     public $incrementing = false;
-    protected $fillable = ['id, estado, fecha_creacion, id_datos_reserva'];
+    protected $fillable = ['id, estado, fecha_creacion, datos_reserva_id'];
     
     public function datos_reserva(){
         return $this->hasOne(DatosReserva::class);
