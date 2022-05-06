@@ -54,6 +54,13 @@ class Res3rvaTest extends TestCase
         $this->assertDatabaseCount('reservas',3);
     }
 
+    public function test_verificar_eliminacion_solicitud_de_reserva()
+    {
+        $response = $this->post('reserva/crearReserva/1');
+
+        $this->assertDatabaseCount('solicitud_reservas',1);
+    }
+
     public function test_verificar_creacion_de_reserva_datos()
     {
         $response = $this->post('reserva/crearReserva/1');
