@@ -18,6 +18,34 @@
                 }
             }
         },
+        "/docente/notificaciones/{idSolicitud}": {
+            "get": {
+                "tags": [
+                    "Docentes"
+                ],
+                "summary": "Obtencion de las notificaciones de un docente apartir de un id",
+                "operationId": "12f7fc84a9ad11a1a32c14d3a7d174c6",
+                "parameters": [
+                    {
+                        "name": "idDocente",
+                        "in": "path",
+                        "description": "Id de Docente",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
         "/materia/docentes/{idMateria}": {
             "get": {
                 "tags": [
