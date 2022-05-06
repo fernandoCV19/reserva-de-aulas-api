@@ -207,7 +207,12 @@
                     "default": {
                         "description": "Ha ocurrido un error."
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/auth/refresh": {
@@ -227,7 +232,12 @@
                     "default": {
                         "description": "Ha ocurrido un error."
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/auth/activar": {

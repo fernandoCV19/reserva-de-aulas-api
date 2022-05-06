@@ -104,6 +104,7 @@ class AuthController extends Controller
      *      path= "/auth/logout",
      *      summary =  "Cerrar sesion",
      *      tags = {"Auth"}, 
+     *      security={{"bearerAuth":{}}} ,
      *      @OA\Response(
      *          response=200,
      *          description = "OK"),
@@ -128,7 +129,7 @@ class AuthController extends Controller
      *      path= "/auth/refresh",
      *      summary =  "Refresco del token",
      *      tags = {"Auth"},
-     * 
+     *      security={{"bearerAuth":{}}} ,
      *      @OA\Response(
      *          response=200,
      *          description = "OK"),
