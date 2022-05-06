@@ -36,6 +36,7 @@ class ReservaController extends Controller
      */
     public function crearReserva(Request $request, $idSolicitud)
     {    
+
         $idDatos = SolicitudReserva::find($idSolicitud)->datos_reserva_id;
         
         $reserva = new Reserva();

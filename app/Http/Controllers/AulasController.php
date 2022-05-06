@@ -59,6 +59,7 @@ class AulasController extends Controller
         ->join("periodos", "periodos.id", "=", "datos_reserva_periodo.periodo_id")
         ->where([["estado", "PENDIENTE"], ["fecha", request("fecha")]])
         ->get();
+
         return $aulasOcupadas;
     }
     /**

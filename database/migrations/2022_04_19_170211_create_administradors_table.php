@@ -16,7 +16,7 @@ class CreateAdministradorsTable extends Migration
         Schema::create('administradors', function (Blueprint $table) {
             $table->uuid('id');
             $table->string('nombre', 40);
-            $table->string('contrasenia', 40);
+            $table->string('contrasenia', 200);
 
 
             $table->primary('id');
