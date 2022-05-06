@@ -117,6 +117,7 @@ class AuthController extends Controller
         $docente -> activado = 1;
         $docente -> email = $request->email;
         $docente -> cod_SIS = $request->cod_SIS;
+        $docente -> celular = $request->celular; 
         $docente -> contrasenia =bcrypt($request->contrasenia);
         $docente -> save();
 
