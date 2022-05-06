@@ -11,7 +11,7 @@ class ReservaController extends Controller
 {
     /**
      * @OA\Post(
-     *      path= "/reserva/{idSolicitud}",
+     *      path= "/reserva/crearReserva/{idSolicitud}",
      *      summary =  "Creacion de una reserva apartir de una solicitud de reserva",
      *      tags = {"Reservas"},
      *      @OA\Parameter(
