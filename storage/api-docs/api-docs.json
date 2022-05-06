@@ -18,6 +18,68 @@
                 }
             }
         },
+        "/notificacion": {
+            "post": {
+                "tags": [
+                    "Notificaciones"
+                ],
+                "summary": "Creacion de una nueva notificacion de un docente",
+                "operationId": "64ad5b0c357db5a04ed2c4aa596c3141",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "mensajeNotificacion": {
+                                        "type": "string"
+                                    },
+                                    "id_docente": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/notificacion/{idNotificacion}": {
+            "get": {
+                "tags": [
+                    "Notificaciones"
+                ],
+                "summary": "Obtencion de una notificacion apartir de un id",
+                "operationId": "939c6d636a0c4757f7c10efec66e4ab6",
+                "parameters": [
+                    {
+                        "name": "idSolicitud",
+                        "in": "path",
+                        "description": "Id de la Notificacion",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
         "/reserva/{idSolicitud}": {
             "post": {
                 "tags": [
