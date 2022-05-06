@@ -24,5 +24,3 @@ Route::get('/', function (){
     $dr = DatosReserva::findOrFail(1);
     return $dr ->aulas;
 });
-
-

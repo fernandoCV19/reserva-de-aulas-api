@@ -5,11 +5,12 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use Database\Seeders\LLenadoDeLaBaseDeDatosTestSeeder;
 
 class LLenadoDeLaBaseDeDatosTest extends TestCase
 {
     use RefreshDatabase;
-    protected $seed = true;
+    protected $seeder = LLenadoDeLaBaseDeDatosTestSeeder::class;
 
     public function test_insertar_tres_aulas(){
         $this->assertDatabaseCount('aulas',3);

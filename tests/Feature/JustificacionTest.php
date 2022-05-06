@@ -8,6 +8,7 @@ use Tests\TestCase;
 
 class JustificacionTest extends TestCase
 {
+    use RefreshDatabase;
     /**
      * A basic feature test example.
      *

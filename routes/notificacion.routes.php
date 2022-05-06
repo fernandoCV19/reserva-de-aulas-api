@@ -8,7 +8,7 @@ use App\Http\Controllers\NotificacionController;
 
 
 Route::post('/', [NotificacionController::class, "crearNotificacion"]);
-Route::get('/{idSolicitud}',[NotificacionController::class, "getNotificacionPorId"]);
+Route::get('/{idNotificacion}',[NotificacionController::class, "getNotificacionPorId"]);
 
 
 Route::get("/user", function () {
