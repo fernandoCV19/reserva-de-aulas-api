@@ -8,6 +8,63 @@ use App\Models\DatosReserva;
 use Illuminate\Support\Str;
 class DatosReservaController extends Controller
 {
+    /**
+     * @OA\Post(
+     *      path= "/datos-reserva",
+     *      summary =  "Creacion de los datos de una reserva",
+     *      tags = {"Datos Reserva"},
+     * 
+     *       @OA\RequestBody(
+     *         @OA\JsonContent(
+     *              @OA\Property(
+     *                  property="numero_estimado", 
+     *                  type="int"
+     *               ),
+     *               @OA\Property(
+     *                  property="fecha", 
+     *                  type="date"
+     *               ),
+     *               @OA\Property(
+     *                  property="aulasId", 
+     *                  type="array",
+     *                  @OA\Items(
+     *                      type="string"
+     *                  ),
+     *               ),
+     *               @OA\Property(
+     *                  property="gruposId", 
+     *                  type="array",
+     *                  @OA\Items(
+     *                      type="string"
+     *                  ),
+     *               ),
+     *               @OA\Property(
+     *                  property="justificacionesLista", 
+     *                  type="array",
+     *                  @OA\Items(
+     *                      type="string"
+     *                  ),
+     *               ),
+     *               @OA\Property(
+     *                  property="periodosId", 
+     *                  type="array",
+     *                  @OA\Items(
+     *                      type="string"
+     *                  ),
+     *               ),
+     *         ),
+     *        
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      ) 
+     * )
+     * 
+     */
     public function crearDatosReserva(Request $request){        
         $datos_reserva = new DatosReserva();
         $datos_reserva -> numero_estimado = $request->numero_estimado;
@@ -50,15 +107,80 @@ class DatosReservaController extends Controller
         }
         return $datos_reserva;
     }
+    /**
+     * @OA\Get(
+     *      path= "/datos-reserva/{idDatosReserva}",
+     *      summary =  "Obtencion de los datos de una reserva por id",
+     *      tags = {"Datos Reserva"},
+     * 
+     *      @OA\Parameter(
+     *          name="idDatosReserva",
+     *          description="Id de un Dato Reserva",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),     
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      ) 
+     * )
+     * 
+     */
     public function getDatosReservaById(){
         $id = request("idDatosReserva");
         return DatosReserva::findOrFail($id);
     }
+    /**
+     * @OA\Get(
+     *      path= "/datos-reserva",
+     *      summary =  "Obtencion de todos los datos reserva",
+     *      tags = {"Datos Reserva"},
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      ) 
+     * )
+     * 
+     */
     public function obtenerDatosReservas()
     {
         $reserva = DatosReserva::all();
         return $reserva;
     }
+    /**
+     * @OA\Get(
+     *      path= "/aulas/datos-reserva/{idDatosReserva}",
+     *      summary =  "Obtencion de las aulas de un datos reserva",
+     *      tags = {"Datos Reserva"},
+     * 
+     *      @OA\Parameter(
+     *          name="idDatosReserva",
+     *          description="Id de un Dato Reserva",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),     
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      ) 
+     * )
+     * 
+     */
     public function getAulasDatosReserva($idDatosReserva){        
         $aulas=DB::table('aulas')
             ->join('aula_datos_reserva', function ($join) use($idDatosReserva) {
@@ -72,6 +194,44 @@ class DatosReservaController extends Controller
         //return DatosReserva::find($idDatosReserva)->aulas;
 
     }
+
+    /**
+     * @OA\Delete(
+     *      path= "/datos-reserva/aulas/{idDatosReserva}",
+     *      summary =  "Obtencion de los datos de una reserva por id",
+     *      tags = {"Datos Reserva"},
+     * 
+     *      @OA\Parameter(
+     *          name="idDatosReserva",
+     *          description="Id de un Dato Reserva",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),     
+     *  @OA\RequestBody(
+     *         @OA\JsonContent(
+     *               @OA\Property(
+     *                  property="aulasId", 
+     *                  type="array",
+     *                  @OA\Items(
+     *                      type="string"
+     *                  ),
+     *               ),
+     *         ),
+     *        
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      ) 
+     * )
+     * 
+     */
     public function deleteAulas(Request $request, $idDatosReserva){
         $aulas = $request->aulasId;    
         foreach($aulas as $aulaId){
