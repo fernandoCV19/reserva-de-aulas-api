@@ -32,12 +32,18 @@ class ReservaTest extends TestCase
     {
         $response = json_decode($this->get('reserva/aulas/1')->getContent(), true);
 
-        print_r($response);
-
         $verificacion1 = $response['aulas'][0]['nombre'] == "691F";
         $verificacion2 = $response['aulas'][1]['nombre'] == "692F";
         $verificacion3 = $response['aulas'][2]['nombre'] == "693F";
 
         $this -> assertTrue($verificacion1 and $verificacion2 and $verificacion3);
+    }
+
+
+    public function test_solicitar_creacion_datos_de_reserva()
+    {
+        $response = $this->post('reserva/crearReserva/1');
+
+        $response->assertStatus(200);
     }
 }

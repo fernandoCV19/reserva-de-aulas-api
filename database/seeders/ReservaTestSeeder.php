@@ -130,5 +130,38 @@ class ReservaTestSeeder extends Seeder
             'datos_reserva_id' => 2,
             'aula_id' => 5
         ]);
+
+        
+
+
+        DB::table('datos_reservas')->insert([
+            'id' => 3,
+            'fecha' => '2022-01-19',
+            'numero_estimado' => 100
+        ]);
+
+        DB::table('solicitud_reservas')->insert([
+            'id' => 1,
+            'fecha_creacion' => now(),
+            'datos_reserva_id' => 3
+        ]);
+
+        DB::table('datos_reserva_periodo')->insert([
+            'id' => 3,
+            'datos_reserva_id' => 3,
+            'periodo_id' => 1
+        ]);
+
+        DB::table('aula_datos_reserva')->insert([
+            'id' => 6,
+            'datos_reserva_id' => 3,
+            'aula_id' => 4
+        ]);
+
+        DB::table('aula_datos_reserva')->insert([
+            'id' => 7,
+            'datos_reserva_id' => 3,
+            'aula_id' => 5
+        ]);
     }
 }
