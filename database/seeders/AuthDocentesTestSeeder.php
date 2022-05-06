@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Http;
 
-class DocenteTestSeeder extends Seeder
+class AuthDocentesTestSeeder extends Seeder
 {
     /**
      * Run the database seeds.

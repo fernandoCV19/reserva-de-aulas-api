@@ -5,13 +5,13 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-use Database\Seeders\DocenteTestSeeder;
+use Database\Seeders\AuthDocentesTestSeeder;
 
-class DocenteTest extends TestCase
+class AuthDocenteTest extends TestCase
 {
 
     use RefreshDatabase;
-    protected $seeder = DocenteTestSeeder::class;
+    protected $seeder = AuthDocentesTestSeeder::class;
 
     /**
      * A basic feature test example.
