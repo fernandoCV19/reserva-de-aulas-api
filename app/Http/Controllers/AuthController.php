@@ -234,4 +234,17 @@ class AuthController extends Controller
         ], 201);
     }
 
+    
+    public function crearAdministrador($request){
+        $administrador = new Administrador();
+        $administrador -> nombre = $request->nombre;
+        $administrador -> contrasenia =bcrypt($request->contrasenia);
+        $administrador -> save();
+
+        return response()->json([
+            'message' =>'activado',
+            'administrador' => $administrador
+        ], 201);
+
+    }
 }

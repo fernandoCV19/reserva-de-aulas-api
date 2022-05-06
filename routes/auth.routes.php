@@ -13,5 +13,6 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::post('refresh', [AuthController::class, 'refresh']);
     Route::get('me', [AuthController::class, 'me']);
     Route::post('activar', [AuthController::class, 'activar']);
+    Route::post('crearAdmin', [AuthController::class, 'crearAdministrador']);
 });
 
