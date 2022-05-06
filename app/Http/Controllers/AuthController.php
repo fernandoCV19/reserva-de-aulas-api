@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Docente;
+use App\Models\Administrador;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use JWTAuth;
@@ -26,12 +27,21 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
+        $admin = false;
         $user = Docente::where("cod_SIS", "=", $request->cod_SIS)->first();
         
-        if(!$user) return response()->json(['message' => 'Codigo SIS o contraseña erroneos'], 401);
-        
+        if(!$user){
+            $user = Administrador::where("nombre", "=", $request->cod_SIS)->first();
+
+            if (!$user){
+                return response()->json(['message' => 'Codigo SIS o contraseña erroneos'], 401);
+            }else{
+                $admin = true;
+            }
+        }
+
         $token = JWTAuth::fromUser($user);
-        return $this->respondWithToken($token);
+        return $this->respondWithToken($token, $admin);
     }
 
     /**
@@ -73,12 +83,19 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function respondWithToken($token)
+    protected function respondWithToken($token, $admin)
     {
+        if($admin){
+            $rol = 'administrador';
+        }else{
+            $rol = 'docente';
+        }
+
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
+            'expires_in' => auth()->factory()->getTTL() * 60,
+            'rol' => $rol
         ]);
     }
 
@@ -96,6 +113,7 @@ class AuthController extends Controller
         -> where("nombre", "=", $request->nombre)->get(); 
         
         $docente = Docente::findOrFail($docenteID[0]->id);
+        $docente -> celular = $request -> celular;
         $docente -> activado = 1;
         $docente -> email = $request->email;
         $docente -> cod_SIS = $request->cod_SIS;
