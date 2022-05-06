@@ -8,9 +8,48 @@ use Illuminate\Support\Facades\DB;
 
 class AulasController extends Controller
 {
+    /**
+     * @OA\Get(
+     *      path= "/aula",
+     *      summary =  "Obtencion de todas las aulas",
+     *      tags = {"Aulas"},
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      ) 
+     * )
+     * 
+     */
     public function getTodasAulas(){
         return Aulas::all();
     }
+    /**
+     * @OA\Post(
+     *      path= "/aula/pendientes",
+     *      summary =  "Obtencion de las aulas que son parte de una solicitud de reserva pendiente en una fecha",
+     *      tags = {"Aulas"},
+     *      @OA\RequestBody(
+     *         @OA\JsonContent(
+     *               @OA\Property(
+     *                  property="fecha", 
+     *                  type="date"
+     *               ),
+     *         ),
+     *        
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      ) 
+     * )
+     * 
+     */
     public function getPendientes(){
         $aulasOcupadas=DB::table('solicitud_reservas')
         ->join("datos_reservas", "datos_reservas.id","=", "solicitud_reservas.datos_reserva_id")
@@ -23,6 +62,30 @@ class AulasController extends Controller
 
         return $aulasOcupadas;
     }
+    /**
+     * @OA\Post(
+     *      path= "/aula/disponibles",
+     *      summary =  "Obtencion de las aulas disponibles en una fecha",
+     *      tags = {"Aulas"},
+     *      @OA\RequestBody(
+     *         @OA\JsonContent(
+     *               @OA\Property(
+     *                  property="fecha", 
+     *                  type="date"
+     *               ),
+     *         ),
+     *        
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      ) 
+     * )
+     * 
+     */
     public function getDisponibles(){        
         $aulasOcupadas=DB::table('aula_datos_reserva')
         ->join('aulas','aula_datos_reserva.aula_id',"=","aulas.id")
@@ -56,7 +119,42 @@ class AulasController extends Controller
         }
         return  $aulasDisponibles;
     }
-
+    /**
+     * @OA\Post(
+     *      path= "/aula",
+     *      summary =  "Creacion de una nueva aula",
+     *      tags = {"Aulas"},
+     *      @OA\RequestBody(
+     *         @OA\JsonContent(
+     *               @OA\Property(
+     *                  property="capacidad", 
+     *                  type="int"
+     *               ),
+     *               @OA\Property(
+     *                  property="nombre", 
+     *                  type="string"
+     *               ),
+     *               @OA\Property(
+     *                  property="ubicacion", 
+     *                  type="string"
+     *               ),
+     *               @OA\Property(
+     *                  property="descripcion", 
+     *                  type="string"
+     *               ),
+     *         ),
+     *        
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      ) 
+     * )
+     * 
+     */
     public function crearAula(Request $request){
         $aula = new Aula();
         $aula -> capacidad = $request -> capacidad;
