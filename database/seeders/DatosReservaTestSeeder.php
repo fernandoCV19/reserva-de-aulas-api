@@ -96,5 +96,35 @@ class DatosReservaTestSeeder extends Seeder
             'datos_reserva_id' => 1,
             'aula_id' => 3
         ]);
+
+
+
+        DB::table('materias')->insert([
+            'id' => 1,
+            'nombre' => 'INTRODUCCION A LA PROGRAMACION',
+            'codigo' => '2010001'
+        ]);
+
+        DB::table('docentes')->insert([
+            'id' => 1,
+            'cod_SIS' => '',
+            'nombre' => 'ARZABE MAURE JOSE OMAR',
+            'celular' => '',
+            'contrasenia' => '',
+            'email' => '',
+        ]);
+
+        DB::table('grupos')->insert([
+            'id' => 1,
+            'nombre' => '1' ,
+            'docente_id' => 1 ,
+            'materia_id' => 1 ,
+        ]);
+
+        DB::table('periodos')->insert([
+            'id' => 2,
+            'hora_inicio' => '20:15:00',
+            'hora_fin' => '21:45:00'
+        ]);
     }
 }

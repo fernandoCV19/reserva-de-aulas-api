@@ -55,8 +55,6 @@ class DatosReservaTest extends TestCase
     public function test_solicitar_eliminacion_aulas_de_datos_reserva(){
         $response = $this->delete('datos-reserva/aulas/1',['aulasId' => [1]]);
 
-        print_r($response);
-
         $response->assertStatus(200);
     }
 
@@ -87,9 +85,16 @@ class DatosReservaTest extends TestCase
     
 
     public function test_solicitar_creacion_datos_reserva(){
-        $response = $this->post('datos-reserva/',['fecha' => now(), 'numero_estimado' => 100]);
+        $response = $this->post('datos-reserva/',[
+            "numero_estimado" => 1000,
+            "fecha" => now(),
+            "aulasId" => [1,2,3],
+            "gruposId" => [1],
+            "justificacionesLista" => ["Tomar examen"],
+            "periodosId" => [1]
+        ]);
 
-        $response->assertStatus(200);
+        $response->assertStatus(201);
     }
 
     public function test_verificar_creacion_datos_reserva(){
