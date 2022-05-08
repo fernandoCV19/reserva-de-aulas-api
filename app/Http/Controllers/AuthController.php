@@ -92,11 +92,7 @@ class AuthController extends Controller
      */
     public function me()
     {        
-        if(auth()->user() == null){
-            echo("llega");
-            return response()->json(['message' => 'No autorizado'], 401);}
-        else 
-            return response()->json(auth()->user());
+        return response()->json(auth()->user());
     }
 
     /**
