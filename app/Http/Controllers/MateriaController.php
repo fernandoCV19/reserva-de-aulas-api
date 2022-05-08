@@ -72,4 +72,14 @@ class MateriaController extends Controller
     public function getGrupos($idMateria){
         return Materia::find($idMateria)->grupos;
     }
+
+    public function getMateriaPorId(Request $request){
+        $materia=  Materia::findOrFail($request->idMateria);
+        return response()->json($materia, 200,[]);
+    }
+
+    public function getMaterias(){
+        $materia =  Materia::all();
+        return response()->json($materia, 200,[]);
+    }
 }
