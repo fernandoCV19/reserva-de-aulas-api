@@ -43,7 +43,12 @@ return [
 
         'api' => [
             'driver' => 'jwt',
-            'provider' => 'docentes',
+            'provider' =>'docentes',
+            'hash' => false,
+        ],
+        'admin' => [
+            'driver' => 'jwt',
+            'provider' =>'administradors',
             'hash' => false,
         ],
     ],
@@ -69,6 +74,10 @@ return [
         'docentes' => [
             'driver' => 'eloquent',
             'model' => App\Models\Docente::class,
+        ],
+        'administradors' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Administrador::class,
         ],
 
         // 'users' => [
