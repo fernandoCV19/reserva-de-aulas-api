@@ -47,7 +47,7 @@ class CuentasDeDesarrolladoresSeeder extends Seeder
             'contrasenia' => '',
             'cod_SIS' => ''
         ]);
-        
+
         DB::table('docentes')->insert([
             'id' => Str::uuid() -> toString(),
             'cod_SIS' => '',
@@ -91,8 +91,8 @@ class CuentasDeDesarrolladoresSeeder extends Seeder
 
         DB::table('administradors')->insert([
             'id' => Str::uuid() -> toString(),
-            'nombre' => '',
-            'contrasenia' => 'DIANA VARGAS ORELLANA',
+            'nombre' => 'DIANA VARGAS ORELLANA',
+            'contrasenia' => '',
             'cod_SIS' => ''
         ]);
 
