@@ -165,4 +165,16 @@ class AulasController extends Controller
         $aula -> save();
         return $aula;
     }
+
+    public function filtrarAulasPorAreas(Request $request){
+        $aulasPorAreas = Aula::where('ubicacion', '=', $request ->area);
+        return $aulasPorAreas;
+    }
+
+    public function filtrarAulasPorCantidad(Request $request){
+        $aulasPorCant = Aula::where('capacidad', '=', $request ->cantidad);
+        return $aulasPorCant;
+    }
+
+    
 }
