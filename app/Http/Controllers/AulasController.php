@@ -219,6 +219,7 @@ class AulasController extends Controller
             -> get();
         $aulasDisponibles = array();
         $bandera =false;
+        $horarios = array();
         for ($j=0; $j < sizeof($aulas); $j++) { 
             for ($i=0; $i < sizeof($aulasOcupadas); $i++) { 
                           
@@ -227,14 +228,39 @@ class AulasController extends Controller
                    $bandera = true;
                }
            }
+           
            if($bandera == false){
-                array_push($aulasDisponibles, $aulas[$j]);
+              
+            if($j-1 >=0 && $aulas[$j]->nombre!= $aulas[$j-1]->nombre)  {
+            $aulaNueva = new \stdClass();
+              $aulaNueva -> id = $aulas[$j-1]->id;
+              $aulaNueva -> nombre = $aulas[$j-1]->nombre;
+              $aulaNueva -> ubicacion = $aulas[$j-1]->ubicacion;
+              $aulaNueva -> capacidad = $aulas[$j-1]->capacidad;
+              $aulaNueva -> descripcion = $aulas[$j-1]->descripcion;
+              $aulaNueva -> horarios = $horarios; 
+
+              $horarios = null;
+              $horarios = array();
+              array_push($aulasDisponibles, $aulaNueva);
+            }
+            else {
+                $horario = new \stdClass();
+                $horario ->inicio = $aulas[$j]->hora_inicio;
+                $horario ->fin = $aulas[$j]->hora_fin;
+ 
+               array_push($horarios,$horario);
+            }
            }
            else {
                $bandera = false;
            }
         }
-        return $aulasDisponibles;
+        if (sizeof($aulasDisponibles) == 0){
+            return $aulas;
+        }
+        else
+            return $aulasDisponibles;
     }
 
    
