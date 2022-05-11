@@ -69,6 +69,25 @@ class ReservasParaPruebas extends Seeder
         ]);
 
 
+        DB::table('aula_datos_reserva')->insert([
+            'id' => Str::uuid() -> toString(),
+            'datos_reserva_id' => $idDatosReserva1,
+            'aula_id' => $aula691A
+        ]);
+
+        DB::table('datos_reserva_grupo')->insert([
+            'id' => Str::uuid() -> toString(),
+            'datos_reserva_id' => $idDatosReserva1,
+            'aula_id' => $aula691A
+        ]);
+
+        DB::table('datos_reserva_periodo')->insert([
+            'id' => Str::uuid() -> toString(),
+            'datos_reserva_id' => $idDatosReserva1,
+            'aula_id' => $aula691A
+        ]);
+
+        
         $idDatosReserva2 = Str::uuid() -> toString();
 
         DB::table('datos_reservas')->insert([
