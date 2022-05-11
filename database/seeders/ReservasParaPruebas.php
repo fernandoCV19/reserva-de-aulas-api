@@ -68,6 +68,7 @@ class ReservasParaPruebas extends Seeder
             'datos_reserva_id' => $idDatosReserva1
         ]);
 
+
         $idDatosReserva2 = Str::uuid() -> toString();
 
         DB::table('datos_reservas')->insert([
@@ -79,8 +80,9 @@ class ReservasParaPruebas extends Seeder
         DB::table('reservas')->insert([
             'id' => Str::uuid() -> toString(),
             'fecha_creacion' => '2022-04-7',
-            'datos_reserva_id' => $idDatosReserva1
+            'datos_reserva_id' => $idDatosReserva2
         ]);
+
         
         $idDatosReserva3 = Str::uuid() -> toString();
 
@@ -92,9 +94,10 @@ class ReservasParaPruebas extends Seeder
 
         DB::table('reservas')->insert([
             'id' => Str::uuid() -> toString(),
-            'fecha_creacion' => '2022-04-7',
-            'datos_reserva_id' => $idDatosReserva1
+            'fecha_creacion' => '2022-04-8',
+            'datos_reserva_id' => $idDatosReserva3
         ]);
+
         
         $idDatosReserva4 = Str::uuid() -> toString();
 
@@ -106,9 +109,10 @@ class ReservasParaPruebas extends Seeder
 
         DB::table('reservas')->insert([
             'id' => Str::uuid() -> toString(),
-            'fecha_creacion' => '2022-04-7',
-            'datos_reserva_id' => $idDatosReserva1
+            'fecha_creacion' => '2022-04-9',
+            'datos_reserva_id' => $idDatosReserva4
         ]);
+
         
         $idDatosReserva5 = Str::uuid() -> toString();
 
@@ -120,10 +124,11 @@ class ReservasParaPruebas extends Seeder
 
         DB::table('reservas')->insert([
             'id' => Str::uuid() -> toString(),
-            'fecha_creacion' => '2022-04-7',
-            'datos_reserva_id' => $idDatosReserva1
+            'fecha_creacion' => '2022-04-20',
+            'datos_reserva_id' => $idDatosReserva5
         ]);
         
+
         $idDatosReserva6 = Str::uuid() -> toString();
 
         DB::table('datos_reservas')->insert([
@@ -134,9 +139,10 @@ class ReservasParaPruebas extends Seeder
 
         DB::table('reservas')->insert([
             'id' => Str::uuid() -> toString(),
-            'fecha_creacion' => '2022-04-7',
-            'datos_reserva_id' => $idDatosReserva1
+            'fecha_creacion' => '2022-04-11',
+            'datos_reserva_id' => $idDatosReserva6
         ]);
+
 
         $idDatosReserva7 = Str::uuid() -> toString();
         
@@ -148,10 +154,11 @@ class ReservasParaPruebas extends Seeder
 
         DB::table('reservas')->insert([
             'id' => Str::uuid() -> toString(),
-            'fecha_creacion' => '2022-04-7',
-            'datos_reserva_id' => $idDatosReserva1
+            'fecha_creacion' => '2022-04-1',
+            'datos_reserva_id' => $idDatosReserva7
         ]);
         
+
         $idDatosReserva8 = Str::uuid() -> toString();
 
         DB::table('datos_reservas')->insert([
@@ -162,10 +169,11 @@ class ReservasParaPruebas extends Seeder
 
         DB::table('reservas')->insert([
             'id' => Str::uuid() -> toString(),
-            'fecha_creacion' => '2022-04-7',
-            'datos_reserva_id' => $idDatosReserva1
+            'fecha_creacion' => '2022-04-5',
+            'datos_reserva_id' => $idDatosReserva8
         ]);
         
+
         $idDatosReserva9 = Str::uuid() -> toString();
 
         DB::table('datos_reservas')->insert([
@@ -176,10 +184,11 @@ class ReservasParaPruebas extends Seeder
 
         DB::table('reservas')->insert([
             'id' => Str::uuid() -> toString(),
-            'fecha_creacion' => '2022-04-7',
-            'datos_reserva_id' => $idDatosReserva1
+            'fecha_creacion' => '2022-04-5',
+            'datos_reserva_id' => $idDatosReserva9
         ]);
         
+
         $idDatosReserva10 = Str::uuid() -> toString();
 
         DB::table('datos_reservas')->insert([
@@ -191,7 +200,7 @@ class ReservasParaPruebas extends Seeder
         DB::table('reservas')->insert([
             'id' => Str::uuid() -> toString(),
             'fecha_creacion' => '2022-04-7',
-            'datos_reserva_id' => $idDatosReserva1
+            'datos_reserva_id' => $idDatosReserva10
         ]);
     }
 }
