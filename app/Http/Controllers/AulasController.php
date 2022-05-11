@@ -213,7 +213,7 @@ class AulasController extends Controller
         ->get();
         $aulas=DB::table(DB::raw('aulas, periodos'))
             //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])
-            -> where("capacidad","=",$request->capacidad)
+            -> where([["capacidad",">=",$request->capacidadMin],["capacidad","<=",$request->capacidadMax]])
             -> orderBy('nombre',"ASC")
             -> orderBy('hora_inicio')
             -> get();
