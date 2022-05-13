@@ -263,5 +263,65 @@ class AulasController extends Controller
             return $aulasDisponibles;
     }
 
+    public function filtrarAulasPorPeriodo(Request $request){
+        $aulasOcupadas=DB::table('aula_datos_reserva')
+        ->join('aulas','aula_datos_reserva.aula_id',"=","aulas.id")
+        ->join('datos_reserva_periodo',
+                'datos_reserva_periodo.datos_reserva_id',"=","aula_datos_reserva.datos_reserva_id")
+        ->join('datos_reservas','datos_reservas.id',"=","aula_datos_reserva.datos_reserva_id")
+        ->join("periodos", "periodos.id", "=", "datos_reserva_periodo.periodo_id")
+        ->where("fecha","=",$request->fecha)
+        ->get();
+        $aulas=DB::table(DB::raw('aulas, periodos'))
+            //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])
+            -> where([["hora_inicio",">=",$request->periodoIni],["hora_fin","<=",$request->periodoFin]])
+            -> orderBy('nombre',"ASC")
+            -> orderBy('hora_inicio')
+            -> get();
+        $aulasDisponibles = array();
+        $bandera =false;
+        $horarios = array();
+        for ($j=0; $j < sizeof($aulas); $j++) { 
+            for ($i=0; $i < sizeof($aulasOcupadas); $i++) { 
+                          
+               if($aulasOcupadas[$i]->nombre == $aulas[$j]->nombre && 
+               $aulasOcupadas[$i]->hora_inicio == $aulas[$j]->hora_inicio){
+                   $bandera = true;
+               }
+           }
+           
+           if($bandera == false){
+              
+            if($j-1 >=0 && $aulas[$j]->nombre!= $aulas[$j-1]->nombre)  {
+            $aulaNueva = new \stdClass();
+              $aulaNueva -> id = $aulas[$j-1]->id;
+              $aulaNueva -> nombre = $aulas[$j-1]->nombre;
+              $aulaNueva -> ubicacion = $aulas[$j-1]->ubicacion;
+              $aulaNueva -> capacidad = $aulas[$j-1]->capacidad;
+              $aulaNueva -> descripcion = $aulas[$j-1]->descripcion;
+              $aulaNueva -> horarios = $horarios; 
+
+              $horarios = null;
+              $horarios = array();
+              array_push($aulasDisponibles, $aulaNueva);
+            }
+            else {
+                $horario = new \stdClass();
+                $horario ->inicio = $aulas[$j]->hora_inicio;
+                $horario ->fin = $aulas[$j]->hora_fin;
+ 
+               array_push($horarios,$horario);
+            }
+           }
+           else {
+               $bandera = false;
+           }
+        }
+        if (sizeof($aulasDisponibles) == 0){
+            return $aulas;
+        }
+        else
+            return $aulasDisponibles;
+    }
    
 }
