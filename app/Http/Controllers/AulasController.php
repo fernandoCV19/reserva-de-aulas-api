@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Aula;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\LengthAwarePaginator;
+
 
 class AulasController extends Controller
 {
@@ -170,7 +172,7 @@ class AulasController extends Controller
             ->orderBy('hora_inicio')
             ->get();
 
-        return AulasController::anidarHorarios($request, $aulas);
+        return AulasController::anidarHorarios($request, $aulas)->simplePaginate(10);
     }
 
 
@@ -309,5 +311,26 @@ class AulasController extends Controller
         else
             return $aulasDisponibles;
     }
-   
+
+    public function filtrarGeneral(Request $request){
+        $aulas = DB::table(DB::raw('aulas, periodos'))
+        //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])
+            ->where([["capacidad", ">=", $request->capacidadMin], ["capacidad", "<=", $request->capacidadMax], 
+                     ["ubicacion", $request->area]])
+            ->orderBy('nombre', "ASC")
+            ->orderBy('hora_inicio')
+            ->get();
+            
+
+        $filtrado = AulasController::anidarHorarios($request, $aulas);
+        $total = count($filtrado);
+        $perPage = 5; // How many items do you want to display.
+        $currentPage = 1; // The index page.
+        $paginator = new LengthAwarePaginator($filtrado, $total, $perPage, $currentPage, [
+            'path' => request()->url(),
+            'query' => request()->query(),
+        ]);
+        
+        return $paginator;
+    }
 }

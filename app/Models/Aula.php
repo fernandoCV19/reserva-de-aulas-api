@@ -26,5 +26,5 @@ class Aula extends Model
         self::creating(function ($model) {
             $model->id = Str::uuid()->toString();
         });
-    }
+    }   
 }
