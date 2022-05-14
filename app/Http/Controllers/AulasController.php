@@ -90,36 +90,13 @@ class AulasController extends Controller
      */
     public function getDisponibles()
     {
-        $aulasOcupadas = DB::table('aula_datos_reserva')
-            ->join('aulas', 'aula_datos_reserva.aula_id', "=", "aulas.id")
-            ->join('datos_reserva_periodo',
-                'datos_reserva_periodo.datos_reserva_id', "=", "aula_datos_reserva.datos_reserva_id")
-            ->join('datos_reservas', 'datos_reservas.id', "=", "aula_datos_reserva.datos_reserva_id")
-            ->join("periodos", "periodos.id", "=", "datos_reserva_periodo.periodo_id")
-            ->where("fecha", request("fecha"))
-            ->get();
         $aulas = DB::table(DB::raw('aulas, periodos'))
         //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])
             ->orderBy('nombre', "ASC")
             ->orderBy('hora_inicio')
             ->get();
-        $aulasDisponibles = array();
-        $bandera = false;
-        for ($j = 0; $j < sizeof($aulas); $j++) {
-            for ($i = 0; $i < sizeof($aulasOcupadas); $i++) {
-
-                if ($aulasOcupadas[$i]->nombre == $aulas[$j]->nombre &&
-                    $aulasOcupadas[$i]->hora_inicio == $aulas[$j]->hora_inicio) {
-                    $bandera = true;
-                }
-            }
-            if ($bandera == false) {
-                array_push($aulasDisponibles, $aulas[$j]);
-            } else {
-                $bandera = false;
-            }
-        }
-        return $aulasDisponibles;
+        
+        return AulasController::anidarHorarios($request, $aulas);
     }
     /**
      * @OA\Post(
@@ -172,40 +149,33 @@ class AulasController extends Controller
     //Aulas en determinada area con fecha (fecha es obligatoria)
     public function filtrarAulasPorAreas(Request $request)
     {
-        $aulasOcupadas = DB::table('aula_datos_reserva')
-            ->join('aulas', 'aula_datos_reserva.aula_id', "=", "aulas.id")
-            ->join('datos_reserva_periodo',
-                'datos_reserva_periodo.datos_reserva_id', "=", "aula_datos_reserva.datos_reserva_id")
-            ->join('datos_reservas', 'datos_reservas.id', "=", "aula_datos_reserva.datos_reserva_id")
-            ->join("periodos", "periodos.id", "=", "datos_reserva_periodo.periodo_id")
-            ->where("fecha", "=", $request->fecha)
-            ->get();
+       
         $aulas = DB::table(DB::raw('aulas, periodos'))
         //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])
-            ->where("ubicacion", "=", $request->area)
+            ->where("ubicacion", "=", request("area"))
             ->orderBy('nombre', "ASC")
             ->orderBy('hora_inicio')
             ->get();
-        $aulasDisponibles = array();
-        $bandera = false;
-        for ($j = 0; $j < sizeof($aulas); $j++) {
-            for ($i = 0; $i < sizeof($aulasOcupadas); $i++) {
 
-                if ($aulasOcupadas[$i]->nombre == $aulas[$j]->nombre &&
-                    $aulasOcupadas[$i]->hora_inicio == $aulas[$j]->hora_inicio) {
-                    $bandera = true;
-                }
-            }
-            if ($bandera == false) {
-                array_push($aulasDisponibles, $aulas[$j]);
-            } else {
-                $bandera = false;
-            }
-        }
-        return $aulasDisponibles;
+            
+       return AulasController::anidarHorarios($request, $aulas);
     }
+    
     public function filtrarAulasPorCantidad(Request $request)
     {
+        $aulas = DB::table(DB::raw('aulas, periodos'))
+        //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])
+            ->where([["capacidad", ">=", $request->capacidadMin], ["capacidad", "<=", $request->capacidadMax]])
+            ->orderBy('nombre', "ASC")
+            ->orderBy('hora_inicio')
+            ->get();
+
+        return AulasController::anidarHorarios($request, $aulas);
+    }
+
+
+
+    private function anidarHorarios(Request $request,$aulas){
         $aulasOcupadas = DB::table('aula_datos_reserva')
             ->join('aulas', 'aula_datos_reserva.aula_id', "=", "aulas.id")
             ->join('datos_reserva_periodo',
@@ -213,15 +183,7 @@ class AulasController extends Controller
             ->join('datos_reservas', 'datos_reservas.id', "=", "aula_datos_reserva.datos_reserva_id")
             ->join("periodos", "periodos.id", "=", "datos_reserva_periodo.periodo_id")
             ->where("fecha", "=", $request->fecha)
-            ->orderBy('nombre', "ASC")
             ->get();
-            $aulas=DB::table(DB::raw('aulas, periodos'))
-            //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])
-            -> where([["capacidad",">=",$request->capacidadMin],["capacidad","<=",$request->capacidadMax]])
-            -> orderBy('nombre',"ASC")
-            -> orderBy('hora_inicio')
-            -> get();
-
         $aulasDisponibles = array();
         $bandera = false;
         $horarios = array();
@@ -232,8 +194,8 @@ class AulasController extends Controller
                     $bandera = true;
                 }
             }
-            if($j== sizeof($aulas)-1){
-                
+            if ($j == sizeof($aulas) - 1) {
+
                 if ($bandera == false) {
                     $horario = new \stdClass();
                     $horario->inicio = $aulas[$j]->hora_inicio;
@@ -284,13 +246,7 @@ class AulasController extends Controller
             }
 
         }
-        if (sizeof($aulasDisponibles) == 0) {
-            echo ("entra");
-            return $aulas;
-        } else {
-            return $aulasDisponibles;
-        }
-
+        return $aulasDisponibles;
     }
 
 }
