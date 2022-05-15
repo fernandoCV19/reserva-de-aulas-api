@@ -17,7 +17,7 @@ class AuthDocenteController extends Controller
     public function __construct()
     {
         //$this->middleware('jwt.verify', ['except' => ['login', 'activar','activarAdmin']]);
-        $this->middleware('auth:docente', ['except' => ['login', 'register']]);
+        $this->middleware('auth:docente', ['except' => ['login', 'activar']]);
     }
 
     /**
@@ -239,7 +239,5 @@ class AuthDocenteController extends Controller
             'message' =>'activado',
             'docente' => $docente
         ], 201);
-    }
-
-   
+    }   
 }
