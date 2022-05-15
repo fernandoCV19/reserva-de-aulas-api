@@ -28,11 +28,12 @@ Route::middleware('jwt.verify:admin')->get('/user', function (Request $request) 
 Route::group([
     'middleware' => 'jwt.verify'
 ], function ($router) {
-    Route::post('crearAdmin', [AuthController::class, 'activarAdmin']);
-    Route::post('loginAdmin', [AuthAdminController::class, 'login']);
+    
     Route::post('logoutAdmin', [AuthAdminController::class, 'logout']);
     Route::post('refreshAdmin', [AuthAdminController::class, 'refresh']);
     Route::get('meAdmin', [AuthAdminController::class, 'me']);
+    Route::post('crearAdmin', [AuthController::class, 'activarAdmin']);
+    Route::post('loginAdmin', [AuthAdminController::class, 'login']);
     
 });
 
@@ -42,12 +43,12 @@ Route::middleware('jwt.verify:docente')->get('/user', function (Request $request
 });
 
 Route::group([
-    'middleware' => 'jwt'
+    'middleware' => 'jwt.verify',
 ], function ($router) {
-    Route::post('loginDocente', [AuthDocenteController::class, 'login']);
+
     Route::post('logoutDocente', [AuthDocenteController::class, 'logout']);
     Route::post('refreshDocente', [AuthDocenteController::class, 'refresh']);
     Route::get('meDocente', [AuthDocenteController::class, 'me']);
-    Route::post('activarDocente', [AuthDocenteController::class,  'activar']);
-    
 });
+Route::post('loginDocente', [AuthDocenteController::class, 'login']);
+Route::post('activarDocente', [AuthDocenteController::class,  'activar']);
