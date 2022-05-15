@@ -748,15 +748,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'OJOPI MORENO LUIS GUSTAVO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'PEREZ FERREL ROBERTO' )->first()->id;
         
         DB::table('grupos')->insert([
@@ -1531,15 +1522,6 @@ class GruposRealesSeeder extends Seeder
         ]);
         
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ALCON PU¥A JUAN NOLASCO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'GONZALES CARTAGENA LUCIO' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -2349,15 +2331,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'LEON ROMERO GUALBERTO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '2';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'VALLEJO CAMACHO MARCO ANTONIO' )->first()->id;
         
@@ -2408,15 +2381,6 @@ class GruposRealesSeeder extends Seeder
         ]);
         
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'GUARACHI ARELLANO RONALD ROLY' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'CARRASCO CALVO ALVARO HERNANDO' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -2750,15 +2714,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'FLORES GARCIA HERNAN' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '1A';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'HERBAS MALDONADO EDGARDO' )->first()->id;
         
@@ -2818,15 +2773,6 @@ class GruposRealesSeeder extends Seeder
         ]);
         
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'PEREZ FERREL ROBERTO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'TAYLOR TERRAZAS DARLONG HOWARD' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -2946,15 +2892,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'TRUJILLO ARANIBAR WILSON' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '3';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'DELGADILLO COSSIO DAVID ALFREDO' )->first()->id;
         
@@ -2977,15 +2914,6 @@ class GruposRealesSeeder extends Seeder
         ]);
         
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'GUARACHI ARELLANO RONALD ROLY' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'MULLER SANTA CRUZ HANS CRISTIAN' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -3196,15 +3124,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'VERA CORTES CARLOS ALBERTO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '3';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'LEDEZMA PERIZZA FERNANDO ARTURO' )->first()->id;
         
@@ -3299,15 +3218,6 @@ class GruposRealesSeeder extends Seeder
         ]);
         
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'PUMA ARAMAYO JHONNY ALVARO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ESCOBAR SELEME MARCO' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -3470,15 +3380,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ESCOBAR SELEME MARCO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '2';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'VILLAZON GOMEZ MAURICIO FLORENCIO' )->first()->id;
         
@@ -3520,15 +3421,6 @@ class GruposRealesSeeder extends Seeder
         ]);
         
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'SAINZ FERRUFINO MARCELO GUSTAVO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'MERUVIA JOSE' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -4456,15 +4348,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'MULLER SANTA CRUZ HANS CRISTIAN' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $codigoMateria = DB::table('materias')->select('id')->where('codigo', '=', '2006020' )->first()->id;
         $nombreGrupo = 'I';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'UGARTE CEJAS FELIX' )->first()->id;
@@ -4539,15 +4422,6 @@ class GruposRealesSeeder extends Seeder
         ]);
         
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ORELLANA LUPI CELSO ROBERTO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'TRUJILLO ARANIBAR WILSON' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -5057,15 +4931,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'RODRIGUEZ SEJAS JUAN ANTONIO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '2A';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'CARRASCO CALVO ALVARO HERNANDO' )->first()->id;
         
@@ -5147,15 +5012,6 @@ class GruposRealesSeeder extends Seeder
         ]);
         
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'LOPEZ JUAN ZENON' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ROMERO ENCINAS RAUL' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -5415,15 +5271,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ESPINOZA OROSCO JOSE' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '2';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ESPINOZA OROSCO JOSE' )->first()->id;
         
@@ -5593,15 +5440,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ROMERO ENCINAS RAUL' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '5';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ROMERO ENCINAS RAUL' )->first()->id;
         
@@ -5670,15 +5508,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ESPINOZA OROSCO JOSE' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '2';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'BUSTILLOS VARGAS ALEX ISRRAEL' )->first()->id;
         
@@ -5690,15 +5519,6 @@ class GruposRealesSeeder extends Seeder
         ]);
         
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'PEREZ PEREDO YURI GERMAN' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'BUSTILLOS VARGAS ALEX ISRRAEL' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -5766,15 +5586,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ARAOZ JALDIN JOAQUIN RICARDO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ALCOBA CAMPOS NORMAN ISRAEL' )->first()->id;
         
         DB::table('grupos')->insert([
@@ -5823,15 +5634,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ESPINOZA OROSCO RUBEN' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '2';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ARISPE SANTANDER ALBERTO CARLOS' )->first()->id;
         
@@ -5843,15 +5645,6 @@ class GruposRealesSeeder extends Seeder
         ]);
         
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'TANCARA SANDAGORDA JOSE FELIX' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ARISPE SANTANDER ALBERTO CARLOS' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -5940,24 +5733,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'CASTILLO ZEGARRA JUAN CARLOS' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ORELLANA JIMENEZ JAIME' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $codigoMateria = DB::table('materias')->select('id')->where('codigo', '=', '2014009' )->first()->id;
         $nombreGrupo = '1';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'MANZANEDA MAMANI JUVENAL' )->first()->id;
@@ -5987,35 +5762,8 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'MANZANEDA MAMANI JUVENAL' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $codigoMateria = DB::table('materias')->select('id')->where('codigo', '=', '2014010' )->first()->id;
         $nombreGrupo = '1';
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'MEZA ROSSO FELIX' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'MONTERO GUEVARA JUAN JOSE EDGAR' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'MEZA ROSSO FELIX' )->first()->id;
         
         DB::table('grupos')->insert([
@@ -6067,15 +5815,6 @@ class GruposRealesSeeder extends Seeder
         ]);
         
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'SARZURI SANTOS ANAYS PITI' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'MERIDA LOPEZ REINALDO' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -6164,15 +5903,6 @@ class GruposRealesSeeder extends Seeder
         ]);
         
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'FLORES BALDERRAMA ARIEL VICTOR' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'URRUTIA MEDRANO JOSE A.' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -6493,15 +6223,6 @@ class GruposRealesSeeder extends Seeder
         ]);
         
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'SEMPERTEGUI TAPIA ALDO GROVER' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ROMAN ARISPE MANUEL FDO.' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -7275,15 +6996,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'SOTO MOREIRA JUAN CARLOS' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $codigoMateria = DB::table('materias')->select('id')->where('codigo', '=', '2008048' )->first()->id;
         $nombreGrupo = '1';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'GARCIA MOLINA JUAN RUBEN' )->first()->id;
@@ -7506,15 +7218,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ROMERO ENCINAS RAUL' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '5';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ROMERO ENCINAS RAUL' )->first()->id;
         
@@ -7606,25 +7309,7 @@ class GruposRealesSeeder extends Seeder
         
         $codigoMateria = DB::table('materias')->select('id')->where('codigo', '=', '2018017' )->first()->id;
         $nombreGrupo = '1';
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'auxiliar por designar ayudante' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'TERRAZAS LOBO JUAN' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'auxiliar por designar ayudante' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -7696,15 +7381,6 @@ class GruposRealesSeeder extends Seeder
         ]);
         
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'PEREZ PEREDO YURI GERMAN' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ESPINOZA OROSCO JOSE' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -7832,15 +7508,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ARAOZ JALDIN JOAQUIN RICARDO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ALCOBA CAMPOS NORMAN ISRAEL' )->first()->id;
         
         DB::table('grupos')->insert([
@@ -7889,15 +7556,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ESPINOZA OROSCO RUBEN' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '2';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ARISPE SANTANDER ALBERTO CARLOS' )->first()->id;
         
@@ -7909,15 +7567,6 @@ class GruposRealesSeeder extends Seeder
         ]);
         
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'TANCARA SANDAGORDA JOSE FELIX' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ARISPE SANTANDER ALBERTO CARLOS' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -8681,15 +8330,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'RODRIGUEZ SEJAS JUAN ANTONIO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '2A';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'CARRASCO CALVO ALVARO HERNANDO' )->first()->id;
         
@@ -8779,15 +8419,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ROMERO ENCINAS RAUL' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '4A';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'FIORILO LOZADA AMERICO' )->first()->id;
         
@@ -8848,15 +8479,6 @@ class GruposRealesSeeder extends Seeder
         ]);
         
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'HEREDIA SOLIZ EDILBERTO JONATHAN' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'MONTANO QUIROGA VICTOR HUGO' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -9056,15 +8678,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'FERNANDEZ GUZMAN HELDER OCTAVIO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '6';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'FERNANDEZ GUZMAN HELDER OCTAVIO' )->first()->id;
         
@@ -9096,15 +8709,6 @@ class GruposRealesSeeder extends Seeder
         ]);
         
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'PEREZ PEREDO YURI GERMAN' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ESPINOZA OROSCO JOSE' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -9282,15 +8886,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ROMERO ENCINAS RAUL' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '5';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ROMERO ENCINAS RAUL' )->first()->id;
         
@@ -9359,15 +8954,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ESPINOZA OROSCO JOSE' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '2';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'BUSTILLOS VARGAS ALEX ISRRAEL' )->first()->id;
         
@@ -9379,15 +8965,6 @@ class GruposRealesSeeder extends Seeder
         ]);
         
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'PEREZ PEREDO YURI GERMAN' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'BUSTILLOS VARGAS ALEX ISRRAEL' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -9476,15 +9053,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ARAOZ JALDIN JOAQUIN RICARDO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ALCOBA CAMPOS NORMAN ISRAEL' )->first()->id;
         
         DB::table('grupos')->insert([
@@ -9533,15 +9101,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ESPINOZA OROSCO RUBEN' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '2';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ARISPE SANTANDER ALBERTO CARLOS' )->first()->id;
         
@@ -9553,15 +9112,6 @@ class GruposRealesSeeder extends Seeder
         ]);
         
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'TANCARA SANDAGORDA JOSE FELIX' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ARISPE SANTANDER ALBERTO CARLOS' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -9639,15 +9189,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'URRUTIA MEDRANO JOSE A.' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $codigoMateria = DB::table('materias')->select('id')->where('codigo', '=', '2014059' )->first()->id;
         $nombreGrupo = '1';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'TORRICO BARRON NORMAN' )->first()->id;
@@ -9700,33 +9241,6 @@ class GruposRealesSeeder extends Seeder
         ]);
         
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'MONTERO GUEVARA JUAN JOSE EDGAR' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ARISPE SANTANDER ALBERTO CARLOS' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'MONTERO GUEVARA JUAN JOSE EDGAR' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ARISPE SANTANDER ALBERTO CARLOS' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -9851,15 +9365,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'MERIDA LOPEZ REINALDO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $codigoMateria = DB::table('materias')->select('id')->where('codigo', '=', '2014015' )->first()->id;
         $nombreGrupo = '1';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'JALDIN FLORERO HERNAN' )->first()->id;
@@ -9883,15 +9388,6 @@ class GruposRealesSeeder extends Seeder
         ]);
         
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'FLORES BALDERRAMA ARIEL VICTOR' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'URRUTIA MEDRANO JOSE A.' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -10282,15 +9778,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ZAMBRANA BURGOS JHOMIL EFRAIN' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $codigoMateria = DB::table('materias')->select('id')->where('codigo', '=', '2016005' )->first()->id;
         $nombreGrupo = '1';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ORELLANA LAFUENTE RENAN JORGE' )->first()->id;
@@ -10623,15 +10110,6 @@ class GruposRealesSeeder extends Seeder
         ]);
         
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'GUARACHI ARELLANO RONALD ROLY' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'MULLER SANTA CRUZ HANS CRISTIAN' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -11300,15 +10778,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'Por Designar ...' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $codigoMateria = DB::table('materias')->select('id')->where('codigo', '=', '2006019' )->first()->id;
         $nombreGrupo = 'F';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'GARCIA ANTURIANO OSCAR RICARDO' )->first()->id;
@@ -11540,15 +11009,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'RELOS PACO SANTIAGO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '4';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'RELOS PACO SANTIAGO' )->first()->id;
         
@@ -11568,15 +11028,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'RELOS PACO SANTIAGO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '5';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'FLORES GARCIA HERNAN' )->first()->id;
         
@@ -11588,15 +11039,6 @@ class GruposRealesSeeder extends Seeder
         ]);
         
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'GUARACHI ARELLANO RONALD ROLY' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'FLORES GARCIA HERNAN' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -11627,15 +11069,6 @@ class GruposRealesSeeder extends Seeder
         ]);
         
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ROMERO COCA MIROSLAVA LINNETE' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'MANCHEGO CASTELLON ROBERTO JUAN' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -11840,15 +11273,6 @@ class GruposRealesSeeder extends Seeder
         ]);
         
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'GUARACHI ARELLANO RONALD ROLY' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'MULLER SANTA CRUZ HANS CRISTIAN' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -12880,15 +12304,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'LEON ROMERO GUALBERTO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $codigoMateria = DB::table('materias')->select('id')->where('codigo', '=', '2008054' )->first()->id;
         $nombreGrupo = '10';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'GONZALES CARTAGENA LUCIO' )->first()->id;
@@ -12997,26 +12412,8 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'Por Designar ...' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '5';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'MONTANO QUIROGA VICTOR HUGO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'JIMENEZ GUZMAN DANILO ERNESTO' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -13035,25 +12432,7 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'TORRICO PEREZ ALEXANDRA' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '7';
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'HEREDIA SOLIZ EDILBERTO JONATHAN' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'FLORES VILLARROEL CORINA' )->first()->id;
         
         DB::table('grupos')->insert([
@@ -13134,24 +12513,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'CAMPOS GUEVARA SHIRLEY' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'OMONTE OJALVO JOSE ROBERTO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $codigoMateria = DB::table('materias')->select('id')->where('codigo', '=', '2008056' )->first()->id;
         $nombreGrupo = '12';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'MARTINEZ MAIDA AMILCAR SAUL' )->first()->id;
@@ -13163,53 +12524,8 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'OJOPI MORENO LUIS GUSTAVO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '6';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'TERRAZAS LOBO JUAN' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'auxiliar por designar ayudante' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'OJOPI MORENO LUIS GUSTAVO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'TERRAZAS LOBO JUAN' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'auxiliar por designar ayudante' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -13239,24 +12555,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'OJEDA JORGE JAVIER EDUARDO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'BLANCO COCA LETICIA' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '3';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'BLANCO COCA LETICIA' )->first()->id;
         
@@ -13267,25 +12565,7 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'HEREDIA SOLIZ EDILBERTO JONATHAN' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '5';
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'OJEDA JORGE JAVIER EDUARDO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'TORRICO BASCOPE ROSEMARY' )->first()->id;
         
         DB::table('grupos')->insert([
@@ -16556,24 +15836,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'GOMEZ VENTURA JORGE LUIS' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'SOTO MOREIRA JUAN CARLOS' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $codigoMateria = DB::table('materias')->select('id')->where('codigo', '=', '2008048' )->first()->id;
         $nombreGrupo = '1';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'GARCIA MOLINA JUAN RUBEN' )->first()->id;
@@ -16788,24 +16050,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'LOPEZ JUAN ZENON' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ROMERO ENCINAS RAUL' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '5';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ROMERO ENCINAS RAUL' )->first()->id;
         
@@ -16865,36 +16109,9 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'Por Designar ...' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $codigoMateria = DB::table('materias')->select('id')->where('codigo', '=', '2018017' )->first()->id;
         $nombreGrupo = '1';
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'auxiliar por designar ayudante' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'TERRAZAS LOBO JUAN' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'auxiliar por designar ayudante' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -18934,24 +18151,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ACHA PEREZ SAMUEL' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ARISPE SANTANDER AGUSTIN WALTER' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $codigoMateria = DB::table('materias')->select('id')->where('codigo', '=', '2004006' )->first()->id;
         $nombreGrupo = '1';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'PERICON BALDERRAMA ALFREDO' )->first()->id;
@@ -19535,24 +18734,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'CALIZAYA CAHUANA FLAVIO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'LEON ROMERO GUALBERTO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '9';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'TORRES JURADO HANS BYRON' )->first()->id;
         
@@ -19596,15 +18777,6 @@ class GruposRealesSeeder extends Seeder
         
         $nombreGrupo = '17';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'OMONTE OJALVO JOSE ROBERTO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'GOMEZ VENTURA JORGE LUIS' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -19672,15 +18844,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'JIMENEZ GUZMAN DANILO ERNESTO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '10';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'COSTAS JAUREGUI VLADIMIR ABEL' )->first()->id;
         
@@ -19701,35 +18864,8 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'OJEDA JORGE JAVIER EDUARDO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'BLANCO COCA LETICIA' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '3';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'USTARIZ VARGAS HERNAN' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'OJEDA JORGE JAVIER EDUARDO' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -19748,26 +18884,8 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'Por Designar ...' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '5';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'MONTANO QUIROGA VICTOR HUGO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'JIMENEZ GUZMAN DANILO ERNESTO' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -19786,25 +18904,7 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'TORRICO PEREZ ALEXANDRA' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '7';
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'HEREDIA SOLIZ EDILBERTO JONATHAN' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'FLORES VILLARROEL CORINA' )->first()->id;
         
         DB::table('grupos')->insert([
@@ -19866,15 +18966,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'DAMIAN LORENZO CESILIO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '6';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'SILVA RAMOS HERNAN VICTOR' )->first()->id;
         
@@ -19904,24 +18995,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'CAMPOS GUEVARA SHIRLEY' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'OMONTE OJALVO JOSE ROBERTO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $codigoMateria = DB::table('materias')->select('id')->where('codigo', '=', '2008056' )->first()->id;
         $nombreGrupo = '6';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'TERRAZAS LOBO JUAN' )->first()->id;
@@ -19933,34 +19006,7 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'auxiliar por designar ayudante' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'OJOPI MORENO LUIS GUSTAVO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'TERRAZAS LOBO JUAN' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'auxiliar por designar ayudante' )->first()->id;
         
         DB::table('grupos')->insert([
             'id' => Str::uuid() -> toString(),
@@ -20050,24 +19096,6 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'OJEDA JORGE JAVIER EDUARDO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'BLANCO COCA LETICIA' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '3';
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'BLANCO COCA LETICIA' )->first()->id;
         
@@ -20078,25 +19106,7 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'HEREDIA SOLIZ EDILBERTO JONATHAN' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '5';
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'OJEDA JORGE JAVIER EDUARDO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'TORRICO BASCOPE ROSEMARY' )->first()->id;
         
         DB::table('grupos')->insert([
@@ -20158,44 +19168,8 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'GUARACHI ARELLANO RONALD ROLY' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'TAYLOR TERRAZAS DARLONG HOWARD' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $codigoMateria = DB::table('materias')->select('id')->where('codigo', '=', '2008059' )->first()->id;
         $nombreGrupo = '3';
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'REVOLLO TERAN LUZ MAYA' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ROMERO COCA MIROSLAVA LINNETE' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'REVOLLO TERAN LUZ MAYA' )->first()->id;
         
         DB::table('grupos')->insert([
@@ -20349,43 +19323,7 @@ class GruposRealesSeeder extends Seeder
             'materia_id' => $codigoMateria ,
         ]);
         
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ORDONEZ CORDOVA ELIZABETH' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'SORUCO MAITA JOSE ANTONIO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $nombreGrupo = '3';
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'OMONTE OJALVO JOSE ROBERTO' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
-        $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'ORDONEZ CORDOVA ELIZABETH' )->first()->id;
-        
-        DB::table('grupos')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => $nombreGrupo ,
-            'docente_id' => $codigoDocente ,
-            'materia_id' => $codigoMateria ,
-        ]);
-        
         $codigoDocente = DB::table('docentes')->select('id')->where('nombre', '=', 'OMONTE OJALVO JOSE ROBERTO' )->first()->id;
         
         DB::table('grupos')->insert([
