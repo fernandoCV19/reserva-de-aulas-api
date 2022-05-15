@@ -228,7 +228,7 @@ class AuthDocenteController extends Controller
         
         $docente = Docente::findOrFail($docenteID[0]->id);
         $docente -> celular = $request -> celular;
-        $docente -> activado = 2;
+        $docente -> activado = 0;
         $docente -> email = $request->email;
         $docente -> cod_SIS = $request->cod_SIS;
         $docente -> celular = $request->celular; 
