@@ -25,12 +25,21 @@ class CuentasDeDesarrolladoresSeeder extends Seeder
             'email' => ''
         ]);
         
-        DB::table('administradors')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => 'FERNANDO CUENCA VARGAS',
-            'contrasenia' => '',
-            'cod_SIS' => ''
+        Http::post('auth/activar',[
+            "cod_SIS" => "12345001",
+            "nombre" => "FERNANDO CUENCA VARGAS",
+            "celular" => "7123456",
+            "contrasenia" => "12345001",
+            "email" => "fercv@gmail.com"
         ]);
+
+        Http::post('auth/crearAdmin',[
+            "cod_SIS" => "12345001",
+            "nombre" => "FERNANDO CUENCA VARGAS",
+            "contrasenia" => "12345001"
+        ]);
+
+
 
         DB::table('docentes')->insert([
             'id' => Str::uuid() -> toString(),
@@ -41,13 +50,22 @@ class CuentasDeDesarrolladoresSeeder extends Seeder
             'email' => ''
         ]);
 
-        DB::table('administradors')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => 'DILAN ALEJANDRO ANTEZANA SERRANO',
-            'contrasenia' => '',
-            'cod_SIS' => ''
+        Http::post('auth/activar',[
+            "cod_SIS" => "12345002",
+            "nombre" => "DILAN ALEJANDRO ANTEZANA SERRANO",
+            "celular" => "7776777",
+            "contrasenia" => "12345002",
+            "email" => "dilanaas@gmail.com"
         ]);
 
+        Http::post('auth/crearAdmin',[
+            "cod_SIS" => "12345002",
+            "nombre" => "DILAN ALEJANDRO ANTEZANA SERRANO",
+            "contrasenia" => "12345002",
+        ]);
+
+
+        
         DB::table('docentes')->insert([
             'id' => Str::uuid() -> toString(),
             'cod_SIS' => '',
@@ -57,12 +75,22 @@ class CuentasDeDesarrolladoresSeeder extends Seeder
             'email' => ''
         ]);
 
-        DB::table('administradors')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => 'PABLO SAUL MAGUINA APAZA',
-            'contrasenia' => '',
-            'cod_SIS' => ''
+        Http::post('auth/activar',[
+            "cod_SIS" => "12345003",
+            "nombre" => "PABLO SAUL MAGUINA APAZA",
+            "celular" => "7123456",
+            "contrasenia" => "12345003",
+            "email" => "pablosma@gmail.com"
         ]);
+
+        Http::post('auth/crearAdmin',[
+            "cod_SIS" => "12345003",
+            "nombre" => "PABLO SAUL MAGUINA APAZA",
+            "contrasenia" => "12345003"
+        ]);
+
+
+
 
         DB::table('docentes')->insert([
             'id' => Str::uuid() -> toString(),
@@ -73,12 +101,21 @@ class CuentasDeDesarrolladoresSeeder extends Seeder
             'email' => ''
         ]);
 
-        DB::table('administradors')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => 'ADRIAN MARCELO CUBA EGUINO',
-            'contrasenia' => '',
-            'cod_SIS' => ''
+        Http::post('auth/activar',[
+            "cod_SIS" => "12345004",
+            "nombre" => "ADRIAN MARCELO CUBA EGUINO",
+            "celular" => "7123456",
+            "contrasenia" => "12345004",
+            "email" => "adrianmce@gmail.com"
         ]);
+
+        Http::post('auth/crearAdmin',[
+            "cod_SIS" => "12345004",
+            "nombre" => "ADRIAN MARCELO CUBA EGUINO",
+            "contrasenia" => "12345004"
+        ]);
+
+
 
         DB::table('docentes')->insert([
             'id' => Str::uuid() -> toString(),
@@ -89,12 +126,21 @@ class CuentasDeDesarrolladoresSeeder extends Seeder
             'email' => ''
         ]);
 
-        DB::table('administradors')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => 'DIANA VARGAS ORELLANA',
-            'contrasenia' => '',
-            'cod_SIS' => ''
+        Http::post('auth/activar',[
+            "cod_SIS" => "12345005",
+            "nombre" => "DIANA VARGAS ORELLANA",
+            "celular" => "7776777",
+            "contrasenia" => "12345005",
+            "email" => "dianavo@gmail.com"
         ]);
+
+        Http::post('auth/crearAdmin',[
+            "cod_SIS" => "12345005",
+            "nombre" => "DIANA VARGAS ORELLANA",
+            "contrasenia" => "12345005"
+        ]);
+
+
 
         DB::table('docentes')->insert([
             'id' => Str::uuid() -> toString(),
@@ -104,13 +150,102 @@ class CuentasDeDesarrolladoresSeeder extends Seeder
             'contrasenia' => '',
             'email' => ''
         ]);
-
-        DB::table('administradors')->insert([
-            'id' => Str::uuid() -> toString(),
-            'nombre' => 'NIGEL DAVILA MATURANO',
-            'contrasenia' => '',
-            'cod_SIS' => ''
+        
+        Http::post('auth/activar',[
+            "cod_SIS" => "12345006",
+            "nombre" => "NIGEL DAVILA MATURANO",
+            "celular" => "7776777",
+            "contrasenia" => "12345006",
+            "email" => "nigeldm@gmail.com"
         ]);
 
+        Http::post('auth/crearAdmin',[
+            "cod_SIS" => "12345006",
+            "nombre" => "NIGEL DAVILA MATURANO",
+            "contrasenia" => "12345006"
+        ]);
+
+
+        Http::post('auth/activar',[
+            "cod_SIS" => "12345005",
+            "nombre" => "DIANA VARGAS ORELLANA",
+            "celular" => "7776777",
+            "contrasenia" => "12345005",
+            "email" => "dianavo@gmail.com"
+        ]);
+
+
+
+
+        Http::post('auth/activar',[
+            "cod_SIS" => "12345007",
+            "nombre" => "VILLARROEL TAPIA HENRY FRANK",
+            "celular" => "7776777",
+            "contrasenia" => "12345007",
+            "email" => "henryvt@gmail.com"
+        ]);  
+        
+        
+        Http::post('auth/activar',[
+            "cod_SIS" => "12345008",
+            "nombre" => "MANZUR SORIA CARLOS B.",
+            "celular" => "7776777",
+            "contrasenia" => "12345008",
+            "email" => "carlosms@gmail.com"
+        ]);
+        
+        
+        Http::post('auth/activar',[
+            "cod_SIS" => "12345009",
+            "nombre" => "MONTANO QUIROGA VICTOR HUGO",
+            "celular" => "7776777",
+            "contrasenia" => "12345009",
+            "email" => "victormq@gmail.com"
+        ]);  
+        
+        
+        Http::post('auth/activar',[
+            "cod_SIS" => "12345010",
+            "nombre" => "SALAZAR SERRUDO CARLA",
+            "celular" => "7776777",
+            "contrasenia" => "12345010",
+            "email" => "carlass@gmail.com"
+        ]);  
+        
+        
+        Http::post('auth/activar',[
+            "cod_SIS" => "12345011",
+            "nombre" => "COSTAS JAUREGUI VLADIMIR ABEL",
+            "celular" => "7776777",
+            "contrasenia" => "12345011",
+            "email" => "vladimircj@gmail.com"
+        ]);  
+        
+        
+        Http::post('auth/activar',[
+            "cod_SIS" => "12345012",
+            "nombre" => "BLANCO COCA LETICIA",
+            "celular" => "7776777",
+            "contrasenia" => "12345012",
+            "email" => "leticiabc@gmail.com"
+        ]);  
+        
+        
+        Http::post('auth/activar',[
+            "cod_SIS" => "12345013",
+            "nombre" => "USTARIZ VARGAS HERNAN",
+            "celular" => "7776777",
+            "contrasenia" => "12345013",
+            "email" => "hernanuv@gmail.com"
+        ]);  
+        
+        
+        Http::post('auth/activar',[
+            "cod_SIS" => "12345014",
+            "nombre" => "FLORES VILLARROEL CORINA",
+            "celular" => "7776777",
+            "contrasenia" => "12345014",
+            "email" => "corinafv@gmail.com"
+        ]);    
     }
 }
