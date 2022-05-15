@@ -65,6 +65,10 @@ class RouteServiceProvider extends ServiceProvider
             
             Route::prefix('notificacion')
                 -> group (base_path('routes/notificacion.routes.php'));   
+
+            Route::prefix('admin')
+                -> group (base_path('routes/administrador.routes.php'));   
+
         });
     }
 
