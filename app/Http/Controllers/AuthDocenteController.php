@@ -17,7 +17,7 @@ class AuthDocenteController extends Controller
     public function __construct()
     {
         //$this->middleware('jwt.verify', ['except' => ['login', 'activar','activarAdmin']]);
-        $this->middleware('auth:docente', ['except' => ['login', 'register']]);
+        $this->middleware('auth:docente', ['except' => ['login', 'activar']]);
     }
 
     /**
@@ -228,7 +228,7 @@ class AuthDocenteController extends Controller
         
         $docente = Docente::findOrFail($docenteID[0]->id);
         $docente -> celular = $request -> celular;
-        $docente -> activado = 1;
+        $docente -> activado = 2;
         $docente -> email = $request->email;
         $docente -> cod_SIS = $request->cod_SIS;
         $docente -> celular = $request->celular; 
@@ -239,7 +239,5 @@ class AuthDocenteController extends Controller
             'message' =>'activado',
             'docente' => $docente
         ], 201);
-    }
-
-   
+    }   
 }
