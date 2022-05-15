@@ -137,13 +137,13 @@
                 }
             }
         },
-        "/auth/login": {
+        "/auth/loginAdmin": {
             "post": {
                 "tags": [
                     "Auth"
                 ],
                 "summary": "Inicio de sesion",
-                "operationId": "8cb7742ae98d0990acb2907c4e00bf24",
+                "operationId": "2b27e6173465cc6a26e664c0399e29a5",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -171,13 +171,13 @@
                 }
             }
         },
-        "/auth/me": {
+        "/auth/meAdmin": {
             "get": {
                 "tags": [
                     "Auth"
                 ],
                 "summary": "Obtencion de la informacion de un usuario",
-                "operationId": "a9c495788506b114956e3f509e5d90a2",
+                "operationId": "08b6b7187997fb42bfc3124ae2f6feef",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -193,13 +193,13 @@
                 ]
             }
         },
-        "/auth/logout": {
+        "/auth/logoutAdmin": {
             "post": {
                 "tags": [
                     "Auth"
                 ],
                 "summary": "Cerrar sesion",
-                "operationId": "0d29c740dc06d77602af8095bf4654cc",
+                "operationId": "8ee5ccb543909872b521a447d85c6522",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -210,13 +210,13 @@
                 }
             }
         },
-        "/auth/refresh": {
+        "/auth/refreshAdmin": {
             "post": {
                 "tags": [
                     "Auth"
                 ],
                 "summary": "Refresco del token",
-                "operationId": "f6c9683ed975ace7d035a09e6e2a9332",
+                "operationId": "4e2fe7845c3b3a2a16d9528cc81b555c",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -230,13 +230,148 @@
                 }
             }
         },
-        "/auth/activar": {
+        "/auth/crearAdmin": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Activacion de la cuenta de un administrador",
+                "operationId": "48918d24e7c7b5c38193f0f28ce1fd37",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "cod_SIS": {
+                                        "type": "integer"
+                                    },
+                                    "nombre": {
+                                        "type": "string"
+                                    },
+                                    "contrasenia": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/auth/loginDocente": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Inicio de sesion",
+                "operationId": "1cf9eccde84a00b7360615c2a8314d20",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "cod_SIS": {
+                                        "type": "integer"
+                                    },
+                                    "contrasenia": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/auth/meDocente": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Obtencion de la informacion de un usuario",
+                "operationId": "5b76f98641eff2fd8c2652df96b4d924",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/auth/logoutDocente": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Cerrar sesion",
+                "operationId": "8cd237eb7960dad4a56b22b5d6b21c5a",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/auth/refreshDocente": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Refresco del token",
+                "operationId": "63837692c0de1f7ab1a10740fb62a312",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "No autorizado"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/auth/activarDocente": {
             "post": {
                 "tags": [
                     "Auth"
                 ],
                 "summary": "Activacion de la cuenta de un docente",
-                "operationId": "43f3a936bdf68e4b2dd3c622980410ce",
+                "operationId": "916a1b8b24999445b2fae43d621dfe88",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -252,6 +387,9 @@
                                         "type": "integer"
                                     },
                                     "email": {
+                                        "type": "string"
+                                    },
+                                    "contrasenia": {
                                         "type": "string"
                                     }
                                 },
