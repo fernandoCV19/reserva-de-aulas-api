@@ -176,10 +176,10 @@ class CuentasDeDesarrolladoresSeeder extends Seeder
         ]);
         
         Http::post('https://reserva-aulas-stage.herokuapp.com/auth/activarDocente',[
-            "cod_SIS" => "12346006",
+            "cod_SIS" => "12345006",
             "nombre" => "NIGEL DAVILA MATURANO",
             "celular" => "7776777",
-            "contrasenia" => "12346006",
+            "contrasenia" => "12345006",
             "email" => "nigeldm@gmail.com"
         ]);
 
@@ -189,9 +189,9 @@ class CuentasDeDesarrolladoresSeeder extends Seeder
         
 
         Http::post('https://reserva-aulas-stage.herokuapp.com/auth/crearAdmin',[
-            "cod_SIS" => "12345006",
+            "cod_SIS" => "12346006",
             "nombre" => "NIGEL DAVILA MATURANO",
-            "contrasenia" => "12345006"
+            "contrasenia" => "12346006"
         ]);
 
                                   
