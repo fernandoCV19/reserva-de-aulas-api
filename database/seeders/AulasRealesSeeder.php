@@ -15,7 +15,6 @@ class AulasRealesSeeder extends Seeder
      */
     public function run()
     {
-        
         DB::table('aulas')->insert([
             'id' => Str::uuid() -> toString(),
             'nombre' => 'AUDIT',
