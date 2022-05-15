@@ -4,6 +4,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Reserva;
+use App\Http\Controllers\AdministradorController;
 
-
-Route::post('/respuesta-solicitud/{idSolicitud}', 'App/Http/controllers/AdministradorController@create');
+Route::put('/validarCuenta/{idDocente}', [AdministradorController::class, "validarCuentaDocente"]);
