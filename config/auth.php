@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'api',
-        'passwords' => 'docentes',
+        'contrasenias' => 'docentes',
     ],
 
     /*
@@ -46,6 +46,19 @@ return [
             'provider' => 'docentes',
             'hash' => false,
         ],
+
+        'admin' => [
+            'driver' => 'jwt',
+            'provider' => 'administradors',
+            'hash' => false,
+        ],
+        
+        'docente' => [
+            'driver' => 'jwt',
+            'provider' => 'docentes',
+            'hash' => false,
+        ],
+
     ],
 
     /*
@@ -69,6 +82,10 @@ return [
         'docentes' => [
             'driver' => 'eloquent',
             'model' => App\Models\Docente::class,
+        ],
+        'administradors' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Administrador::class,
         ],
 
         // 'users' => [
