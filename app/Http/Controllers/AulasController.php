@@ -254,12 +254,31 @@ class AulasController extends Controller
     public function filtrarAulasPorPeriodo(Request $request){
         $aulas=DB::table(DB::raw('aulas, periodos'))
             //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])
-            -> where("hora_inicio","=",$request->periodoIni)
+            //-> where("hora_inicio","=",$request->periodoIni)
             -> orderBy('nombre',"ASC")
             -> orderBy('hora_inicio')
             -> get();
+        $aulasTodas = array();
+
+            if ($request->periodos != null) {
+                $periodosRequest = $request->periodos;
+                $bandera = false;
+                for ($i = 0; $i < sizeof($aulas); $i++) {
+                    for ($j = 0; $j < sizeof($periodosRequest); $j++) {
+                        if (strcmp($aulas[$i]->hora_inicio, $periodosRequest[$j]) == 0) {
+                            $bandera = true;
+                        }
+                    }
+                    if ($bandera) {
+                        array_push($aulasTodas, $aulas[$i]);
+                        $bandera = false;
+                    }
+                }
+            } else {
+                $aulasTodas = $aulas;
+            }    
         
-        return AulasController::anidarHorarios($request, $aulas);
+        return AulasController::anidarHorarios($request, $aulasTodas);
     }
 
     public function filtrarGeneral(Request $request){
