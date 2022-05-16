@@ -89,7 +89,7 @@ class AulasController extends Controller
      * )
      *
      */
-    public function getDisponibles()
+    public function getDisponibles(Request $request)
     {
         $aulas = DB::table(DB::raw('aulas, periodos'))
         //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])
@@ -170,7 +170,7 @@ class AulasController extends Controller
             ->orderBy('hora_inicio')
             ->get();
 
-        return AulasController::anidarHorarios($request, $aulas)->simplePaginate(10);
+        return AulasController::anidarHorarios($request, $aulas);
     }
 
     private function anidarHorarios(Request $request, $aulas)
@@ -370,5 +370,31 @@ class AulasController extends Controller
         ]);
 
         return AulasController::anidarHorarios($request, $aulasTodas);
+    }
+
+    public function aulaEstado(Request $request){
+        $aulasOcupadas = DB::table('aula_datos_reserva')
+            ->join('aulas', 'aula_datos_reserva.aula_id', "=", "aulas.id")
+            ->join('datos_reserva_periodo',
+                'datos_reserva_periodo.datos_reserva_id', "=", "aula_datos_reserva.datos_reserva_id")
+            ->join('datos_reservas', 'datos_reservas.id', "=", "aula_datos_reserva.datos_reserva_id")
+            ->join("periodos", "periodos.id", "=", "datos_reserva_periodo.periodo_id")
+            ->join ("solicitud_reservas","solicitud_reservas.datos_reserva_id", "=", "datos_reservas.id")
+            ->where("fecha", "=", $request->fecha)
+            ->where("hora_inicio","=",$request->periodoIni)
+            ->where("nombre",    "=",$request->nombreAula)
+            ->where("ubicacion","=",$request->ubicacionAula)
+            ->get();
+
+        if (sizeof($aulasOcupadas) > 0) {
+            return response()->json([
+                'estadoAula' => "CONFLICTO",
+                //'estadoAula' => $aulasOcupadas[0],
+            ], 200);
+        }else{
+            return response()->json([
+                'estadoAula' => "LIBRE",
+            ], 200);
+        }
     }
 }

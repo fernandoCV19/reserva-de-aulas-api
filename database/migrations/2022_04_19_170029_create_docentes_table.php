@@ -20,7 +20,7 @@ class CreateDocentesTable extends Migration
             $table->string('celular', 30);
             $table->string('contrasenia', 200);
             $table->string('email', 30);
-            $table->boolean('activado')->default(FALSE);
+            $table->integer('activado')->default(0);
         
             $table->primary('id');
             $table->unique('id');

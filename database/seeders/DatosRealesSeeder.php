@@ -11,6 +11,10 @@ use Database\Seeders\MateriasRealesSeeder;
 use Database\Seeders\DocentesRealesSeeder;
 use Database\Seeders\GruposRealesSeeder;
 
+use Database\Seeders\ReservasParaPruebas;
+use Database\Seeders\SolicitudesReservasParaPruebas;
+use Database\Seeders\CuentasDeDesarrolladoresSeeder;
+
 class DatosRealesSeeder extends Seeder
 {
     /**
@@ -25,7 +29,10 @@ class DatosRealesSeeder extends Seeder
             PeriodosRealesSeeder::class,
             MateriasRealesSeeder::class,
             DocentesRealesSeeder::class,
-            GruposRealesSeeder::class
+            GruposRealesSeeder::class,
+            ReservasParaPruebas::class,
+            SolicitudesReservasParaPruebas::class,
+            CuentasDeDesarrolladoresSeeder::class
         ]);
     }
 }

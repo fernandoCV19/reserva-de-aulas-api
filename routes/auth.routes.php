@@ -35,6 +35,8 @@ Route::group([
 Route::post('crearAdmin', [AuthAdminController::class, 'activarAdmin']);
 Route::post('loginAdmin', [AuthAdminController::class, 'login']);
 
+Route::post('crearAdmin', [AuthAdminController::class, 'activarAdmin']);
+Route::post('loginAdmin', [AuthAdminController::class, 'login']);
 
 Route::middleware('jwt.verify:docente')->get('/user', function (Request $request) {
     return $request->user();
