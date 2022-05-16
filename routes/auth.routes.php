@@ -28,14 +28,12 @@ Route::middleware('jwt.verify:admin')->get('/user', function (Request $request) 
 Route::group([
     'middleware' => 'jwt.verify'
 ], function ($router) {
-    
     Route::post('logoutAdmin', [AuthAdminController::class, 'logout']);
     Route::post('refreshAdmin', [AuthAdminController::class, 'refresh']);
-    Route::get('meAdmin', [AuthAdminController::class, 'me']);
-    Route::post('crearAdmin', [AuthController::class, 'activarAdmin']);
-    Route::post('loginAdmin', [AuthAdminController::class, 'login']);
-    
+    Route::get('meAdmin', [AuthAdminController::class, 'me']); 
 });
+Route::post('crearAdmin', [AuthAdminController::class, 'activarAdmin']);
+Route::post('loginAdmin', [AuthAdminController::class, 'login']);
 
 
 Route::middleware('jwt.verify:docente')->get('/user', function (Request $request) {
