@@ -17,9 +17,9 @@ return [
 
     'paths' => ['*'],
 
-    'allowed_methods' => ['GET', 'POST','DELETE','PUT'],
+    'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['https://jade-griffin-e2968c.netlify.app/', 'http://localhost:3000/', 'https://reserva-aulas-stage.netlify.app/'],
+    'allowed_origins' => ['*'],
 
     'allowed_origins_patterns' => [],
 
