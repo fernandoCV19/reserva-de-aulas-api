@@ -69,6 +69,8 @@ class RouteServiceProvider extends ServiceProvider
             Route::prefix('admin')
                 -> group (base_path('routes/administrador.routes.php'));   
 
+            Route::prefix('periodo')
+                -> group (base_path('routes/periodo.routes.php'));      
         });
     }
 

@@ -146,8 +146,34 @@ class AulasController extends Controller
         $aula->save();
         return $aula;
     }
-
-    //Aulas en determinada area con fecha (fecha es obligatoria)
+    /**
+     * @OA\Post(
+     *      path= "/aula/areas",
+     *      summary =  "Filtro de aulas por ubicación",
+     *      tags = {"Aulas"},
+     *      @OA\RequestBody(
+     *         @OA\JsonContent(
+     *               @OA\Property(
+     *                  property="fecha",
+     *                  type="date"
+     *               ),
+     *               @OA\Property(
+     *                  property="area",
+     *                  type="string"
+     *               ),
+     *         ),
+     *
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      )
+     * )
+     *
+     */
     public function filtrarAulasPorAreas(Request $request)
     {
 
@@ -160,7 +186,38 @@ class AulasController extends Controller
 
         return AulasController::anidarHorarios($request, $aulas);
     }
-
+    /**
+     * @OA\Post(
+     *      path= "/aula/cantidad",
+     *      summary =  "Filtro de aulas por capacidad",
+     *      tags = {"Aulas"},
+     *      @OA\RequestBody(
+     *         @OA\JsonContent(
+     *               @OA\Property(
+     *                  property="fecha",
+     *                  type="date"
+     *               ),
+     *               @OA\Property(
+     *                  property="capacidadMin",
+     *                  type="int"
+     *               ),
+     *              @OA\Property(
+     *                  property="capacidadMax",
+     *                  type="int"
+     *               ),
+     *         ),
+     *
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      )
+     * )
+     *
+     */
     public function filtrarAulasPorCantidad(Request $request)
     {
         $aulas = DB::table(DB::raw('aulas, periodos'))
@@ -171,6 +228,273 @@ class AulasController extends Controller
             ->get();
 
         return AulasController::anidarHorarios($request, $aulas);
+    }
+    /**
+     * @OA\Post(
+     *      path= "/aula/periodo",
+     *      summary =  "Filtro de aulas por periodo",
+     *      tags = {"Aulas"},
+     *      @OA\RequestBody(
+     *         @OA\JsonContent(
+     *               @OA\Property(
+     *                  property="fecha",
+     *                  type="date"
+     *               ),
+     *               @OA\Property(
+     *                  property="periodos",
+     *                  type="array",
+     *                  @OA\Items(
+     *                      type="string"
+     *                  ),
+     *               ),
+     *         ),
+     *
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      )
+     * )
+     *
+     */
+    public function filtrarAulasPorPeriodo(Request $request)
+    {
+        $aulas=DB::table(DB::raw('aulas, periodos'))
+            //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])
+            //-> where("hora_inicio","=",$request->periodoIni)
+            -> orderBy('nombre',"ASC")
+            -> orderBy('hora_inicio')
+            -> get();
+        $aulasTodas = array();
+
+            if ($request->periodos != null) {
+                $periodosRequest = $request->periodos;
+                $bandera = false;
+                for ($i = 0; $i < sizeof($aulas); $i++) {
+                    for ($j = 0; $j < sizeof($periodosRequest); $j++) {
+                        if (strcmp($aulas[$i]->hora_inicio, $periodosRequest[$j]) == 0) {
+                            $bandera = true;
+                        }
+                    }
+                    if ($bandera) {
+                        array_push($aulasTodas, $aulas[$i]);
+                        $bandera = false;
+                    }
+                }
+            } else {
+                $aulasTodas = $aulas;
+            }    
+        
+        return AulasController::anidarHorarios($request, $aulasTodas);
+    }
+        /**
+     * @OA\Post(
+     *      path= "/aula/nombre",
+     *      summary =  "Filtro de aulas por nombre",
+     *      tags = {"Aulas"},
+     *      @OA\RequestBody(
+     *         @OA\JsonContent(
+     *               @OA\Property(
+     *                  property="fecha",
+     *                  type="date"
+     *               ),
+     *               @OA\Property(
+     *                  property="nombreAula",
+     *                  type="string"
+     *               ),
+     *         ),
+     *
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      )
+     * )
+     *
+     */
+    public function filtrarAulasPorNombre(Request $request)
+    {
+
+        $aulas = DB::table(DB::raw('aulas, periodos'))
+            ->where("nombre", "=", request("nombreAula"))
+            ->orderBy('nombre', "ASC")
+            ->orderBy('hora_inicio')
+            ->get();
+
+        return AulasController::anidarHorarios($request, $aulas);
+    }
+    /**
+     * @OA\Post(
+     *      path= "/aula/general",
+     *      summary =  "Filtro de aulas general",
+     *      tags = {"Aulas"},
+     *      @OA\RequestBody(
+     *         @OA\JsonContent(
+     *               @OA\Property(
+     *                  property="fecha",
+     *                  type="date"
+     *               ),
+     *               @OA\Property(
+     *                  property="periodos",
+     *                  type="array",
+     *                  @OA\Items(
+     *                      type="string"
+     *                  ),
+     *               ),
+     *               @OA\Property(
+     *                  property="capacidadMin",
+     *                  type="int"
+     *               ),
+     *               @OA\Property(
+     *                  property="capacidadMax",
+     *                  type="int"
+     *               ),
+     *               @OA\Property(
+     *                  property="area",
+     *                  type="string"
+     *               ),
+     *         ),
+     *
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      )
+     * )
+     *
+     */
+    public function filtrarGeneral(Request $request)
+    {
+        if ($request->capacidadMin != null && $request->capacidadMax != null) {
+            $aulas = DB::table(DB::raw('aulas, periodos'))
+            //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])
+                ->where([["capacidad", ">=", $request->capacidadMin], ["capacidad", "<=", $request->capacidadMax],
+                ]) // ["ubicacion", $request->area]
+                ->orderBy('nombre', "ASC")
+                ->orderBy('hora_inicio')
+                ->get();
+            echo("entra");
+        } else {
+            $aulas = DB::table(DB::raw('aulas, periodos'))
+            //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])
+                ->orderBy('nombre', "ASC")
+                ->orderBy('hora_inicio')
+                ->get();
+        }
+
+        $aulasTodas = array();
+
+        if ($request->periodos != null) {
+            $periodosRequest = $request->periodos;
+            $bandera = false;
+            for ($i = 0; $i < sizeof($aulas); $i++) {
+                for ($j = 0; $j < sizeof($periodosRequest); $j++) {
+                    if (strcmp($aulas[$i]->hora_inicio, $periodosRequest[$j]) == 0) {
+                        $bandera = true;
+                    }
+                }
+                if ($bandera) {
+                    array_push($aulasTodas, $aulas[$i]);
+                    $bandera = false;
+                }
+            }
+        } else {
+            $aulasTodas = $aulas;
+        }
+
+        if ($request->area != null) {
+            $aulasPorArea = array();
+            $area = $request->area;
+            $bandera = false;
+            for ($i = 0; $i < sizeof($aulasTodas); $i++) {
+                if (strcmp($aulasTodas[$i]->ubicacion, $area) == 0) {
+                    array_push($aulasPorArea, $aulasTodas[$i]);
+                }
+            }
+            $aulasTodas = $aulasPorArea;
+        }
+
+        $filtrado = AulasController::anidarHorarios($request, $aulas);
+        $total = count($filtrado);
+        $perPage = 5; // How many items do you want to display.
+        $currentPage = 1; // The index page.
+        $paginator = new LengthAwarePaginator($filtrado, $total, $perPage, $currentPage, [
+            'path' => request()->url(),
+            'query' => request()->query(),
+        ]);
+
+        return AulasController::anidarHorarios($request, $aulasTodas);
+    }
+    /**
+     * @OA\Post(
+     *      path= "/aula/estado-aula",
+     *      summary =  "Obtencion del estado de un aula",
+     *      tags = {"Aulas"},
+     *      @OA\RequestBody(
+     *         @OA\JsonContent(
+     *               @OA\Property(
+     *                  property="fecha",
+     *                  type="date"
+     *               ),
+     *               @OA\Property(
+     *                  property="periodoIni",
+     *                  type="string"
+     *               ),
+     *               @OA\Property(
+     *                  property="nombreAula",
+     *                  type="string"
+     *               ),
+     *               @OA\Property(
+     *                  property="ubicacionAula",
+     *                  type="string"
+     *               ),
+     *         ),
+     *
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      )
+     * )
+     *
+     */
+    public function aulaEstado(Request $request)
+    {
+        $aulasOcupadas = DB::table('aula_datos_reserva')
+            ->join('aulas', 'aula_datos_reserva.aula_id', "=", "aulas.id")
+            ->join('datos_reserva_periodo',
+                'datos_reserva_periodo.datos_reserva_id', "=", "aula_datos_reserva.datos_reserva_id")
+            ->join('datos_reservas', 'datos_reservas.id', "=", "aula_datos_reserva.datos_reserva_id")
+            ->join("periodos", "periodos.id", "=", "datos_reserva_periodo.periodo_id")
+            ->join ("solicitud_reservas","solicitud_reservas.datos_reserva_id", "=", "datos_reservas.id")
+            ->where("fecha", "=", $request->fecha)
+            ->where("hora_inicio","=",$request->periodoIni)
+            ->where("nombre",    "=",$request->nombreAula)
+            ->where("ubicacion","=",$request->ubicacionAula)
+            ->get();
+
+        if (sizeof($aulasOcupadas) > 0) {
+            return response()->json([
+                'estadoAula' => "CONFLICTO",
+                //'estadoAula' => $aulasOcupadas[0],
+            ], 200);
+        }else{
+            return response()->json([
+                'estadoAula' => "LIBRE",
+            ], 200);
+        }
     }
 
     private function anidarHorarios(Request $request, $aulas)
@@ -246,124 +570,5 @@ class AulasController extends Controller
 
         }
         return $aulasDisponibles;
-    }
-
-    public function filtrarAulasPorPeriodo(Request $request){
-        $aulas=DB::table(DB::raw('aulas, periodos'))
-            //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])
-            //-> where("hora_inicio","=",$request->periodoIni)
-            -> orderBy('nombre',"ASC")
-            -> orderBy('hora_inicio')
-            -> get();
-        $aulasTodas = array();
-
-            if ($request->periodos != null) {
-                $periodosRequest = $request->periodos;
-                $bandera = false;
-                for ($i = 0; $i < sizeof($aulas); $i++) {
-                    for ($j = 0; $j < sizeof($periodosRequest); $j++) {
-                        if (strcmp($aulas[$i]->hora_inicio, $periodosRequest[$j]) == 0) {
-                            $bandera = true;
-                        }
-                    }
-                    if ($bandera) {
-                        array_push($aulasTodas, $aulas[$i]);
-                        $bandera = false;
-                    }
-                }
-            } else {
-                $aulasTodas = $aulas;
-            }    
-        
-        return AulasController::anidarHorarios($request, $aulasTodas);
-    }
-
-    public function filtrarGeneral(Request $request)
-    {
-        if ($request->capacidadMin != null && $request->capacidadMax != null) {
-            $aulas = DB::table(DB::raw('aulas, periodos'))
-            //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])
-                ->where([["capacidad", ">=", $request->capacidadMin], ["capacidad", "<=", $request->capacidadMax],
-                ]) // ["ubicacion", $request->area]
-                ->orderBy('nombre', "ASC")
-                ->orderBy('hora_inicio')
-                ->get();
-            echo("entra");
-        } else {
-            $aulas = DB::table(DB::raw('aulas, periodos'))
-            //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])
-                ->orderBy('nombre', "ASC")
-                ->orderBy('hora_inicio')
-                ->get();
-        }
-
-        $aulasTodas = array();
-
-        if ($request->periodos != null) {
-            $periodosRequest = $request->periodos;
-            $bandera = false;
-            for ($i = 0; $i < sizeof($aulas); $i++) {
-                for ($j = 0; $j < sizeof($periodosRequest); $j++) {
-                    if (strcmp($aulas[$i]->hora_inicio, $periodosRequest[$j]) == 0) {
-                        $bandera = true;
-                    }
-                }
-                if ($bandera) {
-                    array_push($aulasTodas, $aulas[$i]);
-                    $bandera = false;
-                }
-            }
-        } else {
-            $aulasTodas = $aulas;
-        }
-
-        if ($request->area != null) {
-            $aulasPorArea = array();
-            $area = $request->area;
-            $bandera = false;
-            for ($i = 0; $i < sizeof($aulasTodas); $i++) {
-                if (strcmp($aulasTodas[$i]->ubicacion, $area) == 0) {
-                    array_push($aulasPorArea, $aulasTodas[$i]);
-                }
-            }
-            $aulasTodas = $aulasPorArea;
-        }
-
-        $filtrado = AulasController::anidarHorarios($request, $aulas);
-        $total = count($filtrado);
-        $perPage = 5; // How many items do you want to display.
-        $currentPage = 1; // The index page.
-        $paginator = new LengthAwarePaginator($filtrado, $total, $perPage, $currentPage, [
-            'path' => request()->url(),
-            'query' => request()->query(),
-        ]);
-
-        return AulasController::anidarHorarios($request, $aulasTodas);
-    }
-
-    public function aulaEstado(Request $request){
-        $aulasOcupadas = DB::table('aula_datos_reserva')
-            ->join('aulas', 'aula_datos_reserva.aula_id', "=", "aulas.id")
-            ->join('datos_reserva_periodo',
-                'datos_reserva_periodo.datos_reserva_id', "=", "aula_datos_reserva.datos_reserva_id")
-            ->join('datos_reservas', 'datos_reservas.id', "=", "aula_datos_reserva.datos_reserva_id")
-            ->join("periodos", "periodos.id", "=", "datos_reserva_periodo.periodo_id")
-            ->join ("solicitud_reservas","solicitud_reservas.datos_reserva_id", "=", "datos_reservas.id")
-            ->where("fecha", "=", $request->fecha)
-            ->where("hora_inicio","=",$request->periodoIni)
-            ->where("nombre",    "=",$request->nombreAula)
-            ->where("ubicacion","=",$request->ubicacionAula)
-            ->get();
-
-        if (sizeof($aulasOcupadas) > 0) {
-            return response()->json([
-                'estadoAula' => "CONFLICTO",
-                //'estadoAula' => $aulasOcupadas[0],
-            ], 200);
-        }else{
-            return response()->json([
-                'estadoAula' => "LIBRE",
-            ], 200);
-        }
     }
 }

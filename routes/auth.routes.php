@@ -18,6 +18,13 @@ Route::group(['middleware' => ['jwt.verify:admin']], function() {
     Route::post('logout', [AuthController::class, 'logout']);
     Route::post('refresh', [AuthController::class, 'refresh']);
     Route::get('me', [AuthController::class, 'me']);
+Route::post('login', [AuthController::class, 'login']);
+Route::post('activar', [AuthController::class, 'activar']);
+Route::group(['middleware' => ['jwt.verify']], function() {
+    Route::post('logout', [AuthController::class, 'logout']);
+    Route::post('refresh', [AuthController::class, 'refresh']);
+    Route::get('me', [AuthController::class, 'me']);
+    
 });
 */ 
 

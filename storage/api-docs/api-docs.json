@@ -137,6 +137,240 @@
                 }
             }
         },
+        "/aula/areas": {
+            "post": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Filtro de aulas por ubicación",
+                "operationId": "fc049784fc17bede4e645b483ce371b1",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "fecha": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "area": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/aula/cantidad": {
+            "post": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Filtro de aulas por capacidad",
+                "operationId": "4ce579a179a881dd5b2238f720426173",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "fecha": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "capacidadMin": {
+                                        "type": "integer"
+                                    },
+                                    "capacidadMax": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/aula/periodo": {
+            "post": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Filtro de aulas por periodo",
+                "operationId": "fe0949f6ae649ddf80287141a43bc4cd",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "fecha": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "periodos": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/aula/nombre": {
+            "post": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Filtro de aulas por nombre",
+                "operationId": "ef8a8c686d88d469761182331b82b1a4",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "fecha": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "nombreAula": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/aula/general": {
+            "post": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Filtro de aulas general",
+                "operationId": "1709d0165d9b793b04337f2ea39a128b",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "fecha": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "periodos": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "capacidadMin": {
+                                        "type": "integer"
+                                    },
+                                    "capacidadMax": {
+                                        "type": "integer"
+                                    },
+                                    "area": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/aula/estado-aula": {
+            "post": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Obtencion del estado de un aula",
+                "operationId": "1356c1d3297d9b6d23a5923b471b0147",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "fecha": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "periodoIni": {
+                                        "type": "string"
+                                    },
+                                    "nombreAula": {
+                                        "type": "string"
+                                    },
+                                    "ubicacionAula": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
         "/auth/loginAdmin": {
             "post": {
                 "tags": [
@@ -207,7 +441,12 @@
                     "default": {
                         "description": "Ha ocurrido un error."
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/auth/refreshAdmin": {
@@ -227,7 +466,12 @@
                     "default": {
                         "description": "Ha ocurrido un error."
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/auth/crearAdmin": {
