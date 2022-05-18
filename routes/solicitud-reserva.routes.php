@@ -14,6 +14,7 @@ Route::get('/pendientes', [SolicitudReservaController::class, "getPendientes"]);
 Route::get('/estado/{idSolicitud}', [SolicitudReservaController::class, "getEstado"]);
 Route::put('/cambio-estado/{idSolicitud}', [SolicitudReservaController::class, "actualizarEstado"]);
 Route::get('/{idSolicitud}',[SolicitudReservaController::class, "getSolicitudPorId"]);
+Route::get('/estado-aulas/{idSolicitud}', [SolicitudReservaController::class, "estadoAulas"]);
 
 
 Route::get("/user", function () {

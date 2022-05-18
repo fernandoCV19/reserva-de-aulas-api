@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Models\SolicitudReserva;
+use App\Models\DatosReserva;
 use Illuminate\Support\Facades\DB;
 
 use Exception;
@@ -216,5 +217,84 @@ class SolicitudReservaController extends Controller
         -> get();
         
         return $solicitud;
+    }
+
+
+    public function estadoAulas($idSolicitud){
+        $datosReserva = SolicitudReserva::find($idSolicitud)->datos_reserva_id;
+        $fecha = DatosReserva::find($datosReserva)->fecha;
+        
+        $periodos = DB::table('datos_reserva_periodo')
+        ->where("datos_reserva_periodo.datos_reserva_id","=",  $datosReserva )
+        ->join("periodos", "periodos.id", "=", "datos_reserva_periodo.periodo_id")
+        ->join("datos_reservas", "datos_reservas.id", "datos_reserva_periodo.datos_reserva_id")
+        ->join("aula_datos_reserva", "aula_datos_reserva.datos_reserva_id", "datos_reserva_periodo.datos_reserva_id")
+        ->join("aulas", "aulas.id", "=", "aula_datos_reserva.aula_id")
+        ->select("datos_reservas.id as datosReservaId", "aulas.nombre as nombreAula", 
+                 "aulas.ubicacion as ubicacionAula", "datos_reservas.fecha", "periodos.hora_inicio as periodoIni")
+        
+        ->orderBy("hora_inicio")
+        ->get();
+        
+        $aulasOcupadas = DB::table('aula_datos_reserva')
+            ->join('aulas', 'aula_datos_reserva.aula_id', "=", "aulas.id")
+            ->join('datos_reserva_periodo',
+                'datos_reserva_periodo.datos_reserva_id', "=", "aula_datos_reserva.datos_reserva_id")
+            ->join('datos_reservas', 'datos_reservas.id', "=", "aula_datos_reserva.datos_reserva_id")
+            ->join("periodos", "periodos.id", "=", "datos_reserva_periodo.periodo_id")
+            ->where("fecha", "=", $fecha)
+            ->get();
+
+        //echo json_encode($aulasOcupadas);
+
+
+        $bandera = false;
+        for($i=0; $i<sizeof($periodos); $i++){
+            for($j=0; $j<sizeof($aulasOcupadas); $j++){
+                if($periodos[$i]->datosReservaId != $aulasOcupadas[$j]->datos_reserva_id){
+                    if ($aulasOcupadas[$i]->nombre == $periodos[$j]->nombre &&
+                    $aulasOcupadas[$i]->hora_inicio == $aulas[$j]->hora_inicio) {
+                    $bandera = true;
+                }
+                    $bandera = true;
+                    if(SolicitudReservaController::tieneReserva($periodos[$i]->datosReservaId)){
+                        $periodos[$i]->estado = "tiene reserva";
+                    }
+                    else {
+                        $periodos[$i]->estado = "tiene una solicitud";
+                    }
+                    echo "entra";
+                }
+            }
+            if($bandera) {
+                
+                $bandera = false;
+            }
+            else{
+                $periodos[$i]->estado = "libre";
+            }
+            
+        }
+        for($i =0; $i<sizeof($periodos); $i++){
+            $estado = AulasController::aulaEstado(new Request(
+                array('fecha' => $periodos[$i]->fecha, 
+                      'nombreAula' => $periodos[$i]->nombreAula,    
+                      'ubicacionAula' => $periodos[$i]->ubicacionAula,
+                      'periodoIni' => $periodos[$i]->periodoIni,),
+                )
+            );
+            //echo json_encode($estado);
+        }
+        return json_encode($periodos);
+    }
+
+
+    public function tieneReserva($idDatos){
+        $reserva = DB::table('reservas')
+        ->where("datos_reserva_id", $idDatos)
+        ->get();
+        echo json_encode( $reserva);
+        if(sizeof($reserva)==0) return false;    
+        else return true;
     }
 }
