@@ -62,7 +62,7 @@ class AuthDocenteController extends Controller
        
         if(Hash::check($request->contrasenia, $user->contrasenia)){
             $token = JWTAuth::fromUser($user);
-            return $this->respondWithToken($token, $admin);
+            return $this->respondWithToken($token, $admin, $user->id);
         }   
         else{
             return response()->json([
@@ -150,7 +150,7 @@ class AuthDocenteController extends Controller
     public function refresh()
     {
         $algo = "-";
-        return $this->respondWithToken(auth()->refresh(), $algo);
+        return $this->respondWithToken(auth()->refresh(), "");
     }
 
     /**
@@ -160,13 +160,14 @@ class AuthDocenteController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function respondWithToken($token, $rol)
+    protected function respondWithToken($token, $rol, $user)
     {
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60,
-            'rol' => $rol
+            'rol' => $rol,
+            'id' => $user
         ]);
     }
     /** 
