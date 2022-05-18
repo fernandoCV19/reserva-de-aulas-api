@@ -131,7 +131,7 @@ class AuthDocenteController extends Controller
      *      path= "/auth/refreshDocente",
      *      summary =  "Refresco del token",
      *      tags = {"Auth"},
-     * 
+     *      security={{"bearerAuth":{}}} ,
      *      @OA\Response(
      *          response=200,
      *          description = "OK"),
