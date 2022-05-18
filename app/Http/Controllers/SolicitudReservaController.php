@@ -252,8 +252,8 @@ class SolicitudReservaController extends Controller
         for($i=0; $i<sizeof($periodos); $i++){
             for($j=0; $j<sizeof($aulasOcupadas); $j++){
                 if($periodos[$i]->datosReservaId != $aulasOcupadas[$j]->datos_reserva_id){
-                    if ($aulasOcupadas[$i]->nombre == $periodos[$j]->nombre &&
-                    $aulasOcupadas[$i]->hora_inicio == $aulas[$j]->hora_inicio) {
+                    if ($aulasOcupadas[$j]->nombre == $periodos[$i]->nombreAula &&
+                    $aulasOcupadas[$j]->hora_inicio == $periodos[$i]->periodoIni) {
                     $bandera = true;
                 }
                     $bandera = true;
