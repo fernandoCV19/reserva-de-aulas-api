@@ -6,7 +6,10 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Periodo;
 use App\Http\Controllers\PeriodoController;
 
-Route::get('/{idPeriodo}',[PeriodoController::class, " getPeriodoPorId"]);
+
+
+Route::get('/{idPeriodo}',[PeriodoController::class, "getPeriodoPorId"]);
+Route::get('/',[PeriodoController::class, "getPeriodos"]);
 
 Route::get("/user", function () {
     $mensaje =['mensaje'=>"Hola mundo"];

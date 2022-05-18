@@ -73,13 +73,55 @@ class MateriaController extends Controller
         return Materia::find($idMateria)->grupos;
     }
 
+    /**
+     * @OA\Get(
+     *      path= "/materia/{idMateria}",
+     *      summary =  "Obtencion de una materia apartir de un id de materia",
+     *      tags = {"Materia"},
+     * 
+     *      @OA\Parameter(
+     *          name="idMateria",
+     *          description="Id de la Materia",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),     
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      ) 
+     * )
+     * 
+     */
     public function getMateriaPorId(Request $request){
         $materia=  Materia::findOrFail($request->idMateria);
         return response()->json($materia, 200,[]);
     }
-
+    /**
+     * @OA\Get(
+     *      path= "/materia",
+     *      summary =  "Obtencion de todas las materias",
+     *      tags = {"Materia"},
+     * 
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      ) 
+     * )
+     * 
+     */
     public function getMaterias(){
         $materia =  Materia::all();
         return response()->json($materia, 200,[]);
     }
 }
+
+

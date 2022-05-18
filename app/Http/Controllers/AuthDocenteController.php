@@ -53,7 +53,7 @@ class AuthDocenteController extends Controller
      */
     public function login(Request $request)
     {
-        $admin = false;
+        $admin = "docente";
         $user = Docente::where("cod_SIS", "=", $request->cod_SIS)->first();
        
         if (!$user){
@@ -149,7 +149,8 @@ class AuthDocenteController extends Controller
      */
     public function refresh()
     {
-        return $this->respondWithToken(auth()->refresh(), true);
+        $algo = "-";
+        return $this->respondWithToken(auth()->refresh(), $algo);
     }
 
     /**
@@ -159,14 +160,8 @@ class AuthDocenteController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function respondWithToken($token, $admin)
+    protected function respondWithToken($token, $rol)
     {
-        if($admin){
-            $rol = 'administrador';
-        }else{
-            $rol = 'docente';
-        }
-
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',

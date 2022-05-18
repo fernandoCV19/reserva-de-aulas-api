@@ -8,6 +8,7 @@ use App\Http\Controllers\AulasController;
 
 
 Route::post('/disponibles', [AulasController::class, "getDisponibles"]);
+Route::get('/', [AulasController::class, "getTodasAulas"]);
 //Route::get('/{idAula}',[SolicitudReservaController::class, "getSolicitudPorId"]);
 Route::post('/pendientes',[AulasController::class, "getPendientes"]);
 Route::post('/',[AulasController::class, "crearAula"]);

@@ -43,7 +43,12 @@ return [
 
         'api' => [
             'driver' => 'jwt',
-            'provider' => 'docentes',
+            'provider' =>'docentes',
+            'hash' => false,
+        ],
+        'admin' => [
+            'driver' => 'jwt',
+            'provider' =>'administradors',
             'hash' => false,
         ],
 
