@@ -12,6 +12,7 @@ Route::post('/disponibles', [AulasController::class, "getDisponibles"]);
 Route::post('/pendientes',[AulasController::class, "getPendientes"]);
 Route::post('/',[AulasController::class, "crearAula"]);
 Route::post('/areas',[AulasController::class, "filtrarAulasPorAreas"]);
+Route::post('/nombre',[AulasController::class, "filtrarAulasPorNombre"]);
 Route::post('/cantidad',[AulasController::class, "filtrarAulasPorCantidad"]);
 Route::post('/periodo',[AulasController::class, "filtrarAulasPorPeriodo"]);
 Route::post('/estado-aula',[AulasController::class, "aulaEstado"]);
