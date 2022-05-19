@@ -69,4 +69,35 @@ class AulasTest extends TestCase
         $this -> assertTrue(str_contains($response, "id") and str_contains($response, "nombre") and str_contains($response, "ubicacion") and str_contains($response, "capacidad") and str_contains($response, "descripcion") and str_contains($response, "disponible_para_uso") and str_contains($response, "hora_inicio") and str_contains($response, "hora_fin"));
     }
     
+    public function test_filtro_aulas_area (){
+        $response = $this->post('aula/areas', ['fecha' => '2022-10-10','area' => 'SECTOR FISICA']);
+
+        $response->assertStatus(200);
+    }
+
+    public function test_filtro_aulas_cantidad (){
+        $response = $this->post('aula/cantidad', ['fecha' => '2022-10-10','capacidadMin' => 10,'capacidadMax'=> 50]);
+
+        $response->assertStatus(200);
+    }
+
+    public function test_filtro_aulas_periodo (){
+        $response = $this->post('aula/periodo', ['fecha' => '2022-10-10','periodos' => ['11:15:00','12:45:00']]);
+
+        $response->assertStatus(200);
+    }
+
+    public function test_filtro_aulas_nombre (){
+        $response = $this->post('aula/nombre', ['fecha' => '2022-10-10','nombreAula' => '692D']);
+
+        $response->assertStatus(200);
+    }
+
+    public function test_filtro_aulas_general (){
+        $response = $this->post('aula/nombre', ['fecha' => '2022-10-10','periodos' => ['11:15:00','12:45:00'],'capacidadMin' => 10,'capacidadMax'=> 50,'area' => 'SECTOR FISICA']);
+
+        $response->assertStatus(200);
+    }
+
+    
 }
