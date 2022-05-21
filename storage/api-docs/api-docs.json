@@ -441,12 +441,7 @@
                     "default": {
                         "description": "Ha ocurrido un error."
                     }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
+                }
             }
         },
         "/auth/refreshAdmin": {
@@ -466,12 +461,7 @@
                     "default": {
                         "description": "Ha ocurrido un error."
                     }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
+                }
             }
         },
         "/auth/crearAdmin": {
@@ -606,7 +596,12 @@
                     "default": {
                         "description": "Ha ocurrido un error."
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/auth/activarDocente": {
@@ -827,6 +822,34 @@
                 }
             }
         },
+        "/docente/verificar/{idDocente}": {
+            "put": {
+                "tags": [
+                    "Docentes"
+                ],
+                "summary": "Verificacion de una cuenta de docente",
+                "operationId": "f8aa788532d319426cc0d3fd09e42103",
+                "parameters": [
+                    {
+                        "name": "idDocente",
+                        "in": "path",
+                        "description": "Id de Docente",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
         "/docente/notificaciones/{idSolicitud}": {
             "get": {
                 "tags": [
@@ -845,6 +868,51 @@
                         }
                     }
                 ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/docente/meterias/{idDocente}": {
+            "get": {
+                "tags": [
+                    "Docentes"
+                ],
+                "summary": "Obtencion de las materias y grupos de un docente",
+                "operationId": "71ff8242dcece4b1d333b9d2f647dd88",
+                "parameters": [
+                    {
+                        "name": "idDocente",
+                        "in": "path",
+                        "description": "Id de Docente",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/docente/cuentas": {
+            "get": {
+                "tags": [
+                    "Docentes"
+                ],
+                "summary": "Obtencion de las cuentas que estan solicitdas para ser aceptadas",
+                "operationId": "9e3c71603a4cdfa2f8145c34a00a916e",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -911,6 +979,51 @@
                 }
             }
         },
+        "/materia/{idMateria}": {
+            "get": {
+                "tags": [
+                    "Materia"
+                ],
+                "summary": "Obtencion de una materia apartir de un id de materia",
+                "operationId": "346b7942211034a885943d4beda15a57",
+                "parameters": [
+                    {
+                        "name": "idMateria",
+                        "in": "path",
+                        "description": "Id de la Materia",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/materia": {
+            "get": {
+                "tags": [
+                    "Materia"
+                ],
+                "summary": "Obtencion de todas las materias",
+                "operationId": "5078ff9e647c0d6071ee6c12b98c462a",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
         "/notificacion": {
             "post": {
                 "tags": [
@@ -963,6 +1076,51 @@
                         }
                     }
                 ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/periodo/{idPeriodo}": {
+            "get": {
+                "tags": [
+                    "Periodos"
+                ],
+                "summary": "Obtencion de una periodo por ID",
+                "operationId": "77fdc5fd2a57fc9d4d57ae089c525375",
+                "parameters": [
+                    {
+                        "name": "idPeriodo",
+                        "in": "path",
+                        "description": "Id de periodos",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/periodo": {
+            "get": {
+                "tags": [
+                    "Periodos"
+                ],
+                "summary": "Obtencion de todas los periodos",
+                "operationId": "11b58a5e0083c3a10ba2743ed49d9446",
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -1230,6 +1388,34 @@
                 ],
                 "summary": "Obtencion de todas las solicitudes pendientes filtradas por fecha mas proxima",
                 "operationId": "e8a493b895bc5c9e28988f4960afbe72",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/solicitud-reserva/estado-aulas/{idSolicitud}": {
+            "get": {
+                "tags": [
+                    "Solicitud de reservas"
+                ],
+                "summary": "Obtencion del estado de todas las aulas pertenecientes a una solicitud de reserva",
+                "operationId": "59bc6236c625dc2baa54026d23cc6b19",
+                "parameters": [
+                    {
+                        "name": "idSolicitud",
+                        "in": "path",
+                        "description": "Id de la Solicitud de Reserva",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK"

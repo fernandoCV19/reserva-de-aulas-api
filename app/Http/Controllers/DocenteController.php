@@ -10,14 +10,38 @@ use Illuminate\Support\Facades\DB;
 class DocenteController extends Controller
 {
     
-    public function validarCuenta($request){
-        $usuario = $request->codSIS;
-        $password = $request->contrasenia;
-
-        $cuenta = Docente::where('usuario',$usuario)->first();
-        
-        return Hash::check($password, $cuenta->contrasenia);
-        
+    /**
+     * @OA\Put(
+     *      path= "/docente/verificar/{idDocente}",
+     *      summary =  "Verificacion de una cuenta de docente",
+     *      tags = {"Docentes"},
+     * 
+     *      @OA\Parameter(
+     *          name="idDocente",
+     *          description="Id de Docente",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),     
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      ) 
+     * )
+     * 
+     */
+    public function validarCuenta(Request $request){
+        $docente = Docente::find($request->id);
+        $docente->activado = 1;
+        $docente->save();
+        return response()->json([
+            'message' => 'Activado.',
+        ], 200);
     }
     /**
      * @OA\Get(
@@ -80,6 +104,29 @@ class DocenteController extends Controller
         
         ->select(["grupos.nombre as nombre_grupo", "docentes.nombre as nombre_docente", 
         "grupos.id as id_grupo", "docentes.id as id_docente", "materias.nombre as nombre_materia"])
+        ->get();
+        return $docentes;
+    }
+    /**
+     * @OA\Get(
+     *      path= "/docente/cuentas",
+     *      summary =  "Obtencion de las cuentas que estan solicitdas para ser aceptadas",
+     *      tags = {"Docentes"},
+     * 
+     
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      ) 
+     * )
+     * 
+     */
+    public function getCuentasSolicitadas(){
+        $docentes=DB::table('docetnes')
+        ->where("activado", 2)
         ->get();
         return $docentes;
     }
