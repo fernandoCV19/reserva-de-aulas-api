@@ -219,7 +219,31 @@ class SolicitudReservaController extends Controller
         return $solicitud;
     }
 
-
+    /**
+     * @OA\Get(
+     *      path= "/solicitud-reserva/estado-aulas/{idSolicitud}",
+     *      summary =  "Obtencion del estado de todas las aulas pertenecientes a una solicitud de reserva",
+     *      tags = {"Solicitud de reservas"},
+     *      @OA\Parameter(
+     *          name="idSolicitud",
+     *          description="Id de la Solicitud de Reserva",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      )
+     * )
+     * 
+     * 
+     */
     public function estadoAulas($idSolicitud){
         $datosReserva = SolicitudReserva::find($idSolicitud)->datos_reserva_id;
         $fecha = DatosReserva::find($datosReserva)->fecha;
