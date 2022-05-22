@@ -36,7 +36,7 @@ class DocenteController extends Controller
      * 
      */
     public function validarCuenta(Request $request){
-        $docente = Docente::find($request->id);
+        $docente = Docente::find($request->idDocente);
         $docente->activado = 1;
         $docente->save();
         return response()->json([
@@ -125,7 +125,7 @@ class DocenteController extends Controller
      * 
      */
     public function getCuentasSolicitadas(){
-        $docentes=DB::table('docetnes')
+        $docentes=DB::table('docentes')
         ->where("activado", 2)
         ->get();
         return $docentes;
