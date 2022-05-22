@@ -287,7 +287,6 @@ class SolicitudReservaController extends Controller
                     else {
                         $periodos[$i]->estado = "tiene una solicitud";
                     }
-                    echo "entra";
                 }
             }
             if($bandera) {

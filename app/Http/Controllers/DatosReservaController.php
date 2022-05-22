@@ -158,7 +158,7 @@ class DatosReservaController extends Controller
     }
     /**
      * @OA\Get(
-     *      path= "/aulas/datos-reserva/{idDatosReserva}",
+     *      path= "/datos-reserva/aulas/{idDatosReserva}",
      *      summary =  "Obtencion de las aulas de un datos reserva",
      *      tags = {"Datos Reserva"},
      * 
