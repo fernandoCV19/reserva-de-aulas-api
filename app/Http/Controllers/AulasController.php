@@ -382,7 +382,6 @@ class AulasController extends Controller
                 ->orderBy('nombre', "ASC")
                 ->orderBy('hora_inicio')
                 ->get();
-            echo("entra");
         } else {
             $aulas = DB::table(DB::raw('aulas, periodos'))
             //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])

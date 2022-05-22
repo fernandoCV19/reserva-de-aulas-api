@@ -166,8 +166,53 @@ class SolicitudReservaController extends Controller
      * 
      */
     public function getPendientes(){
-        return SolicitudReserva::where("estado", "PENDIENTE")
-                               ->get();
+        $solicitudesPendientes =  SolicitudReserva::where("estado", "PENDIENTE")->get();
+        $pendientes = array();
+        for($i = 0; $i<sizeof($solicitudesPendientes); $i++){ 
+            $docentes = DB::table("datos_reserva_grupo")
+            ->where("datos_reserva_grupo.datos_reserva_id", $solicitudesPendientes[$i]->datos_reserva_id)
+            ->join("grupos", "datos_reserva_grupo.grupo_id","grupos.id")
+            ->join("docentes", "grupos.docente_id", "docentes.id")
+            
+            ->select("docentes.nombre", "docentes.email", "docentes.cod_SIS", )
+            ->get();
+            //"datos_reservas.numero_estimado"
+
+
+            $horarios = DB::table("datos_reserva_periodo")
+            ->where("datos_reserva_periodo.datos_reserva_id", $solicitudesPendientes[$i]->datos_reserva_id)
+            ->join("periodos", "periodos.id", "datos_reserva_periodo.periodo_id")
+            ->get();
+
+
+            $aulas=DB::table('aulas')
+            ->join('aula_datos_reserva','aula_datos_reserva.aula_id',"aulas.id")
+            ->where('aula_datos_reserva.datos_reserva_id', '=', $solicitudesPendientes[$i]->datos_reserva_id)
+            ->get();
+           
+            $justificaciones = DB::table("justificacions")
+            ->where("datos_reserva_id", $solicitudesPendientes[$i]->datos_reserva_id)
+            ->select("justificacion")
+            ->get();
+
+            $fecha = DB::table("datos_reservas")
+            ->where("id", $solicitudesPendientes[$i]->datos_reserva_id)
+            ->select("fecha")
+            ->get()->first()->fecha; 
+            $solicitudCompleta = new \stdClass();
+            $solicitudCompleta -> numero_estimado = DatosReserva::find($solicitudesPendientes[$i]->datos_reserva_id)->numero_estimado;
+            $solicitudCompleta -> aulas = $aulas;//DatosReservaController::getAulasDatosReserva($solicitudesPendientes[$i]->datos_reserva_id)->original;
+            $solicitudCompleta -> horarios = $horarios;
+            $solicitudCompleta -> solicitud  = $solicitudesPendientes[$i];
+            $solicitudCompleta -> docentes = $docentes;
+            $solicitudCompleta -> justificaciones = $justificaciones;
+            $solicitudCompleta -> fecha = $fecha;
+            
+            array_push($pendientes, $solicitudCompleta);
+        }
+        
+        return $pendientes;
+        
     }
     /**
      * @OA\Get(
@@ -287,7 +332,6 @@ class SolicitudReservaController extends Controller
                     else {
                         $periodos[$i]->estado = "tiene una solicitud";
                     }
-                    echo "entra";
                 }
             }
             if($bandera) {
