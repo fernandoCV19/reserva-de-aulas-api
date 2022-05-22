@@ -8,4 +8,4 @@ use App\Http\Controllers\DocenteController;
 Route::get('/notificaciones/{idDocente}', [DocenteController::class, 'getNotificacionesByDocente']);
 Route::get('/materias/{idDocente}', [DocenteController::class, 'getMaterias']);
 Route::get('/cuentas', [DocenteController::class, 'getCuentasSolicitadas']);
-Route::put('/verificar', [DocenteController::class, 'validarCuenta']);
+Route::put('/verificar/{idDocente}', [DocenteController::class, 'validarCuenta']);

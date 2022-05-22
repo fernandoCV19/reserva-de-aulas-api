@@ -749,13 +749,13 @@
                 }
             }
         },
-        "/aulas/datos-reserva/{idDatosReserva}": {
+        "/datos-reserva/aulas/{idDatosReserva}": {
             "get": {
                 "tags": [
                     "Datos Reserva"
                 ],
                 "summary": "Obtencion de las aulas de un datos reserva",
-                "operationId": "f8574cd24824a54fe90c2c9d9a1dc1a2",
+                "operationId": "51ac4a8d8f790b2e09384fc64e7664b3",
                 "parameters": [
                     {
                         "name": "idDatosReserva",
@@ -775,9 +775,7 @@
                         "description": "Ha ocurrido un error."
                     }
                 }
-            }
-        },
-        "/datos-reserva/aulas/{idDatosReserva}": {
+            },
             "delete": {
                 "tags": [
                     "Datos Reserva"

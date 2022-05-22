@@ -207,7 +207,8 @@ class SolicitudReservaController extends Controller
             $solicitudCompleta -> docentes = $docentes;
             $solicitudCompleta -> justificaciones = $justificaciones;
             $solicitudCompleta -> fecha = $fecha;
-            
+            $solicitudCompleta -> conflictos = $this::estadoAulas($solicitudesPendientes[$i]->id);
+
             array_push($pendientes, $solicitudCompleta);
         }
         
@@ -353,7 +354,7 @@ class SolicitudReservaController extends Controller
             );
             //echo json_encode($estado);
         }
-        return json_encode($periodos);
+        return $periodos;
     }
 
 
@@ -361,7 +362,6 @@ class SolicitudReservaController extends Controller
         $reserva = DB::table('reservas')
         ->where("datos_reserva_id", $idDatos)
         ->get();
-        echo json_encode( $reserva);
         if(sizeof($reserva)==0) return false;    
         else return true;
     }
