@@ -239,4 +239,27 @@ class DatosReservaController extends Controller
             ->where([['aula_id', "=",$aulaId],["datos_reserva_id", "=", $idDatosReserva]])->delete();
         }
     }
+    /**
+     * @OA\Get(
+     *      path= "/datos-reserva/materia/{idDatosReserva}",
+     *      summary =  "Obtencion de la materia asignada a un dato reserva",
+     *      tags = {"Datos Reserva"},
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      ) 
+     * )
+     * 
+     */
+    public function getMateria(Request $request){
+        $materia = DB::table('datos_reserva_grupo')
+        ->where("datos_reserva_grupo.datos_reserva_id", $request->idDatosReserva)
+        ->join("grupos", "grupos.id", "datos_reserva_grupo.grupo_id")
+        ->join("materias","materias.id", "grupos.materia_id")
+        ->get();
+        return $materia->first();
+    }
 }

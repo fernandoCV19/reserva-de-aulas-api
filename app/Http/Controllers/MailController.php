@@ -8,6 +8,31 @@ use App\Mail\SolicitudNotificacionMail;
 
 class MailController extends Controller
 {
+    /**
+     * @OA\Post(
+     *      path= "/mail/notificarRechazo",
+     *      summary =  "Creacion de una solicitud de reserva",
+     *      tags = {"Solicitud de reservas"},
+     * 
+     *       @OA\RequestBody(
+     *         @OA\JsonContent(
+     *               @OA\Property(
+     *                  property="email", 
+     *                  type="string",
+     *               ),
+     *         ),
+     *        
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      ) 
+     * )
+     * 
+     */
     public function sendEmailNotificacionRechazo()
     {
         Mail::raw("El siguiente email es para notificarle que la solicitud de reserva ha sido rechazada", function ($message) {
@@ -24,6 +49,32 @@ class MailController extends Controller
         }
         
     }
+
+    /**
+     * @OA\Post(
+     *      path= "/mail/notificarAceptacion",
+     *      summary =  "Creacion de una solicitud de reserva",
+     *      tags = {"Solicitud de reservas"},
+     * 
+     *       @OA\RequestBody(
+     *         @OA\JsonContent(
+     *               @OA\Property(
+     *                  property="email", 
+     *                  type="string",
+     *               ),
+     *         ),
+     *        
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      ) 
+     * )
+     * 
+     */
     public function sendEmailNotificacionAceptado()
     {
         Mail::raw("El siguiente email es para notificarle que la solicitud de reserva ha sido aceptada por tanto la reserva fue efectuada", function ($message) {
@@ -40,6 +91,36 @@ class MailController extends Controller
         }
         
     }
+
+    /**
+     * @OA\Post(
+     *      path= "/mail/notificacionPersonalizada",
+     *      summary =  "Creacion de una solicitud de reserva",
+     *      tags = {"Solicitud de reservas"},
+     * 
+     *       @OA\RequestBody(
+     *         @OA\JsonContent(
+     *               @OA\Property(
+     *                  property="email", 
+     *                  type="string",
+     *               ),
+     *              @OA\Property(
+     *                  property="mensaje", 
+     *                  type="string",
+     *               ),
+     *         ),
+     *        
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      ) 
+     * )
+     * 
+     */
     public function sendEmailPersonalizado(Request $request)
     {
         Mail::raw($request->mensaje, function ($message) {
