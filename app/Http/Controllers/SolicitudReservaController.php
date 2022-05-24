@@ -273,19 +273,34 @@ class SolicitudReservaController extends Controller
             ->get()->first()->fecha; 
             $solicitudCompleta = new \stdClass();
             $solicitudCompleta -> numero_estimado = DatosReserva::find($solicitudesPendientes[$i]->datos_reserva_id)->numero_estimado;
-            $solicitudCompleta -> aulas = $aulas;//DatosReservaController::getAulasDatosReserva($solicitudesPendientes[$i]->datos_reserva_id)->original;
+
+            $conflictos = $this::estadoAulas($solicitudesPendientes[$i]->id);
+            $aulaConflicto = $this::juntarConflictos($conflictos, $aulas);
+            
+
+            $solicitudCompleta -> aulas = $aulaConflicto;//DatosReservaController::getAulasDatosReserva($solicitudesPendientes[$i]->datos_reserva_id)->original;
             $solicitudCompleta -> horarios = $horarios;
             $solicitudCompleta -> solicitud  = $solicitudesPendientes[$i];
             $solicitudCompleta -> docentes = $docentes;
             $solicitudCompleta -> justificaciones = $justificaciones;
             $solicitudCompleta -> fecha = $fecha;
-            $solicitudCompleta -> conflictos = $this::estadoAulas($solicitudesPendientes[$i]->id);
+            $solicitudCompleta -> conflictos = $conflictos;
 
             array_push($pendientes, $solicitudCompleta);
+
+            //echo $this::juntarConflictos($this::estadoAulas($solicitudesPendientes[$i]->id), $aulas);
         }
         
         return $pendientes;
         
+    }
+    private function juntarConflictos($conflictos, $aulas){
+        for($i = 0; $i <sizeof($aulas); $i++){
+            if($conflictos[$i]-> nombreAula == $aulas[$i]-> nombre){
+                $aulas[$i] -> estado = $conflictos[$i]-> estado;
+            }
+        }
+        return $aulas;
     }
     /**
      * @OA\Get(
