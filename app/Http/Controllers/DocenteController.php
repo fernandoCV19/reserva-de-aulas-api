@@ -103,7 +103,7 @@ class DocenteController extends Controller
         ->where("docente_id", request("idDocente"))
         
         ->select(["grupos.nombre as nombre_grupo", "docentes.nombre as nombre_docente", 
-        "grupos.id as id_grupo", "docentes.id as id_docente", "materias.nombre as nombre_materia"])
+        "grupos.id as id_grupo", "docentes.id as id_docente", "materias.nombre as nombre_materia", "materias.id as idMateria"])
         ->get();
         return $docentes;
     }
@@ -129,5 +129,38 @@ class DocenteController extends Controller
         ->where("activado", 2)
         ->get();
         return $docentes;
+    }
+
+    /**
+     * @OA\Put(
+     *      path= "/docente/rechazar/{idDocente}",
+     *      summary =  "Rechazo de la creacion de una cuenta",
+     *      tags = {"Docentes"},
+     *      @OA\Parameter(
+     *          name="idDocente",
+     *          description="Id de Docente",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),  
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      ) 
+     * )
+     * 
+     */
+    public function rechazarValidacion(Request $request){
+        $docente = Docente::find($request->idDocente);
+        $docente -> activado = 0;
+        $docente -> save();
+        return response()->json([
+            'message' => 'Rechazado.',
+        ], 200);
     }
 }
