@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Reserva;
 use App\Models\DatosReserva;
 use App\Models\SolicitudReserva;
+use App\Models\Notificacion;
+use Illuminate\Support\Facades\DB;
 
 class ReservaController extends Controller
 {
@@ -36,14 +38,37 @@ class ReservaController extends Controller
      */
     public function crearReserva(Request $request, $idSolicitud)
     {    
-
+        
+        
         $idDatos = SolicitudReserva::find($idSolicitud)->datos_reserva_id;
+
+        
         
         $reserva = new Reserva();
         $reserva -> datos_reserva_id = $idDatos;
         $reserva -> fecha_creacion = now();
         $reserva -> save();
 
+        $solicitud = SolicitudReserva::find($idSolicitud);
+        $solicitud -> estado =  "ACEPTADO";
+        $solicitud -> save();
+
+        $docentes = DB::table("datos_reserva_grupo")
+        ->where("datos_reserva_grupo.datos_reserva_id", $idDatos)
+        -> join("grupos", "datos_reserva_grupo.grupo_id", "grupos.id")
+        -> join("docentes", "docentes.id", "grupos.docente_id")
+        -> get();
+
+        echo($docentes);
+        for($i=0; $i<sizeof($docentes); $i++){
+            $notificacion = new Notificacion();
+            $notificacion -> mensaje = "La solicitud de reserva que hizo ha sido aceptada";
+            $notificacion ->docente_id = $docentes[$i]->docente_id;
+            $notificacion -> fecha = now();
+            $notificacion -> save();
+        }
+
+        
         return $reserva;   
     }
     /**
