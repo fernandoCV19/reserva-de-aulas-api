@@ -182,6 +182,7 @@ class AulasController extends Controller
         $aulas = DB::table(DB::raw('aulas, periodos'))
         //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])
             ->where("ubicacion", "=", request("area"))
+            ->select("aulas.nombre", "hora_inicio", "hora_fin", "capacidad", "descripcion", "aulas.id as idAula","ubicacion")
             ->orderBy('nombre', "ASC")
             ->orderBy('hora_inicio')
             ->get();
@@ -225,6 +226,7 @@ class AulasController extends Controller
         $aulas = DB::table(DB::raw('aulas, periodos'))
         //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])
             ->where([["capacidad", ">=", $request->capacidadMin], ["capacidad", "<=", $request->capacidadMax]])
+            ->select("aulas.nombre", "hora_inicio", "hora_fin", "capacidad", "descripcion", "aulas.id as idAula","ubicacion")
             ->orderBy('nombre', "ASC")
             ->orderBy('hora_inicio')
             ->get();
@@ -267,6 +269,7 @@ class AulasController extends Controller
         $aulas=DB::table(DB::raw('aulas, periodos'))
             //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])
             //-> where("hora_inicio","=",$request->periodoIni)
+            ->select("aulas.nombre", "hora_inicio", "hora_fin", "capacidad", "descripcion", "aulas.id as idAula","ubicacion")
             -> orderBy('nombre',"ASC")
             -> orderBy('hora_inicio')
             -> get();
@@ -325,6 +328,7 @@ class AulasController extends Controller
 
         $aulas = DB::table(DB::raw('aulas, periodos'))
             ->where("nombre", "=", request("nombreAula"))
+            ->select("aulas.nombre", "hora_inicio", "hora_fin", "capacidad", "descripcion", "aulas.id as idAula","ubicacion")
             ->orderBy('nombre', "ASC")
             ->orderBy('hora_inicio')
             ->get();
@@ -379,14 +383,17 @@ class AulasController extends Controller
         if ($request->capacidadMin != null && $request->capacidadMax != null) {
             $aulas = DB::table(DB::raw('aulas, periodos'))
             //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])
-                ->where([["capacidad", ">=", $request->capacidadMin], ["capacidad", "<=", $request->capacidadMax],
-                ]) // ["ubicacion", $request->area]
+                ->where([["capacidad", ">=", $request->capacidadMin], ["capacidad", "<=", $request->capacidadMax]]) // ["ubicacion", $request->area]
+                ->select("aulas.nombre", "hora_inicio", "hora_fin", "capacidad", "descripcion", "aulas.id as idAula",
+                        "ubicacion")
                 ->orderBy('nombre', "ASC")
                 ->orderBy('hora_inicio')
                 ->get();
         } else {
             $aulas = DB::table(DB::raw('aulas, periodos'))
             //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])
+                ->select("aulas.nombre", "hora_inicio", "hora_fin", "capacidad", "descripcion", "aulas.id as idAula",
+                "ubicacion")    
                 ->orderBy('nombre', "ASC")
                 ->orderBy('hora_inicio')
                 ->get();
@@ -400,12 +407,9 @@ class AulasController extends Controller
             for ($i = 0; $i < sizeof($aulas); $i++) {
                 for ($j = 0; $j < sizeof($periodosRequest); $j++) {
                     if (strcmp($aulas[$i]->hora_inicio, $periodosRequest[$j]) == 0) {
-                        $bandera = true;
+                        array_push($aulasTodas, $aulas[$i]);
+                        break;
                     }
-                }
-                if ($bandera) {
-                    array_push($aulasTodas, $aulas[$i]);
-                    $bandera = false;
                 }
             }
         } else {
@@ -519,6 +523,7 @@ class AulasController extends Controller
                     $aulasOcupadas[$i]->hora_inicio == $aulas[$j]->hora_inicio) {
                     $bandera = true;
                     break;
+                    
                 }
             }
             if ($j == sizeof($aulas) - 1) {
