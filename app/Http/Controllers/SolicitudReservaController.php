@@ -173,8 +173,7 @@ class SolicitudReservaController extends Controller
             ->where("datos_reserva_grupo.datos_reserva_id", $solicitudesPendientes[$i]->datos_reserva_id)
             ->join("grupos", "datos_reserva_grupo.grupo_id","grupos.id")
             ->join("docentes", "grupos.docente_id", "docentes.id")
-            
-            ->select("docentes.nombre", "docentes.email", "docentes.cod_SIS", )
+            ->select("docentes.nombre", "docentes.email", "docentes.cod_SIS")
             ->get();
             //"datos_reservas.numero_estimado"
 
