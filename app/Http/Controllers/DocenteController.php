@@ -45,7 +45,7 @@ class DocenteController extends Controller
     }
     /**
      * @OA\Get(
-     *      path= "/docente/notificaciones/{idSolicitud}",
+     *      path= "/docente/notificaciones/{idDocente}",
      *      summary =  "Obtencion de las notificaciones de un docente apartir de un id",
      *      tags = {"Docentes"},
      * 
