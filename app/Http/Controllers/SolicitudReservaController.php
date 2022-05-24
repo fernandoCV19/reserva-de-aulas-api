@@ -208,7 +208,7 @@ class SolicitudReservaController extends Controller
         $solicitud->estado = 'RECHAZADO';
         $solicitud -> save();
         $docentes = DB::table("datos_reserva_grupo")
-        ->where("datos_reserva_grupo.datos_reserva_id",  $solicitud_reserva -> datos_reserva_id)
+        ->where("datos_reserva_grupo.datos_reserva_id",  $solicitud -> datos_reserva_id)
         -> join("grupos", "datos_reserva_grupo.grupo_id", "grupos.id")
         -> join("docentes", "docentes.id", "grupos.docente_id")
         -> get();
