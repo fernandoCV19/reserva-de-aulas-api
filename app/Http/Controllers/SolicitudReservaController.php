@@ -78,8 +78,23 @@ class SolicitudReservaController extends Controller
         $solicitud_reserva ->estado ="PENDIENTE";
         $solicitud_reserva ->fecha_creacion = now();
         $solicitud_reserva ->datos_reserva_id = $datos_reserva->id;
-
         $solicitud_reserva->save();
+
+        
+
+        $docentes = DB::table("datos_reserva_grupo")
+        ->where("datos_reserva_grupo.datos_reserva_id", $solicitud_reserva -> datos_reserva_id)
+        -> join("grupos", "datos_reserva_grupo.grupo_id", "grupos.id")
+        -> join("docentes", "docentes.id", "grupos.docente_id")
+        -> get();
+
+        for($i=0; $i<sizeof($docentes); $i++){
+            $notificacion = new Notificacion();
+            $notificacion -> mensaje = "La solicitud de reserva ha sido realizada con exito";
+            $notificacion ->docente_id = $docentes[$i]->docente_id;
+            $notificacion -> fecha = now();
+            $notificacion -> save();
+        }
 
         return $solicitud_reserva;
     }
@@ -192,6 +207,19 @@ class SolicitudReservaController extends Controller
         $solicitud = SolicitudReserva::findOrFail($request-> idSolicitud);
         $solicitud->estado = 'RECHAZADO';
         $solicitud -> save();
+        $docentes = DB::table("datos_reserva_grupo")
+        ->where("datos_reserva_grupo.datos_reserva_id",  $solicitud_reserva -> datos_reserva_id)
+        -> join("grupos", "datos_reserva_grupo.grupo_id", "grupos.id")
+        -> join("docentes", "docentes.id", "grupos.docente_id")
+        -> get();
+
+        for($i=0; $i<sizeof($docentes); $i++){
+            $notificacion = new Notificacion();
+            $notificacion -> mensaje = "La solicitud de reserva ha sido rechazada";
+            $notificacion ->docente_id = $docentes[$i]->docente_id;
+            $notificacion -> fecha = now();
+            $notificacion -> save();
+        }
         return $solicitud;
     }
 
