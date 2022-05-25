@@ -177,12 +177,26 @@ class SolicitudesReservasParaPruebas extends Seeder
         ]);
 
 
+        $docente1 = DB::table('grupos')->select('docente_id')->where('materia_id', '=', $prueba )->where('nombre', 1)->first()->docente_id;
+        $docente2 = DB::table('grupos')->select('docente_id')->where('materia_id', '=', $prueba )->where('nombre', 2)->first()->docente_id;
+        $docente3 = DB::table('grupos')->select('docente_id')->where('materia_id', '=', $prueba )->where('nombre', 3)->first()->docente_id;
+        $docente4 = DB::table('grupos')->select('docente_id')->where('materia_id', '=', $prueba )->where('nombre', 4)->first()->docente_id;
+        $docente5 = DB::table('grupos')->select('docente_id')->where('materia_id', '=', $prueba )->where('nombre', 5)->first()->docente_id;
+        $docente6 = DB::table('grupos')->select('docente_id')->where('materia_id', '=', $prueba )->where('nombre', 6)->first()->docente_id;
+        $docente7 = DB::table('grupos')->select('docente_id')->where('nombre', '=', '7' )->first()->docente_id;
+        $docente8 = DB::table('grupos')->select('docente_id')->where('nombre', '=', '8' )->first()->docente_id; 
+        $docente9 = DB::table('grupos')->select('docente_id')->where('nombre', '=', '9' )->first()->docente_id;
+        $docente10 = DB::table('grupos')->select('docente_id')->where('nombre', '=', '10' )->first()->docente_id;
+        $docente11 = DB::table('grupos')->select('docente_id')->where('nombre', '=', '11' )->first()->docente_id;
+        $docente12 = DB::table('grupos')->select('docente_id')->where('nombre', '=', '12' )->first()->docente_id;
+
         $idDatosReserva1 = Str::uuid() -> toString(); 
 
         DB::table('datos_reservas')->insert([
             'id' => $idDatosReserva1,
             'fecha' => '2022-10-1',
-            'numero_estimado' => '200'
+            'numero_estimado' => '200',
+            'docente_id' => $docente1
         ]);
 
         DB::table('solicitud_reservas')->insert([
@@ -206,7 +220,7 @@ class SolicitudesReservasParaPruebas extends Seeder
         DB::table('datos_reserva_periodo')->insert([
             'id' => Str::uuid() -> toString(),
             'datos_reserva_id' => $idDatosReserva1,
-            'periodo_id' => $p815945
+            'periodo_id' => $p815945,
         ]);
 
 
@@ -215,7 +229,8 @@ class SolicitudesReservasParaPruebas extends Seeder
         DB::table('datos_reservas')->insert([
             'id' => $idDatosReserva2,
             'fecha' => '2022-10-1',
-            'numero_estimado' => '400'
+            'numero_estimado' => '400',
+            'docente_id' => $docente12
         ]);
 
         DB::table('solicitud_reservas')->insert([
@@ -247,7 +262,8 @@ class SolicitudesReservasParaPruebas extends Seeder
         DB::table('datos_reservas')->insert([
             'id' => $idDatosReserva3,
             'fecha' => '2022-10-10',
-            'numero_estimado' => '150'
+            'numero_estimado' => '150',
+            'docente_id' => $docente9
         ]);
 
         DB::table('solicitud_reservas')->insert([
@@ -291,7 +307,8 @@ class SolicitudesReservasParaPruebas extends Seeder
         DB::table('datos_reservas')->insert([
             'id' => $idDatosReserva4,
             'fecha' => '2022-10-10',
-            'numero_estimado' => '250'
+            'numero_estimado' => '250',
+            'docente_id' => $docente8
         ]);
 
         DB::table('solicitud_reservas')->insert([
@@ -341,7 +358,8 @@ class SolicitudesReservasParaPruebas extends Seeder
         DB::table('datos_reservas')->insert([
             'id' => $idDatosReserva5,
             'fecha' => '2022-10-10',
-            'numero_estimado' => '200'
+            'numero_estimado' => '200',
+            'docente_id' => $docente11
         ]);
 
         DB::table('solicitud_reservas')->insert([
@@ -385,7 +403,8 @@ class SolicitudesReservasParaPruebas extends Seeder
         DB::table('datos_reservas')->insert([
             'id' => $idDatosReserva6,
             'fecha' => '2022-10-15',
-            'numero_estimado' => '100'
+            'numero_estimado' => '100',
+            'docente_id' => $docente5
         ]);
 
         DB::table('solicitud_reservas')->insert([
@@ -423,7 +442,8 @@ class SolicitudesReservasParaPruebas extends Seeder
         DB::table('datos_reservas')->insert([
             'id' => $idDatosReserva7,
             'fecha' => '2022-10-15',
-            'numero_estimado' => '50'
+            'numero_estimado' => '50',
+            'docente_id' => $docente1
         ]);
 
         DB::table('solicitud_reservas')->insert([
@@ -467,7 +487,8 @@ class SolicitudesReservasParaPruebas extends Seeder
         DB::table('datos_reservas')->insert([
             'id' => $idDatosReserva8,
             'fecha' => '2022-10-15',
-            'numero_estimado' => '250'
+            'numero_estimado' => '250',
+            'docente_id' => $docente4
         ]);
 
         DB::table('solicitud_reservas')->insert([
@@ -511,7 +532,8 @@ class SolicitudesReservasParaPruebas extends Seeder
         DB::table('datos_reservas')->insert([
             'id' => $idDatosReserva9,
             'fecha' => '2022-10-15',
-            'numero_estimado' => '500'
+            'numero_estimado' => '500',
+            'docente_id' => $docente3
         ]);
 
         DB::table('solicitud_reservas')->insert([
@@ -573,7 +595,8 @@ class SolicitudesReservasParaPruebas extends Seeder
         DB::table('datos_reservas')->insert([
             'id' => $idDatosReserva10,
             'fecha' => '2022-10-18',
-            'numero_estimado' => '300'
+            'numero_estimado' => '300',
+            'docente_id' => $docente2
         ]);
 
         DB::table('solicitud_reservas')->insert([

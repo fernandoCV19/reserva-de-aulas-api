@@ -210,15 +210,6 @@ class AuthDocenteController extends Controller
      * 
     */
     public function activar(Request $request){
-        $validator = Validator::make($request->all(),[
-            'cod_SIS'=>'required',
-            'email' => 'required|string|email|max:100|unique:docentes',
-            'contrasenia' => 'required|string|min:6',
-        ]);
-        if($validator->fails()){
-            return response()->json($validator -> errors()-> toJson(),400);
-        }
-        
         $docenteID = DB::table('docentes')
         -> where("nombre", "=", $request->nombre)->get(); 
         

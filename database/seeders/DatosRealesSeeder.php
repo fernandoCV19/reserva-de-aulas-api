@@ -31,8 +31,8 @@ class DatosRealesSeeder extends Seeder
             DocentesRealesSeeder::class,
             GruposRealesSeeder::class,
             ReservasParaPruebas::class,
-            SolicitudesReservasParaPruebas::class,
-            CuentasDeDesarrolladoresSeeder::class
+            SolicitudesReservasParaPruebas::class
+            //CuentasDeDesarrolladoresSeeder::class
         ]);
     }
 }
