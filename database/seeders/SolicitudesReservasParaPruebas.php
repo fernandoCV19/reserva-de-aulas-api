@@ -56,18 +56,18 @@ class SolicitudesReservasParaPruebas extends Seeder
         $grupo12 = DB::table('grupos')->select('id')->where('nombre', '=', '12' )->first()->id;
 
 
-        $docente1 = DB::table('grupos')->select('id')->where('materia_id', '=', $prueba )->where('nombre', 1)->first()->docente_id;
-        $docente2 = DB::table('grupos')->select('id')->where('materia_id', '=', $prueba )->where('nombre', 2)->first()->docente_id;
-        $docente3 = DB::table('grupos')->select('id')->where('materia_id', '=', $prueba )->where('nombre', 3)->first()->docente_id;
-        $docente4 = DB::table('grupos')->select('id')->where('materia_id', '=', $prueba )->where('nombre', 4)->first()->docente_id;
-        $docente5 = DB::table('grupos')->select('id')->where('materia_id', '=', $prueba )->where('nombre', 5)->first()->docente_id;
-        $docente6 = DB::table('grupos')->select('id')->where('materia_id', '=', $prueba )->where('nombre', 6)->first()->docente_id;
-        $docente7 = DB::table('grupos')->select('id')->where('nombre', '=', '7' )->first()->docente_id;
-        $docente8 = DB::table('grupos')->select('id')->where('nombre', '=', '8' )->first()->docente_id; 
-        $docente9 = DB::table('grupos')->select('id')->where('nombre', '=', '9' )->first()->docente_id;
-        $docente10 = DB::table('grupos')->select('id')->where('nombre', '=', '10' )->first()->docente_id;
-        $docente11 = DB::table('grupos')->select('id')->where('nombre', '=', '11' )->first()->docente_id;
-        $docente12 = DB::table('grupos')->select('id')->where('nombre', '=', '12' )->first()->docente_id;
+        $docente1 = DB::table('grupos')->select('docente_id')->where('materia_id', '=', $prueba )->where('nombre', 1)->first()->docente_id;
+        $docente2 = DB::table('grupos')->select('docente_id')->where('materia_id', '=', $prueba )->where('nombre', 2)->first()->docente_id;
+        $docente3 = DB::table('grupos')->select('docente_id')->where('materia_id', '=', $prueba )->where('nombre', 3)->first()->docente_id;
+        $docente4 = DB::table('grupos')->select('docente_id')->where('materia_id', '=', $prueba )->where('nombre', 4)->first()->docente_id;
+        $docente5 = DB::table('grupos')->select('docente_id')->where('materia_id', '=', $prueba )->where('nombre', 5)->first()->docente_id;
+        $docente6 = DB::table('grupos')->select('docente_id')->where('materia_id', '=', $prueba )->where('nombre', 6)->first()->docente_id;
+        $docente7 = DB::table('grupos')->select('docente_id')->where('nombre', '=', '7' )->first()->docente_id;
+        $docente8 = DB::table('grupos')->select('docente_id')->where('nombre', '=', '8' )->first()->docente_id; 
+        $docente9 = DB::table('grupos')->select('docente_id')->where('nombre', '=', '9' )->first()->docente_id;
+        $docente10 = DB::table('grupos')->select('docente_id')->where('nombre', '=', '10' )->first()->docente_id;
+        $docente11 = DB::table('grupos')->select('docente_id')->where('nombre', '=', '11' )->first()->docente_id;
+        $docente12 = DB::table('grupos')->select('docente_id')->where('nombre', '=', '12' )->first()->docente_id;
 
         $idDatosReserva1 = Str::uuid() -> toString(); 
 
@@ -100,7 +100,6 @@ class SolicitudesReservasParaPruebas extends Seeder
             'id' => Str::uuid() -> toString(),
             'datos_reserva_id' => $idDatosReserva1,
             'periodo_id' => $p815945,
-            'docente_id' => $docente12
         ]);
 
 
@@ -109,7 +108,8 @@ class SolicitudesReservasParaPruebas extends Seeder
         DB::table('datos_reservas')->insert([
             'id' => $idDatosReserva2,
             'fecha' => '2022-10-1',
-            'numero_estimado' => '400'
+            'numero_estimado' => '400',
+            'docente_id' => $docente12
         ]);
 
         DB::table('solicitud_reservas')->insert([
