@@ -38,11 +38,25 @@ class MateriaController extends Controller
         $docentes=DB::table('grupos')
         ->join("docentes", "docentes.id", "=", "grupos.docente_id")
         ->where("materia_id", request("idMateria"))
-        
         ->select(["grupos.nombre as nombre_grupo", "docentes.nombre as nombre_docente", 
         "grupos.id as id_grupo", "docentes.id as id_docente"])
         ->get();
-        return $docentes;
+        $aux = array();
+        $docentesObtenidos = array();
+        for($i=0; $i<sizeof($docentes); $i++){
+            $doc = $docentes[$i];
+            $duplicado = false;
+            for($k=0; $k<sizeof($aux); $k++){
+                if (($doc->nombre_docente)==$aux[$k]){
+                    $duplicado = true;
+                }
+            }
+            if($duplicado == false){
+                array_push($docentesObtenidos,$doc);
+                array_push($aux,$doc->nombre_docente);
+            }
+        }
+        return $docentesObtenidos;
     }
     /**
      * @OA\Get(
