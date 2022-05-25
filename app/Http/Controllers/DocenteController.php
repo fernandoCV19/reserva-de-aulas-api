@@ -97,7 +97,7 @@ class DocenteController extends Controller
      * 
      */
     public function getMaterias($idDocente){ 
-        $docentes=DB::table('grupos')
+        $materias=DB::table('grupos')
         ->join("docentes", "docentes.id", "=", "grupos.docente_id")
         ->join("materias", "materias.id", "=", "grupos.materia_id")
         ->where("docente_id", request("idDocente"))
@@ -105,7 +105,24 @@ class DocenteController extends Controller
         ->select(["grupos.nombre as nombre_grupo", "docentes.nombre as nombre_docente", 
         "grupos.id as id_grupo", "docentes.id as id_docente", "materias.nombre as nombre_materia", "materias.id as idMateria"])
         ->get();
-        return $docentes;
+
+        $aux = array();
+        $materiasObtenidas = array();
+        for($i=0; $i<sizeof($materias); $i++){
+            $doc = $materias[$i];
+            $duplicado = false;
+            for($k=0; $k<sizeof($aux); $k++){
+                if (($doc->nombre_materia)==$aux[$k]){
+                    $duplicado = true;
+                }
+            }
+            if($duplicado == false){
+                array_push($materiasObtenidas,$doc);
+                array_push($aux,$doc->nombre_materia);
+            }
+        }
+        return $materiasObtenidas;
+
     }
     /**
      * @OA\Get(
