@@ -40,7 +40,7 @@ class SolicitudesReservasParaPruebas extends Seeder
         $p17151845 = DB::table('periodos')->select('id')->where('hora_inicio', '=', '17:15:00' )->first()->id;
         $p18452115 = DB::table('periodos')->select('id')->where('hora_inicio', '=', '18:45:00' )->first()->id;
     
-        $prueba = DB::table('materias')->select('id')->where('codigo', '=', '2010010' )->first()->id;
+        $prueba = DB::table('materias')->select('id')->where('codigo', '=', '2008054' )->first()->id;
 
         $grupo1 = DB::table('grupos')->select('id')->where('materia_id', '=', $prueba )->where('nombre', 1)->first()->id;
         $grupo2 = DB::table('grupos')->select('id')->where('materia_id', '=', $prueba )->where('nombre', 2)->first()->id;
@@ -54,6 +54,127 @@ class SolicitudesReservasParaPruebas extends Seeder
         $grupo10 = DB::table('grupos')->select('id')->where('nombre', '=', '10' )->first()->id;
         $grupo11 = DB::table('grupos')->select('id')->where('nombre', '=', '11' )->first()->id;
         $grupo12 = DB::table('grupos')->select('id')->where('nombre', '=', '12' )->first()->id;
+
+        $docente1 = DB::table('grupos')->select('docente_id')->where('id', '=', $grupo1)->first()->docente_id;
+        $docente2 = DB::table('grupos')->select('docente_id')->where('id', '=', $grupo2)->first()->docente_id;
+        $docente3 = DB::table('grupos')->select('docente_id')->where('id', '=', $grupo3)->first()->docente_id;
+        $docente4 = DB::table('grupos')->select('docente_id')->where('id', '=', $grupo4)->first()->docente_id;
+        $docente5 = DB::table('grupos')->select('docente_id')->where('id', '=', $grupo5)->first()->docente_id;
+        $docente6 = DB::table('grupos')->select('docente_id')->where('id', '=', $grupo6)->first()->docente_id;
+        $docente7 = DB::table('grupos')->select('docente_id')->where('id', '=', $grupo7)->first()->docente_id;
+        $docente8 = DB::table('grupos')->select('docente_id')->where('id', '=', $grupo8)->first()->docente_id;
+        $docente9 = DB::table('grupos')->select('docente_id')->where('id', '=', $grupo9)->first()->docente_id;
+        $docente10 = DB::table('grupos')->select('docente_id')->where('id', '=', $grupo10)->first()->docente_id;
+        $docente11 = DB::table('grupos')->select('docente_id')->where('id', '=', $grupo11)->first()->docente_id;
+        $docente12 = DB::table('grupos')->select('docente_id')->where('id', '=', $grupo12)->first()->docente_id;
+
+        DB::table('docentes')->where('id',$docente1)
+        ->update([
+            'cod_SIS' => "221492356",
+            'celular' => '1111111',
+            'contrasenia' => '123456',
+            'email' => 'prueba@gmail.com',
+            'activado' => 1
+        ]);
+
+        DB::table('docentes')->where('id',$docente2)
+        ->update([
+            'cod_SIS' => "221492357",
+            'celular' => '1111111',
+            'contrasenia' => '123456',
+            'email' => 'prueba@gmail.com',
+            'activado' => 1
+        ]);
+
+        DB::table('docentes')->where('id',$docente3)
+        ->update([
+            'cod_SIS' => "221492358",
+            'celular' => '1111111',
+            'contrasenia' => '123456',
+            'email' => 'prueba@gmail.com',
+            'activado' => 1
+        ]);
+
+        DB::table('docentes')->where('id',$docente4)
+        ->update([
+            'cod_SIS' => "221492359",
+            'celular' => '1111111',
+            'contrasenia' => '123456',
+            'email' => 'prueba@gmail.com',
+            'activado' => 1
+        ]);
+
+        DB::table('docentes')->where('id',$docente5)
+        ->update([
+            'cod_SIS' => "221492360",
+            'celular' => '1111111',
+            'contrasenia' => '123456',
+            'email' => 'prueba@gmail.com',
+            'activado' => 1
+        ]);
+
+        DB::table('docentes')->where('id',$docente6)
+        ->update([
+            'cod_SIS' => "221492361",
+            'celular' => '1111111',
+            'contrasenia' => '123456',
+            'email' => 'prueba@gmail.com',
+            'activado' => 1
+        ]);
+
+        DB::table('docentes')->where('id',$docente7)
+        ->update([
+            'cod_SIS' => "221492362",
+            'celular' => '1111111',
+            'contrasenia' => '123456',
+            'email' => 'prueba@gmail.com',
+            'activado' => 1
+        ]);
+
+        DB::table('docentes')->where('id',$docente8)
+        ->update([
+            'cod_SIS' => "221492363",
+            'celular' => '1111111',
+            'contrasenia' => '123456',
+            'email' => 'prueba@gmail.com',
+            'activado' => 1
+        ]);
+
+        DB::table('docentes')->where('id',$docente9)
+        ->update([
+            'cod_SIS' => "221492364",
+            'celular' => '1111111',
+            'contrasenia' => '123456',
+            'email' => 'prueba@gmail.com',
+            'activado' => 1
+        ]);
+
+        DB::table('docentes')->where('id',$docente10)
+        ->update([
+            'cod_SIS' => "221492365",
+            'celular' => '1111111',
+            'contrasenia' => '123456',
+            'email' => 'prueba@gmail.com',
+            'activado' => 1
+        ]);
+
+        DB::table('docentes')->where('id',$docente11)
+        ->update([
+            'cod_SIS' => "221492366",
+            'celular' => '1111111',
+            'contrasenia' => '123456',
+            'email' => 'prueba@gmail.com',
+            'activado' => 1
+        ]);
+
+        DB::table('docentes')->where('id',$docente12)
+        ->update([
+            'cod_SIS' => "221492367",
+            'celular' => '1111111',
+            'contrasenia' => '123456',
+            'email' => 'prueba@gmail.com',
+            'activado' => 1
+        ]);
 
 
         $idDatosReserva1 = Str::uuid() -> toString(); 
