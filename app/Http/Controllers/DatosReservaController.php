@@ -65,10 +65,16 @@ class DatosReservaController extends Controller
      * )
      * 
      */
-    public function crearDatosReserva(Request $request){        
+    public function crearDatosReserva(Request $request){   
+        $docenteId = DB::table("grupos")
+        ->where("grupos.id", $request->gruposId[0])
+        ->get()->first()->docente_id;
+        
+
         $datos_reserva = new DatosReserva();
         $datos_reserva -> numero_estimado = $request->numero_estimado;
         $datos_reserva -> fecha = $request-> fecha;
+        $datos_reserva -> docente_id = $docenteId;
         $datos_reserva -> save();
         
 
