@@ -17,9 +17,11 @@ class CreateDatosReservasTable extends Migration
             $table->uuid('id');
             $table->date('fecha');
             $table->integer('numero_estimado');
+            $table->string('docente_id');
 
             $table->primary('id');
             $table->unique('id');
+            $table->foreign('docente_id')->references('id')->on('docentes');
         });
     }
 
