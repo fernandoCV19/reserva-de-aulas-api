@@ -558,4 +558,42 @@ class SolicitudReservaController extends Controller
         if(sizeof($reserva)==0) return false;    
         else return true;
     }
+
+    /**
+     * @OA\Get(
+     *      path= "/solicitud-reserva/docente-solicitud/{idDocente}",
+     *      summary =  "Obtencion de las solicitudes de un docente",
+     *      tags = {"Solicitud de reservas"},
+     *      @OA\Parameter(
+     *          name="idDocente",
+     *          description="Id del docente",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      )
+     * )
+     * 
+     * 
+     */
+    public function getSolicitudesDocentes(Request $request){
+        $solicitudes = DB::table('solicitud_reservas')
+        ->join("datos_reserva_grupo", "solicitud_reservas.datos_reserva_id","=","datos_reserva_grupo.datos_reserva_id")
+        ->join("datos_reserva_periodo", "solicitud_reservas.datos_reserva_id", "=", "datos_reserva_periodo.datos_reserva_id") 
+        ->join("periodos","datos_reserva_periodo.periodo_id","=","periodos.id")
+        ->join ("grupos", "datos_reserva_grupo.grupo_id","=","grupos.id")
+        ->join("docentes","grupos.docente_id","=","docentes.id")
+        ->join("materias","grupos.materia_id","=","materias.id")
+        ->where ("grupos.docente_id","=",$request->idDocente)
+        ->get();
+        return $solicitudes;
+    }
 }
