@@ -18,6 +18,8 @@ Route::post('/cantidad',[AulasController::class, "filtrarAulasPorCantidad"]);
 Route::post('/periodo',[AulasController::class, "filtrarAulasPorPeriodo"]);
 Route::post('/estado-aula',[AulasController::class, "aulaEstado"]);
 Route::post('/general',[AulasController::class, "filtrarGeneral"]);
+Route::post('/infoAula',[AulasController::class, "infoAulas"]);
+Route::put('/modificar',[AulasController::class, "modificarAula"]);
 Route::get("/user", function () {
     $mensaje =['mensaje'=>"Hola mundo"];
     return response()->json($mensaje, 200,[]);

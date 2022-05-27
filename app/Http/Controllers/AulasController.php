@@ -502,12 +502,62 @@ class AulasController extends Controller
         }
     }
 
+
+    /**
+     * @OA\Post(
+     *      path= "/aula/infoAula",
+     *      summary =  "Obtencion información de un aula",
+     *      tags = {"Aulas"},
+     *      @OA\RequestBody(
+     *         @OA\JsonContent(
+     *               @OA\Property(
+     *                  property="nombreAula",
+     *                  type="string"
+     *               ),
+     *         ),
+     *
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      )
+     * )
+     *
+     */
     public function infoAulas (Request $request){
         return DB::table('aulas')
         ->where("nombre","=", $request->nombreAula)
         ->get();
     }
 
+    /**
+     * @OA\Put(
+     *      path= "/aula/modificar/{aulaId}",
+     *      summary =  "Modificar disponibilidad del aula",
+     *      tags = {"Aulas"},
+     * 
+     *      @OA\Parameter(
+     *          name="aulaId",
+     *          description="Id del aula",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),     
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      ) 
+     * )
+     * 
+     */
     public function modificarAula (Request $request){
         $aula = DB::table('aulas') -> where ("id","=",$request->aulaId);
         if($aula->disponible_para_uso == 0){
