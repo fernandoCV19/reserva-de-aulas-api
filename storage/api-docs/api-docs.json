@@ -820,6 +820,23 @@
                 }
             }
         },
+        "/datos-reserva/materia/{idDatosReserva}": {
+            "get": {
+                "tags": [
+                    "Datos Reserva"
+                ],
+                "summary": "Obtencion de la materia asignada a un dato reserva",
+                "operationId": "0260137319040eae109f089a78761daa",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
         "/docente/verificar/{idDocente}": {
             "put": {
                 "tags": [
@@ -848,13 +865,13 @@
                 }
             }
         },
-        "/docente/notificaciones/{idSolicitud}": {
+        "/docente/notificaciones/{idDocente}": {
             "get": {
                 "tags": [
                     "Docentes"
                 ],
                 "summary": "Obtencion de las notificaciones de un docente apartir de un id",
-                "operationId": "12f7fc84a9ad11a1a32c14d3a7d174c6",
+                "operationId": "1f1a5994870ee069ced9f19b95a8f184",
                 "parameters": [
                     {
                         "name": "idDocente",
@@ -911,6 +928,130 @@
                 ],
                 "summary": "Obtencion de las cuentas que estan solicitdas para ser aceptadas",
                 "operationId": "9e3c71603a4cdfa2f8145c34a00a916e",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/docente/rechazar/{idDocente}": {
+            "put": {
+                "tags": [
+                    "Docentes"
+                ],
+                "summary": "Rechazo de la creacion de una cuenta",
+                "operationId": "01e7860b984a2022664dcd7840f10199",
+                "parameters": [
+                    {
+                        "name": "idDocente",
+                        "in": "path",
+                        "description": "Id de Docente",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/mail/notificarRechazo": {
+            "post": {
+                "tags": [
+                    "Solicitud de reservas"
+                ],
+                "summary": "Creacion de una solicitud de reserva",
+                "operationId": "4745d4e1600491933f6fe254008a4547",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/mail/notificarAceptacion": {
+            "post": {
+                "tags": [
+                    "Solicitud de reservas"
+                ],
+                "summary": "Creacion de una solicitud de reserva",
+                "operationId": "9718c6cce803c24b135b9fb8128a1d20",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/mail/notificacionPersonalizada": {
+            "post": {
+                "tags": [
+                    "Solicitud de reservas"
+                ],
+                "summary": "Creacion de una solicitud de reserva",
+                "operationId": "a7e66cf3c8e2c352f6695007b866cf63",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "mensaje": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "OK"
