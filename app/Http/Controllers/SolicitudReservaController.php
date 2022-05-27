@@ -296,6 +296,7 @@ class SolicitudReservaController extends Controller
         
     }
     private function juntarConflictos($conflictos, $aulas){
+        if(sizeof($conflictos) == 0) return [] ;
         for($i = 0; $i <sizeof($aulas); $i++){
             if($conflictos[$i]-> nombreAula == $aulas[$i]-> nombre){
                 $aulas[$i] -> estado = $conflictos[$i]-> estado;
@@ -320,9 +321,61 @@ class SolicitudReservaController extends Controller
      * 
      */
     public function getPendientesPorAntiguedad(){
-        return SolicitudReserva::where("estado", "PENDIENTE")
+        $solicitudesPendientes = SolicitudReserva::where("estado", "PENDIENTE")
                                ->orderBy('fecha_creacion','ASC')
                                ->get();
+        $pendientes = array();
+        for($i = 0; $i<sizeof($solicitudesPendientes); $i++){ 
+            $docentes = DB::table("datos_reserva_grupo")
+            ->where("datos_reserva_grupo.datos_reserva_id", $solicitudesPendientes[$i]->datos_reserva_id)
+            ->join("grupos", "datos_reserva_grupo.grupo_id","grupos.id")
+            ->join("docentes", "grupos.docente_id", "docentes.id")
+            ->select("docentes.nombre", "docentes.email", "docentes.cod_SIS")
+            ->get();
+            //"datos_reservas.numero_estimado"
+
+
+            $horarios = DB::table("datos_reserva_periodo")
+            ->where("datos_reserva_periodo.datos_reserva_id", $solicitudesPendientes[$i]->datos_reserva_id)
+            ->join("periodos", "periodos.id", "datos_reserva_periodo.periodo_id")
+            ->get();
+
+
+            $aulas=DB::table('aulas')
+            ->join('aula_datos_reserva','aula_datos_reserva.aula_id',"aulas.id")
+            ->where('aula_datos_reserva.datos_reserva_id', '=', $solicitudesPendientes[$i]->datos_reserva_id)
+            ->get();
+           
+            $justificaciones = DB::table("justificacions")
+            ->where("datos_reserva_id", $solicitudesPendientes[$i]->datos_reserva_id)
+            ->select("justificacion")
+            ->get();
+
+            $fecha = DB::table("datos_reservas")
+            ->where("id", $solicitudesPendientes[$i]->datos_reserva_id)
+            ->select("fecha")
+            ->get()->first()->fecha; 
+            $solicitudCompleta = new \stdClass();
+            $solicitudCompleta -> numero_estimado = DatosReserva::find($solicitudesPendientes[$i]->datos_reserva_id)->numero_estimado;
+
+            $conflictos = $this::estadoAulas($solicitudesPendientes[$i]->id);
+            $aulaConflicto = $this::juntarConflictos($conflictos, $aulas);
+            
+
+            $solicitudCompleta -> aulas = $aulaConflicto;//DatosReservaController::getAulasDatosReserva($solicitudesPendientes[$i]->datos_reserva_id)->original;
+            $solicitudCompleta -> horarios = $horarios;
+            $solicitudCompleta -> solicitud  = $solicitudesPendientes[$i];
+            $solicitudCompleta -> docentes = $docentes;
+            $solicitudCompleta -> justificaciones = $justificaciones;
+            $solicitudCompleta -> fecha = $fecha;
+            $solicitudCompleta -> conflictos = $conflictos;
+
+            array_push($pendientes, $solicitudCompleta);
+
+            //echo $this::juntarConflictos($this::estadoAulas($solicitudesPendientes[$i]->id), $aulas);
+        }
+        
+        return $pendientes;
     }
 
     /**
@@ -342,15 +395,65 @@ class SolicitudReservaController extends Controller
      * 
      */
     public function getPendientesPorProximidad(){
-        $solicitud=DB::table('datos_reservas')
+        $solicitudesPendientes=DB::table('datos_reservas')
         ->join('solicitud_reservas', function ($join) {
             $join->on('solicitud_reservas.datos_reserva_id',"=","datos_reservas.id")
             -> where([["datos_reservas.fecha",">=", now()],["estado", "=", "PENDIENTE"]]);  
         })
         -> orderBy("fecha", "ASC")
         -> get();
+        $pendientes = array();
+        for($i = 0; $i<sizeof($solicitudesPendientes); $i++){ 
+            $docentes = DB::table("datos_reserva_grupo")
+            ->where("datos_reserva_grupo.datos_reserva_id", $solicitudesPendientes[$i]->datos_reserva_id)
+            ->join("grupos", "datos_reserva_grupo.grupo_id","grupos.id")
+            ->join("docentes", "grupos.docente_id", "docentes.id")
+            ->select("docentes.nombre", "docentes.email", "docentes.cod_SIS")
+            ->get();
+            //"datos_reservas.numero_estimado"
+
+
+            $horarios = DB::table("datos_reserva_periodo")
+            ->where("datos_reserva_periodo.datos_reserva_id", $solicitudesPendientes[$i]->datos_reserva_id)
+            ->join("periodos", "periodos.id", "datos_reserva_periodo.periodo_id")
+            ->get();
+
+
+            $aulas=DB::table('aulas')
+            ->join('aula_datos_reserva','aula_datos_reserva.aula_id',"aulas.id")
+            ->where('aula_datos_reserva.datos_reserva_id', '=', $solicitudesPendientes[$i]->datos_reserva_id)
+            ->get();
+           
+            $justificaciones = DB::table("justificacions")
+            ->where("datos_reserva_id", $solicitudesPendientes[$i]->datos_reserva_id)
+            ->select("justificacion")
+            ->get();
+
+            $fecha = DB::table("datos_reservas")
+            ->where("id", $solicitudesPendientes[$i]->datos_reserva_id)
+            ->select("fecha")
+            ->get()->first()->fecha; 
+            $solicitudCompleta = new \stdClass();
+            $solicitudCompleta -> numero_estimado = DatosReserva::find($solicitudesPendientes[$i]->datos_reserva_id)->numero_estimado;
+
+            $conflictos = $this::estadoAulas($solicitudesPendientes[$i]->id);
+            $aulaConflicto = $this::juntarConflictos($conflictos, $aulas);
+            
+
+            $solicitudCompleta -> aulas = $aulaConflicto;//DatosReservaController::getAulasDatosReserva($solicitudesPendientes[$i]->datos_reserva_id)->original;
+            $solicitudCompleta -> horarios = $horarios;
+            $solicitudCompleta -> solicitud  = $solicitudesPendientes[$i];
+            $solicitudCompleta -> docentes = $docentes;
+            $solicitudCompleta -> justificaciones = $justificaciones;
+            $solicitudCompleta -> fecha = $fecha;
+            $solicitudCompleta -> conflictos = $conflictos;
+
+            array_push($pendientes, $solicitudCompleta);
+
+            //echo $this::juntarConflictos($this::estadoAulas($solicitudesPendientes[$i]->id), $aulas);
+        }
         
-        return $solicitud;
+        return $pendientes;
     }
 
     /**
@@ -404,22 +507,24 @@ class SolicitudReservaController extends Controller
             ->get();
 
         //echo json_encode($aulasOcupadas);
-
-
         $bandera = false;
         for($i=0; $i<sizeof($periodos); $i++){
             for($j=0; $j<sizeof($aulasOcupadas); $j++){
+                
                 if($periodos[$i]->datosReservaId != $aulasOcupadas[$j]->datos_reserva_id){
+                    
                     if ($aulasOcupadas[$j]->nombre == $periodos[$i]->nombreAula &&
                     $aulasOcupadas[$j]->hora_inicio == $periodos[$i]->periodoIni) {
-                    $bandera = true;
-                }
-                    $bandera = true;
-                    if(SolicitudReservaController::tieneReserva($periodos[$i]->datosReservaId)){
-                        $periodos[$i]->estado = "tiene reserva";
+                        $bandera = true;
                     }
-                    else {
-                        $periodos[$i]->estado = "tiene una solicitud";
+                    
+                    if($bandera){
+                        if(SolicitudReservaController::tieneReserva($periodos[$i]->datosReservaId)){
+                            $periodos[$i]->estado = "tiene reserva";
+                        }
+                        else {
+                            $periodos[$i]->estado = "tiene una solicitud";
+                        }
                     }
                 }
             }
