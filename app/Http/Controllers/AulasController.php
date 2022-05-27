@@ -535,12 +535,12 @@ class AulasController extends Controller
 
     /**
      * @OA\Put(
-     *      path= "/aula/modificar/{aulaId}",
+     *      path= "/aula/modificar/{idAula}",
      *      summary =  "Modificar disponibilidad del aula",
      *      tags = {"Aulas"},
      * 
      *      @OA\Parameter(
-     *          name="aulaId",
+     *          name="idAula",
      *          description="Id del aula",
      *          required=true,
      *          in="path",
@@ -559,7 +559,7 @@ class AulasController extends Controller
      * 
      */
     public function modificarAula (Request $request){
-        $aula = DB::table('aulas') -> where ("id","=",$request->aulaId);
+        $aula = DB::table('aulas') -> where ("id","=",$request->idAula);
         if($aula->disponible_para_uso == 0){
             $aula ->update(['disponible_para_uso'=>1]);
         }else{
