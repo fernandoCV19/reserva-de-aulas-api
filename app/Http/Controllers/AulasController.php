@@ -559,7 +559,7 @@ class AulasController extends Controller
      * 
      */
     public function modificarAula (Request $request){
-        $aula = DB::table('aulas') -> where ("id","=",$request->idAula);
+        $aula = DB::table('aulas') -> where ("id","=",$request->idAula)->get();
         if($aula->disponible_para_uso == 0){
             $aula ->update(['disponible_para_uso'=>1]);
         }else{
