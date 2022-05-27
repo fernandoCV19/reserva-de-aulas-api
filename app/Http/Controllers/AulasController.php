@@ -502,6 +502,74 @@ class AulasController extends Controller
         }
     }
 
+
+    /**
+     * @OA\Post(
+     *      path= "/aula/infoAula",
+     *      summary =  "Obtencion información de un aula",
+     *      tags = {"Aulas"},
+     *      @OA\RequestBody(
+     *         @OA\JsonContent(
+     *               @OA\Property(
+     *                  property="nombreAula",
+     *                  type="string"
+     *               ),
+     *         ),
+     *
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      )
+     * )
+     *
+     */
+    public function infoAulas (Request $request){
+        return DB::table('aulas')
+        ->where("nombre","=", $request->nombreAula)
+        ->get();
+    }
+
+    /**
+     * @OA\Put(
+     *      path= "/aula/modificar/{idAula}",
+     *      summary =  "Modificar disponibilidad del aula",
+     *      tags = {"Aulas"},
+     * 
+     *      @OA\Parameter(
+     *          name="idAula",
+     *          description="Id del aula",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),     
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      ) 
+     * )
+     * 
+     */
+    public function modificarAula (Request $request){
+        $aula = DB::table('aulas') -> where ("id","=",$request->idAula)->first();
+        if($aula->disponible_para_uso == 0){
+            DB::table('aulas') -> where ("id","=",$request->idAula)->update(['disponible_para_uso'=>1]);
+        }else{
+            DB::table('aulas') -> where ("id","=",$request->idAula)->update(['disponible_para_uso'=>0]);
+        }
+        return response()->json([
+            'message' => 'Cambiado.',
+        ], 200);
+    }
+
     private function anidarHorarios(Request $request, $aulas)
     {
         //echo($aulas);

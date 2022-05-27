@@ -371,6 +371,65 @@
                 }
             }
         },
+        "/aula/infoAula": {
+            "post": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Obtencion información de un aula",
+                "operationId": "e016a51ad6f625041b196a03acec9619",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nombreAula": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/aula/modificar/{idAula}": {
+            "put": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Modificar disponibilidad del aula",
+                "operationId": "149355ab70e221125ff52393dd16bc3e",
+                "parameters": [
+                    {
+                        "name": "idAula",
+                        "in": "path",
+                        "description": "Id del aula",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
         "/auth/loginAdmin": {
             "post": {
                 "tags": [
