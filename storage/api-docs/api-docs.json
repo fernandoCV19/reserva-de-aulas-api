@@ -1623,6 +1623,34 @@
                     }
                 }
             }
+        },
+        "/solicitud-reserva/docente-solicitud/{idDocente}": {
+            "get": {
+                "tags": [
+                    "Solicitud de reservas"
+                ],
+                "summary": "Obtencion de las solicitudes de un docente",
+                "operationId": "5150505a98a6c56d8487ae62137113bc",
+                "parameters": [
+                    {
+                        "name": "idDocente",
+                        "in": "path",
+                        "description": "Id del docente",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
         }
     },
     "components": {
