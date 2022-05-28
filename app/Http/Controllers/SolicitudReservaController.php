@@ -585,7 +585,64 @@ class SolicitudReservaController extends Controller
      * 
      */
     public function getSolicitudesDocentes(Request $request){
-        $solicitudes = DB::table('solicitud_reservas')
+        $datosReserva = DB::table("datos_reservas")
+        -> where("datos_reservas.docente_id", $request->idDocente)
+        -> get();
+        $solicitudes = array();
+        for($i = 0; $i < sizeof($datosReserva); $i++){
+            $docentes = DB::table("datos_reserva_grupo")
+            -> where("datos_reserva_grupo.datos_reserva_id",$datosReserva[$i]->id)
+            -> join("grupos", "grupos.id", "datos_reserva_grupo.grupo_id")
+            -> join("docentes", "docentes.id", "grupos.docente_id")
+            -> select("docentes.nombre as nombreDocente")
+            -> get(); 
+
+            
+            $aulas = DatosReservaController::getAulasDatosReserva($datosReserva[$i]->id);
+            $aulas = json_decode($aulas-> getContent(), true)["aulas"];
+            $capacidad = 0;
+   
+            for($j = 0; $j<sizeof($aulas); $j++){
+                $capacidad += $aulas[$j]["capacidad"];
+                
+            }
+            
+            $periodos = DB::table("datos_reserva_periodo")
+            ->where("datos_reserva_periodo.datos_reserva_id", $datosReserva[$i]->id)
+            ->join("periodos", "periodos.id", "datos_reserva_periodo.periodo_id")
+            ->select("periodos.hora_inicio", "periodos.hora_fin")
+            ->get();
+            
+            $estadoConsulta = DB::table("solicitud_reservas")
+            ->where("datos_reserva_id", $datosReserva[$i]->id)
+            ->get();
+
+            $estado = "";
+            if(sizeof($estadoConsulta) == 0){
+                $reserva = DB::table("reservas")
+                -> where("datos_reserva_id", $datosReserva[$i]->id)
+                -> get();
+                $estado = "reservado";
+            }
+            else {
+                $estado = $estadoConsulta[0]->estado;
+            }
+            
+            $justificaciones = DB::table("justificacions")
+            ->where("datos_reserva_id")
+            ->select("justificacion")
+            ->get();
+        
+            $res = new\stdClass();
+            $res -> aulas = $aulas;
+            $res -> periodos = $periodos;
+            $res -> estado = $estado;
+            $res -> docentes = $docentes;
+            $res -> motivo = $justificaciones;
+            //echo json_encode($res);
+            array_push($solicitudes, $res);
+        }
+        /*$solicitudes = DB::table('solicitud_reservas')
         ->join("datos_reserva_grupo", "solicitud_reservas.datos_reserva_id","=","datos_reserva_grupo.datos_reserva_id")
         ->join("datos_reserva_periodo", "solicitud_reservas.datos_reserva_id", "=", "datos_reserva_periodo.datos_reserva_id") 
         ->join("periodos","datos_reserva_periodo.periodo_id","=","periodos.id")
@@ -593,7 +650,8 @@ class SolicitudReservaController extends Controller
         ->join("docentes","grupos.docente_id","=","docentes.id")
         ->join("materias","grupos.materia_id","=","materias.id")
         ->where ("grupos.docente_id","=",$request->idDocente)
-        ->get();
+        ->get();*/
         return $solicitudes;
     }
+
 }
