@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\DatosReserva;
-    use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 class DatosReservaController extends Controller
 {
@@ -250,6 +250,15 @@ class DatosReservaController extends Controller
      *      path= "/datos-reserva/materia/{idDatosReserva}",
      *      summary =  "Obtencion de la materia asignada a un dato reserva",
      *      tags = {"Datos Reserva"},
+     *      @OA\Parameter(
+     *          name="idDatosReserva",
+     *          description="Id de un Dato Reserva",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
      *      @OA\Response(
      *          response=200,
      *          description = "OK"),

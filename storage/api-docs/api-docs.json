@@ -886,6 +886,17 @@
                 ],
                 "summary": "Obtencion de la materia asignada a un dato reserva",
                 "operationId": "0260137319040eae109f089a78761daa",
+                "parameters": [
+                    {
+                        "name": "idDatosReserva",
+                        "in": "path",
+                        "description": "Id de un Dato Reserva",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK"
@@ -952,13 +963,13 @@
                 }
             }
         },
-        "/docente/meterias/{idDocente}": {
+        "/docente/materias/{idDocente}": {
             "get": {
                 "tags": [
                     "Docentes"
                 ],
                 "summary": "Obtencion de las materias y grupos de un docente",
-                "operationId": "71ff8242dcece4b1d333b9d2f647dd88",
+                "operationId": "7d392d6c52abcf74d8b0470f560de310",
                 "parameters": [
                     {
                         "name": "idDocente",
@@ -1028,9 +1039,9 @@
         "/mail/notificarRechazo": {
             "post": {
                 "tags": [
-                    "Solicitud de reservas"
+                    "E-Mail"
                 ],
-                "summary": "Creacion de una solicitud de reserva",
+                "summary": "Envio email rechazo",
                 "operationId": "4745d4e1600491933f6fe254008a4547",
                 "requestBody": {
                     "content": {
@@ -1059,9 +1070,9 @@
         "/mail/notificarAceptacion": {
             "post": {
                 "tags": [
-                    "Solicitud de reservas"
+                    "E-Mail"
                 ],
-                "summary": "Creacion de una solicitud de reserva",
+                "summary": "Envio email aceptacion",
                 "operationId": "9718c6cce803c24b135b9fb8128a1d20",
                 "requestBody": {
                     "content": {
@@ -1090,9 +1101,9 @@
         "/mail/notificacionPersonalizada": {
             "post": {
                 "tags": [
-                    "Solicitud de reservas"
+                    "E-Mail"
                 ],
-                "summary": "Creacion de una solicitud de reserva",
+                "summary": "Envio email personalizado",
                 "operationId": "a7e66cf3c8e2c352f6695007b866cf63",
                 "requestBody": {
                     "content": {

@@ -17,11 +17,4 @@ Route::get('/aulas/{idDatosReserva}', [DatosReservaController::class, "getAulasD
 Route::delete('/aulas/{idDatosReserva}', [DatosReservaController::class, "deleteAulas"]);
 Route::get('/materia/{idDatosReserva}', [DatosReservaController::class, "getMateria"]);
 Route::get('/{idDatosReserva}', [DatosReservaController::class, "getDatosReservaById"]);
-
-
-
-//Route::get('/', [DatosReservaController::class, "obtenerDatosReservas"]);
-Route::get('/', function (){
-    $dr = DatosReserva::findOrFail(1);
-    return $dr ->aulas;
-});
+Route::get('/', [DatosReservaController::class, "obtenerDatosReservas"]);

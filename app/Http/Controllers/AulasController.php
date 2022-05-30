@@ -26,7 +26,7 @@ class AulasController extends Controller
      */
     public function getTodasAulas()
     {
-        return Aulas::all();
+        return Aula::all();
     }
     /**
      * @OA\Post(

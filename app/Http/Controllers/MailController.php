@@ -11,8 +11,8 @@ class MailController extends Controller
     /**
      * @OA\Post(
      *      path= "/mail/notificarRechazo",
-     *      summary =  "Creacion de una solicitud de reserva",
-     *      tags = {"Solicitud de reservas"},
+     *      summary =  "Envio email rechazo",
+     *      tags = {"E-Mail"},
      * 
      *       @OA\RequestBody(
      *         @OA\JsonContent(
@@ -40,7 +40,7 @@ class MailController extends Controller
                     ->subject("Solicitud de reserva de aulas");
         });
         if (Mail::failures()) {
-            $mensaje =['mensaje'=>"Erro en el envio"];
+            $mensaje =['mensaje'=>"Error en el envio"];
             return response()->json($mensaje, 500,[]);     
         }
         else{ 
@@ -53,8 +53,8 @@ class MailController extends Controller
     /**
      * @OA\Post(
      *      path= "/mail/notificarAceptacion",
-     *      summary =  "Creacion de una solicitud de reserva",
-     *      tags = {"Solicitud de reservas"},
+     *      summary =  "Envio email aceptacion",
+     *      tags = {"E-Mail"},
      * 
      *       @OA\RequestBody(
      *         @OA\JsonContent(
@@ -95,8 +95,8 @@ class MailController extends Controller
     /**
      * @OA\Post(
      *      path= "/mail/notificacionPersonalizada",
-     *      summary =  "Creacion de una solicitud de reserva",
-     *      tags = {"Solicitud de reservas"},
+     *      summary =  "Envio email personalizado",
+     *      tags = {"E-Mail"},
      * 
      *       @OA\RequestBody(
      *         @OA\JsonContent(

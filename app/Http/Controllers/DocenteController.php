@@ -73,7 +73,7 @@ class DocenteController extends Controller
     }
     /**
      * @OA\Get(
-     *      path= "/docente/meterias/{idDocente}",
+     *      path= "/docente/materias/{idDocente}",
      *      summary =  "Obtencion de las materias y grupos de un docente",
      *      tags = {"Docentes"},
      * 

@@ -84,7 +84,9 @@ class MateriaController extends Controller
      * 
      */
     public function getGrupos($idMateria){
-        return Materia::find($idMateria)->grupos;
+        return DB::table("grupos")
+        ->where("grupos.materia_id","=",$idMateria)
+        ->get();
     }
 
     /**
