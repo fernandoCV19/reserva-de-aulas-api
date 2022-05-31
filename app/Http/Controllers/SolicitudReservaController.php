@@ -629,7 +629,7 @@ class SolicitudReservaController extends Controller
             }
             
             $justificaciones = DB::table("justificacions")
-            ->where("datos_reserva_id")
+            ->where("datos_reserva_id","=",$datosReserva[$i]->id)
             ->select("justificacion")
             ->get();
         
