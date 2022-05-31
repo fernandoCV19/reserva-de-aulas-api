@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Notificacion;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-
+use Illuminate\Support\Facades\DB;
 class NotificacionController extends Controller
 {
     /**
@@ -56,7 +56,7 @@ class NotificacionController extends Controller
      *      tags = {"Notificaciones"},
      * 
      *      @OA\Parameter(
-     *          name="idSolicitud",
+     *          name="idNotificacion",
      *          description="Id de la Notificacion",
      *          required=true,
      *          in="path",
@@ -74,7 +74,9 @@ class NotificacionController extends Controller
      * )
      */
     public function getNotificacionPorId(Request $request){
-        $notificacion =  Notificacion::findOrFail($request->idNotificacion);
+        $notificacion =  DB::table("notificacions")
+                        ->where("notificacions.id","=",$request->idNotificacion)
+                        ->get();
         return response()->json($notificacion, 200,[]);
     }
 }
