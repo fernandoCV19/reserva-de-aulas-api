@@ -1276,7 +1276,7 @@
                 "operationId": "939c6d636a0c4757f7c10efec66e4ab6",
                 "parameters": [
                     {
-                        "name": "idSolicitud",
+                        "name": "idNotificacion",
                         "in": "path",
                         "description": "Id de la Notificacion",
                         "required": true,
