@@ -415,7 +415,7 @@ class AulasController extends Controller
         } else {
             $aulasTodas = $aulas;
         }
-
+        
         if ($request->area != null) {
             $aulasPorArea = array();
             $area = $request->area;
@@ -427,7 +427,7 @@ class AulasController extends Controller
             }
             $aulasTodas = $aulasPorArea;
         }
-
+        /*
         $filtrado = AulasController::anidarHorarios($request, $aulas);
         $total = count($filtrado);
         $perPage = 5; // How many items do you want to display.
@@ -436,7 +436,7 @@ class AulasController extends Controller
             'path' => request()->url(),
             'query' => request()->query(),
         ]);
-
+        */
         return AulasController::anidarHorarios($request, $aulasTodas);
     }
     /**
@@ -580,22 +580,27 @@ class AulasController extends Controller
             ->join('datos_reservas', 'datos_reservas.id', "=", "aula_datos_reserva.datos_reserva_id")
             ->join("periodos", "periodos.id", "=", "datos_reserva_periodo.periodo_id")
             ->where("fecha", "=", $request->fecha)
+            ->orderBy('nombre', "ASC")
+            ->orderBy('hora_inicio')
             ->get();
-        
         $aulasDisponibles = array();
-        $bandera = false;
+
+        $bandera = false;    
+        
         $horarios = array();
         for ($j = 0; $j < sizeof($aulas); $j++) {
+            
             for ($i = 0; $i < sizeof($aulasOcupadas); $i++) {
                 if ($aulasOcupadas[$i]->nombre == $aulas[$j]->nombre &&
                     $aulasOcupadas[$i]->hora_inicio == $aulas[$j]->hora_inicio) {
-                    $bandera = true;
+                    $bandera = true;                  
                     break;
-                    
                 }
+                else $bandera = false;
             }
+    
             if ($j == sizeof($aulas) - 1) {
-
+                
                 if ($bandera == false) {
                     $horario = new \stdClass();
                     $horario->inicio = $aulas[$j]->hora_inicio;
@@ -612,11 +617,10 @@ class AulasController extends Controller
                 $aulaNueva->capacidad = $aulas[$j]->capacidad;
                 $aulaNueva->descripcion = $aulas[$j]->descripcion;
                 $aulaNueva->horarios = $horarios;
-                $horarios = null;
-                $horarios = array();
+                
                 array_push($aulasDisponibles, $aulaNueva);
             }
-            if ($j - 1 >= 0 && $aulas[$j]->nombre != $aulas[$j - 1]->nombre) {
+            else if ($j - 1 >= 0 && $aulas[$j]->nombre != $aulas[$j - 1]->nombre) {
                 $aulaNueva = new \stdClass();
                 $aulaNueva->idAula = $aulas[$j - 1]->idAula;
                 $aulaNueva->nombre = $aulas[$j - 1]->nombre;
@@ -626,15 +630,22 @@ class AulasController extends Controller
                 $aulaNueva->horarios = $horarios;
                 $horarios = null;
                 $horarios = array();
-
+                
                 array_push($aulasDisponibles, $aulaNueva);
+                
+              
                 $horario = new \stdClass();
-                $horario->inicio = $aulas[$j]->hora_inicio;
-                $horario->fin = $aulas[$j]->hora_fin;
+                if($bandera == false){
+                    $horario->inicio = $aulas[$j]->hora_inicio;
+                    $horario->fin = $aulas[$j]->hora_fin;
 
-                array_push($horarios, $horario);
+                    array_push($horarios, $horario);
+                }
+                else $bandera = false;
             } else {
+                
                 if ($bandera == false) {
+                    
                     $horario = new \stdClass();
                     $horario->inicio = $aulas[$j]->hora_inicio;
                     $horario->fin = $aulas[$j]->hora_fin;
