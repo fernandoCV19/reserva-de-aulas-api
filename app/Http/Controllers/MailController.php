@@ -105,6 +105,10 @@ class MailController extends Controller
      *                  type="string",
      *               ),
      *              @OA\Property(
+     *                  property="asunto", 
+     *                  type="string",
+     *               ),
+     *              @OA\Property(
      *                  property="mensaje", 
      *                  type="string",
      *               ),
