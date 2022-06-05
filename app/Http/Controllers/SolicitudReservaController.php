@@ -640,6 +640,7 @@ class SolicitudReservaController extends Controller
             $res -> docentes = $docentes;
             $res -> motivo = $justificaciones;
             $res -> fecha = $datosReserva[$i]->fecha;
+            $res -> numero_estimado = $datosReserva[$i]->numero_estimado;
             //echo json_encode($res);
             array_push($solicitudes, $res);
         }
