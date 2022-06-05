@@ -660,4 +660,21 @@ class AulasController extends Controller
         }
         return $aulasDisponibles;
     }
+
+    public function sugerenciaAulas (Request $request){
+        $capacidades = AulasController::capacidades();
+        $requerimiento = $request->total;
+
+
+
+    }
+
+    private function capacidades (){
+        $capacidades = DB::table('aulas')
+                    ->distinct()
+                    ->get(['capacidad']);
+        //echo($capacidades);
+        return $capacidades;
+    }
+    
 }

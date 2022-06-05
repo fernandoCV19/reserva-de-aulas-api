@@ -57,7 +57,7 @@ class AuthDocenteController extends Controller
         $user = Docente::where([["cod_SIS", "=", $request->cod_SIS],["activado", "=", "1"]])->first();
        
         if (!$user){
-            return response()->json(['message' => 'Codigo SIS o contraseña erroneos'], 401);
+            return response()->json(['message' => 'Codigo SIS, contraseña erroneos o usuario no registrado'], 401);
         }
        
         if(Hash::check($request->contrasenia, $user->contrasenia)){
