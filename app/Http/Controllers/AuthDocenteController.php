@@ -54,7 +54,7 @@ class AuthDocenteController extends Controller
     public function login(Request $request)
     {
         $admin = "docente";
-        $user = Docente::where("cod_SIS", "=", $request->cod_SIS)->first();
+        $user = Docente::where([["cod_SIS", "=", $request->cod_SIS],["activado", "=", "1"]])->first();
        
         if (!$user){
             return response()->json(['message' => 'Codigo SIS o contraseña erroneos'], 401);
