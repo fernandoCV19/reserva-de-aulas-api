@@ -660,4 +660,73 @@ class AulasController extends Controller
         }
         return $aulasDisponibles;
     }
+
+
+    public function darSugerenciaDeReserva(Request $request){
+        if ($request->capacidadMin != null && $request->capacidadMax != null) {
+            $aulas = DB::table(DB::raw('aulas, periodos'))
+            //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])
+                ->where([["capacidad", ">=", $request->capacidadMin], ["capacidad", "<=", $request->capacidadMax]]) // ["ubicacion", $request->area]
+                ->select("aulas.nombre", "hora_inicio", "hora_fin", "capacidad", "descripcion", "aulas.id as idAula",
+                        "ubicacion")
+                ->orderBy('nombre', "ASC")
+                ->orderBy('hora_inicio')
+                ->get();
+        } else {
+            $aulas = DB::table(DB::raw('aulas, periodos'))
+            //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])
+                ->select("aulas.nombre", "hora_inicio", "hora_fin", "capacidad", "descripcion", "aulas.id as idAula",
+                "ubicacion")    
+                ->orderBy('nombre', "ASC")
+                ->orderBy('hora_inicio')
+                ->get();
+        }
+
+        $aulasTodas = array();
+
+        if ($request->periodos != null) {
+            $periodosRequest = $request->periodos;
+            $bandera = false;
+            for ($i = 0; $i < sizeof($aulas); $i++) {
+                for ($j = 0; $j < sizeof($periodosRequest); $j++) {
+                    if (strcmp($aulas[$i]->hora_inicio, $periodosRequest[$j]) == 0) {
+                        array_push($aulasTodas, $aulas[$i]);
+                        break;
+                    }
+                }
+            }
+        } else {
+            $aulasTodas = $aulas;
+        }
+        
+        if ($request->area != null) {
+            $aulasPorArea = array();
+            $area = $request->area;
+            $bandera = false;
+            for ($i = 0; $i < sizeof($aulasTodas); $i++) {
+                if (strcmp($aulasTodas[$i]->ubicacion, $area) == 0) {
+                    array_push($aulasPorArea, $aulasTodas[$i]);
+                }
+            }
+            $aulasTodas = $aulasPorArea;
+        }
+
+        if($request->capacidadMax > 150){
+            $aulasSeleccionadas = array();
+            $capacidadActual = 0;
+            $capacidadObjetivo = $request -> capacidadMax;
+            $i = 0;
+            while ($i < sizeof($aulasTodas) && $capacidadActual < $capacidadObjetivo) {
+                $aulaAux = $aulasTodas[$i];
+                array_push($aulasSeleccionadas, $aulaAux);
+                $capacidadActual = $capacidadActual + $aulaAux -> capacidad;
+            }
+
+            $aulasTodas = $aulasSeleccionadas;
+        }else{
+            $aulasTodas = $aulasTodas[0];
+        }
+
+        return AulasController::anidarHorarios($request, $aulasTodas);
+    }
 }
