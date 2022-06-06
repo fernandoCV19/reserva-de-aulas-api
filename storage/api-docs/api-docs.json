@@ -430,6 +430,53 @@
                 }
             }
         },
+        "/aula/sugerenciaReserva": {
+            "post": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Filtro de aulas general",
+                "operationId": "f87bd31ebb3bbf4ffe2f4b5f74a9e7e8",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "fecha": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "periodos": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "capacidadMin": {
+                                        "type": "integer"
+                                    },
+                                    "capacidadMax": {
+                                        "type": "integer"
+                                    },
+                                    "area": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
         "/auth/loginAdmin": {
             "post": {
                 "tags": [
