@@ -222,7 +222,11 @@ class SolicitudesReservasParaPruebas extends Seeder
             'datos_reserva_id' => $idDatosReserva1,
             'periodo_id' => $p815945,
         ]);
-
+        DB::table('justificacions')->insert([
+            'id' => Str::uuid()-> toString(),
+            'datos_reserva_id' => $idDatosReserva1,
+            'justificacion' => "Examen"
+        ]);
 
         $idDatosReserva2 = Str::uuid() -> toString();
 
@@ -257,6 +261,12 @@ class SolicitudesReservasParaPruebas extends Seeder
             'periodo_id' => $p15451715
         ]);
         
+        DB::table('justificacions')->insert([
+            'id' => Str::uuid()-> toString(),
+            'datos_reserva_id' => $idDatosReserva2,
+            'justificacion' => "Defensa de grado"
+        ]);
+
         $idDatosReserva3 = Str::uuid() -> toString();
 
         DB::table('datos_reservas')->insert([
@@ -300,6 +310,12 @@ class SolicitudesReservasParaPruebas extends Seeder
             'id' => Str::uuid() -> toString(),
             'datos_reserva_id' => $idDatosReserva3,
             'periodo_id' => $p14151545
+        ]);
+
+        DB::table('justificacions')->insert([
+            'id' => Str::uuid()-> toString(),
+            'datos_reserva_id' => $idDatosReserva3,
+            'justificacion' => "Laboratorio"
         ]);
 
         $idDatosReserva4 = Str::uuid() -> toString();
@@ -352,7 +368,12 @@ class SolicitudesReservasParaPruebas extends Seeder
             'datos_reserva_id' => $idDatosReserva4,
             'periodo_id' => $p11151245
         ]);
-        
+        DB::table('justificacions')->insert([
+            'id' => Str::uuid()-> toString(),
+            'datos_reserva_id' => $idDatosReserva4,
+            'justificacion' => "Taller"
+        ]);
+
         $idDatosReserva5 = Str::uuid() -> toString();
 
         DB::table('datos_reservas')->insert([
@@ -397,6 +418,11 @@ class SolicitudesReservasParaPruebas extends Seeder
             'datos_reserva_id' => $idDatosReserva5,
             'periodo_id' => $p11151245
         ]);
+        DB::table('justificacions')->insert([
+            'id' => Str::uuid()-> toString(),
+            'datos_reserva_id' => $idDatosReserva5,
+            'justificacion' => "Otro motivo"
+        ]);
 
         $idDatosReserva6 = Str::uuid() -> toString();
 
@@ -435,6 +461,12 @@ class SolicitudesReservasParaPruebas extends Seeder
             'id' => Str::uuid() -> toString(),
             'datos_reserva_id' => $idDatosReserva6,
             'periodo_id' => $p17151845
+        ]);
+
+        DB::table('justificacions')->insert([
+            'id' => Str::uuid()-> toString(),
+            'datos_reserva_id' => $idDatosReserva6,
+            'justificacion' => "Reposicion de clases"
         ]);
 
         $idDatosReserva7 = Str::uuid() -> toString();
@@ -482,6 +514,12 @@ class SolicitudesReservasParaPruebas extends Seeder
             'periodo_id' => $p12451415
         ]);
 
+        DB::table('justificacions')->insert([
+            'id' => Str::uuid()-> toString(),
+            'datos_reserva_id' => $idDatosReserva7,
+            'justificacion' => "Taller"
+        ]);
+
         $idDatosReserva8 = Str::uuid() -> toString();
 
         DB::table('datos_reservas')->insert([
@@ -525,6 +563,12 @@ class SolicitudesReservasParaPruebas extends Seeder
             'id' => Str::uuid() -> toString(),
             'datos_reserva_id' => $idDatosReserva8,
             'periodo_id' => $p815945
+        ]);
+
+        DB::table('justificacions')->insert([
+            'id' => Str::uuid()-> toString(),
+            'datos_reserva_id' => $idDatosReserva8,
+            'justificacion' => "Examen"
         ]);
 
         $idDatosReserva9 = Str::uuid() -> toString();
@@ -588,6 +632,12 @@ class SolicitudesReservasParaPruebas extends Seeder
             'id' => Str::uuid() -> toString(),
             'datos_reserva_id' => $idDatosReserva9,
             'periodo_id' => $p14151545
+        ]);
+
+        DB::table('justificacions')->insert([
+            'id' => Str::uuid()-> toString(),
+            'datos_reserva_id' => $idDatosReserva9,
+            'justificacion' => "Examen"
         ]);
 
         $idDatosReserva10 = Str::uuid() -> toString();
@@ -657,6 +707,12 @@ class SolicitudesReservasParaPruebas extends Seeder
             'id' => Str::uuid() -> toString(),
             'datos_reserva_id' => $idDatosReserva10,
             'periodo_id' => $p17151845
+        ]);
+
+        DB::table('justificacions')->insert([
+            'id' => Str::uuid()-> toString(),
+            'datos_reserva_id' => $idDatosReserva10,
+            'justificacion' => "Examen"
         ]);
     }
 }
