@@ -69,7 +69,7 @@ class DocenteController extends Controller
      * 
      */
     public function getNotificacionesByDocente($idDocente){
-        return Docente::find($idDocente)->notificaciones;
+        return DB::table("notificacions")->where("docente_id", $idDocente)->orderBy("fecha")->get();
     }
     /**
      * @OA\Get(
