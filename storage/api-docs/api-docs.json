@@ -1113,6 +1113,9 @@
                                     "email": {
                                         "type": "string"
                                     },
+                                    "asunto": {
+                                        "type": "string"
+                                    },
                                     "mensaje": {
                                         "type": "string"
                                     }
