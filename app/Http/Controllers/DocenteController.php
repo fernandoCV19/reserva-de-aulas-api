@@ -180,4 +180,28 @@ class DocenteController extends Controller
             'message' => 'Rechazado.',
         ], 200);
     }
+
+    /**
+     * @OA\Get(
+     *      path= "/docente/sin-registrar",
+     *      summary =  "Obtencion de los docentes sin tegistrar",
+     *      tags = {"Docentes"},
+     * 
+
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      ) 
+     * )
+     * 
+     */
+    public function getDocentesNoRegistrados(){
+        $docentes=DB::table('docentes')
+        ->where("activado", 0)
+        ->get();
+        return $docentes;
+    }
 }

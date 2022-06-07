@@ -56,7 +56,7 @@ class PeriodoController extends Controller
      * 
      */
     public function getPeriodos(){
-        $periodos =  Periodo::all();
+        $periodos =  DB::table('periodos')->orderBy("hora_inicio")->get();
         return response()->json($periodos, 200,[]);
     }
 }

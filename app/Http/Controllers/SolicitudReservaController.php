@@ -622,7 +622,7 @@ class SolicitudReservaController extends Controller
                 $reserva = DB::table("reservas")
                 -> where("datos_reserva_id", $datosReserva[$i]->id)
                 -> get();
-                $estado = "reservado";
+                $estado = "ACEPTADO";
             }
             else {
                 $estado = $estadoConsulta[0]->estado;

@@ -479,6 +479,7 @@ class AulasController extends Controller
     {
         $aulasOcupadas = DB::table('aula_datos_reserva')
             ->join('aulas', 'aula_datos_reserva.aula_id', "=", "aulas.id")
+            ->where('aulas.nombre', $request->nombreAula)
             ->join('datos_reserva_periodo',
                 'datos_reserva_periodo.datos_reserva_id', "=", "aula_datos_reserva.datos_reserva_id")
             ->join('datos_reservas', 'datos_reservas.id', "=", "aula_datos_reserva.datos_reserva_id")
@@ -486,10 +487,9 @@ class AulasController extends Controller
             ->join ("solicitud_reservas","solicitud_reservas.datos_reserva_id", "=", "datos_reservas.id")
             ->where("fecha", "=", $request->fecha)
             ->where("hora_inicio","=",$request->periodoIni)
-            ->where("nombre",    "=",$request->nombreAula)
-            ->where("ubicacion","=",$request->ubicacionAula)
             ->get();
 
+        
         if (sizeof($aulasOcupadas) > 0) {
             return response()->json([
                 'estadoAula' => "CONFLICTO",

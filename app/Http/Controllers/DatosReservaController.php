@@ -77,6 +77,7 @@ class DatosReservaController extends Controller
         $datos_reserva -> docente_id = $docenteId;
         $datos_reserva -> save();
         
+        $idDatosReserva = $datos_reserva ->id;
 
         $aulas = $request->aulasId;    
         
@@ -92,9 +93,10 @@ class DatosReservaController extends Controller
         foreach($grupos as $grupoId){
             $grupos_datos = DB::table("datos_reserva_grupo")->insert([
                 "id"=>Str::uuid()->toString(), 
-                "datos_reserva_id" => $datos_reserva->id,
+                "datos_reserva_id" => $idDatosReserva,
                 "grupo_id"=>$grupoId
             ]);
+            
         }
 
         $justificaciones = $request->justificacionesLista;
@@ -107,7 +109,7 @@ class DatosReservaController extends Controller
         foreach ($periodos as $periodoId) {
             $datos_periodo = DB::table("datos_reserva_periodo")->insert([
                 "id"=>Str::uuid()->toString(), 
-                "datos_reserva_id" => $datos_reserva->id,
+                "datos_reserva_id" => $idDatosReserva,
                 "periodo_id"=>$periodoId
             ]);
         }
