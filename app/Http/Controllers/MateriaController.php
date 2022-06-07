@@ -40,8 +40,10 @@ class MateriaController extends Controller
         ->where("materia_id", request("idMateria"))
         ->select(["grupos.nombre as nombre_grupo", "docentes.nombre as nombre_docente", 
         "grupos.id as id_grupo", "docentes.id as id_docente"])
+        ->orderBy("nombre_docente")
+        ->orderBy("nombre_grupo")
         ->get();
-        $aux = array();
+        /*$aux = array();
         $docentesObtenidos = array();
         for($i=0; $i<sizeof($docentes); $i++){
             $doc = $docentes[$i];
@@ -56,7 +58,8 @@ class MateriaController extends Controller
                 array_push($aux,$doc->nombre_docente);
             }
         }
-        return $docentesObtenidos;
+        return $docentesObtenidos;*/
+        return $docentes;
     }
     /**
      * @OA\Get(
