@@ -250,7 +250,11 @@ class SolicitudReservaController extends Controller
             ->select("docentes.nombre", "docentes.email", "docentes.cod_SIS")
             ->get();
             //"datos_reservas.numero_estimado"
-
+            $grupos = DB::table("datos_reserva_grupo")
+            ->where("datos_reserva_grupo.datos_reserva_id",$solicitudesPendientes[$i]->datos_reserva_id)
+            ->join("grupos", "grupos.id","datos_reserva_grupo.grupo_id")
+            ->select("grupos.nombre")
+            ->get();
 
             $horarios = DB::table("datos_reserva_periodo")
             ->where("datos_reserva_periodo.datos_reserva_id", $solicitudesPendientes[$i]->datos_reserva_id)
@@ -286,6 +290,7 @@ class SolicitudReservaController extends Controller
             $solicitudCompleta -> justificaciones = $justificaciones;
             $solicitudCompleta -> fecha = $fecha;
             $solicitudCompleta -> conflictos = $conflictos;
+            $solicitudCompleta -> grupos = $grupos;
 
             array_push($pendientes, $solicitudCompleta);
 
@@ -334,7 +339,11 @@ class SolicitudReservaController extends Controller
             ->get();
             //"datos_reservas.numero_estimado"
 
-
+            $grupos = DB::table("datos_reserva_grupo")
+            ->where("datos_reserva_grupo.datos_reserva_id",$solicitudesPendientes[$i]->datos_reserva_id)
+            ->join("grupos", "grupos.id","datos_reserva_grupo.grupo_id")
+            ->select("grupos.nombre")
+            ->get();
             $horarios = DB::table("datos_reserva_periodo")
             ->where("datos_reserva_periodo.datos_reserva_id", $solicitudesPendientes[$i]->datos_reserva_id)
             ->join("periodos", "periodos.id", "datos_reserva_periodo.periodo_id")
@@ -369,6 +378,7 @@ class SolicitudReservaController extends Controller
             $solicitudCompleta -> justificaciones = $justificaciones;
             $solicitudCompleta -> fecha = $fecha;
             $solicitudCompleta -> conflictos = $conflictos;
+            $solicitudCompleta -> grupos = $grupos;
 
             array_push($pendientes, $solicitudCompleta);
 
@@ -412,6 +422,11 @@ class SolicitudReservaController extends Controller
             ->get();
             //"datos_reservas.numero_estimado"
 
+            $grupos = DB::table("datos_reserva_grupo")
+            ->where("datos_reserva_grupo.datos_reserva_id",$solicitudesPendientes[$i]->datos_reserva_id)
+            ->join("grupos", "grupos.id","datos_reserva_grupo.grupo_id")
+            ->select("grupos.nombre")
+            ->get();
 
             $horarios = DB::table("datos_reserva_periodo")
             ->where("datos_reserva_periodo.datos_reserva_id", $solicitudesPendientes[$i]->datos_reserva_id)
@@ -447,6 +462,7 @@ class SolicitudReservaController extends Controller
             $solicitudCompleta -> justificaciones = $justificaciones;
             $solicitudCompleta -> fecha = $fecha;
             $solicitudCompleta -> conflictos = $conflictos;
+            $solicitudCompleta -> grupos = $grupos;
 
             array_push($pendientes, $solicitudCompleta);
 
