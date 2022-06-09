@@ -19,9 +19,9 @@ Route::post('/periodo',[AulasController::class, "filtrarAulasPorPeriodo"]);
 Route::post('/estado-aula',[AulasController::class, "aulaEstado"]);
 Route::post('/general',[AulasController::class, "filtrarGeneral"]);
 Route::post('/sugerenciaReserva',[AulasController::class, "darSugerenciaDeReserva"]);
-Route::get('/infoAula',[AulasController::class, "infoAulas"]);
-Route::get('/infoAula-ubicacion',[AulasController::class, "infoAulasUbicacion"]);
-Route::get('/infoAula-capacidad',[AulasController::class, "infoAulasCapacidad"]);
+Route::post('/infoAula',[AulasController::class, "infoAulas"]);
+Route::post('/infoAula-ubicacion',[AulasController::class, "infoAulasUbicacion"]);
+Route::post('/infoAula-capacidad',[AulasController::class, "infoAulasCapacidad"]);
 
 Route::put('/modificar/{idAula}',[AulasController::class, "modificarAula"]);
 Route::get("/user", function () {

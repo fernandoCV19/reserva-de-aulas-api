@@ -372,18 +372,80 @@
             }
         },
         "/aula/infoAula": {
-            "post": {
+            "get": {
                 "tags": [
                     "Aulas"
                 ],
                 "summary": "Obtencion información de un aula",
-                "operationId": "e016a51ad6f625041b196a03acec9619",
+                "operationId": "3c98a565d852fcf87a994d698d8469be",
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
                                 "properties": {
                                     "nombreAula": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/aula/infoAula-ubicacion": {
+            "get": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Obtencion información de un aula por ubicacion",
+                "operationId": "75967328ef15b19a8ce182bc64bad367",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "ubicacion": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/aula/infoAula-capacidad": {
+            "get": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Obtencion información de aulas por capacidad",
+                "operationId": "6939a624173410c8954f44a8400a3916",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "capacidad": {
                                         "type": "string"
                                     }
                                 },

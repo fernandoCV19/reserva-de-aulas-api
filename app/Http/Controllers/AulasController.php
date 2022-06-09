@@ -504,7 +504,7 @@ class AulasController extends Controller
 
 
     /**
-     * @OA\Get(
+     * @OA\Post(
      *      path= "/aula/infoAula",
      *      summary =  "Obtencion información de un aula",
      *      tags = {"Aulas"},
@@ -534,7 +534,7 @@ class AulasController extends Controller
     }
 
     /**
-     * @OA\Get(
+     * @OA\Post(
      *      path= "/aula/infoAula-ubicacion",
      *      summary =  "Obtencion información de un aula por ubicacion",
      *      tags = {"Aulas"},
@@ -564,7 +564,7 @@ class AulasController extends Controller
     }
 
     /**
-     * @OA\Get(
+     * @OA\Post(
      *      path= "/aula/infoAula-capacidad",
      *      summary =  "Obtencion información de aulas por capacidad",
      *      tags = {"Aulas"},
