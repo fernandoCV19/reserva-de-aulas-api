@@ -46,7 +46,7 @@ class NotificacionController extends Controller
             ->get();
         //echo $notifUsuario;
         $cantidadNotificaciones = sizeof($notifUsuario); 
-        echo $cantidadNotificaciones;
+        //echo $cantidadNotificaciones;
         if ($cantidadNotificaciones > 5){
             echo("vaciando notificaciones");
             for ($i=0 ; $i < 5 ; $i++){
