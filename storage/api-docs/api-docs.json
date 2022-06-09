@@ -1564,6 +1564,34 @@
                 }
             }
         },
+        "/solicitud-reserva/eliminar/{idSolicitud}": {
+            "delete": {
+                "tags": [
+                    "Solicitud de reservas"
+                ],
+                "summary": "Eliminacion solicitud por id",
+                "operationId": "67ac20e9733b3ddbdab66e37b2a7d2a2",
+                "parameters": [
+                    {
+                        "name": "idSolicitud",
+                        "in": "path",
+                        "description": "Id de la Solicitud de Reserva",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
         "/solicitud-reserva/{idSolicitud}": {
             "get": {
                 "tags": [

@@ -16,6 +16,7 @@ Route::put('/cambio-estado/{idSolicitud}', [SolicitudReservaController::class, "
 Route::get('/{idSolicitud}',[SolicitudReservaController::class, "getSolicitudPorId"]);
 Route::get('/estado-aulas/{idSolicitud}', [SolicitudReservaController::class, "estadoAulas"]);
 Route::get('/docente-solicitud/{idDocente}', [SolicitudReservaController::class, "getSolicitudesDocentes"]);
+Route::delete('/eliminar/{idSolicitud}', [SolicitudReservaController::class, "eliminarSolicitud"]);
 
 Route::get("/user", function () {
     $mensaje =['mensaje'=>"Hola mundo"];
