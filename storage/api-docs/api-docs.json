@@ -372,12 +372,12 @@
             }
         },
         "/aula/infoAula": {
-            "get": {
+            "post": {
                 "tags": [
                     "Aulas"
                 ],
                 "summary": "Obtencion información de un aula",
-                "operationId": "3c98a565d852fcf87a994d698d8469be",
+                "operationId": "e016a51ad6f625041b196a03acec9619",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -403,12 +403,12 @@
             }
         },
         "/aula/infoAula-ubicacion": {
-            "get": {
+            "post": {
                 "tags": [
                     "Aulas"
                 ],
                 "summary": "Obtencion información de un aula por ubicacion",
-                "operationId": "75967328ef15b19a8ce182bc64bad367",
+                "operationId": "e7b8505f8f695fb1f544a6d350622a14",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -434,12 +434,12 @@
             }
         },
         "/aula/infoAula-capacidad": {
-            "get": {
+            "post": {
                 "tags": [
                     "Aulas"
                 ],
                 "summary": "Obtencion información de aulas por capacidad",
-                "operationId": "6939a624173410c8954f44a8400a3916",
+                "operationId": "20cb69bdc6cf50464ae749d41a01f171",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -1627,12 +1627,12 @@
             }
         },
         "/solicitud-reserva/eliminar/{idSolicitud}": {
-            "delete": {
+            "put": {
                 "tags": [
                     "Solicitud de reservas"
                 ],
                 "summary": "Eliminacion solicitud por id",
-                "operationId": "67ac20e9733b3ddbdab66e37b2a7d2a2",
+                "operationId": "54570061ff7c0943fdce8523b9bca273",
                 "parameters": [
                     {
                         "name": "idSolicitud",
