@@ -26,7 +26,9 @@ class AulasController extends Controller
      */
     public function getTodasAulas()
     {
-        return Aula::all();
+        return DB::table("aulas")
+        ->where("disponible_para_uso", "1")
+        ->get();
     }
     /**
      * @OA\Post(
@@ -92,6 +94,7 @@ class AulasController extends Controller
     public function getDisponibles(Request $request)
     {
         $aulas = DB::table(DB::raw('aulas, periodos'))
+            ->where("aulas.disponible_para_uso", "1")
             ->select("aulas.nombre", "hora_inicio", "hora_fin", "capacidad", "descripcion", "aulas.id as idAula",
             "ubicacion")
             ->orderBy('nombre', "ASC")
@@ -181,7 +184,7 @@ class AulasController extends Controller
 
         $aulas = DB::table(DB::raw('aulas, periodos'))
         //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])
-            ->where("ubicacion", "=", request("area"))
+            ->where([["ubicacion", "=", request("area")], ["aulas.disponible_para_uso", "=", "1"]])
             ->select("aulas.nombre", "hora_inicio", "hora_fin", "capacidad", "descripcion", "aulas.id as idAula","ubicacion")
             ->orderBy('nombre', "ASC")
             ->orderBy('hora_inicio')
@@ -225,7 +228,7 @@ class AulasController extends Controller
     {
         $aulas = DB::table(DB::raw('aulas, periodos'))
         //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])
-            ->where([["capacidad", ">=", $request->capacidadMin], ["capacidad", "<=", $request->capacidadMax]])
+            ->where([["aulas.disponible_para_uso", "=", "1"],["capacidad", ">=", $request->capacidadMin], ["capacidad", "<=", $request->capacidadMax]])
             ->select("aulas.nombre", "hora_inicio", "hora_fin", "capacidad", "descripcion", "aulas.id as idAula","ubicacion")
             ->orderBy('nombre', "ASC")
             ->orderBy('hora_inicio')
@@ -269,6 +272,7 @@ class AulasController extends Controller
         $aulas=DB::table(DB::raw('aulas, periodos'))
             //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])
             //-> where("hora_inicio","=",$request->periodoIni)
+            ->where("aulas.disponible_para_uso", "=", "1")
             ->select("aulas.nombre", "hora_inicio", "hora_fin", "capacidad", "descripcion", "aulas.id as idAula","ubicacion")
             -> orderBy('nombre',"ASC")
             -> orderBy('hora_inicio')
@@ -327,7 +331,7 @@ class AulasController extends Controller
     {
 
         $aulas = DB::table(DB::raw('aulas, periodos'))
-            ->where("nombre", "=", request("nombreAula"))
+            ->where([["nombre", "=", request("nombreAula")], ["aulas.disponible_para_uso", "=", "1"]])
             ->select("aulas.nombre", "hora_inicio", "hora_fin", "capacidad", "descripcion", "aulas.id as idAula","ubicacion")
             ->orderBy('nombre', "ASC")
             ->orderBy('hora_inicio')
@@ -383,7 +387,7 @@ class AulasController extends Controller
         if ($request->capacidadMin != null && $request->capacidadMax != null) {
             $aulas = DB::table(DB::raw('aulas, periodos'))
             //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])
-                ->where([["capacidad", ">=", $request->capacidadMin], ["capacidad", "<=", $request->capacidadMax]]) // ["ubicacion", $request->area]
+                ->where([["aulas.disponible_para_uso", "=", "1"],["capacidad", ">=", $request->capacidadMin], ["capacidad", "<=", $request->capacidadMax]]) // ["ubicacion", $request->area]
                 ->select("aulas.nombre", "hora_inicio", "hora_fin", "capacidad", "descripcion", "aulas.id as idAula",
                         "ubicacion")
                 ->orderBy('nombre', "ASC")
@@ -394,6 +398,7 @@ class AulasController extends Controller
             //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])
                 ->select("aulas.nombre", "hora_inicio", "hora_fin", "capacidad", "descripcion", "aulas.id as idAula",
                 "ubicacion")    
+                -> where("aulas.disponible_para_uso", "=", "1")
                 ->orderBy('nombre', "ASC")
                 ->orderBy('hora_inicio')
                 ->get();
@@ -479,7 +484,7 @@ class AulasController extends Controller
     {
         $aulasOcupadas = DB::table('aula_datos_reserva')
             ->join('aulas', 'aula_datos_reserva.aula_id', "=", "aulas.id")
-            ->where('aulas.nombre', $request->nombreAula)
+            ->where([["aulas.disponible_para_uso", "=", "1"],['aulas.nombre', $request->nombreAula]])
             ->join('datos_reserva_periodo',
                 'datos_reserva_periodo.datos_reserva_id', "=", "aula_datos_reserva.datos_reserva_id")
             ->join('datos_reservas', 'datos_reservas.id', "=", "aula_datos_reserva.datos_reserva_id")
@@ -632,6 +637,7 @@ class AulasController extends Controller
     private function anidarHorarios2(Request $request, $aulas) {
         $aulasOcupadas = DB::table('aula_datos_reserva')
             ->join('aulas', 'aula_datos_reserva.aula_id', "=", "aulas.id")
+            ->where("aulas.disponible_para_uso", "=", "1")
             ->join('datos_reserva_periodo',
                 'datos_reserva_periodo.datos_reserva_id', "=", "aula_datos_reserva.datos_reserva_id")
             ->join('datos_reservas', 'datos_reservas.id', "=", "aula_datos_reserva.datos_reserva_id")
@@ -700,6 +706,7 @@ class AulasController extends Controller
     {
         $aulasOcupadas = DB::table('aula_datos_reserva')
             ->join('aulas', 'aula_datos_reserva.aula_id', "=", "aulas.id")
+            ->where("aulas.disponible_para_uso", "=", "1")
             ->join('datos_reserva_periodo',
                 'datos_reserva_periodo.datos_reserva_id', "=", "aula_datos_reserva.datos_reserva_id")
             ->join('datos_reservas', 'datos_reservas.id', "=", "aula_datos_reserva.datos_reserva_id")
@@ -835,7 +842,7 @@ class AulasController extends Controller
         if ($request->capacidadMin != null && $request->capacidadMax != null) {
             $aulas = DB::table(DB::raw('aulas, periodos'))
             //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])
-                ->where([["capacidad", ">=", $request->capacidadMin], ["capacidad", "<=", $request->capacidadMax]]) // ["ubicacion", $request->area]
+                ->where([["aulas.disponible_para_uso", "=", "1"],["capacidad", ">=", $request->capacidadMin], ["capacidad", "<=", $request->capacidadMax]]) // ["ubicacion", $request->area]
                 ->select("aulas.nombre", "hora_inicio", "hora_fin", "capacidad", "descripcion", "aulas.id as idAula",
                         "ubicacion")
                 ->orderBy('nombre', "ASC")
@@ -845,6 +852,7 @@ class AulasController extends Controller
         } else {
             $aulas = DB::table(DB::raw('aulas, periodos'))
             //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])
+                ->where("aulas.disponible_para_uso", "=", "1")
                 ->select("aulas.nombre", "hora_inicio", "hora_fin", "capacidad", "descripcion", "aulas.id as idAula",
                 "ubicacion")    
                 ->orderBy('nombre', "ASC")
