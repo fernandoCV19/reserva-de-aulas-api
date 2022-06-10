@@ -902,4 +902,20 @@ class AulasController extends Controller
 
         return AulasController::anidarHorarios2($request, $aulasTodas);
     }
+    public function sugerenciaAulas (Request $request){
+        $capacidades = AulasController::capacidades();
+        $requerimiento = $request->total;
+
+
+
+    }
+
+    private function capacidades (){
+        $capacidades = DB::table('aulas')
+                    ->distinct()
+                    ->get(['capacidad']);
+        //echo($capacidades);
+        return $capacidades;
+    }
+    
 }

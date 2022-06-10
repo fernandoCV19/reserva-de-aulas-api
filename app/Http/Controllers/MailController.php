@@ -35,7 +35,7 @@ class MailController extends Controller
      */
     public function sendEmailNotificacionRechazo()
     {
-        Mail::raw("El siguiente email es para notificarle que la solicitud de reserva ha sido rechazada", function ($message) {
+        Mail::raw("El siguiente email es para notificarle que la solicitud de reserva ha sido rechazada.", function ($message) {
             $message->to(request('email'))
                     ->subject("Solicitud de reserva de aulas");
         });
@@ -77,7 +77,7 @@ class MailController extends Controller
      */
     public function sendEmailNotificacionAceptado()
     {
-        Mail::raw("El siguiente email es para notificarle que la solicitud de reserva ha sido aceptada por tanto la reserva fue efectuada", function ($message) {
+        Mail::raw("El siguiente email es para notificarle que la solicitud de reserva ha sido aceptada, por tanto, la reserva fue efectuada.", function ($message) {
             $message->to(request('email'))
                     ->subject("Solicitud de reserva de aulas");
         });
@@ -105,6 +105,10 @@ class MailController extends Controller
      *                  type="string",
      *               ),
      *              @OA\Property(
+     *                  property="asunto", 
+     *                  type="string",
+     *               ),
+     *              @OA\Property(
      *                  property="mensaje", 
      *                  type="string",
      *               ),
@@ -125,7 +129,7 @@ class MailController extends Controller
     {
         Mail::raw($request->mensaje, function ($message) {
             $message->to(request('email'))
-                    ->subject("Solicitud de reserva de aulas");
+                    ->subject($request->asunto);
         });
         if (Mail::failures()) {
             $mensaje =['mensaje'=>"Erro en el envio"];
