@@ -76,7 +76,7 @@ class LLenadoDeLaBaseDeDatosTestSeeder extends Seeder
 
         DB::table('solicitud_reservas')->insert([
             'id' => 1,
-            'estado' => 'pendiente',
+            'estado' => 'PENDIENTE',
             'fecha_creacion' => now(),
             'datos_reserva_id' => 1
         ]);

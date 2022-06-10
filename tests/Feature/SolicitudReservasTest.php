@@ -98,7 +98,7 @@ class SolicitudReservasTest extends TestCase
     public function test_verificar_estado_solicitud_pendiente(){
         $response = json_decode($this -> get('solicitud-reserva/estado/1') -> getContent(), true);
 
-        $this -> assertEquals($response['estado'], 'pendiente');
+        $this -> assertEquals($response['estado'], 'PENDIENTE');
     }
     
     public function test_verificar_estado_solicitud_rechazada(){
@@ -136,7 +136,7 @@ class SolicitudReservasTest extends TestCase
         print_r($response);
 
         $verificacion1 = $response['id'] == 1;
-        $verificacion2 = $response['estado'] == 'pendiente';
+        $verificacion2 = $response['estado'] == 'PENDIENTE';
         $verificacion3 = $response['fecha_creacion'] == '2021-01-20 00:00:00';
         $verificacion4 = $response['datos_reserva_id'] == 1;
 

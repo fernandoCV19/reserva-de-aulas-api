@@ -135,7 +135,7 @@ class SolicitudReservaController extends Controller
         $fecha = $solicitud[0]->fecha_creacion; //Si queremos borrar notificacion
         $estadoReserva = $solicitud[0]->estado;
 
-        if ($estadoReserva =="pendiente" || $estadoReserva=="ACEPTADO"){
+        if ($estadoReserva =="PENDIENTE" || $estadoReserva=="ACEPTADO"){
             //DB::table("reservas")->where("reservas.datos_reserva_id",$idDatosReserva)->delete();
             $reserva = Reserva::where("datos_reserva_id","=",$idDatosReserva)->first()->delete(); //Soft Deleting
 
