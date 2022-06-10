@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Schema;
 
 class CreateReservasTable extends Migration
@@ -17,6 +18,7 @@ class CreateReservasTable extends Migration
             $table->uuid('id');
             $table->timestamp('fecha_creacion');
             $table->string('datos_reserva_id', 100);
+            $table ->softDeletes();
             
             $table->primary('id');
             $table->unique('id');

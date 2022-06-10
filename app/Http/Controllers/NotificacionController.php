@@ -40,6 +40,21 @@ class NotificacionController extends Controller
 
     public function crearNotificacion(Request $request)
     {
+        $notifUsuario = DB::table("notificacions")
+            ->where("notificacions.docente_id","=",$request->id_docente)
+            ->orderBy("fecha","ASC")
+            ->get();
+        //echo $notifUsuario;
+        $cantidadNotificaciones = sizeof($notifUsuario); 
+        //echo $cantidadNotificaciones;
+        if ($cantidadNotificaciones > 5){
+            echo("vaciando notificaciones");
+            for ($i=0 ; $i < 5 ; $i++){
+                $idNotificacion = $notifUsuario[$i]->id; 
+                //echo $idNotificacion ;
+                Notificacion::find($idNotificacion)->delete();
+            }
+        }
         $notificacion  = new Notificacion();
         $notificacion  -> mensaje = $request -> mensajeNotificacion;
         $notificacion  ->fecha = now();

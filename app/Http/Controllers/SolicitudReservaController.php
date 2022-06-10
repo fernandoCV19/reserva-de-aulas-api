@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Models\SolicitudReserva;
+use App\Models\Reserva;
 use App\Models\DatosReserva;
 use Illuminate\Support\Facades\DB;
 use App\Models\Notificacion;
@@ -73,11 +74,14 @@ class SolicitudReservaController extends Controller
 
     public function crearSolitud(Request $request)
     {
+        $fechaActual = now();
+
         $datos_reserva = DatosReservaController::crearDatosReserva($request);
         
         $solicitud_reserva  = new SolicitudReserva();
         $solicitud_reserva ->estado ="PENDIENTE";
-        $solicitud_reserva ->fecha_creacion = now();
+        $solicitud_reserva ->fecha_creacion = fechaActual;
+        //$solicitud_reserva ->fecha_creacion = now();
         $solicitud_reserva ->datos_reserva_id = $datos_reserva->id;
         $solicitud_reserva->save();
 
@@ -93,12 +97,68 @@ class SolicitudReservaController extends Controller
             $notificacion = new Notificacion();
             $notificacion -> mensaje = "La solicitud de reserva ha sido realizada con exito";
             $notificacion ->docente_id = $docentes[$i]->docente_id;
-            $notificacion -> fecha = now();
+            $notificacion -> fecha = fechaActual;
+            //$notificacion -> fecha = now();
             $notificacion -> save();
         }
 
         return $solicitud_reserva;
     }
+    /**
+     * @OA\Put(
+     *      path= "/solicitud-reserva/eliminar/{idSolicitud}",
+     *      summary =  "Eliminacion solicitud por id",
+     *      tags = {"Solicitud de reservas"},
+     * 
+     *      @OA\Parameter(
+     *          name="idSolicitud",
+     *          description="Id de la Solicitud de Reserva",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),     
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      ) 
+     * )
+     * 
+     */
+    public function eliminarSolicitud(Request $request){
+        $solicitud = DB::table("solicitud_reservas") -> where ("solicitud_reservas.id",$request->idSolicitud)->get();
+        $idDatosReserva = $solicitud[0]->datos_reserva_id;
+        $fecha = $solicitud[0]->fecha_creacion; //Si queremos borrar notificacion
+        $estadoReserva = $solicitud[0]->estado;
+
+        if ($estadoReserva =="pendiente" || $estadoReserva=="ACEPTADO"){
+            //DB::table("reservas")->where("reservas.datos_reserva_id",$idDatosReserva)->delete();
+            $reserva = Reserva::where("datos_reserva_id","=",$idDatosReserva)->first()->delete(); //Soft Deleting
+
+            //DB::table("justificacions")->where("justificacions.datos_reserva_id",$idDatosReserva)->delete();
+            //DB::table("datos_reserva_periodo")->where("datos_reserva_periodo.datos_reserva_id",$idDatosReserva)->delete();
+            //DB::table("datos_reserva_grupo")->where("datos_reserva_grupo.datos_reserva_id",$idDatosReserva)->delete();
+            //DB::table("aula_datos_reserva")->where("aula_datos_reserva.datos_reserva_id",$idDatosReserva)->delete();
+
+            DB::table("solicitud_reservas") -> where ("solicitud_reservas.id",$request->idSolicitud)->update(['estado'=>'CANCELADO']);
+            
+            $docente = DB::table("datos_reservas")->where("datos_reservas.id",$idDatosReserva)->get();
+            $idDocente = $docente [0] -> docente_id;   //Si queremos borrar notificacion
+
+            //DB::table("datos_reservas")->where("datos_reservas.id",$idDatosReserva)->delete();
+            
+            //Borrar notificacion si es necesario 
+            //DB::table("notificacions") -> where([["notificacions.docente_id","=",$idDocente],["notificacions.fecha","=",$fecha]]);
+            return response()->json("Eliminacion Correcta",200,[]);
+        }
+        return response()->json("Reserva Aceptada, Incancelable",400,[]);
+    }
+
+
     /**
      * @OA\Get(
      *      path= "/solicitud-reserva/{idSolicitud}",

@@ -534,6 +534,66 @@ class AulasController extends Controller
     }
 
     /**
+     * @OA\Post(
+     *      path= "/aula/infoAula-ubicacion",
+     *      summary =  "Obtencion información de un aula por ubicacion",
+     *      tags = {"Aulas"},
+     *      @OA\RequestBody(
+     *         @OA\JsonContent(
+     *               @OA\Property(
+     *                  property="ubicacion",
+     *                  type="string"
+     *               ),
+     *         ),
+     *
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      )
+     * )
+     *
+     */
+    public function infoAulasUbicacion (Request $request){
+        return DB::table('aulas')
+        ->where("ubicacion","=", $request->ubicacion)
+        ->get();
+    }
+
+    /**
+     * @OA\Post(
+     *      path= "/aula/infoAula-capacidad",
+     *      summary =  "Obtencion información de aulas por capacidad",
+     *      tags = {"Aulas"},
+     *      @OA\RequestBody(
+     *         @OA\JsonContent(
+     *               @OA\Property(
+     *                  property="capacidad",
+     *                  type="string"
+     *               ),
+     *         ),
+     *
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      )
+     * )
+     *
+     */
+    public function infoAulasCapacidad (Request $request){
+        return DB::table('aulas')
+        ->where("capacidad","=", $request->capacidad)
+        ->get();
+    }
+
+    /**
      * @OA\Put(
      *      path= "/aula/modificar/{idAula}",
      *      summary =  "Modificar disponibilidad del aula",

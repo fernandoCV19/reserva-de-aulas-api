@@ -402,6 +402,68 @@
                 }
             }
         },
+        "/aula/infoAula-ubicacion": {
+            "post": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Obtencion información de un aula por ubicacion",
+                "operationId": "e7b8505f8f695fb1f544a6d350622a14",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "ubicacion": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/aula/infoAula-capacidad": {
+            "post": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Obtencion información de aulas por capacidad",
+                "operationId": "20cb69bdc6cf50464ae749d41a01f171",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "capacidad": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
         "/aula/modificar/{idAula}": {
             "put": {
                 "tags": [
@@ -1554,6 +1616,34 @@
                         }
                     }
                 },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/solicitud-reserva/eliminar/{idSolicitud}": {
+            "put": {
+                "tags": [
+                    "Solicitud de reservas"
+                ],
+                "summary": "Eliminacion solicitud por id",
+                "operationId": "54570061ff7c0943fdce8523b9bca273",
+                "parameters": [
+                    {
+                        "name": "idSolicitud",
+                        "in": "path",
+                        "description": "Id de la Solicitud de Reserva",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK"
