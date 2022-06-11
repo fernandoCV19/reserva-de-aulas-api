@@ -80,7 +80,7 @@ class SolicitudReservaController extends Controller
         
         $solicitud_reserva  = new SolicitudReserva();
         $solicitud_reserva ->estado ="PENDIENTE";
-        $solicitud_reserva ->fecha_creacion = fechaActual;
+        $solicitud_reserva ->fecha_creacion = $fechaActual;
         //$solicitud_reserva ->fecha_creacion = now();
         $solicitud_reserva ->datos_reserva_id = $datos_reserva->id;
         $solicitud_reserva->save();
@@ -562,7 +562,7 @@ class SolicitudReservaController extends Controller
      * 
      */
     public function estadoAulas($idSolicitud){
-        $solicitud = SolicitudReserva::find($idSolicitud)->datos_reserva_id;
+        $solicitud = SolicitudReserva::find($idSolicitud);
         if($solicitud -> estado == "CANCELADO")
             return [];
         $datosReserva = SolicitudReserva::find($idSolicitud)->datos_reserva_id;
@@ -717,6 +717,9 @@ class SolicitudReservaController extends Controller
             ->select("justificacion")
             ->get();
         
+            $solicitudActual = DB::table("solicitud_reservas")
+            ->where("datos_reserva_id","=",$datosReserva[$i]->id)
+            ->get();
             $res = new\stdClass();
             $res -> aulas = $aulas;
             $res -> periodos = $periodos;
@@ -725,6 +728,7 @@ class SolicitudReservaController extends Controller
             $res -> motivo = $justificaciones;
             $res -> fecha = $datosReserva[$i]->fecha;
             $res -> numero_estimado = $datosReserva[$i]->numero_estimado;
+            $res -> solicitud = $solicitudActual;
             //echo json_encode($res);
             array_push($solicitudes, $res);
         }
