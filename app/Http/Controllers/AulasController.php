@@ -26,9 +26,10 @@ class AulasController extends Controller
      */
     public function getTodasAulas()
     {
-        return DB::table("aulas")
+        return Aula::all();
+        /*return DB::table("aulas")
         ->where("disponible_para_uso", "1")
-        ->get();
+        ->get();*/
     }
     /**
      * @OA\Post(
