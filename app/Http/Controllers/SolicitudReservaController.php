@@ -9,6 +9,7 @@ use App\Models\Reserva;
 use App\Models\DatosReserva;
 use Illuminate\Support\Facades\DB;
 use App\Models\Notificacion;
+use App\Models\Docente;
 
 use Exception;
 
@@ -254,6 +255,14 @@ class SolicitudReservaController extends Controller
      *              type="string"
      *          )
      *      ),
+     *      @OA\RequestBody(
+     *         @OA\JsonContent(
+     *              @OA\Property(
+     *                  property="motivo", 
+     *                  type="string"
+     *               ),
+     *          ),
+     *      ),
      *      @OA\Response(
      *          response=200,
      *          description = "OK"),
@@ -275,12 +284,36 @@ class SolicitudReservaController extends Controller
         -> join("docentes", "docentes.id", "grupos.docente_id")
         -> get();
 
+        $idDatos = $solicitud ->datos_reserva_id;
+        
+        $materia = DB::table("grupos")
+        ->where("docente_id", $docentes[0]->docente_id)
+        ->join("materias", "materias.id", "grupos.materia_id")
+        ->select("materias.nombre")
+        ->get();
+        echo $request->motivo;
+        $fechaActual = DatosReserva::find($idDatos)->fecha;
+        $mensaje = " Su solicitud de reserva para la fecha ". $fechaActual;
+        $mensaje = $mensaje . " de la materia ";
+        $mensaje = $mensaje . $materia[0]->nombre." fue rechazada debido a";
+        $mensaje = $mensaje . $request->motivo .". Agradecemos su comprension.";
+        
         for($i=0; $i<sizeof($docentes); $i++){
             $notificacion = new Notificacion();
             $notificacion -> mensaje = "La solicitud de reserva ha sido rechazada";
             $notificacion ->docente_id = $docentes[$i]->docente_id;
             $notificacion -> fecha = now();
             $notificacion -> save();
+
+            $email = Docente::find($docentes[$i]->docente_id)->email;
+            
+            $return = MailController::sendEmailPersonalizado(new Request(
+                array('email' => $email, 
+                      'asunto' => "Notificación rechazó solicitud de reserva.",
+                      'mensaje' => $mensaje,
+                      
+                )
+            ));
         }
         return $solicitud;
     }
