@@ -98,7 +98,7 @@ class SolicitudReservaController extends Controller
             $notificacion = new Notificacion();
             $notificacion -> mensaje = "La solicitud de reserva ha sido realizada con exito";
             $notificacion ->docente_id = $docentes[$i]->docente_id;
-            $notificacion -> fecha = fechaActual;
+            $notificacion -> fecha = $fechaActual;
             //$notificacion -> fecha = now();
             $notificacion -> save();
         }
@@ -704,6 +704,7 @@ class SolicitudReservaController extends Controller
     public function getSolicitudesDocentes(Request $request){
         $datosReserva = DB::table("datos_reservas")
         -> where("datos_reservas.docente_id", $request->idDocente)
+        ->orderBy("fecha", "DESC")
         -> get();
         $solicitudes = array();
         for($i = 0; $i < sizeof($datosReserva); $i++){
