@@ -443,7 +443,7 @@ class AulasController extends Controller
             'query' => request()->query(),
         ]);
         */
-        return AulasController::anidarHorarios($request, $aulasTodas);
+        return AulasController::anidarHorarios3($request, $aulasTodas);
     }
     /**
      * @OA\Post(
@@ -839,58 +839,16 @@ class AulasController extends Controller
      * )
      *
      */
+    function cmp($a, $b) { // Make sure to give this a more meaningful name!
+        if ($a->capacidad == $b->capacidad){
+            return 0;
+        }
+        return ($a->capacidad < $b->capacidad) ? -1 : 1;
+    }
     public function darSugerenciaDeReserva(Request $request){
-        if ($request->capacidadMin != null && $request->capacidadMax != null) {
-            $aulas = DB::table(DB::raw('aulas, periodos'))
-            //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])
-                ->where([["aulas.disponible_para_uso", "=", "1"],["capacidad", ">=", $request->capacidadMin], ["capacidad", "<=", $request->capacidadMax]]) // ["ubicacion", $request->area]
-                ->select("aulas.nombre", "hora_inicio", "hora_fin", "capacidad", "descripcion", "aulas.id as idAula",
-                        "ubicacion")
-                ->orderBy('nombre', "ASC")
-                ->orderBy('capacidad', "DESC")
-                ->orderBy('hora_inicio')
-                ->get();
-        } else {
-            $aulas = DB::table(DB::raw('aulas, periodos'))
-            //-> select(["nombre", "hora_inicio", "hora_fin, capacidad, descripcion "])
-                ->where("aulas.disponible_para_uso", "=", "1")
-                ->select("aulas.nombre", "hora_inicio", "hora_fin", "capacidad", "descripcion", "aulas.id as idAula",
-                "ubicacion")    
-                ->orderBy('nombre', "ASC")
-                ->orderBy('capacidad', "DESC")
-                ->orderBy('hora_inicio')
-                ->get();
-        }
-
-        $aulasTodas = array();
-
-        if ($request->periodos != null) {
-            $periodosRequest = $request->periodos;
-            $bandera = false;
-            for ($i = 0; $i < sizeof($aulas); $i++) {
-                for ($j = 0; $j < sizeof($periodosRequest); $j++) {
-                    if (strcmp($aulas[$i]->hora_inicio, $periodosRequest[$j]) == 0) {
-                        array_push($aulasTodas, $aulas[$i]);
-                        break;
-                    }
-                }
-            }
-        } else {
-            $aulasTodas = $aulas;
-        }
+        $aulasTodas = AulasController::filtrarGeneral($request);
+        $aulasTodas = collect($aulasTodas)->sortByDesc('capacidad')->values();
         
-        if ($request->area != null) {
-            $aulasPorArea = array();
-            $area = $request->area;
-            $bandera = false;
-            for ($i = 0; $i < sizeof($aulasTodas); $i++) {
-                if (strcmp($aulasTodas[$i]->ubicacion, $area) == 0) {
-                    array_push($aulasPorArea, $aulasTodas[$i]);
-                }
-            }
-            $aulasTodas = $aulasPorArea;
-        }
-
         if($request->capacidadMax > 150){
             $aulasSeleccionadas = array();
             $capacidadActual = 0;
@@ -901,22 +859,17 @@ class AulasController extends Controller
                 array_push($aulasSeleccionadas, $aulaAux);
                 $capacidadActual = $capacidadActual + $aulaAux -> capacidad;
                 $i = $i + 1;
-                echo $i;
             }
-
             $aulasTodas = $aulasSeleccionadas;
         }else{
             $aulasTodas = $aulasTodas[0];
         }
-
-        return AulasController::anidarHorarios2($request, $aulasTodas);
+        return $aulasTodas;
     }
+    
     public function sugerenciaAulas (Request $request){
         $capacidades = AulasController::capacidades();
         $requerimiento = $request->total;
-
-
-
     }
 
     private function capacidades (){
@@ -926,5 +879,66 @@ class AulasController extends Controller
         //echo($capacidades);
         return $capacidades;
     }
-    
+    private function anidarHorarios3(Request $request, $aulas)
+    {
+        $aulasOcupadas = DB::table('aula_datos_reserva')
+            ->join('aulas', 'aula_datos_reserva.aula_id', "=", "aulas.id")
+            ->where("aulas.disponible_para_uso", "=", "1")
+            ->join('datos_reserva_periodo',
+                'datos_reserva_periodo.datos_reserva_id', "=", "aula_datos_reserva.datos_reserva_id")
+            ->join('datos_reservas', 'datos_reservas.id', "=", "aula_datos_reserva.datos_reserva_id")
+            ->join("periodos", "periodos.id", "=", "datos_reserva_periodo.periodo_id")
+            ->where("fecha", "=", $request->fecha)
+            ->orderBy('nombre', "ASC")
+            ->orderBy('hora_inicio')
+            ->get();
+        $aulasDisponibles = array();
+
+        $bandera = false;    
+        $horarios = array();
+        $aulaActual = $aulas[0]->nombre;
+        for ($j = 0; $j < sizeof($aulas); $j++) {
+            for ($i = 0; $i < sizeof($aulasOcupadas); $i++) {
+                if ($aulasOcupadas[$i]->nombre == $aulas[$j]->nombre &&
+                    $aulasOcupadas[$i]->hora_inicio == $aulas[$j]->hora_inicio) {
+                    $bandera = true;                  
+                    break;
+                }
+                else $bandera = false;
+            }
+            
+            if($aulaActual != $aulas[$j]->nombre){
+                $aulaNueva = new \stdClass();
+                $aulaNueva->idAula = $aulas[$j - 1]->idAula;
+                $aulaNueva->nombre = $aulas[$j - 1]->nombre;
+                $aulaNueva->ubicacion = $aulas[$j - 1]->ubicacion;
+                $aulaNueva->capacidad = $aulas[$j - 1]->capacidad;
+                $aulaNueva->descripcion = $aulas[$j - 1]->descripcion;
+                $aulaNueva->horarios = $horarios;
+                $horarios = null;
+                $horarios = array();
+                $aulaActual = $aulas[$j]->nombre;
+                array_push($aulasDisponibles, $aulaNueva);
+            }
+            if ($bandera == false) {
+                $horario = new \stdClass();
+                $horario->inicio = $aulas[$j]->hora_inicio;
+                $horario->fin = $aulas[$j]->hora_fin;
+                array_push($horarios, $horario);
+            } else {
+                $bandera = false;
+            }
+        }
+        if(sizeof($horarios) >0){
+            $ultimo = sizeof($aulas)-1;
+            $aulaNueva = new \stdClass();
+            $aulaNueva->idAula = $aulas[$ultimo]->idAula;
+            $aulaNueva->nombre = $aulas[$ultimo]->nombre;
+            $aulaNueva->ubicacion = $aulas[$ultimo]->ubicacion;
+            $aulaNueva->capacidad = $aulas[$ultimo]->capacidad;
+            $aulaNueva->descripcion = $aulas[$ultimo]->descripcion;
+            $aulaNueva->horarios = $horarios;
+        }
+        return $aulasDisponibles;
+    }
 }
