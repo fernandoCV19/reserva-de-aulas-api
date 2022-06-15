@@ -222,7 +222,7 @@ class DocenteController extends Controller
      *         @OA\JsonContent(
      *               @OA\Property(
      *                  property="celular", 
-     *                  type="int",
+     *                  type="string",
      *               ),
      *               @OA\Property(
      *                  property="email", 
