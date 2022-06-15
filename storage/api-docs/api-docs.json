@@ -498,7 +498,7 @@
                     "Aulas"
                 ],
                 "summary": "Filtro de aulas general",
-                "operationId": "f87bd31ebb3bbf4ffe2f4b5f74a9e7e8",
+                "operationId": "9ef76ee58239de67ce3e8c186fc448c8",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -1152,6 +1152,54 @@
                 ],
                 "summary": "Obtencion de los docentes sin tegistrar",
                 "operationId": "384ab9a87852f02d1a1b31f6eb0510f2",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/docente/actualizar/{idDocente}": {
+            "put": {
+                "tags": [
+                    "Docentes"
+                ],
+                "summary": "Activacion de la cuenta de un docente",
+                "operationId": "570e45e34b8d5b570d4c68809cbd7438",
+                "parameters": [
+                    {
+                        "name": "idDocente",
+                        "in": "path",
+                        "description": "Id de Docente",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "celular": {
+                                        "type": "integer"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "contrasenia": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "OK"

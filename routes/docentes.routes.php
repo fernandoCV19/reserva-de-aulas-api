@@ -11,3 +11,4 @@ Route::get('/cuentas', [DocenteController::class, 'getCuentasSolicitadas']);
 Route::put('/verificar/{idDocente}', [DocenteController::class, 'validarCuenta']);
 Route::put('/rechazar/{idDocente}', [DocenteController::class, 'validarCuenta']);
 Route::get('/sin-registrar', [DocenteController::class, 'getDocentesNoRegistrados']);
+Route::put('/actualizar/{idDocente}', [DocenteController::class, 'modificarInformacion']);
