@@ -137,8 +137,9 @@ class SolicitudReservaController extends Controller
 
         if ($estadoReserva =="PENDIENTE" || $estadoReserva=="ACEPTADO"){
             //DB::table("reservas")->where("reservas.datos_reserva_id",$idDatosReserva)->delete();
-            $reserva = Reserva::where("datos_reserva_id","=",$idDatosReserva)->first()->delete(); //Soft Deleting
-
+            if ($estadoReserva != "PENDIENTE"){
+                $reserva = Reserva::where("datos_reserva_id","=",$idDatosReserva)->first()->delete(); //Soft Deleting
+            }
             //DB::table("justificacions")->where("justificacions.datos_reserva_id",$idDatosReserva)->delete();
             //DB::table("datos_reserva_periodo")->where("datos_reserva_periodo.datos_reserva_id",$idDatosReserva)->delete();
             //DB::table("datos_reserva_grupo")->where("datos_reserva_grupo.datos_reserva_id",$idDatosReserva)->delete();
