@@ -9,6 +9,7 @@ use App\Models\Reserva;
 use App\Models\DatosReserva;
 use Illuminate\Support\Facades\DB;
 use App\Models\Notificacion;
+use App\Models\Docente;
 
 use Exception;
 
@@ -80,7 +81,7 @@ class SolicitudReservaController extends Controller
         
         $solicitud_reserva  = new SolicitudReserva();
         $solicitud_reserva ->estado ="PENDIENTE";
-        $solicitud_reserva ->fecha_creacion = fechaActual;
+        $solicitud_reserva ->fecha_creacion = $fechaActual;
         //$solicitud_reserva ->fecha_creacion = now();
         $solicitud_reserva ->datos_reserva_id = $datos_reserva->id;
         $solicitud_reserva->save();
@@ -97,7 +98,7 @@ class SolicitudReservaController extends Controller
             $notificacion = new Notificacion();
             $notificacion -> mensaje = "La solicitud de reserva ha sido realizada con exito";
             $notificacion ->docente_id = $docentes[$i]->docente_id;
-            $notificacion -> fecha = fechaActual;
+            $notificacion -> fecha = $fechaActual;
             //$notificacion -> fecha = now();
             $notificacion -> save();
         }
@@ -206,6 +207,7 @@ class SolicitudReservaController extends Controller
 
             $aulas=DB::table('aulas')
             ->join('aula_datos_reserva','aula_datos_reserva.aula_id',"aulas.id")
+            ->where("aulas.disponible_para_uso", "=", "1")
             ->where('aula_datos_reserva.datos_reserva_id', '=', $solicitud[$i]->datos_reserva_id)
             ->get();
            
@@ -253,6 +255,14 @@ class SolicitudReservaController extends Controller
      *              type="string"
      *          )
      *      ),
+     *      @OA\RequestBody(
+     *         @OA\JsonContent(
+     *              @OA\Property(
+     *                  property="motivo", 
+     *                  type="string"
+     *               ),
+     *          ),
+     *      ),
      *      @OA\Response(
      *          response=200,
      *          description = "OK"),
@@ -274,12 +284,36 @@ class SolicitudReservaController extends Controller
         -> join("docentes", "docentes.id", "grupos.docente_id")
         -> get();
 
+        $idDatos = $solicitud ->datos_reserva_id;
+        
+        $materia = DB::table("grupos")
+        ->where("docente_id", $docentes[0]->docente_id)
+        ->join("materias", "materias.id", "grupos.materia_id")
+        ->select("materias.nombre")
+        ->get();
+        echo $request->motivo;
+        $fechaActual = DatosReserva::find($idDatos)->fecha;
+        $mensaje = " Su solicitud de reserva para la fecha ". $fechaActual;
+        $mensaje = $mensaje . " de la materia ";
+        $mensaje = $mensaje . $materia[0]->nombre." fue rechazada debido a";
+        $mensaje = $mensaje . $request->motivo .". Agradecemos su comprension.";
+        
         for($i=0; $i<sizeof($docentes); $i++){
             $notificacion = new Notificacion();
             $notificacion -> mensaje = "La solicitud de reserva ha sido rechazada";
             $notificacion ->docente_id = $docentes[$i]->docente_id;
             $notificacion -> fecha = now();
             $notificacion -> save();
+
+            $email = Docente::find($docentes[$i]->docente_id)->email;
+            
+            $return = MailController::sendEmailPersonalizado(new Request(
+                array('email' => $email, 
+                      'asunto' => "Notificación rechazó solicitud de reserva.",
+                      'mensaje' => $mensaje,
+                      
+                )
+            ));
         }
         return $solicitud;
     }
@@ -324,6 +358,7 @@ class SolicitudReservaController extends Controller
 
             $aulas=DB::table('aulas')
             ->join('aula_datos_reserva','aula_datos_reserva.aula_id',"aulas.id")
+            ->where("aulas.disponible_para_uso", "=", "1")
             ->where('aula_datos_reserva.datos_reserva_id', '=', $solicitudesPendientes[$i]->datos_reserva_id)
             ->get();
            
@@ -412,6 +447,7 @@ class SolicitudReservaController extends Controller
 
             $aulas=DB::table('aulas')
             ->join('aula_datos_reserva','aula_datos_reserva.aula_id',"aulas.id")
+            ->where("aulas.disponible_para_uso", "=", "1")
             ->where('aula_datos_reserva.datos_reserva_id', '=', $solicitudesPendientes[$i]->datos_reserva_id)
             ->get();
            
@@ -496,6 +532,7 @@ class SolicitudReservaController extends Controller
 
             $aulas=DB::table('aulas')
             ->join('aula_datos_reserva','aula_datos_reserva.aula_id',"aulas.id")
+            ->where("aulas.disponible_para_uso", "=", "1")
             ->where('aula_datos_reserva.datos_reserva_id', '=', $solicitudesPendientes[$i]->datos_reserva_id)
             ->get();
            
@@ -558,6 +595,9 @@ class SolicitudReservaController extends Controller
      * 
      */
     public function estadoAulas($idSolicitud){
+        $solicitud = SolicitudReserva::find($idSolicitud);
+        if($solicitud -> estado == "CANCELADO")
+            return [];
         $datosReserva = SolicitudReserva::find($idSolicitud)->datos_reserva_id;
         $fecha = DatosReserva::find($datosReserva)->fecha;
         
@@ -567,6 +607,7 @@ class SolicitudReservaController extends Controller
         ->join("datos_reservas", "datos_reservas.id", "datos_reserva_periodo.datos_reserva_id")
         ->join("aula_datos_reserva", "aula_datos_reserva.datos_reserva_id", "datos_reserva_periodo.datos_reserva_id")
         ->join("aulas", "aulas.id", "=", "aula_datos_reserva.aula_id")
+        ->where("aulas.disponible_para_uso", "=", "1")
         ->select("datos_reservas.id as datosReservaId", "aulas.nombre as nombreAula", 
                  "aulas.ubicacion as ubicacionAula", "datos_reservas.fecha", "periodos.hora_inicio as periodoIni")
         
@@ -663,6 +704,7 @@ class SolicitudReservaController extends Controller
     public function getSolicitudesDocentes(Request $request){
         $datosReserva = DB::table("datos_reservas")
         -> where("datos_reservas.docente_id", $request->idDocente)
+        ->orderBy("fecha", "DESC")
         -> get();
         $solicitudes = array();
         for($i = 0; $i < sizeof($datosReserva); $i++){
@@ -709,6 +751,9 @@ class SolicitudReservaController extends Controller
             ->select("justificacion")
             ->get();
         
+            $solicitudActual = DB::table("solicitud_reservas")
+            ->where("datos_reserva_id","=",$datosReserva[$i]->id)
+            ->get();
             $res = new\stdClass();
             $res -> aulas = $aulas;
             $res -> periodos = $periodos;
@@ -717,6 +762,7 @@ class SolicitudReservaController extends Controller
             $res -> motivo = $justificaciones;
             $res -> fecha = $datosReserva[$i]->fecha;
             $res -> numero_estimado = $datosReserva[$i]->numero_estimado;
+            $res -> solicitud = $solicitudActual;
             //echo json_encode($res);
             array_push($solicitudes, $res);
         }
@@ -731,5 +777,76 @@ class SolicitudReservaController extends Controller
         ->get();*/
         return $solicitudes;
     }
+    public function getHistorialAdmin(){
+        $solicitudesReserva = DB::table("solicitud_reservas")
+        ->orderBy("fecha_creacion", "DESC")
+        ->get();
+        $datosReserva = array();
+        for($i = 0; $i < sizeof($solicitudesReserva); $i++){
+            $idDatosReserva = SolicitudReserva::find($solicitudesReserva[$i]->id)->datos_reserva_id;
+            $datosReservaSolicitud = DatosReserva::find($idDatosReserva);
+            array_push($datosReserva, $datosReservaSolicitud);
+            
+        }
+        
+        
+        $solicitudes = array();
+        for($i = 0; $i < sizeof($datosReserva); $i++){
+            
+            $docentes = DB::table("datos_reserva_grupo")
+            -> where("datos_reserva_grupo.datos_reserva_id",$datosReserva[$i]->id)
+            -> join("grupos", "grupos.id", "datos_reserva_grupo.grupo_id")
+            -> join("docentes", "docentes.id", "grupos.docente_id")
+            -> select("docentes.nombre as nombreDocente")
+            -> get(); 
+            
+            $aulas = DatosReservaController::getAulasDatosReserva($datosReserva[$i]->id);
+            $aulas = json_decode($aulas-> getContent(), true)["aulas"];
+            $capacidad = 0;
+   
+            for($j = 0; $j<sizeof($aulas); $j++){
+                $capacidad += $aulas[$j]["capacidad"];
+                
+            }
+            
+            $periodos = DB::table("datos_reserva_periodo")
+            ->where("datos_reserva_periodo.datos_reserva_id", $datosReserva[$i]->id)
+            ->join("periodos", "periodos.id", "datos_reserva_periodo.periodo_id")
+            ->select("periodos.hora_inicio", "periodos.hora_fin")
+            ->get();
+            
+            $estadoConsulta = DB::table("solicitud_reservas")
+            ->where("datos_reserva_id", $datosReserva[$i]->id)
+            ->get();
 
+            $estado = "";
+            if(sizeof($estadoConsulta) == 0){
+                $reserva = DB::table("reservas")
+                -> where("datos_reserva_id", $datosReserva[$i]->id)
+                -> get();
+                $estado = "ACEPTADO";
+            }
+            else {
+                $estado = $estadoConsulta[0]->estado;
+            }
+            
+            $justificaciones = DB::table("justificacions")
+            ->where("datos_reserva_id","=",$datosReserva[$i]->id)
+            ->select("justificacion")
+            ->get();
+        
+            $res = new\stdClass();
+            $res -> aulas = $aulas;
+            $res -> periodos = $periodos;
+            $res -> estado = $estado;
+            $res -> docentes = $docentes;
+            $res -> motivo = $justificaciones;
+            $res -> fecha = $datosReserva[$i]->fecha;
+            $res -> numero_estimado = $datosReserva[$i]->numero_estimado;
+            $res -> solicitud = $solicitudesReserva[$i];
+            //echo json_encode($res);
+            array_push($solicitudes, $res);
+        }
+        return $solicitudes;
+    }
 }

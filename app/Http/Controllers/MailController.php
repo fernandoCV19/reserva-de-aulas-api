@@ -127,8 +127,8 @@ class MailController extends Controller
      */
     public function sendEmailPersonalizado(Request $request)
     {
-        Mail::raw($request->mensaje, function ($message) {
-            $message->to(request('email'))
+        Mail::raw($request->mensaje, function ($message) use($request){
+            $message->to($request->email)
                     ->subject($request->asunto);
         });
         if (Mail::failures()) {

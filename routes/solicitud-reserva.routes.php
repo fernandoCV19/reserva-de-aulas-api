@@ -13,10 +13,11 @@ Route::get('/proximos', [SolicitudReservaController::class, "getPendientesPorPro
 Route::get('/pendientes', [SolicitudReservaController::class, "getPendientes"]);
 Route::get('/estado/{idSolicitud}', [SolicitudReservaController::class, "getEstado"]);
 Route::put('/cambio-estado/{idSolicitud}', [SolicitudReservaController::class, "actualizarEstado"]);
-Route::get('/{idSolicitud}',[SolicitudReservaController::class, "getSolicitudPorId"]);
 Route::get('/estado-aulas/{idSolicitud}', [SolicitudReservaController::class, "estadoAulas"]);
 Route::get('/docente-solicitud/{idDocente}', [SolicitudReservaController::class, "getSolicitudesDocentes"]);
 Route::put('/eliminar/{idSolicitud}', [SolicitudReservaController::class, "eliminarSolicitud"]);
+Route::get('/historial-admin', [SolicitudReservaController::class, "getHistorialAdmin"]);
+Route::get('/{idSolicitud}',[SolicitudReservaController::class, "getSolicitudPorId"]);
 
 Route::get("/user", function () {
     $mensaje =['mensaje'=>"Hola mundo"];

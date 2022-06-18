@@ -7,6 +7,7 @@ use App\Models\Reserva;
 use App\Models\DatosReserva;
 use App\Models\SolicitudReserva;
 use App\Models\Notificacion;
+use App\Models\Docente;
 use Illuminate\Support\Facades\DB;
 
 class ReservaController extends Controller
@@ -42,8 +43,7 @@ class ReservaController extends Controller
         
         $idDatos = SolicitudReserva::find($idSolicitud)->datos_reserva_id;
 
-        
-        
+
         $reserva = new Reserva();
         $reserva -> datos_reserva_id = $idDatos;
         $reserva -> fecha_creacion = now();
@@ -59,16 +59,52 @@ class ReservaController extends Controller
         -> join("docentes", "docentes.id", "grupos.docente_id")
         -> get();
 
-        echo($docentes);
+        $aulas = DB::table("aula_datos_reserva")
+        ->where("datos_reserva_id", $idDatos)
+        ->join("aulas", "aulas.id", "aula_datos_reserva.aula_id")
+        ->get();
+        
+        $nombresAulas = "";
+        for($i=0; $i<sizeof($aulas); $i++){
+            $nombresAulas = $nombresAulas . $aulas[$i]->nombre . " ";
+        }
+
+        $periodos =  DB::table("datos_reserva_periodo")
+        ->where("datos_reserva_periodo.datos_reserva_id", $solicitud->datos_reserva_id)
+        ->join("periodos", "periodos.id", "datos_reserva_periodo.periodo_id")
+        ->get();
+        $periodosMensaje = "";
+        for($i=0; $i<sizeof($periodos); $i++){
+            $periodosMensaje = $periodosMensaje . $periodos[$i]->hora_inicio . " - ".$periodos[$i]->hora_inicio. "; ";
+        }
+        $materia = DB::table("grupos")
+        ->where("docente_id", $docentes[0]->docente_id)
+        ->join("materias", "materias.id", "grupos.materia_id")
+        ->select("materias.nombre")
+        ->get();
+        $fechaActual = DatosReserva::find($idDatos)->fecha;
+        $mensaje = "Su solicitud de enviada fue aceptada para la fecha ". $fechaActual;
+        $mensaje = $mensaje ." , en las aulas: ";
+        $mensaje = $mensaje . $nombresAulas. "en los periodos: ";
+        $mensaje = $mensaje . $periodosMensaje. "para la materia de ";
+        $mensaje = $mensaje . $materia[0]->nombre;
         for($i=0; $i<sizeof($docentes); $i++){
             $notificacion = new Notificacion();
             $notificacion -> mensaje = "La solicitud de reserva que hizo ha sido aceptada";
             $notificacion ->docente_id = $docentes[$i]->docente_id;
             $notificacion -> fecha = now();
             $notificacion -> save();
+            
+            $email = Docente::find($docentes[$i]->docente_id)->email;
+            
+            $return = MailController::sendEmailPersonalizado(new Request(
+                array('email' => $email, 
+                      'asunto' => "Notificación aprobación solicitud de reserva.",
+                      'mensaje' => $mensaje,
+                      
+                )
+            ));
         }
-
-        
         return $reserva;   
     }
     /**

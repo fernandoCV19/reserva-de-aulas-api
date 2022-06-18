@@ -204,4 +204,56 @@ class DocenteController extends Controller
         ->get();
         return $docentes;
     }
+    /** 
+     * @OA\Put(
+     *      path= "/docente/actualizar/{idDocente}",
+     *      summary =  "Activacion de la cuenta de un docente",
+     *      tags = {"Docentes"},
+     *      @OA\Parameter(
+     *          name="idDocente",
+     *          description="Id de Docente",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),     
+     *       @OA\RequestBody(
+     *         @OA\JsonContent(
+     *               @OA\Property(
+     *                  property="celular", 
+     *                  type="string",
+     *               ),
+     *               @OA\Property(
+     *                  property="email", 
+     *                  type="string",
+     *               ),
+     *              @OA\Property(
+     *                  property="contrasenia", 
+     *                  type="string"
+     *               ),
+     *         ),        
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      ) 
+     * )
+     * 
+    */
+    public function modificarInformacion(Request $request){
+        $docente = Docente::findOrFail($request->idDocente);
+        if($request->email != null)
+            $docente -> email = $request->email;
+        if($request->celular != null)             
+            $docente -> celular = $request->celular; 
+        if($request->contrasenia != null)
+            $docente -> contrasenia =bcrypt($request->contrasenia);
+        
+        $docente -> save();
+        return $docente;
+    }
 }
