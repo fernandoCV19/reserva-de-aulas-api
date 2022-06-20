@@ -71,7 +71,7 @@ class DocenteController extends Controller
     public function getNotificacionesByDocente($idDocente){
         $notificaciones = DB::table("notificacions")->where("docente_id", $idDocente)->orderBy("fecha", "DESC")->get();
         $respuesta = array();
-        for($i=0; $i<sizeof($notificaciones); $i++){
+        for($i=0; $i<5; $i++){
             array_push($respuesta,$notificaciones[$i]);
         }
         return $respuesta;
