@@ -1186,7 +1186,7 @@
                             "schema": {
                                 "properties": {
                                     "celular": {
-                                        "type": "integer"
+                                        "type": "string"
                                     },
                                     "email": {
                                         "type": "string"

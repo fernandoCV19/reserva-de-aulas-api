@@ -448,7 +448,7 @@ class AulasController extends Controller
     /**
      * @OA\Post(
      *      path= "/aula/estado-aula",
-     *      summary =  "Obtencion del estado de un aula",
+     *      summary =  "Obtencion del estado de un aula, si esta tiene algun conflicto con alguna solicitud o reserva",
      *      tags = {"Aulas"},
      *      @OA\RequestBody(
      *         @OA\JsonContent(
@@ -512,7 +512,7 @@ class AulasController extends Controller
     /**
      * @OA\Post(
      *      path= "/aula/infoAula",
-     *      summary =  "Obtencion información de un aula",
+     *      summary =  "Obtencion información de un aula dado el nombre",
      *      tags = {"Aulas"},
      *      @OA\RequestBody(
      *         @OA\JsonContent(
@@ -799,7 +799,7 @@ class AulasController extends Controller
     /**
      * @OA\Post(
      *      path= "/aula/sugerenciaReserva",
-     *      summary =  "Filtro de aulas general",
+     *      summary =  "Sugerencias para una reserva teniendo en cuenta fecha, capacidad y periodos",
      *      tags = {"Aulas"},
      *      @OA\RequestBody(
      *         @OA\JsonContent(
@@ -839,12 +839,6 @@ class AulasController extends Controller
      * )
      *
      */
-    function cmp($a, $b) { // Make sure to give this a more meaningful name!
-        if ($a->capacidad == $b->capacidad){
-            return 0;
-        }
-        return ($a->capacidad < $b->capacidad) ? -1 : 1;
-    }
     public function darSugerenciaDeReserva(Request $request){
         $aulasTodas = AulasController::filtrarGeneral($request);
         $aulasTodas = collect($aulasTodas)->sortByDesc('capacidad')->values();

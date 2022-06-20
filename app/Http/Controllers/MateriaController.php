@@ -12,7 +12,7 @@ class MateriaController extends Controller
     /**
      * @OA\Get(
      *      path= "/materia/docentes/{idMateria}",
-     *      summary =  "Obtencion de una todos los docentes de una materia",
+     *      summary =  "Obtencion de todos los docentes de una materia",
      *      tags = {"Materia"},
      * 
      *      @OA\Parameter(

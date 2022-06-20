@@ -147,17 +147,18 @@ class SolicitudReservaController extends Controller
             //DB::table("aula_datos_reserva")->where("aula_datos_reserva.datos_reserva_id",$idDatosReserva)->delete();
 
             DB::table("solicitud_reservas") -> where ("solicitud_reservas.id",$request->idSolicitud)->update(['estado'=>'CANCELADO']);
-            
+
             $docente = DB::table("datos_reservas")->where("datos_reservas.id",$idDatosReserva)->get();
             $idDocente = $docente [0] -> docente_id;   //Si queremos borrar notificacion
 
             //DB::table("datos_reservas")->where("datos_reservas.id",$idDatosReserva)->delete();
-            
+
             //Borrar notificacion si es necesario 
             //DB::table("notificacions") -> where([["notificacions.docente_id","=",$idDocente],["notificacions.fecha","=",$fecha]]);
             return response()->json("Eliminacion Correcta",200,[]);
+        }else{
+            return response()->json("Reserva Aceptada, Incancelable",400,[]);
         }
-        return response()->json("Reserva Aceptada, Incancelable",400,[]);
     }
 
 
