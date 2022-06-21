@@ -335,7 +335,7 @@
                 "tags": [
                     "Aulas"
                 ],
-                "summary": "Obtencion del estado de un aula",
+                "summary": "Obtencion del estado de un aula, si esta tiene algun conflicto con alguna solicitud o reserva",
                 "operationId": "1356c1d3297d9b6d23a5923b471b0147",
                 "requestBody": {
                     "content": {
@@ -376,7 +376,7 @@
                 "tags": [
                     "Aulas"
                 ],
-                "summary": "Obtencion información de un aula",
+                "summary": "Obtencion información de un aula dado el nombre",
                 "operationId": "e016a51ad6f625041b196a03acec9619",
                 "requestBody": {
                     "content": {
@@ -497,8 +497,8 @@
                 "tags": [
                     "Aulas"
                 ],
-                "summary": "Filtro de aulas general",
-                "operationId": "9ef76ee58239de67ce3e8c186fc448c8",
+                "summary": "Sugerencias para una reserva teniendo en cuenta fecha, capacidad y periodos",
+                "operationId": "f87bd31ebb3bbf4ffe2f4b5f74a9e7e8",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -1314,7 +1314,7 @@
                 "tags": [
                     "Materia"
                 ],
-                "summary": "Obtencion de una todos los docentes de una materia",
+                "summary": "Obtencion de todos los docentes de una materia",
                 "operationId": "6a852c0c6a9fcf25bc0bc62987b91852",
                 "parameters": [
                     {
@@ -1872,6 +1872,23 @@
                         }
                     }
                 ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/solicitud-reserva/historial-admin": {
+            "get": {
+                "tags": [
+                    "Solicitud de reservas"
+                ],
+                "summary": "Obtencion del historial de solicitudes admin",
+                "operationId": "13b3685c25321c56e6a015fa77c1c1dd",
                 "responses": {
                     "200": {
                         "description": "OK"

@@ -250,14 +250,14 @@ class DocenteController extends Controller
      * 
     */
     public function modificarInformacion(Request $request){
+        echo $request;
         $docente = Docente::findOrFail($request->idDocente);
-        if($request->email != null)
+        if($request->email != NULL)
             $docente -> email = $request->email;
-        if($request->celular != null)             
+        if($request->celular != "undefined")             
             $docente -> celular = $request->celular; 
-        if($request->contrasenia != null)
+        if($request->contrasenia != NULL)
             $docente -> contrasenia =bcrypt($request->contrasenia);
-        
         $docente -> save();
         return $docente;
     }
