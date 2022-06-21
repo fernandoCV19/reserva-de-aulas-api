@@ -779,6 +779,20 @@ class SolicitudReservaController extends Controller
         ->get();*/
         return $solicitudes;
     }
+    /**
+     * @OA\Get(
+     *      path= "/solicitud-reserva/historial-admin",
+     *      summary =  "Obtencion del historial de solicitudes admin",
+     *      tags = {"Solicitud de reservas"},
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      )
+     * )
+     */
     public function getHistorialAdmin(){
         $solicitudesReserva = DB::table("solicitud_reservas")
         ->orderBy("fecha_creacion", "DESC")
