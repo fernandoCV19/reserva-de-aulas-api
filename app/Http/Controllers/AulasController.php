@@ -746,7 +746,7 @@ class AulasController extends Controller
                 }
                 $aulaNueva = new \stdClass();
                 
-                $aulaNueva->id = $aulas[$j]->idAula;
+                $aulaNueva->idAula = $aulas[$j]->idAula;
                 $aulaNueva->nombre = $aulas[$j]->nombre;
                 $aulaNueva->ubicacion = $aulas[$j]->ubicacion;
                 $aulaNueva->capacidad = $aulas[$j]->capacidad;
