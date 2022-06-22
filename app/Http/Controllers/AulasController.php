@@ -330,13 +330,15 @@ class AulasController extends Controller
      */
     public function filtrarAulasPorNombre(Request $request)
     {
+
         $aulas = DB::table(DB::raw('aulas, periodos'))
             ->where([["nombre", "=", request("nombreAula")], ["aulas.disponible_para_uso", "=", "1"]])
             ->select("aulas.nombre", "hora_inicio", "hora_fin", "capacidad", "descripcion", "aulas.id as idAula","ubicacion")
             ->orderBy('nombre', "ASC")
             ->orderBy('hora_inicio')
             ->get();
-        return AulasController::anidarHorarios3($request, $aulas);
+
+        return AulasController::anidarHorarios($request, $aulas);
     }
     /**
      * @OA\Post(
