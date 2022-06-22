@@ -71,7 +71,7 @@ class AulasController extends Controller
     /**
      * @OA\Post(
      *      path= "/aula/disponibles",
-     *      summary =  "Obtencion de las aulas disponibles en una fecha",
+     *      summary =  "Obtencion de las aulas disponibles para uso",
      *      tags = {"Aulas"},
      *      @OA\RequestBody(
      *         @OA\JsonContent(
@@ -903,17 +903,20 @@ class AulasController extends Controller
             }
             
             if($aulaActual != $aulas[$j]->nombre){
-                $aulaNueva = new \stdClass();
-                $aulaNueva->idAula = $aulas[$j - 1]->idAula;
-                $aulaNueva->nombre = $aulas[$j - 1]->nombre;
-                $aulaNueva->ubicacion = $aulas[$j - 1]->ubicacion;
-                $aulaNueva->capacidad = $aulas[$j - 1]->capacidad;
-                $aulaNueva->descripcion = $aulas[$j - 1]->descripcion;
-                $aulaNueva->horarios = $horarios;
+                if(sizeof($horarios) > 0){
+                    $aulaNueva = new \stdClass();
+                    $aulaNueva->idAula = $aulas[$j - 1]->idAula;
+                    $aulaNueva->nombre = $aulas[$j - 1]->nombre;
+                    $aulaNueva->ubicacion = $aulas[$j - 1]->ubicacion;
+                    $aulaNueva->capacidad = $aulas[$j - 1]->capacidad;
+                    $aulaNueva->descripcion = $aulas[$j - 1]->descripcion;
+                    $aulaNueva->horarios = $horarios;
+                    
+                    array_push($aulasDisponibles, $aulaNueva);
+                }
                 $horarios = null;
                 $horarios = array();
                 $aulaActual = $aulas[$j]->nombre;
-                array_push($aulasDisponibles, $aulaNueva);
             }
             if ($bandera == false) {
                 $horario = new \stdClass();
