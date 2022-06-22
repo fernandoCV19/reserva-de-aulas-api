@@ -840,6 +840,7 @@ class AulasController extends Controller
      *
      */
     public function darSugerenciaDeReserva(Request $request){
+        $request -> capacidadMax = ($request -> capacidadMax) + 30;
         $aulasTodas = AulasController::filtrarGeneral($request);
         $aulasTodas = collect($aulasTodas)->sortByDesc('capacidad')->values();
         

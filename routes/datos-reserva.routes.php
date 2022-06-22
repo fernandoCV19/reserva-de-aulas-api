@@ -18,3 +18,4 @@ Route::delete('/aulas/{idDatosReserva}', [DatosReservaController::class, "delete
 Route::get('/materia/{idDatosReserva}', [DatosReservaController::class, "getMateria"]);
 Route::get('/{idDatosReserva}', [DatosReservaController::class, "getDatosReservaById"]);
 Route::get('/', [DatosReservaController::class, "obtenerDatosReservas"]);
+Route::put('/actualizarAulas/{idDatosReserva}', [DatosReservaController::class, "modificarAulas"]);
