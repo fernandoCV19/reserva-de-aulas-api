@@ -338,7 +338,7 @@ class AulasController extends Controller
             ->orderBy('hora_inicio')
             ->get();
 
-        return AulasController::anidarHorarios($request, $aulas);
+        return AulasController::anidarHorarios3($request, $aulas);
     }
     /**
      * @OA\Post(
