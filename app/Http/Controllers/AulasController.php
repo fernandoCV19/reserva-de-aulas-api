@@ -65,13 +65,12 @@ class AulasController extends Controller
             ->join("periodos", "periodos.id", "=", "datos_reserva_periodo.periodo_id")
             ->where([["estado", "PENDIENTE"], ["fecha", request("fecha")]])
             ->get();
-
         return $aulasOcupadas;
     }
     /**
      * @OA\Post(
      *      path= "/aula/disponibles",
-     *      summary =  "Obtencion de las aulas disponibles en una fecha",
+     *      summary =  "Obtencion de las aulas disponibles para uso",
      *      tags = {"Aulas"},
      *      @OA\RequestBody(
      *         @OA\JsonContent(
@@ -338,7 +337,7 @@ class AulasController extends Controller
             ->orderBy('hora_inicio')
             ->get();
 
-        return AulasController::anidarHorarios($request, $aulas);
+        return AulasController::anidarHorarios3($request, $aulas);
     }
     /**
      * @OA\Post(
@@ -840,6 +839,7 @@ class AulasController extends Controller
      *
      */
     public function darSugerenciaDeReserva(Request $request){
+        $request -> capacidadMax = ($request -> capacidadMax) + 30;
         $aulasTodas = AulasController::filtrarGeneral($request);
         $aulasTodas = collect($aulasTodas)->sortByDesc('capacidad')->values();
         
@@ -902,17 +902,20 @@ class AulasController extends Controller
             }
             
             if($aulaActual != $aulas[$j]->nombre){
-                $aulaNueva = new \stdClass();
-                $aulaNueva->idAula = $aulas[$j - 1]->idAula;
-                $aulaNueva->nombre = $aulas[$j - 1]->nombre;
-                $aulaNueva->ubicacion = $aulas[$j - 1]->ubicacion;
-                $aulaNueva->capacidad = $aulas[$j - 1]->capacidad;
-                $aulaNueva->descripcion = $aulas[$j - 1]->descripcion;
-                $aulaNueva->horarios = $horarios;
+                if(sizeof($horarios) > 0){
+                    $aulaNueva = new \stdClass();
+                    $aulaNueva->idAula = $aulas[$j - 1]->idAula;
+                    $aulaNueva->nombre = $aulas[$j - 1]->nombre;
+                    $aulaNueva->ubicacion = $aulas[$j - 1]->ubicacion;
+                    $aulaNueva->capacidad = $aulas[$j - 1]->capacidad;
+                    $aulaNueva->descripcion = $aulas[$j - 1]->descripcion;
+                    $aulaNueva->horarios = $horarios;
+                    
+                    array_push($aulasDisponibles, $aulaNueva);
+                }
                 $horarios = null;
                 $horarios = array();
                 $aulaActual = $aulas[$j]->nombre;
-                array_push($aulasDisponibles, $aulaNueva);
             }
             if ($bandera == false) {
                 $horario = new \stdClass();
@@ -935,4 +938,94 @@ class AulasController extends Controller
         }
         return $aulasDisponibles;
     }
+
+    /**
+     * @OA\Post(
+     *      path= "/aula/nombresAulasDisponible",
+     *      summary =  "Ingresado un nombre, periodos y fecha mostrar si esta esta aula esta libre",
+     *      tags = {"Aulas"},
+     *      @OA\RequestBody(
+     *         @OA\JsonContent(
+     *               @OA\Property(
+     *                  property="fecha",
+     *                  type="date"
+     *               ),
+     *               @OA\Property(
+     *                  property="periodos",
+     *                  type="array",
+     *                  @OA\Items(
+     *                      type="string"
+     *                  ),
+     *               ),
+     *               @OA\Property(
+     *                  property="nombreAula",
+     *                  type="string"
+     *               ),
+     *         ),
+     *
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      )
+     * )
+     *
+     */
+    public function nombreAulaDisponible(Request $request){
+        $respuesta = new \stdClass();
+        $aula = DB::table('aulas')
+            ->where("nombre","=", $request->nombreAula)
+            ->get()->first();
+        $respuesta -> aula = $aula;
+        
+        $dato_reserva = DB::table('aula_datos_reserva')
+                    -> where("aula_id", $aula->id)
+                    -> join("solicitud_reservas", "solicitud_reservas.datos_reserva_id", "aula_datos_reserva.datos_reserva_id")
+                    -> where("solicitud_reservas.estado", "!=", "CANCELADO")
+                    -> join("datos_reservas", "aula_datos_reserva.datos_reserva_id", "datos_reservas.id")
+                    -> where("datos_reservas.fecha", $request->fecha)
+                    -> get();
+        //echo json_encode($dato_reserva);
+        $bandera = false;
+        for($i = 0; $i<sizeof($dato_reserva); $i++){
+            if(AulasController::tienePeriodos($dato_reserva[$i], $request->periodos)){
+                $bandera = true;
+                $respuesta -> libre = false;
+                return $respuesta;
+            }
+        }
+        $respuesta -> libre = true;
+        return $respuesta;
+    }
+    private function tienePeriodos($dato_reserva, $periodosRequest) {
+        $periodos = DB::table('datos_reserva_periodo')
+                -> where("datos_reserva_periodo.datos_reserva_id", $dato_reserva->id)
+                -> get();
+
+        //echo json_encode($periodos);
+        for($i = 0; $i<sizeof($periodosRequest); $i++) {
+            $periodo = DB::table('periodos')
+                    -> where ("hora_inicio", $periodosRequest[$i])
+                    -> get()->first();
+            for($j = 0; $j<sizeof($periodos); $j++) {
+                /*echo json_encode($periodo);
+                echo "\n";
+                echo json_encode($periodos[$j]);*/
+                if($periodos[$j]->periodo_id == $periodo->id){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    /**{
+  "fecha": "2022-10-15",
+  "nombreAula": "608B",
+  "periodos" :["8:15:00"]
+}
+     * 
+     */
 }

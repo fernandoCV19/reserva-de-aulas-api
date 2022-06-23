@@ -75,7 +75,7 @@ class ReservaController extends Controller
         ->get();
         $periodosMensaje = "";
         for($i=0; $i<sizeof($periodos); $i++){
-            $periodosMensaje = $periodosMensaje . $periodos[$i]->hora_inicio . " - ".$periodos[$i]->hora_inicio. "; ";
+            $periodosMensaje = $periodosMensaje . $periodos[$i]->hora_inicio . " - ".$periodos[$i]->hora_fin. "; ";
         }
         $materia = DB::table("grupos")
         ->where("docente_id", $docentes[0]->docente_id)
@@ -83,7 +83,7 @@ class ReservaController extends Controller
         ->select("materias.nombre")
         ->get();
         $fechaActual = DatosReserva::find($idDatos)->fecha;
-        $mensaje = "Su solicitud de enviada fue aceptada para la fecha ". $fechaActual;
+        $mensaje = "Su solicitud de reserva enviada fue aceptada para la fecha ". $fechaActual;
         $mensaje = $mensaje ." , en las aulas: ";
         $mensaje = $mensaje . $nombresAulas. "en los periodos: ";
         $mensaje = $mensaje . $periodosMensaje. "para la materia de ";

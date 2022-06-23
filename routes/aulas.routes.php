@@ -25,6 +25,7 @@ Route::post('/infoAula-capacidad',[AulasController::class, "infoAulasCapacidad"]
 
 Route::put('/modificar/{idAula}',[AulasController::class, "modificarAula"]);
 Route::get('/sugerencia',[AulasController::class, "sugerenciaAulas"]);
+Route::post('/nombresAulasDisponible',[AulasController::class, "nombreAulaDisponible"]);
 Route::get("/user", function () {
     $mensaje =['mensaje'=>"Hola mundo"];
     return response()->json($mensaje, 200,[]);

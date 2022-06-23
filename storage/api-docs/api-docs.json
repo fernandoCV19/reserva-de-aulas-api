@@ -110,7 +110,7 @@
                 "tags": [
                     "Aulas"
                 ],
-                "summary": "Obtencion de las aulas disponibles en una fecha",
+                "summary": "Obtencion de las aulas disponibles para uso",
                 "operationId": "050524b0efb1956f6c8fed773578b437",
                 "requestBody": {
                     "content": {
@@ -521,6 +521,47 @@
                                         "type": "integer"
                                     },
                                     "area": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/aula/nombresAulasDisponible": {
+            "post": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Ingresado un nombre, periodos y fecha mostrar si esta esta aula esta libre",
+                "operationId": "458ae29d00c7147eeff7604ffffb1a47",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "fecha": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "periodos": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "nombreAula": {
                                         "type": "string"
                                     }
                                 },
@@ -1006,6 +1047,51 @@
                         }
                     }
                 ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/datos-reserva/actualizarAulas/{idDatosReserva}": {
+            "put": {
+                "tags": [
+                    "Datos Reserva"
+                ],
+                "summary": "Modificacion en la aulas asignadas a un dato reserva",
+                "operationId": "97083e7800536ca52cc7d0ade6b23fa6",
+                "parameters": [
+                    {
+                        "name": "idDatosReserva",
+                        "in": "path",
+                        "description": "Id de un Dato Reserva",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "aulasId": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "OK"

@@ -279,4 +279,56 @@ class DatosReservaController extends Controller
         ->get();
         return $materia->first();
     }
+    /**
+     * @OA\Put(
+     *      path= "/datos-reserva/actualizarAulas/{idDatosReserva}",
+     *      summary =  "Modificacion en la aulas asignadas a un dato reserva",
+     *      tags = {"Datos Reserva"},
+     *      @OA\Parameter(
+     *          name="idDatosReserva",
+     *          description="Id de un Dato Reserva",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="string"
+     *          )
+     *      ),
+     *      @OA\RequestBody(
+     *         @OA\JsonContent(
+     *               @OA\Property(
+     *                  property="aulasId",
+     *                  type="array",
+     *                  @OA\Items(
+     *                      type="string"
+     *                  ),
+     *               ),
+     *         ),
+     *
+     *    ),
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      )
+     * )
+     *
+     */
+    public function modificarAulas(Request $request){
+        DB::table("aula_datos_reserva")
+        ->where("aula_datos_reserva.datos_reserva_id", $request->idDatosReserva)
+        ->delete();        ;
+
+        $aulas = $request->aulasId;    
+        
+        foreach($aulas as $aulaId){
+            $aulas_datos = DB::table("aula_datos_reserva")->insert([
+                "id"=>Str::uuid()->toString(), 
+                "datos_reserva_id" => $request->idDatosReserva,
+                "aula_id"=>$aulaId
+            ]);
+            echo $aulas_datos;
+        }
+    }
 }
