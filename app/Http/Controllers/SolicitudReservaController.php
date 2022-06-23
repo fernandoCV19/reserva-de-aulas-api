@@ -780,6 +780,103 @@ class SolicitudReservaController extends Controller
         return $solicitudes;
     }
     /**
+     * @OA\Post(
+     *      path= "/solicitud-reserva/docente-solicitud/nombre",
+     *      summary =  "Obtencion de las solicitudes de un docente mediante nombre",
+     *      tags = {"Solicitud de reservas"},
+     *       @OA\RequestBody(
+     *         @OA\JsonContent(
+     *              @OA\Property(
+     *                  property="nombreDocente", 
+     *                  type="string"
+     *               ),
+     *          ),
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description = "OK"),
+     *      @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *      )
+     * )
+     * 
+     * 
+     */
+    public function getSolicitudesDocentesporNombre(Request $request){
+        $idDocente = DB::table("docentes")
+        ->where("docentes.nombre","=",$request->nombreDocente)
+        ->first()->id;
+        
+        $datosReserva = DB::table("datos_reservas")
+        -> where("datos_reservas.docente_id", $idDocente)
+        ->orderBy("fecha", "DESC")
+        -> get();
+        $solicitudes = array();
+
+        for($i = 0; $i < sizeof($datosReserva); $i++){
+            $docentes = DB::table("datos_reserva_grupo")
+            -> where("datos_reserva_grupo.datos_reserva_id",$datosReserva[$i]->id)
+            -> join("grupos", "grupos.id", "datos_reserva_grupo.grupo_id")
+            -> join("docentes", "docentes.id", "grupos.docente_id")
+            -> select("docentes.nombre as nombreDocente")
+            -> get(); 
+
+            
+            $aulas = DatosReservaController::getAulasDatosReserva($datosReserva[$i]->id);
+            $aulas = json_decode($aulas-> getContent(), true)["aulas"];
+            $capacidad = 0;
+   
+            for($j = 0; $j<sizeof($aulas); $j++){
+                $capacidad += $aulas[$j]["capacidad"];
+            }
+            
+            $periodos = DB::table("datos_reserva_periodo")
+            ->where("datos_reserva_periodo.datos_reserva_id", $datosReserva[$i]->id)
+            ->join("periodos", "periodos.id", "datos_reserva_periodo.periodo_id")
+            ->select("periodos.hora_inicio", "periodos.hora_fin")
+            ->get();
+            
+            $estadoConsulta = DB::table("solicitud_reservas")
+            ->where("datos_reserva_id", $datosReserva[$i]->id)
+            ->get();
+
+            $estado = "";
+            if(sizeof($estadoConsulta) == 0){
+                $reserva = DB::table("reservas")
+                -> where("datos_reserva_id", $datosReserva[$i]->id)
+                -> get();
+                $estado = "ACEPTADO";
+            }
+            else {
+                $estado = $estadoConsulta[0]->estado;
+            }
+            
+            $justificaciones = DB::table("justificacions")
+            ->where("datos_reserva_id","=",$datosReserva[$i]->id)
+            ->select("justificacion")
+            ->get();
+        
+            $solicitudActual = DB::table("solicitud_reservas")
+            ->where("datos_reserva_id","=",$datosReserva[$i]->id)
+            ->get();
+            $res = new\stdClass();
+            $res -> aulas = $aulas;
+            $res -> periodos = $periodos;
+            $res -> estado = $estado;
+            $res -> docentes = $docentes;
+            $res -> motivo = $justificaciones;
+            $res -> fecha = $datosReserva[$i]->fecha;
+            $res -> numero_estimado = $datosReserva[$i]->numero_estimado;
+            $res -> solicitud = $solicitudActual;
+            //echo json_encode($res);
+            array_push($solicitudes, $res);
+        }
+
+        
+        return $solicitudes ;
+    }
+    /**
      * @OA\Get(
      *      path= "/solicitud-reserva/historial-admin",
      *      summary =  "Obtencion del historial de solicitudes admin",
