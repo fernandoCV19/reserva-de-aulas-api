@@ -15,6 +15,7 @@ Route::get('/estado/{idSolicitud}', [SolicitudReservaController::class, "getEsta
 Route::put('/cambio-estado/{idSolicitud}', [SolicitudReservaController::class, "actualizarEstado"]);
 Route::get('/estado-aulas/{idSolicitud}', [SolicitudReservaController::class, "estadoAulas"]);
 Route::get('/docente-solicitud/{idDocente}', [SolicitudReservaController::class, "getSolicitudesDocentes"]);
+Route::post('/docente-solicitud/nombre', [SolicitudReservaController::class, "getSolicitudesDocentesporNombre"]);
 Route::put('/eliminar/{idSolicitud}', [SolicitudReservaController::class, "eliminarSolicitud"]);
 Route::get('/historial-admin', [SolicitudReservaController::class, "getHistorialAdmin"]);
 Route::get('/{idSolicitud}',[SolicitudReservaController::class, "getSolicitudPorId"]);
