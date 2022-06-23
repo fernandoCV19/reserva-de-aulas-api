@@ -1882,6 +1882,37 @@
                 }
             }
         },
+        "/solicitud-reserva/docente-solicitud/nombre": {
+            "post": {
+                "tags": [
+                    "Solicitud de reservas"
+                ],
+                "summary": "Obtencion de las solicitudes de un docente mediante nombre",
+                "operationId": "439c80765235560f7e3346a71c49cb0c",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nombreDocente": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
         "/solicitud-reserva/historial-admin": {
             "get": {
                 "tags": [
