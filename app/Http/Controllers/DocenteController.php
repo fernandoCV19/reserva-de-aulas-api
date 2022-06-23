@@ -75,8 +75,7 @@ class DocenteController extends Controller
         $limite = sizeof($notificaciones);
         if($limite > 5) $limite = 5; 
         for($i=0; $i<$limite; $i++){
-            array_push($respuesta,$notificaciones[$i]);
-            $i++;
+            array_push($respuesta,$notificaciones[$i]);          
         }
         return $respuesta;
     }
