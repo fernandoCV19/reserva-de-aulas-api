@@ -15,9 +15,9 @@ class CreateSolicitudReservasTable extends Migration
     {
         Schema::create('solicitud_reservas', function (Blueprint $table) {
             $table->uuid('id');
-            $table->string('estado', 10)->default('pendiente');
+            $table->string('estado', 10)->default('PENDIENTE');
             $table->timestamp('fecha_creacion');
-            $table->string('datos_reserva_id');
+            $table->string('datos_reserva_id', 100);
             
             $table->primary('id');
             $table->unique('id');

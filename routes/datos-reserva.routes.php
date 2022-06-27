@@ -12,16 +12,10 @@ Route::get("/user", function () {
     $mensaje =['mensaje'=>"Hola mundo"];
     return response()->json($mensaje, 200,[]);
 });
+Route::post('/', [DatosReservaController::class, "crearDatosReserva"]);
 Route::get('/aulas/{idDatosReserva}', [DatosReservaController::class, "getAulasDatosReserva"]);
 Route::delete('/aulas/{idDatosReserva}', [DatosReservaController::class, "deleteAulas"]);
+Route::get('/materia/{idDatosReserva}', [DatosReservaController::class, "getMateria"]);
 Route::get('/{idDatosReserva}', [DatosReservaController::class, "getDatosReservaById"]);
-
-
-
-//Route::get('/', [DatosReservaController::class, "obtenerDatosReservas"]);
-Route::get('/', function (){
-    $dr = DatosReserva::findOrFail(1);
-    return $dr ->aulas;
-});
-
-
+Route::get('/', [DatosReservaController::class, "obtenerDatosReservas"]);
+Route::put('/actualizarAulas/{idDatosReserva}', [DatosReservaController::class, "modificarAulas"]);

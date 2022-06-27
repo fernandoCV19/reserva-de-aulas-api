@@ -15,12 +15,12 @@ class CreateDocentesTable extends Migration
     {
         Schema::create('docentes', function (Blueprint $table) {
             $table->uuid('id');
-            $table->integer('cod_SIS');
-            $table->string('nombres', 30);
-            $table->string('apellidos', 30);
+            $table->string('cod_SIS', 20);
+            $table->string('nombre', 200);
             $table->string('celular', 30);
-            $table->string('contrasenia', 30);
+            $table->string('contrasenia', 200);
             $table->string('email', 30);
+            $table->integer('activado')->default(0);
         
             $table->primary('id');
             $table->unique('id');

@@ -17,9 +17,2024 @@
                     }
                 }
             }
+        },
+        "/aula": {
+            "get": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Obtencion de todas las aulas",
+                "operationId": "d3d78b0b1ceff6936dafc680c6a5948d",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Creacion de una nueva aula",
+                "operationId": "24247e6854f96ea3099ed4beb77c5f8f",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "capacidad": {
+                                        "type": "integer"
+                                    },
+                                    "nombre": {
+                                        "type": "string"
+                                    },
+                                    "ubicacion": {
+                                        "type": "string"
+                                    },
+                                    "descripcion": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/aula/pendientes": {
+            "post": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Obtencion de las aulas que son parte de una solicitud de reserva pendiente en una fecha",
+                "operationId": "0efc1c32240aa2e78c506b0750f2d63b",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "fecha": {
+                                        "type": "string",
+                                        "format": "date"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/aula/disponibles": {
+            "post": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Obtencion de las aulas disponibles para uso",
+                "operationId": "050524b0efb1956f6c8fed773578b437",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "fecha": {
+                                        "type": "string",
+                                        "format": "date"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/aula/areas": {
+            "post": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Filtro de aulas por ubicación",
+                "operationId": "fc049784fc17bede4e645b483ce371b1",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "fecha": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "area": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/aula/cantidad": {
+            "post": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Filtro de aulas por capacidad",
+                "operationId": "4ce579a179a881dd5b2238f720426173",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "fecha": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "capacidadMin": {
+                                        "type": "integer"
+                                    },
+                                    "capacidadMax": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/aula/periodo": {
+            "post": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Filtro de aulas por periodo",
+                "operationId": "fe0949f6ae649ddf80287141a43bc4cd",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "fecha": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "periodos": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/aula/nombre": {
+            "post": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Filtro de aulas por nombre",
+                "operationId": "ef8a8c686d88d469761182331b82b1a4",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "fecha": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "nombreAula": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/aula/general": {
+            "post": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Filtro de aulas general",
+                "operationId": "1709d0165d9b793b04337f2ea39a128b",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "fecha": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "periodos": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "capacidadMin": {
+                                        "type": "integer"
+                                    },
+                                    "capacidadMax": {
+                                        "type": "integer"
+                                    },
+                                    "area": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/aula/estado-aula": {
+            "post": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Obtencion del estado de un aula, si esta tiene algun conflicto con alguna solicitud o reserva",
+                "operationId": "1356c1d3297d9b6d23a5923b471b0147",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "fecha": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "periodoIni": {
+                                        "type": "string"
+                                    },
+                                    "nombreAula": {
+                                        "type": "string"
+                                    },
+                                    "ubicacionAula": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/aula/infoAula": {
+            "post": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Obtencion información de un aula dado el nombre",
+                "operationId": "e016a51ad6f625041b196a03acec9619",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nombreAula": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/aula/infoAula-ubicacion": {
+            "post": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Obtencion información de un aula por ubicacion",
+                "operationId": "e7b8505f8f695fb1f544a6d350622a14",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "ubicacion": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/aula/infoAula-capacidad": {
+            "post": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Obtencion información de aulas por capacidad",
+                "operationId": "20cb69bdc6cf50464ae749d41a01f171",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "capacidad": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/aula/modificar/{idAula}": {
+            "put": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Modificar disponibilidad del aula",
+                "operationId": "149355ab70e221125ff52393dd16bc3e",
+                "parameters": [
+                    {
+                        "name": "idAula",
+                        "in": "path",
+                        "description": "Id del aula",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/aula/sugerenciaReserva": {
+            "post": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Sugerencias para una reserva teniendo en cuenta fecha, capacidad y periodos",
+                "operationId": "f87bd31ebb3bbf4ffe2f4b5f74a9e7e8",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "fecha": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "periodos": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "capacidadMin": {
+                                        "type": "integer"
+                                    },
+                                    "capacidadMax": {
+                                        "type": "integer"
+                                    },
+                                    "area": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/aula/nombresAulasDisponible": {
+            "post": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Ingresado un nombre, periodos y fecha mostrar si esta esta aula esta libre",
+                "operationId": "458ae29d00c7147eeff7604ffffb1a47",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "fecha": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "periodos": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "nombreAula": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/auth/loginAdmin": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Inicio de sesion",
+                "operationId": "2b27e6173465cc6a26e664c0399e29a5",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "cod_SIS": {
+                                        "type": "integer"
+                                    },
+                                    "contrasenia": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/auth/meAdmin": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Obtencion de la informacion de un usuario",
+                "operationId": "08b6b7187997fb42bfc3124ae2f6feef",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/auth/logoutAdmin": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Cerrar sesion",
+                "operationId": "8ee5ccb543909872b521a447d85c6522",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/auth/refreshAdmin": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Refresco del token",
+                "operationId": "4e2fe7845c3b3a2a16d9528cc81b555c",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "No autorizado"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/auth/crearAdmin": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Activacion de la cuenta de un administrador",
+                "operationId": "48918d24e7c7b5c38193f0f28ce1fd37",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "cod_SIS": {
+                                        "type": "integer"
+                                    },
+                                    "nombre": {
+                                        "type": "string"
+                                    },
+                                    "contrasenia": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/auth/loginDocente": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Inicio de sesion",
+                "operationId": "1cf9eccde84a00b7360615c2a8314d20",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "cod_SIS": {
+                                        "type": "integer"
+                                    },
+                                    "contrasenia": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/auth/meDocente": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Obtencion de la informacion de un usuario",
+                "operationId": "5b76f98641eff2fd8c2652df96b4d924",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/auth/logoutDocente": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Cerrar sesion",
+                "operationId": "8cd237eb7960dad4a56b22b5d6b21c5a",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/auth/refreshDocente": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Refresco del token",
+                "operationId": "63837692c0de1f7ab1a10740fb62a312",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "No autorizado"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/auth/activarDocente": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Activacion de la cuenta de un docente",
+                "operationId": "916a1b8b24999445b2fae43d621dfe88",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "cod_SIS": {
+                                        "type": "integer"
+                                    },
+                                    "nombre": {
+                                        "type": "string"
+                                    },
+                                    "celular": {
+                                        "type": "integer"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "contrasenia": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/datos-reserva": {
+            "get": {
+                "tags": [
+                    "Datos Reserva"
+                ],
+                "summary": "Obtencion de todos los datos reserva",
+                "operationId": "5829ca0977634573cc4e9423b383f1e4",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Datos Reserva"
+                ],
+                "summary": "Creacion de los datos de una reserva",
+                "operationId": "d704d77a316b15c61eecb59def954429",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "numero_estimado": {
+                                        "type": "integer"
+                                    },
+                                    "fecha": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "aulasId": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "gruposId": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "justificacionesLista": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "periodosId": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/datos-reserva/{idDatosReserva}": {
+            "get": {
+                "tags": [
+                    "Datos Reserva"
+                ],
+                "summary": "Obtencion de los datos de una reserva por id",
+                "operationId": "bbc16c3861d41755a8b2b6b29ce7ebbd",
+                "parameters": [
+                    {
+                        "name": "idDatosReserva",
+                        "in": "path",
+                        "description": "Id de un Dato Reserva",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/datos-reserva/aulas/{idDatosReserva}": {
+            "get": {
+                "tags": [
+                    "Datos Reserva"
+                ],
+                "summary": "Obtencion de las aulas de un datos reserva",
+                "operationId": "51ac4a8d8f790b2e09384fc64e7664b3",
+                "parameters": [
+                    {
+                        "name": "idDatosReserva",
+                        "in": "path",
+                        "description": "Id de un Dato Reserva",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Datos Reserva"
+                ],
+                "summary": "Obtencion de los datos de una reserva por id",
+                "operationId": "c3bd4a6a0d46a1bb2731c5cf3002e95f",
+                "parameters": [
+                    {
+                        "name": "idDatosReserva",
+                        "in": "path",
+                        "description": "Id de un Dato Reserva",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "aulasId": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/datos-reserva/materia/{idDatosReserva}": {
+            "get": {
+                "tags": [
+                    "Datos Reserva"
+                ],
+                "summary": "Obtencion de la materia asignada a un dato reserva",
+                "operationId": "0260137319040eae109f089a78761daa",
+                "parameters": [
+                    {
+                        "name": "idDatosReserva",
+                        "in": "path",
+                        "description": "Id de un Dato Reserva",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/datos-reserva/actualizarAulas/{idDatosReserva}": {
+            "put": {
+                "tags": [
+                    "Datos Reserva"
+                ],
+                "summary": "Modificacion en la aulas asignadas a un dato reserva",
+                "operationId": "97083e7800536ca52cc7d0ade6b23fa6",
+                "parameters": [
+                    {
+                        "name": "idDatosReserva",
+                        "in": "path",
+                        "description": "Id de un Dato Reserva",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "aulasId": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/docente/verificar/{idDocente}": {
+            "put": {
+                "tags": [
+                    "Docentes"
+                ],
+                "summary": "Verificacion de una cuenta de docente",
+                "operationId": "f8aa788532d319426cc0d3fd09e42103",
+                "parameters": [
+                    {
+                        "name": "idDocente",
+                        "in": "path",
+                        "description": "Id de Docente",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/docente/notificaciones/{idDocente}": {
+            "get": {
+                "tags": [
+                    "Docentes"
+                ],
+                "summary": "Obtencion de las notificaciones de un docente apartir de un id",
+                "operationId": "1f1a5994870ee069ced9f19b95a8f184",
+                "parameters": [
+                    {
+                        "name": "idDocente",
+                        "in": "path",
+                        "description": "Id de Docente",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/docente/materias/{idDocente}": {
+            "get": {
+                "tags": [
+                    "Docentes"
+                ],
+                "summary": "Obtencion de las materias y grupos de un docente",
+                "operationId": "7d392d6c52abcf74d8b0470f560de310",
+                "parameters": [
+                    {
+                        "name": "idDocente",
+                        "in": "path",
+                        "description": "Id de Docente",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/docente/cuentas": {
+            "get": {
+                "tags": [
+                    "Docentes"
+                ],
+                "summary": "Obtencion de las cuentas que estan solicitdas para ser aceptadas",
+                "operationId": "9e3c71603a4cdfa2f8145c34a00a916e",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/docente/rechazar/{idDocente}": {
+            "put": {
+                "tags": [
+                    "Docentes"
+                ],
+                "summary": "Rechazo de la creacion de una cuenta",
+                "operationId": "01e7860b984a2022664dcd7840f10199",
+                "parameters": [
+                    {
+                        "name": "idDocente",
+                        "in": "path",
+                        "description": "Id de Docente",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/docente/sin-registrar": {
+            "get": {
+                "tags": [
+                    "Docentes"
+                ],
+                "summary": "Obtencion de los docentes sin tegistrar",
+                "operationId": "384ab9a87852f02d1a1b31f6eb0510f2",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/docente/actualizar/{idDocente}": {
+            "put": {
+                "tags": [
+                    "Docentes"
+                ],
+                "summary": "Activacion de la cuenta de un docente",
+                "operationId": "570e45e34b8d5b570d4c68809cbd7438",
+                "parameters": [
+                    {
+                        "name": "idDocente",
+                        "in": "path",
+                        "description": "Id de Docente",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "celular": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "contrasenia": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/mail/notificarRechazo": {
+            "post": {
+                "tags": [
+                    "E-Mail"
+                ],
+                "summary": "Envio email rechazo",
+                "operationId": "4745d4e1600491933f6fe254008a4547",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/mail/notificarAceptacion": {
+            "post": {
+                "tags": [
+                    "E-Mail"
+                ],
+                "summary": "Envio email aceptacion",
+                "operationId": "9718c6cce803c24b135b9fb8128a1d20",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/mail/notificacionPersonalizada": {
+            "post": {
+                "tags": [
+                    "E-Mail"
+                ],
+                "summary": "Envio email personalizado",
+                "operationId": "a7e66cf3c8e2c352f6695007b866cf63",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "asunto": {
+                                        "type": "string"
+                                    },
+                                    "mensaje": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/materia/docentes/{idMateria}": {
+            "get": {
+                "tags": [
+                    "Materia"
+                ],
+                "summary": "Obtencion de todos los docentes de una materia",
+                "operationId": "6a852c0c6a9fcf25bc0bc62987b91852",
+                "parameters": [
+                    {
+                        "name": "idMateria",
+                        "in": "path",
+                        "description": "Id de la Materia",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/materia/grupos/{idMateria}": {
+            "get": {
+                "tags": [
+                    "Materia"
+                ],
+                "summary": "Obtencion de una todos los grupos apartir de un id de materia",
+                "operationId": "89733dd7699472256a4a0fa8b7ff3677",
+                "parameters": [
+                    {
+                        "name": "idMateria",
+                        "in": "path",
+                        "description": "Id de la Materia",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/materia/{idMateria}": {
+            "get": {
+                "tags": [
+                    "Materia"
+                ],
+                "summary": "Obtencion de una materia apartir de un id de materia",
+                "operationId": "346b7942211034a885943d4beda15a57",
+                "parameters": [
+                    {
+                        "name": "idMateria",
+                        "in": "path",
+                        "description": "Id de la Materia",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/materia": {
+            "get": {
+                "tags": [
+                    "Materia"
+                ],
+                "summary": "Obtencion de todas las materias",
+                "operationId": "5078ff9e647c0d6071ee6c12b98c462a",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/notificacion": {
+            "post": {
+                "tags": [
+                    "Notificaciones"
+                ],
+                "summary": "Creacion de una nueva notificacion de un docente",
+                "operationId": "64ad5b0c357db5a04ed2c4aa596c3141",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "mensajeNotificacion": {
+                                        "type": "string"
+                                    },
+                                    "id_docente": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/notificacion/{idNotificacion}": {
+            "get": {
+                "tags": [
+                    "Notificaciones"
+                ],
+                "summary": "Obtencion de una notificacion apartir de un id",
+                "operationId": "939c6d636a0c4757f7c10efec66e4ab6",
+                "parameters": [
+                    {
+                        "name": "idNotificacion",
+                        "in": "path",
+                        "description": "Id de la Notificacion",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/periodo/{idPeriodo}": {
+            "get": {
+                "tags": [
+                    "Periodos"
+                ],
+                "summary": "Obtencion de una periodo por ID",
+                "operationId": "77fdc5fd2a57fc9d4d57ae089c525375",
+                "parameters": [
+                    {
+                        "name": "idPeriodo",
+                        "in": "path",
+                        "description": "Id de periodos",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/periodo": {
+            "get": {
+                "tags": [
+                    "Periodos"
+                ],
+                "summary": "Obtencion de todas los periodos",
+                "operationId": "11b58a5e0083c3a10ba2743ed49d9446",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/reserva/crearReserva/{idSolicitud}": {
+            "post": {
+                "tags": [
+                    "Reservas"
+                ],
+                "summary": "Creacion de una reserva apartir de una solicitud de reserva",
+                "operationId": "1142f7cb27e19654d479198d8eeb0118",
+                "parameters": [
+                    {
+                        "name": "idSolicitud",
+                        "in": "path",
+                        "description": "Id de la Solicitud de Reserva",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/reserva/{idReserva}": {
+            "get": {
+                "tags": [
+                    "Reservas"
+                ],
+                "summary": "Obtencion de una reserva por id",
+                "operationId": "92ecf7bd4d8aaeaf35fb46c989a71de9",
+                "parameters": [
+                    {
+                        "name": "idReserva",
+                        "in": "path",
+                        "description": "Id de la Reserva",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/reserva/aulas/{idReserva}": {
+            "get": {
+                "tags": [
+                    "Reservas"
+                ],
+                "summary": "Obtencion de aulas apartir de un id de reserva",
+                "operationId": "a555424526214d0517183db6049183dd",
+                "parameters": [
+                    {
+                        "name": "idReserva",
+                        "in": "path",
+                        "description": "Id de la Reserva",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/reserva": {
+            "get": {
+                "tags": [
+                    "Reservas"
+                ],
+                "summary": "Obtencion de todas las reservas actuales",
+                "operationId": "a2bfc31f4f4f9e478e93a485bd7d0c97",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/solicitud-reserva": {
+            "post": {
+                "tags": [
+                    "Solicitud de reservas"
+                ],
+                "summary": "Creacion de una solicitud de reserva",
+                "operationId": "eeda1790de7563e57949f51e3beed663",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "numero_estimado": {
+                                        "type": "integer"
+                                    },
+                                    "fecha": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "aulasId": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "gruposId": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "justificacionesLista": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "periodosId": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/solicitud-reserva/eliminar/{idSolicitud}": {
+            "put": {
+                "tags": [
+                    "Solicitud de reservas"
+                ],
+                "summary": "Eliminacion solicitud por id",
+                "operationId": "54570061ff7c0943fdce8523b9bca273",
+                "parameters": [
+                    {
+                        "name": "idSolicitud",
+                        "in": "path",
+                        "description": "Id de la Solicitud de Reserva",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/solicitud-reserva/{idSolicitud}": {
+            "get": {
+                "tags": [
+                    "Solicitud de reservas"
+                ],
+                "summary": "Obtencion de una solicitud de reserva apartir de un id",
+                "operationId": "7c63946719cff66e4807e8e4de738aa7",
+                "parameters": [
+                    {
+                        "name": "idSolicitud",
+                        "in": "path",
+                        "description": "Id de la Solicitud de Reserva",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/solicitud-reserva/cambio-estado/{idSolicitud}": {
+            "put": {
+                "tags": [
+                    "Solicitud de reservas"
+                ],
+                "summary": "Actualizacion del estado de una solicitud de reserva a rechazado",
+                "operationId": "7e31a5a4085aeb5431630648d76cb40d",
+                "parameters": [
+                    {
+                        "name": "idSolicitud",
+                        "in": "path",
+                        "description": "Id de la Solicitud de Reserva",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "motivo": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/solicitud-reserva/pendientes": {
+            "get": {
+                "tags": [
+                    "Solicitud de reservas"
+                ],
+                "summary": "Obtencion de todas las solicitudes pendientes",
+                "operationId": "c9440c4712685fbc6e07b6dcbedbdb67",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/solicitud-reserva/antiguedad": {
+            "get": {
+                "tags": [
+                    "Solicitud de reservas"
+                ],
+                "summary": "Obtencion de todas las solicitudes pendientes filtradas por antiguedad",
+                "operationId": "6a12d1f86241e7d60fec8336f4c4e01a",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/solicitud-reserva/proximos": {
+            "get": {
+                "tags": [
+                    "Solicitud de reservas"
+                ],
+                "summary": "Obtencion de todas las solicitudes pendientes filtradas por fecha mas proxima",
+                "operationId": "e8a493b895bc5c9e28988f4960afbe72",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/solicitud-reserva/estado-aulas/{idSolicitud}": {
+            "get": {
+                "tags": [
+                    "Solicitud de reservas"
+                ],
+                "summary": "Obtencion del estado de todas las aulas pertenecientes a una solicitud de reserva",
+                "operationId": "59bc6236c625dc2baa54026d23cc6b19",
+                "parameters": [
+                    {
+                        "name": "idSolicitud",
+                        "in": "path",
+                        "description": "Id de la Solicitud de Reserva",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/solicitud-reserva/docente-solicitud/{idDocente}": {
+            "get": {
+                "tags": [
+                    "Solicitud de reservas"
+                ],
+                "summary": "Obtencion de las solicitudes de un docente",
+                "operationId": "5150505a98a6c56d8487ae62137113bc",
+                "parameters": [
+                    {
+                        "name": "idDocente",
+                        "in": "path",
+                        "description": "Id del docente",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/solicitud-reserva/docente-solicitud/nombre": {
+            "post": {
+                "tags": [
+                    "Solicitud de reservas"
+                ],
+                "summary": "Obtencion de las solicitudes de un docente mediante nombre",
+                "operationId": "439c80765235560f7e3346a71c49cb0c",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nombreDocente": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/solicitud-reserva/historial-admin": {
+            "get": {
+                "tags": [
+                    "Solicitud de reservas"
+                ],
+                "summary": "Obtencion del historial de solicitudes admin",
+                "operationId": "13b3685c25321c56e6a015fa77c1c1dd",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
         }
     },
     "components": {
+        "schemas": {
+            "SolicitudReserva": {
+                "title": "SolicitudReserva",
+                "description": "Soliticitud de Reserva model",
+                "properties": {
+                    "table": {
+                        "title": "id",
+                        "description": "id",
+                        "format": "uuid"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "SolicitudReserva"
+                }
+            }
+        },
         "securitySchemes": {
             "bearerAuth": {
                 "type": "http",

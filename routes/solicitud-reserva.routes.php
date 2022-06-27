@@ -7,8 +7,18 @@ use App\Models\SolicitudReserva;
 use App\Http\Controllers\SolicitudReservaController;
 
 
-Route::get('/proximos', [SolicitudReservaController::class, "getPendientesPorAntiguedad"]);
+Route::post('/', [SolicitudReservaController::class, "crearSolitud"]);
+Route::get('/antiguedad', [SolicitudReservaController::class, "getPendientesPorAntiguedad"]);
+Route::get('/proximos', [SolicitudReservaController::class, "getPendientesPorProximidad"]);
+Route::get('/pendientes', [SolicitudReservaController::class, "getPendientes"]);
+Route::get('/estado/{idSolicitud}', [SolicitudReservaController::class, "getEstado"]);
 Route::put('/cambio-estado/{idSolicitud}', [SolicitudReservaController::class, "actualizarEstado"]);
+Route::get('/estado-aulas/{idSolicitud}', [SolicitudReservaController::class, "estadoAulas"]);
+Route::get('/docente-solicitud/{idDocente}', [SolicitudReservaController::class, "getSolicitudesDocentes"]);
+Route::post('/docente-solicitud/nombre', [SolicitudReservaController::class, "getSolicitudesDocentesporNombre"]);
+Route::put('/eliminar/{idSolicitud}', [SolicitudReservaController::class, "eliminarSolicitud"]);
+Route::get('/historial-admin', [SolicitudReservaController::class, "getHistorialAdmin"]);
+Route::get('/{idSolicitud}',[SolicitudReservaController::class, "getSolicitudPorId"]);
 
 Route::get("/user", function () {
     $mensaje =['mensaje'=>"Hola mundo"];

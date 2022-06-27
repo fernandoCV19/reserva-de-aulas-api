@@ -15,7 +15,7 @@ class CreateMateriasTable extends Migration
     {
         Schema::create('materias', function (Blueprint $table) {
             $table->uuid('id');
-            $table->string('nombre', 40);
+            $table->string('nombre', 100);
             $table->integer('codigo');
         
             $table->primary('id');
