@@ -184,6 +184,7 @@ class DocenteController extends Controller
         $docente = Docente::find($request->idDocente);
         $docente -> activado = 0;
         $docente -> save();
+
         return response()->json([
             'message' => 'Rechazado.',
         ], 200);
@@ -257,7 +258,7 @@ class DocenteController extends Controller
         $docente = Docente::findOrFail($request->idDocente);
         if($request->email != NULL)
             $docente -> email = $request->email;
-        if($request->celular != "undefined")             
+        if($request->celular != "undefined" && $request->celular != NULL && $request->celular != "")
             $docente -> celular = $request->celular; 
         if($request->contrasenia != NULL)
             $docente -> contrasenia =bcrypt($request->contrasenia);

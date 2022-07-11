@@ -218,7 +218,8 @@ class AuthDocenteController extends Controller
         $docente -> activado = 2;
         $docente -> email = $request->email;
         $docente -> cod_SIS = $request->cod_SIS;
-        $docente -> celular = $request->celular; 
+        if($request->celular != NULL)
+            $docente -> celular = $request->celular; 
         $docente -> contrasenia =bcrypt($request->contrasenia);
         $docente -> save();
 

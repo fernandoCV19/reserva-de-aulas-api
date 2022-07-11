@@ -978,11 +978,14 @@ class AulasController extends Controller
         $respuesta = new \stdClass();
         $aula = DB::table('aulas')
             ->where("nombre","=", $request->nombreAula)
+            ->where("disponible_para_uso", 1)
+            ->select("aulas.nombre as nombre", "aulas.capacidad as capacidad", "aulas.disponible_para_uso as disponible_para_uso",
+            "aulas.id as idAula", "aulas.ubicacion as ubicacion")
             ->get()->first();
         $respuesta -> aula = $aula;
-        
+        if($aula==NULL ) return "";
         $dato_reserva = DB::table('aula_datos_reserva')
-                    -> where("aula_id", $aula->id)
+                    -> where("aula_id", $aula->idAula)
                     -> join("solicitud_reservas", "solicitud_reservas.datos_reserva_id", "aula_datos_reserva.datos_reserva_id")
                     -> where("solicitud_reservas.estado", "!=", "CANCELADO")
                     -> join("datos_reservas", "aula_datos_reserva.datos_reserva_id", "datos_reservas.id")

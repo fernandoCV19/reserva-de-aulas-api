@@ -17,7 +17,7 @@ class CreateDocentesTable extends Migration
             $table->uuid('id');
             $table->string('cod_SIS', 20);
             $table->string('nombre', 200);
-            $table->string('celular', 30);
+            $table->string('celular', 30)->nullable();
             $table->string('contrasenia', 200);
             $table->string('email', 30);
             $table->integer('activado')->default(0);

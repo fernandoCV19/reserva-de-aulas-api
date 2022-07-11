@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use App\Models\SolicitudReserva;
 use App\Models\Reserva;
 use App\Models\DatosReserva;
@@ -503,13 +504,16 @@ class SolicitudReservaController extends Controller
      * 
      */
     public function getPendientesPorProximidad(){
-        $solicitudesPendientes=DB::table('datos_reservas')
-        ->join('solicitud_reservas', function ($join) {
-            $join->on('solicitud_reservas.datos_reserva_id',"=","datos_reservas.id")
-            -> where([["datos_reservas.fecha",">=", now()],["estado", "=", "PENDIENTE"]]);  
-        })
-        -> orderBy("fecha", "ASC")
-        -> get();
+        $solicitudesPendientes = DB::table("solicitud_reservas")
+        ->where("estado", "PENDIENTE")
+        ->join("datos_reservas", "datos_reservas.id","solicitud_reservas.datos_reserva_id")
+        ->select("solicitud_reservas.id as id", "datos_reservas.fecha as fecha", 
+        "solicitud_reservas.fecha_creacion as fecha_creacion","datos_reservas.id as datos_reserva_id" ,
+        "solicitud_reservas.estado as estado")
+        ->orderBy("fecha", "ASC")
+        ->get();
+        
+        //echo json_encode($solicitudProx);
         $pendientes = array();
         for($i = 0; $i<sizeof($solicitudesPendientes); $i++){ 
             $docentes = DB::table("datos_reserva_grupo")
@@ -714,9 +718,8 @@ class SolicitudReservaController extends Controller
             -> where("datos_reserva_grupo.datos_reserva_id",$datosReserva[$i]->id)
             -> join("grupos", "grupos.id", "datos_reserva_grupo.grupo_id")
             -> join("docentes", "docentes.id", "grupos.docente_id")
-            -> select("docentes.nombre as nombreDocente")
+            -> select("docentes.nombre as nombreDocente", "docentes.id as idDocente")
             -> get(); 
-
             
             $aulas = DatosReservaController::getAulasDatosReserva($datosReserva[$i]->id);
             $aulas = json_decode($aulas-> getContent(), true)["aulas"];
@@ -760,7 +763,7 @@ class SolicitudReservaController extends Controller
             $res -> aulas = $aulas;
             $res -> periodos = $periodos;
             $res -> estado = $estado;
-            $res -> docentes = $docentes;
+            $res -> docentes = SolicitudReservaController::ordenarDocentes($docentes, $request->idDocente);
             $res -> motivo = $justificaciones;
             $res -> fecha = $datosReserva[$i]->fecha;
             $res -> numero_estimado = $datosReserva[$i]->numero_estimado;
@@ -778,6 +781,28 @@ class SolicitudReservaController extends Controller
         ->where ("grupos.docente_id","=",$request->idDocente)
         ->get();*/
         return $solicitudes;
+    }
+    public function ordenarDocentes($docentes, $idDocente) {
+        /*$docentesOrdenado = array();
+        for($i = 0; $i < sizeof($docentes); $i++){
+            if($docentes[$i]->idDocente == $idDocente)
+                array_push($docentesOrdenado, $docentes[$i]);
+        }
+        for($i = 0; $i < sizeof($docentes); $i++){
+            if($docentes[$i]->idDocente != $idDocente)
+                array_push($docentesOrdenado, $docentes[$i]);
+        }
+        return $docentesOrdenado;*/
+        $ordenado = array();
+        for ($i = 0; $i<sizeof($docentes); $i++){
+            if ($docentes[$i]->idDocente === $idDocente){
+                $ordenado = Arr::prepend($ordenado, $docentes[$i]);
+            }else{
+                array_push($ordenado, $docentes[$i]);
+            }
+
+        }
+        return $ordenado;
     }
     /**
      * @OA\Post(
